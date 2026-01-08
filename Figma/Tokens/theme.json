@@ -1,0 +1,180 @@
+{
+  "collections": [
+    {
+      "name": "Theme",
+      "modes": [
+        "Mode 1"
+      ],
+      "variables": {
+        "background": {
+          "type": "color",
+          "values": {
+            "Mode 1": "Primitives:White"
+          }
+        },
+        "foreground": {
+          "type": "color",
+          "values": {
+            "Mode 1": "Primitives:Neutral/950"
+          }
+        },
+        "card": {
+          "type": "color",
+          "values": {
+            "Mode 1": "Primitives:White"
+          }
+        },
+        "card-foreground": {
+          "type": "color",
+          "values": {
+            "Mode 1": "Primitives:Neutral/950"
+          }
+        },
+        "popover": {
+          "type": "color",
+          "values": {
+            "Mode 1": "Primitives:Neutral/50"
+          }
+        },
+        "popover-foreground": {
+          "type": "color",
+          "values": {
+            "Mode 1": "Primitives:Neutral/700"
+          }
+        },
+        "primary": {
+          "type": "color",
+          "values": {
+            "Mode 1": "Primitives:Orange/600"
+          }
+        },
+        "primary-foreground": {
+          "type": "color",
+          "values": {
+            "Mode 1": "Primitives:White"
+          }
+        },
+        "secondary": {
+          "type": "color",
+          "values": {
+            "Mode 1": "Primitives:Neutral/50"
+          }
+        },
+        "secondary-foreground": {
+          "type": "color",
+          "values": {
+            "Mode 1": "Primitives:Neutral/700"
+          }
+        },
+        "muted": {
+          "type": "color",
+          "values": {
+            "Mode 1": "Primitives:Neutral/200"
+          }
+        },
+        "muted-foreground": {
+          "type": "color",
+          "values": {
+            "Mode 1": "Primitives:Neutral/500"
+          }
+        },
+        "accent": {
+          "type": "color",
+          "values": {
+            "Mode 1": "Primitives:Neutral/50"
+          }
+        },
+        "accent-foreground": {
+          "type": "color",
+          "values": {
+            "Mode 1": "Primitives:Neutral/950"
+          }
+        },
+        "destructive": {
+          "type": "color",
+          "values": {
+            "Mode 1": "Primitives:Red/600"
+          }
+        },
+        "destructive-foreground": {
+          "type": "color",
+          "values": {
+            "Mode 1": "Primitives:White"
+          }
+        },
+        "border": {
+          "type": "color",
+          "values": {
+            "Mode 1": "Primitives:Neutral/200"
+          }
+        },
+        "input": {
+          "type": "color",
+          "values": {
+            "Mode 1": "Primitives:Neutral/300"
+          }
+        },
+        "ring": {
+          "type": "color",
+          "values": {
+            "Mode 1": "Primitives:Blue/700"
+          }
+        },
+        "success": {
+          "type": "color",
+          "values": {
+            "Mode 1": "Primitives:Green/600"
+          }
+        },
+        "success-foreground": {
+          "type": "color",
+          "values": {
+            "Mode 1": "Primitives:White"
+          }
+        },
+        "warning": {
+          "type": "color",
+          "values": {
+            "Mode 1": "Primitives:Amber/600"
+          }
+        },
+        "warning-foreground": {
+          "type": "color",
+          "values": {
+            "Mode 1": "Primitives:White"
+          }
+        },
+        "info": {
+          "type": "color",
+          "values": {
+            "Mode 1": "Primitives:Blue/600"
+          }
+        },
+        "info-foreground": {
+          "type": "color",
+          "values": {
+            "Mode 1": "Primitives:White"
+          }
+        },
+        "canvas": {
+          "type": "color",
+          "values": {
+            "Mode 1": "Primitives:Purple/600"
+          }
+        },
+        "canvas-foreground": {
+          "type": "color",
+          "values": {
+            "Mode 1": "Primitives:Purple/700"
+          }
+        },
+        "radius": {
+          "type": "number",
+          "values": {
+            "Mode 1": 8
+          }
+        }
+      }
+    }
+  ]
+}

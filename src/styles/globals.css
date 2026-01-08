@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Core Surfaces */
+    --background: #ffffff;
+    --foreground: #09090b;
+    
+    /* Cards & Elevated Surfaces */
+    --card: #ffffff;
+    --card-foreground: #09090b;
+    --popover: #fafafa;
+    --popover-foreground: #3f3f46;
+    
+    /* Brand Actions */
+    --primary: #e0622d;
+    --primary-foreground: #ffffff;
+    --secondary: #fafafa;
+    --secondary-foreground: #3f3f46;
+    
+    /* Muted & Accent */
+    --muted: #e5e5e5;
+    --muted-foreground: #71717a;
+    --accent: #fafafa;
+    --accent-foreground: #09090b;
+    
+    /* Destructive */
+    --destructive: #bf1616;
+    --destructive-foreground: #ffffff;
+    
+    /* Borders & Focus */
+    --border: #e5e5e5;
+    --input: #d4d4d4;
+    --ring: #007ab7;
+    
+    /* Extended - Success */
+    --success: #3ea377;
+    --success-foreground: #ffffff;
+    
+    /* Extended - Warning */
+    --warning: #e09200;
+    --warning-foreground: #ffffff;
+    
+    /* Extended - Info */
+    --info: #008ed6;
+    --info-foreground: #ffffff;
+    
+    /* Extended - Canvas */
+    --canvas: #914be6;
+    --canvas-foreground: #7737c4;
+    
+    /* Radius */
+    --radius: 8px;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+  }
+}
