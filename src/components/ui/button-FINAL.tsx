@@ -4,17 +4,16 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  // Base styles - applied to all buttons
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-semibold tracking-tight transition-all duration-200 ease-in-out focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring focus-visible:ring-offset-0 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-semibold tracking-tight transition-all duration-200 focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring focus-visible:ring-offset-0 disabled:pointer-events-none disabled:opacity-50 relative",
   {
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow-button-onfill-default hover:shadow-button-onfill-hover active:shadow-button-onfill-active hover:bg-[hsl(25,95%,48%)] active:bg-[hsl(25,95%,43%)]",
+          "bg-primary text-primary-foreground shadow-button-onfill-default hover:shadow-button-onfill-hover active:shadow-button-onfill-active",
         secondary:
-          "bg-secondary text-secondary-foreground shadow-button-onlight-default hover:shadow-button-onlight-hover active:shadow-button-onlight-active hover:bg-[hsl(240,5%,90%)] active:bg-[hsl(240,5%,85%)]",
+          "bg-secondary text-secondary-foreground shadow-button-onlight-default hover:shadow-button-onlight-hover active:shadow-button-onlight-active",
         destructive:
-          "bg-destructive text-destructive-foreground shadow-button-onfill-default hover:shadow-button-onfill-hover active:shadow-button-onfill-active hover:bg-[hsl(0,84%,55%)] active:bg-[hsl(0,84%,50%)]",
+          "bg-destructive text-destructive-foreground shadow-button-onfill-default hover:shadow-button-onfill-hover active:shadow-button-onfill-active",
         ghost:
           "bg-transparent text-foreground hover:bg-muted active:bg-[hsl(240,5%,80%)]",
       },
