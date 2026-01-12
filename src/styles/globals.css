@@ -1,67 +1,92 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
 
 @layer base {
   :root {
-    /* Core Surfaces */
-    --background: #ffffff;
-    --foreground: #09090b;
+    /* Theme Colors - 28 CSS Variables */
+    --background: 0 0% 100%;           /* White */
+    --foreground: 240 6% 10%;          /* Neutral/950 */
     
-    /* Cards & Elevated Surfaces */
-    --card: #ffffff;
-    --card-foreground: #09090b;
-    --popover: #fafafa;
-    --popover-foreground: #3f3f46;
+    --card: 0 0% 100%;                 /* White */
+    --card-foreground: 240 6% 10%;     /* Neutral/950 */
     
-    /* Brand Actions */
-    --primary: #e0622d;
-    --primary-foreground: #ffffff;
-    --secondary: #fafafa;
-    --secondary-foreground: #3f3f46;
+    --popover: 0 0% 100%;              /* White */
+    --popover-foreground: 240 6% 10%;  /* Neutral/950 */
     
-    /* Muted & Accent */
-    --muted: #e5e5e5;
-    --muted-foreground: #71717a;
-    --accent: #fafafa;
-    --accent-foreground: #09090b;
+    --primary: 25 95% 53%;             /* Orange/600 */
+    --primary-foreground: 0 0% 100%;   /* White */
     
-    /* Destructive */
-    --destructive: #bf1616;
-    --destructive-foreground: #ffffff;
+    --secondary: 240 5% 96%;           /* Neutral/50 */
+    --secondary-foreground: 240 4% 46%; /* Neutral/700 */
     
-    /* Borders & Focus */
-    --border: #e5e5e5;
-    --input: #d4d4d4;
-    --ring: #007ab7;
+    --muted: 240 5% 84%;               /* Neutral/200 */
+    --muted-foreground: 240 4% 46%;    /* Neutral/500 */
     
-    /* Extended - Success */
-    --success: #3ea377;
-    --success-foreground: #ffffff;
+    --accent: 240 5% 96%;              /* Neutral/100 */
+    --accent-foreground: 240 6% 10%;   /* Neutral/950 */
     
-    /* Extended - Warning */
-    --warning: #e09200;
-    --warning-foreground: #ffffff;
+    --destructive: 0 84% 60%;          /* Red/600 */
+    --destructive-foreground: 0 0% 100%; /* White */
     
-    /* Extended - Info */
-    --info: #008ed6;
-    --info-foreground: #ffffff;
+    --success: 142 71% 45%;            /* Green/600 */
+    --success-foreground: 0 0% 100%;   /* White */
     
-    /* Extended - Canvas */
-    --canvas: #914be6;
-    --canvas-foreground: #7737c4;
+    --warning: 38 92% 50%;             /* Amber/500 */
+    --warning-foreground: 240 6% 10%;  /* Neutral/950 */
     
-    /* Radius */
-    --radius: 8px;
-  }
-}
+    --info: 199 89% 48%;               /* Blue/600 */
+    --info-foreground: 0 0% 100%;      /* White */
+    
+    --border: 240 5% 84%;              /* Neutral/200 */
+    --input: 240 5% 65%;               /* Neutral/300 */
+    --ring: 199 89% 48%;               /* Blue/700 for focus */
+    
+    --radius: 0.5rem;                  /* 8px */
 
-@layer base {
+    /* Shadow System - Button Shadows (CSS Variables for reference) */
+    --shadow-button-onfill-default: 0px 0px 0px 1px rgba(0, 0, 0, 0.05), 0px 1px 2px 0px rgba(0, 0, 0, 0.10);
+    --shadow-button-onfill-hover: 0px 0px 0px 1px rgba(0, 0, 0, 0.05), 0px 2px 4px 0px rgba(0, 0, 0, 0.12), 0px 4px 8px 0px rgba(0, 0, 0, 0.08);
+    --shadow-button-onfill-active: 0px 0px 0px 1px rgba(0, 0, 0, 0.05), inset 0px 1px 2px 0px rgba(0, 0, 0, 0.10);
+    --shadow-button-onlight-default: 0px 1px 0px 0px rgba(0,0,0,0.06), 0px 1px 2px 0px rgba(0,0,0,0.10);
+    --shadow-button-onlight-hover: 0px 1px 0px 0px rgba(0,0,0,0.08), 0px 2px 4px 0px rgba(0,0,0,0.12);
+    --shadow-button-onlight-active: inset 0px 1px 2px 0px rgba(0,0,0,0.10);
+  }
+
+  .dark {
+    /* Dark mode tokens - placeholder for future */
+    --background: 240 6% 10%;
+    --foreground: 0 0% 98%;
+    /* Add dark mode values here when needed */
+  }
+  
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
   }
   
   body {
-    @apply bg-background text-foreground;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+}
+
+@layer utilities {
+  /* Button Shadow Utilities - Polaris-style shadows with proper depth */
+  .shadow-button-onfill-default {
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.05), 0px 1px 2px 0px rgba(0, 0, 0, 0.10);
+  }
+  .shadow-button-onfill-hover {
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.05), 0px 2px 4px 0px rgba(0, 0, 0, 0.12), 0px 4px 8px 0px rgba(0, 0, 0, 0.08);
+  }
+  .shadow-button-onfill-active {
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.05), inset 0px 1px 2px 0px rgba(0, 0, 0, 0.10);
+  }
+  .shadow-button-onlight-default {
+    box-shadow: 0px 1px 0px 0px rgba(0,0,0,0.06), 0px 1px 2px 0px rgba(0,0,0,0.10);
+  }
+  .shadow-button-onlight-hover {
+    box-shadow: 0px 1px 0px 0px rgba(0,0,0,0.08), 0px 2px 4px 0px rgba(0,0,0,0.12);
+  }
+  .shadow-button-onlight-active {
+    box-shadow: inset 0px 1px 2px 0px rgba(0,0,0,0.10);
   }
 }
