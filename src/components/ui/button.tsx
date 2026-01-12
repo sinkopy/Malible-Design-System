@@ -1,0 +1,54 @@
+import * as React from "react"
+import { Slot } from "@radix-ui/react-slot"
+import { cva, type VariantProps } from "class-variance-authority"
+import { cn } from "@/lib/utils"
+
+const buttonVariants = cva(
+  // Base styles - applied to all buttons
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-semibold tracking-tight transition-all duration-200 ease-in-out focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring focus-visible:ring-offset-0 disabled:pointer-events-none disabled:opacity-50",
+  {
+    variants: {
+      variant: {
+        default:
+          "bg-primary text-primary-foreground shadow-button-onfill-default hover:shadow-button-onfill-hover active:shadow-button-onfill-active hover:bg-[hsl(25,95%,48%)] active:bg-[hsl(25,95%,43%)]",
+        secondary:
+          "bg-secondary text-secondary-foreground shadow-button-onlight-default hover:shadow-button-onlight-hover active:shadow-button-onlight-active hover:bg-[hsl(240,5%,90%)] active:bg-[hsl(240,5%,85%)]",
+        destructive:
+          "bg-destructive text-destructive-foreground shadow-button-onfill-default hover:shadow-button-onfill-hover active:shadow-button-onfill-active hover:bg-[hsl(0,84%,55%)] active:bg-[hsl(0,84%,50%)]",
+        ghost:
+          "bg-transparent text-foreground hover:bg-muted active:bg-[hsl(240,5%,80%)]",
+      },
+      size: {
+        sm: "h-8 px-3 py-1.5 text-sm",      // 32px height
+        default: "h-9 px-4 py-2 text-sm",   // 36px height
+        lg: "h-11 px-5 py-2.5 text-base",   // 44px height
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  }
+)
+
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean
+}
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : "button"
+    return (
+      <Comp
+        className={cn(buttonVariants({ variant, size, className }))}
+        ref={ref}
+        {...props}
+      />
+    )
+  }
+)
+Button.displayName = "Button"
+
+export { Button, buttonVariants }
