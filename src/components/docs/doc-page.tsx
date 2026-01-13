@@ -1,3 +1,6 @@
+import { useLocation } from "react-router-dom";
+import { DocNavigation } from "./doc-navigation";
+
 interface DocPageProps {
   title: string;
   description: string;
@@ -6,6 +9,8 @@ interface DocPageProps {
 }
 
 export function DocPage({ title, description, category = "Components", children }: DocPageProps) {
+  const location = useLocation();
+
   return (
     <div className="space-y-8">
       {/* Header */}
@@ -26,6 +31,9 @@ export function DocPage({ title, description, category = "Components", children 
       <div className="space-y-8">
         {children}
       </div>
+
+      {/* Navigation */}
+      <DocNavigation currentPath={location.pathname} />
     </div>
   );
 }

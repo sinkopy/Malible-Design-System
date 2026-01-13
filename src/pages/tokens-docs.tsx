@@ -9,7 +9,7 @@ export default function TokensDocs() {
       category="Foundation"
     >
       {/* Download */}
-      <DocSection title="Download">
+      <DocSection title="Download" description="Get all tokens as JSON for tooling integration.">
         <a 
           href="/malible-tokens.json" 
           download="malible-tokens.json"
@@ -103,7 +103,7 @@ export default function TokensDocs() {
       </DocSection>
 
       {/* Shadows */}
-      <DocSection title="Shadows" description="Elevation and depth effects.">
+      <DocSection title="Shadows" description="Elevation and depth effects for buttons and inputs.">
         <div className="rounded-lg border overflow-hidden">
           <table className="w-full text-sm">
             <thead className="bg-muted/50">
@@ -148,7 +148,7 @@ export default function TokensDocs() {
       </DocSection>
 
       {/* All CSS Variables */}
-      <DocSection title="All CSS Variables">
+      <DocSection title="All CSS Variables" description="Complete token reference for globals.css.">
         <div className="rounded-lg border p-4">
           <pre className="text-xs overflow-x-auto">
 {`:root {

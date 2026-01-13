@@ -55,8 +55,8 @@ const buttonVariants = cva(
           "active:bg-accent/80",
         ],
         link: [
-          "text-primary underline-offset-4",
-          "hover:underline",
+          "text-info underline underline-offset-4 h-auto p-0",
+          "focus-visible:ring-1 focus-visible:ring-info focus-visible:ring-offset-2 rounded",
         ],
         outline: [
           "border border-input bg-background text-foreground",

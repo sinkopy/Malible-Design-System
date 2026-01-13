@@ -8,7 +8,7 @@ export default function TypographyDocs() {
       category="Foundation"
     >
       {/* Scale Overview */}
-      <DocSection title="Type Scale">
+      <DocSection title="Type Scale" description="Five levels for clear visual hierarchy.">
         <div className="rounded-lg border overflow-hidden">
           <table className="w-full text-sm">
             <thead className="bg-muted/50">
@@ -62,7 +62,7 @@ export default function TypographyDocs() {
       </DocSection>
 
       {/* Visual Examples */}
-      <DocSection title="Examples">
+      <DocSection title="Examples" description="Visual reference for each typography level.">
         <div className="space-y-8 rounded-lg border p-8">
           <div className="space-y-1">
             <p className="text-xs text-muted-foreground font-mono">Display / h1 / 36px</p>
@@ -92,7 +92,7 @@ export default function TypographyDocs() {
       </DocSection>
 
       {/* Font Families */}
-      <DocSection title="Font Families">
+      <DocSection title="Font Families" description="Three families for different content types.">
         <div className="rounded-lg border overflow-hidden">
           <table className="w-full text-sm">
             <thead className="bg-muted/50">
@@ -124,7 +124,7 @@ export default function TypographyDocs() {
       </DocSection>
 
       {/* Font Samples */}
-      <DocSection title="Font Samples">
+      <DocSection title="Font Samples" description="Character specimens for each typeface.">
         <div className="space-y-8 rounded-lg border p-8">
           <div className="space-y-1">
             <p className="text-xs text-muted-foreground">TT Commons Pro (Headings)</p>
@@ -156,7 +156,7 @@ export default function TypographyDocs() {
       </DocSection>
 
       {/* Hierarchy Ratios */}
-      <DocSection title="Hierarchy Ratios">
+      <DocSection title="Hierarchy Ratios" description="Mathematical relationships between sizes.">
         <div className="rounded-lg border p-8 space-y-4">
           <p className="text-muted-foreground">
             The type scale uses clear ratios for visual hierarchy:
@@ -174,7 +174,7 @@ export default function TypographyDocs() {
       </DocSection>
 
       {/* Usage Guidelines */}
-      <DocSection title="Usage">
+      <DocSection title="Usage" description="Guidelines for applying each level.">
         <div className="rounded-lg border overflow-hidden">
           <table className="w-full text-sm">
             <thead className="bg-muted/50">

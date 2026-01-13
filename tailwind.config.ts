@@ -22,7 +22,7 @@ const config = {
       fontFamily: {
         heading: ['var(--font-heading)'],
         body: ['var(--font-body)'],
-        mono: ['var(--font-mono)'],
+        mono: ['"JetBrains Mono"', 'Menlo', 'Monaco', 'monospace'],
       },
       colors: {
         border: "hsl(var(--border))",

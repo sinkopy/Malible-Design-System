@@ -1,5 +1,5 @@
 import { Badge } from "@/components/ui/badge";
-import { DocPage, DocSection, CodeBlock, Timestamp } from "@/components/docs";
+import { DocPage, DocSection, ComponentExample, Timestamp } from "@/components/docs";
 import { Check, X, Info, Warning } from "@phosphor-icons/react";
 
 export default function BadgeDocs() {
@@ -9,8 +9,15 @@ export default function BadgeDocs() {
       description="Badges are used to inform users of status or categorization."
       category="Components"
     >
-      <DocSection title="Subtle Variants" description="Low-emphasis badges with tinted backgrounds.">
-        <div className="flex items-center justify-center rounded-lg border bg-background p-8">
+      <DocSection title="Subtle Variants" description="Low-emphasis badges for status indicators.">
+        <ComponentExample
+          code={`<Badge>Default</Badge>
+<Badge variant="info">Info</Badge>
+<Badge variant="success">Success</Badge>
+<Badge variant="warning">Warning</Badge>
+<Badge variant="destructive">Destructive</Badge>
+<Badge variant="outline">Outline</Badge>`}
+        >
           <div className="flex flex-wrap items-center gap-2">
             <Badge>Default</Badge>
             <Badge variant="info">Info</Badge>
@@ -19,43 +26,46 @@ export default function BadgeDocs() {
             <Badge variant="destructive">Destructive</Badge>
             <Badge variant="outline">Outline</Badge>
           </div>
-        </div>
-        <CodeBlock code={`<Badge>Default</Badge>
-<Badge variant="info">Info</Badge>
-<Badge variant="success">Success</Badge>
-<Badge variant="warning">Warning</Badge>
-<Badge variant="destructive">Destructive</Badge>
-<Badge variant="outline">Outline</Badge>`} />
+        </ComponentExample>
       </DocSection>
 
-      <DocSection title="Solid Variants" description="High-emphasis badges with solid backgrounds.">
-        <div className="flex items-center justify-center rounded-lg border bg-background p-8">
+      <DocSection title="Solid Variants" description="High-emphasis badges for important status.">
+        <ComponentExample
+          code={`<Badge variant="info-solid">Info</Badge>
+<Badge variant="success-solid">Success</Badge>
+<Badge variant="warning-solid">Warning</Badge>
+<Badge variant="destructive-solid">Destructive</Badge>`}
+        >
           <div className="flex flex-wrap items-center gap-2">
             <Badge variant="info-solid">Info</Badge>
             <Badge variant="success-solid">Success</Badge>
             <Badge variant="warning-solid">Warning</Badge>
             <Badge variant="destructive-solid">Destructive</Badge>
           </div>
-        </div>
-        <CodeBlock code={`<Badge variant="info-solid">Info</Badge>
-<Badge variant="success-solid">Success</Badge>
-<Badge variant="warning-solid">Warning</Badge>
-<Badge variant="destructive-solid">Destructive</Badge>`} />
+        </ComponentExample>
       </DocSection>
 
-      <DocSection title="Sizes" description="Available in small (20px) and default (24px) sizes.">
-        <div className="flex items-center justify-center rounded-lg border bg-background p-8">
+      <DocSection title="Sizes" description="Small for dense UIs, default for standard use.">
+        <ComponentExample
+          code={`<Badge size="sm">Small</Badge>
+<Badge size="default">Default</Badge>`}
+        >
           <div className="flex items-center gap-4">
             <Badge size="sm">Small</Badge>
             <Badge size="default">Default</Badge>
           </div>
-        </div>
-        <CodeBlock code={`<Badge size="sm">Small</Badge>
-<Badge size="default">Default</Badge>`} />
+        </ComponentExample>
       </DocSection>
 
-      <DocSection title="With Icon" description="Icons are passed via the icon prop and automatically sized.">
-        <div className="flex items-center justify-center rounded-lg border bg-background p-8">
+      <DocSection title="With Icon" description="Icons reinforce meaning. Auto-sized to badge.">
+        <ComponentExample
+          code={`<Badge variant="success-solid" icon={<Check size={14} />}>
+  Complete
+</Badge>
+<Badge variant="destructive-solid" icon={<X size={14} />}>
+  Failed
+</Badge>`}
+        >
           <div className="flex flex-wrap items-center gap-2">
             <Badge variant="success-solid" icon={<Check size={14} />}>
               Complete
@@ -70,17 +80,15 @@ export default function BadgeDocs() {
               Caution
             </Badge>
           </div>
-        </div>
-        <CodeBlock code={`<Badge variant="success-solid" icon={<Check size={14} />}>
-  Complete
-</Badge>
-<Badge variant="destructive-solid" icon={<X size={14} />}>
-  Failed
-</Badge>`} />
+        </ComponentExample>
       </DocSection>
 
       <DocSection title="Small with Icon" description="Icons scale down automatically in small badges.">
-        <div className="flex items-center justify-center rounded-lg border bg-background p-8">
+        <ComponentExample
+          code={`<Badge variant="success" size="sm" icon={<Check size={14} />}>
+  Done
+</Badge>`}
+        >
           <div className="flex flex-wrap items-center gap-2">
             <Badge variant="success" size="sm" icon={<Check size={14} />}>
               Done
@@ -92,10 +100,7 @@ export default function BadgeDocs() {
               New
             </Badge>
           </div>
-        </div>
-        <CodeBlock code={`<Badge variant="success" size="sm" icon={<Check size={14} />}>
-  Done
-</Badge>`} />
+        </ComponentExample>
       </DocSection>
 
       <DocSection title="Props">

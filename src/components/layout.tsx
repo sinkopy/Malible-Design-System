@@ -30,9 +30,12 @@ export default function Layout() {
     <div className="flex min-h-screen">
       {/* Sidebar */}
       <aside className="fixed left-0 top-0 h-screen w-56 border-r border-border bg-background p-6">
-        <div className="mb-6">
-          <h1 className="text-lg font-medium">Malible</h1>
-          <p className="text-xs text-muted-foreground">v1.2</p>
+        <div className="mb-6 flex items-center gap-2 px-3">
+          <img src="/malible-logo.svg" alt="Malible" className="h-8 w-8" />
+          <div>
+            <p className="text-base font-medium leading-none">Malible</p>
+            <p className="text-xs text-muted-foreground mt-0.5">v1.2</p>
+          </div>
         </div>
         <nav className="space-y-6">
           {navSections.map((section) => (

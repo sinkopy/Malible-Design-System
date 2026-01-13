@@ -29,36 +29,32 @@ const uiColors = [
   { name: "Ring", token: "--ring", hsl: "200 100% 36%", hex: "#007ab7", usage: "Focus rings" },
 ];
 
-function ColorSwatch({ hex }: { hex: string }) {
-  return (
-    <div 
-      className="h-8 w-8 rounded border"
-      style={{ backgroundColor: hex }}
-    />
-  );
-}
-
 function ColorTable({ colors }: { colors: typeof coreColors }) {
   return (
-    <div className="rounded-lg border overflow-hidden">
-      <table className="w-full text-sm">
+    <div className="rounded-lg border overflow-hidden text-sm">
+      <table className="w-full">
         <thead className="bg-muted/50">
           <tr>
-            <th className="text-left p-4 font-medium w-12"></th>
-            <th className="text-left p-4 font-medium">Name</th>
-            <th className="text-left p-4 font-medium">Token</th>
-            <th className="text-left p-4 font-medium">Value</th>
-            <th className="text-left p-4 font-medium">Usage</th>
+            <th className="text-left p-3 font-medium w-10"></th>
+            <th className="text-left p-3 font-medium">Name</th>
+            <th className="text-left p-3 font-medium">Token</th>
+            <th className="text-left p-3 font-medium">Value</th>
+            <th className="text-left p-3 font-medium">Usage</th>
           </tr>
         </thead>
         <tbody className="divide-y">
           {colors.map((color) => (
             <tr key={color.token}>
-              <td className="p-4"><ColorSwatch hex={color.hex} /></td>
-              <td className="p-4 font-medium">{color.name}</td>
-              <td className="p-4 font-mono text-xs">{color.token}</td>
-              <td className="p-4 font-mono text-xs">{color.hex}</td>
-              <td className="p-4 text-muted-foreground">{color.usage}</td>
+              <td className="p-3">
+                <div 
+                  className="h-6 w-6 rounded border"
+                  style={{ backgroundColor: color.hex }}
+                />
+              </td>
+              <td className="p-3 font-medium whitespace-nowrap">{color.name}</td>
+              <td className="p-3 font-mono text-muted-foreground">{color.token}</td>
+              <td className="p-3 font-mono text-muted-foreground">{color.hex}</td>
+              <td className="p-3 text-muted-foreground">{color.usage}</td>
             </tr>
           ))}
         </tbody>
@@ -74,11 +70,11 @@ export default function ColorsDocs() {
       description="The color system for consistent, accessible interfaces."
       category="Foundation"
     >
-      <DocSection title="Core Colors" description="Primary palette for actions and UI.">
+      <DocSection title="Core Colors" description="Primary palette for actions and interactive UI.">
         <ColorTable colors={coreColors} />
       </DocSection>
 
-      <DocSection title="Semantic Colors" description="Status and feedback colors.">
+      <DocSection title="Semantic Colors" description="Status and feedback colors with subtle variants.">
         <ColorTable colors={semanticColors} />
       </DocSection>
 
@@ -86,7 +82,7 @@ export default function ColorsDocs() {
         <ColorTable colors={uiColors} />
       </DocSection>
 
-      <DocSection title="Usage">
+      <DocSection title="Usage" description="How to apply colors in Tailwind and CSS.">
         <div className="rounded-lg border p-8 space-y-4">
           <div>
             <h4 className="font-medium mb-1">Tailwind Classes</h4>
