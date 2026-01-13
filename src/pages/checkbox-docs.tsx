@@ -1,6 +1,6 @@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import { DocPage, DocSection, CodeBlock, Timestamp } from "@/components/docs";
+import { DocPage, DocSection, ComponentExample, Timestamp } from "@/components/docs";
 
 export default function CheckboxDocs() {
   return (
@@ -9,20 +9,28 @@ export default function CheckboxDocs() {
       description="A control for selecting one or more items from a set."
       category="Components"
     >
-      <DocSection title="Default">
-        <div className="flex items-center justify-center rounded-lg border bg-background p-8 text-left">
+      <DocSection title="Default" description="For selecting one or more options from a list.">
+        <ComponentExample
+          code={`<div className="flex items-center gap-2">
+  <Checkbox id="terms" />
+  <Label htmlFor="terms">Accept terms and conditions</Label>
+</div>`}
+        >
           <div className="flex items-center gap-2">
             <Checkbox id="terms" />
             <Label htmlFor="terms">Accept terms and conditions</Label>
           </div>
-        </div>
-        <CodeBlock code={`<Checkbox id="terms" />
-<Label htmlFor="terms">Accept terms</Label>`} />
+        </ComponentExample>
       </DocSection>
 
-      <DocSection title="States">
-        <div className="flex items-center justify-center rounded-lg border bg-background p-8 text-left">
-          <div className="flex items-center gap-4">
+      <DocSection title="States" description="Selection states including indeterminate.">
+        <ComponentExample
+          code={`<Checkbox />                         {/* Unchecked */}
+<Checkbox defaultChecked />          {/* Checked */}
+<Checkbox checked="indeterminate" /> {/* Indeterminate */}
+<Checkbox disabled />                {/* Disabled */}`}
+        >
+          <div className="grid grid-cols-2 gap-4">
             <div className="flex items-center gap-2">
               <Checkbox id="unchecked" />
               <Label htmlFor="unchecked">Unchecked</Label>
@@ -35,28 +43,66 @@ export default function CheckboxDocs() {
               <Checkbox id="indeterminate" checked="indeterminate" />
               <Label htmlFor="indeterminate">Indeterminate</Label>
             </div>
+            <div className="flex items-center gap-2">
+              <Checkbox id="disabled" disabled />
+              <Label htmlFor="disabled" className="text-muted-foreground">Disabled</Label>
+            </div>
           </div>
-        </div>
-        <CodeBlock code={`<Checkbox />
-<Checkbox defaultChecked />
-<Checkbox checked="indeterminate" />`} />
+        </ComponentExample>
       </DocSection>
 
-      <DocSection title="Disabled">
-        <div className="flex items-center justify-center rounded-lg border bg-background p-8 text-left">
-          <div className="flex items-center gap-4">
+      <DocSection title="State Reference">
+        <div className="rounded-lg border overflow-hidden">
+          <table className="w-full text-sm">
+            <thead className="bg-muted/50">
+              <tr>
+                <th className="text-left p-3 font-medium">State</th>
+                <th className="text-left p-3 font-medium">Style</th>
+                <th className="text-left p-3 font-medium">Token/Value</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y">
+              <tr>
+                <td className="p-3 font-medium">Unchecked</td>
+                <td className="p-3 text-muted-foreground">Border only</td>
+                <td className="p-3 font-mono text-xs text-muted-foreground">border-input</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-medium">Checked</td>
+                <td className="p-3 text-muted-foreground">Primary background + checkmark</td>
+                <td className="p-3 font-mono text-xs text-muted-foreground">bg-primary</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-medium">Indeterminate</td>
+                <td className="p-3 text-muted-foreground">Primary background + dash</td>
+                <td className="p-3 font-mono text-xs text-muted-foreground">bg-primary</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-medium">Disabled</td>
+                <td className="p-3 text-muted-foreground">50% opacity</td>
+                <td className="p-3 font-mono text-xs text-muted-foreground">opacity-50</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </DocSection>
+
+      <DocSection title="Disabled" description="Prevents selection when option is unavailable.">
+        <ComponentExample
+          code={`<Checkbox disabled />
+<Checkbox disabled defaultChecked />`}
+        >
+          <div className="flex items-center gap-6">
             <div className="flex items-center gap-2">
-              <Checkbox id="disabled-unchecked" disabled />
-              <Label htmlFor="disabled-unchecked" className="text-muted-foreground">Disabled</Label>
+              <Checkbox id="disabled-off" disabled />
+              <Label htmlFor="disabled-off" className="text-muted-foreground">Disabled</Label>
             </div>
             <div className="flex items-center gap-2">
-              <Checkbox id="disabled-checked" disabled defaultChecked />
-              <Label htmlFor="disabled-checked" className="text-muted-foreground">Disabled Checked</Label>
+              <Checkbox id="disabled-on" disabled defaultChecked />
+              <Label htmlFor="disabled-on" className="text-muted-foreground">Disabled checked</Label>
             </div>
           </div>
-        </div>
-        <CodeBlock code={`<Checkbox disabled />
-<Checkbox disabled defaultChecked />`} />
+        </ComponentExample>
       </DocSection>
 
       <DocSection title="Props">
