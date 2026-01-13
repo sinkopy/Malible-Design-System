@@ -11,9 +11,9 @@ export default function Layout() {
   const location = useLocation();
   
   return (
-    <div className="min-h-screen">
-      {/* Sidebar - fixed, 224px wide */}
-      <aside className="fixed left-0 top-0 z-40 h-screen w-56 border-r bg-background p-4">
+    <div className="flex min-h-screen">
+      {/* Sidebar */}
+      <aside className="fixed left-0 top-0 h-screen w-56 border-r border-border bg-background p-4">
         <div className="mb-8">
           <h1 className="text-lg font-bold">Malible DS</h1>
           <p className="text-xs text-muted-foreground">Design System</p>
@@ -36,11 +36,9 @@ export default function Layout() {
         </nav>
       </aside>
       
-      {/* Main Content - offset by sidebar width */}
-      <main className="pl-56">
-        <div className="min-h-screen">
-          <Outlet />
-        </div>
+      {/* Main Content - pushed right by sidebar width */}
+      <main className="flex-1 ml-56 p-8">
+        <Outlet />
       </main>
     </div>
   );

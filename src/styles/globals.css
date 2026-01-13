@@ -4,10 +4,6 @@
 
 @layer base {
   :root {
-    /* ============================================
-       THEME COLORS
-       ============================================ */
-    
     --background: 0 0% 100%;
     --foreground: 240 6% 10%;
     
@@ -17,7 +13,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 240 6% 10%;
     
-    --primary: 18 74% 53%;           /* #E0622D */
+    --primary: 18 74% 53%;
     --primary-foreground: 0 0% 100%;
     
     --secondary: 240 5% 96%;
@@ -29,7 +25,7 @@
     --accent: 240 5% 96%;
     --accent-foreground: 240 6% 10%;
     
-    --destructive: 0 79% 42%;        /* #bf1616 */
+    --destructive: 0 79% 42%;
     --destructive-foreground: 0 0% 100%;
     
     --success: 142 71% 45%;
@@ -38,7 +34,7 @@
     --warning: 38 92% 50%;
     --warning-foreground: 240 6% 10%;
     
-    --info: 200 100% 36%;            /* #007ab7 */
+    --info: 200 100% 36%;
     --info-foreground: 0 0% 100%;
     
     --border: 0 0% 90%;
@@ -47,18 +43,10 @@
     
     --radius: 0.5rem;
 
-    /* ============================================
-       TYPOGRAPHY - Font Families
-       ============================================ */
-    
     --font-heading: "tt-commons-pro", ui-sans-serif, system-ui, sans-serif;
     --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
     --font-mono: "Menlo", ui-monospace, monospace;
 
-    /* ============================================
-       BUTTON SHADOW SYSTEM
-       ============================================ */
-    
     --shadow-button-onfill-default: 
       inset 0px 1px 0px 0px rgba(255, 255, 255, 0.2),
       inset 1px 0px 0px 0px rgba(255, 255, 255, 0.2),
@@ -103,9 +91,7 @@
     --background: 240 6% 10%;
     --foreground: 0 0% 98%;
   }
-}
 
-@layer base {
   * {
     border-color: hsl(var(--border));
   }
@@ -114,75 +100,52 @@
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
     font-family: var(--font-body);
-    font-size: 0.875rem;             /* 14px */
-    line-height: 1.25rem;            /* 20px */
+    font-size: 0.875rem;
+    line-height: 1.25rem;
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
   
-  /* ============================================
-     SIMPLIFIED 5-LEVEL TYPOGRAPHY SCALE
-     
-     Display  → h1           → 36/40  → Page titles
-     Heading  → h2           → 24/32  → Section headers
-     Title    → h3, h4       → 18/24  → Card/panel titles
-     Body     → p, default   → 14/20  → Default text
-     Caption  → small, h5, h6 → 12/16 → Labels, hints
-     
-     All line heights on 4px grid.
-     Tailwind utilities can override any of these.
-     ============================================ */
-  
-  /* DISPLAY - Page titles, hero text */
   h1 {
     font-family: var(--font-heading);
-    font-size: 2.25rem;              /* 36px */
-    line-height: 2.5rem;             /* 40px */
-    font-weight: 600;
-    letter-spacing: -0.025em;        /* tracking-tight */
-  }
-  
-  /* HEADING - Section headers */
-  h2 {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;               /* 24px */
-    line-height: 2rem;               /* 32px */
+    font-size: 2.25rem;
+    line-height: 2.5rem;
     font-weight: 600;
     letter-spacing: -0.025em;
   }
   
-  /* TITLE - Card titles, panel headers */
+  h2 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+  }
+  
   h3, h4 {
     font-family: var(--font-heading);
-    font-size: 1.125rem;             /* 18px */
-    line-height: 1.5rem;             /* 24px */
+    font-size: 1.125rem;
+    line-height: 1.5rem;
     font-weight: 600;
     letter-spacing: -0.015em;
   }
   
-  /* CAPTION - Labels, hints, metadata */
   h5, h6, small {
     font-family: var(--font-body);
-    font-size: 0.75rem;              /* 12px */
-    line-height: 1rem;               /* 16px */
+    font-size: 0.75rem;
+    line-height: 1rem;
     font-weight: 400;
-    letter-spacing: 0;
   }
   
-  /* Code - Menlo */
   code, pre, kbd, samp {
     font-family: var(--font-mono);
-    font-size: 0.875rem;             /* 14px */
-    line-height: 1.25rem;            /* 20px */
+    font-size: 0.875rem;
+    line-height: 1.25rem;
   }
 }
 
 @layer utilities {
-  /* ============================================
-     BUTTON SHADOW UTILITIES
-     ============================================ */
-  
   .shadow-button-onfill-default {
     box-shadow: var(--shadow-button-onfill-default);
   }
@@ -201,67 +164,10 @@
   .shadow-button-onlight-active {
     box-shadow: var(--shadow-button-onlight-active);
   }
-  
   .shadow-input-focus {
     box-shadow: var(--shadow-input-focus);
   }
   .shadow-input-error {
     box-shadow: var(--shadow-input-error);
-  }
-  
-  /* ============================================
-     SEMANTIC TEXT UTILITIES
-     Use these for explicit control
-     ============================================ */
-  
-  .text-display {
-    font-family: var(--font-heading);
-    font-size: 2.25rem;
-    line-height: 2.5rem;
-    font-weight: 600;
-    letter-spacing: -0.025em;
-  }
-  
-  .text-heading {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    line-height: 2rem;
-    font-weight: 600;
-    letter-spacing: -0.025em;
-  }
-  
-  .text-title {
-    font-family: var(--font-heading);
-    font-size: 1.125rem;
-    line-height: 1.5rem;
-    font-weight: 600;
-    letter-spacing: -0.015em;
-  }
-  
-  .text-body {
-    font-family: var(--font-body);
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    font-weight: 400;
-    letter-spacing: 0;
-  }
-  
-  .text-caption {
-    font-family: var(--font-body);
-    font-size: 0.75rem;
-    line-height: 1rem;
-    font-weight: 400;
-    letter-spacing: 0;
-  }
-  
-  /* Weight modifiers - combine with above */
-  .font-medium {
-    font-weight: 500;
-  }
-  .font-semibold {
-    font-weight: 600;
-  }
-  .font-bold {
-    font-weight: 700;
   }
 }
