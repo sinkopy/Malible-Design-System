@@ -223,6 +223,111 @@ export default function ButtonDocs() {
           </div>
         </div>
 
+        {/* Props */}
+        <section className="mt-16 space-y-4">
+          <h2 className="text-2xl font-semibold tracking-tight">Props</h2>
+          <div className="rounded-lg border overflow-hidden">
+            <table className="w-full text-sm">
+              <thead className="bg-muted/50">
+                <tr>
+                  <th className="text-left p-4 font-medium">Prop</th>
+                  <th className="text-left p-4 font-medium">Type</th>
+                  <th className="text-left p-4 font-medium">Default</th>
+                  <th className="text-left p-4 font-medium">Description</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y">
+                <tr>
+                  <td className="p-4 font-mono text-xs">variant</td>
+                  <td className="p-4 font-mono text-xs text-muted-foreground">"default" | "secondary" | "destructive" | "ghost" | "link" | "outline"</td>
+                  <td className="p-4 font-mono text-xs text-muted-foreground">"default"</td>
+                  <td className="p-4 text-muted-foreground">The visual style of the button</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-mono text-xs">size</td>
+                  <td className="p-4 font-mono text-xs text-muted-foreground">"sm" | "default" | "lg" | "icon"</td>
+                  <td className="p-4 font-mono text-xs text-muted-foreground">"default"</td>
+                  <td className="p-4 text-muted-foreground">The size of the button</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-mono text-xs">asChild</td>
+                  <td className="p-4 font-mono text-xs text-muted-foreground">boolean</td>
+                  <td className="p-4 font-mono text-xs text-muted-foreground">false</td>
+                  <td className="p-4 text-muted-foreground">Merge props onto child element instead of rendering a button</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-mono text-xs">disabled</td>
+                  <td className="p-4 font-mono text-xs text-muted-foreground">boolean</td>
+                  <td className="p-4 font-mono text-xs text-muted-foreground">false</td>
+                  <td className="p-4 text-muted-foreground">Prevents interaction and applies disabled styling</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-sm text-muted-foreground">
+            Also accepts all standard HTML button attributes including <code className="text-xs bg-muted px-1 py-0.5 rounded">onClick</code>, <code className="text-xs bg-muted px-1 py-0.5 rounded">type</code>, <code className="text-xs bg-muted px-1 py-0.5 rounded">className</code>, etc.
+          </p>
+        </section>
+
+        {/* Design Tokens */}
+        <section className="mt-16 space-y-4">
+          <h2 className="text-2xl font-semibold tracking-tight">Design Tokens</h2>
+          <div className="rounded-lg border overflow-hidden">
+            <table className="w-full text-sm">
+              <thead className="bg-muted/50">
+                <tr>
+                  <th className="text-left p-4 font-medium">Token</th>
+                  <th className="text-left p-4 font-medium">Value</th>
+                  <th className="text-left p-4 font-medium">Usage</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y">
+                <tr>
+                  <td className="p-4 font-mono text-xs">--primary</td>
+                  <td className="p-4 font-mono text-xs text-muted-foreground">#E0622D</td>
+                  <td className="p-4 text-muted-foreground">Default button background</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-mono text-xs">--secondary</td>
+                  <td className="p-4 font-mono text-xs text-muted-foreground">#fafafa</td>
+                  <td className="p-4 text-muted-foreground">Secondary button background</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-mono text-xs">--destructive</td>
+                  <td className="p-4 font-mono text-xs text-muted-foreground">#bf1616</td>
+                  <td className="p-4 text-muted-foreground">Destructive button background</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-mono text-xs">--radius</td>
+                  <td className="p-4 font-mono text-xs text-muted-foreground">8px</td>
+                  <td className="p-4 text-muted-foreground">Border radius</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-mono text-xs">--ring</td>
+                  <td className="p-4 font-mono text-xs text-muted-foreground">#007ab7</td>
+                  <td className="p-4 text-muted-foreground">Focus ring color</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        {/* Accessibility */}
+        <section className="mt-16 space-y-4">
+          <h2 className="text-2xl font-semibold tracking-tight">Accessibility</h2>
+          <div className="rounded-lg border p-4 space-y-2">
+            <p className="text-sm text-muted-foreground">
+              <strong className="text-foreground">Keyboard:</strong> Press <code className="text-xs bg-muted px-1 py-0.5 rounded">Enter</code> or <code className="text-xs bg-muted px-1 py-0.5 rounded">Space</code> to activate the button.
+            </p>
+            <p className="text-sm text-muted-foreground">
+              <strong className="text-foreground">Focus:</strong> Buttons have a visible focus ring for keyboard navigation.
+            </p>
+            <p className="text-sm text-muted-foreground">
+              <strong className="text-foreground">Disabled:</strong> Disabled buttons are excluded from the tab order.
+            </p>
+          </div>
+        </section>
+
         {/* Installation Section */}
         <div className="mt-16 space-y-4">
           <h2 className="text-2xl font-bold tracking-tight">Installation</h2>
