@@ -12,8 +12,8 @@ export default function Layout() {
   
   return (
     <div className="min-h-screen">
-      {/* Sidebar */}
-      <aside className="fixed left-0 top-0 h-full w-56 border-r bg-background p-4">
+      {/* Sidebar - fixed, 224px wide */}
+      <aside className="fixed left-0 top-0 z-40 h-screen w-56 border-r bg-background p-4">
         <div className="mb-8">
           <h1 className="text-lg font-bold">Malible DS</h1>
           <p className="text-xs text-muted-foreground">Design System</p>
@@ -36,9 +36,11 @@ export default function Layout() {
         </nav>
       </aside>
       
-      {/* Main Content */}
-      <main className="ml-56">
-        <Outlet />
+      {/* Main Content - offset by sidebar width */}
+      <main className="pl-56">
+        <div className="min-h-screen">
+          <Outlet />
+        </div>
       </main>
     </div>
   );
