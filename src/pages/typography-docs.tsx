@@ -1,4 +1,4 @@
-import { DocPage, DocSection } from "@/components/docs";
+import { DocPage, DocSection, Timestamp } from "@/components/docs";
 
 export default function TypographyDocs() {
   return (
@@ -207,6 +207,8 @@ export default function TypographyDocs() {
           </table>
         </div>
       </DocSection>
+
+      <Timestamp date="13-01-2026" />
     </DocPage>
   );
 }

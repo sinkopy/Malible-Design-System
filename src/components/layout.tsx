@@ -9,6 +9,8 @@ const navItems = [
   { href: "/checkbox", label: "Checkbox" },
   { href: "/radio", label: "Radio" },
   { href: "/typography", label: "Typography" },
+  { href: "/colors", label: "Colors" },
+  { href: "/tokens", label: "Tokens" },
 ];
 
 export default function Layout() {

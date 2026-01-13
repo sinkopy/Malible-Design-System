@@ -1,0 +1,57 @@
+{
+  "name": "Malible Design System",
+  "version": "1.2",
+  "lastUpdated": "13-01-2026",
+  "colors": {
+    "primary": { "hsl": "18 74% 53%", "hex": "#E0622D" },
+    "primary-foreground": { "hsl": "0 0% 100%", "hex": "#ffffff" },
+    "secondary": { "hsl": "240 5% 96%", "hex": "#f5f5f5" },
+    "secondary-foreground": { "hsl": "240 4% 26%", "hex": "#424242" },
+    "destructive": { "hsl": "0 79% 42%", "hex": "#bf1616" },
+    "destructive-foreground": { "hsl": "0 0% 100%", "hex": "#ffffff" },
+    "destructive-subtle": { "hsl": "0 90% 95%", "hex": "#fde8e8" },
+    "muted": { "hsl": "0 0% 96%", "hex": "#f5f5f5" },
+    "muted-foreground": { "hsl": "240 4% 46%", "hex": "#737373" },
+    "info": { "hsl": "200 100% 42%", "hex": "#008ed6" },
+    "info-foreground": { "hsl": "0 0% 100%", "hex": "#ffffff" },
+    "info-subtle": { "hsl": "200 100% 95%", "hex": "#eaf8ff" },
+    "success": { "hsl": "152 48% 45%", "hex": "#3ea377" },
+    "success-foreground": { "hsl": "0 0% 100%", "hex": "#ffffff" },
+    "success-subtle": { "hsl": "145 47% 93%", "hex": "#e2f4eb" },
+    "warning": { "hsl": "38 100% 44%", "hex": "#e09200" },
+    "warning-foreground": { "hsl": "0 0% 100%", "hex": "#ffffff" },
+    "warning-subtle": { "hsl": "40 95% 95%", "hex": "#fef6e6" },
+    "background": { "hsl": "0 0% 100%", "hex": "#ffffff" },
+    "foreground": { "hsl": "240 6% 10%", "hex": "#1a1a1a" },
+    "border": { "hsl": "0 0% 90%", "hex": "#e5e5e5" },
+    "input": { "hsl": "0 0% 83%", "hex": "#d4d4d4" },
+    "ring": { "hsl": "200 100% 36%", "hex": "#007ab7" }
+  },
+  "spacing": {
+    "0": "0px",
+    "2": "2px",
+    "4": "4px",
+    "8": "8px",
+    "12": "12px",
+    "16": "16px",
+    "24": "24px",
+    "32": "32px"
+  },
+  "radius": {
+    "default": "8px",
+    "sm": "4px",
+    "full": "9999px"
+  },
+  "typography": {
+    "display": { "size": "36px", "lineHeight": "40px", "weight": 600 },
+    "heading": { "size": "24px", "lineHeight": "32px", "weight": 600 },
+    "title": { "size": "18px", "lineHeight": "24px", "weight": 600 },
+    "body": { "size": "14px", "lineHeight": "20px", "weight": 400 },
+    "caption": { "size": "12px", "lineHeight": "16px", "weight": 400 }
+  },
+  "fonts": {
+    "heading": "TT Commons Pro",
+    "body": "Inter",
+    "mono": "Menlo"
+  }
+}

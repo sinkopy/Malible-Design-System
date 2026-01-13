@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { DocPage, DocSection, ComponentExample } from "@/components/docs";
+import { DocPage, DocSection, ComponentExample, Timestamp } from "@/components/docs";
 
 // Inline SVG icons (since lucide-react is not installed)
 const MailIcon = ({ className }: { className?: string }) => (
@@ -98,6 +98,8 @@ export default function ButtonDocs() {
           </Button>
         </ComponentExample>
       </DocSection>
+
+      <Timestamp date="13-01-2026" />
     </DocPage>
   );
 }

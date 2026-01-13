@@ -1,5 +1,6 @@
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
+import { Timestamp } from "@/components/docs";
 
 export default function RadioDocs() {
   return (
@@ -124,6 +125,8 @@ export default function RadioDocs() {
           </table>
         </div>
       </section>
+
+      <Timestamp date="13-01-2026" />
     </div>
   );
 }

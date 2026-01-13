@@ -1,4 +1,5 @@
 import { Input } from "@/components/ui/input";
+import { Timestamp } from "@/components/docs";
 import { useState } from "react";
 
 // Icons (inline SVGs to avoid dependency)
@@ -418,6 +419,7 @@ export default function Example() {
         </section>
 
       </div>
+      <Timestamp date="13-01-2026" />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import { Timestamp } from "@/components/docs";
 
 export default function CheckboxDocs() {
   return (
@@ -107,6 +108,8 @@ export default function CheckboxDocs() {
           </table>
         </div>
       </section>
+
+      <Timestamp date="13-01-2026" />
     </div>
   );
 }

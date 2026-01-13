@@ -1,5 +1,6 @@
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
+import { Timestamp } from "@/components/docs";
 
 export default function SwitchDocs() {
   return (
@@ -95,6 +96,8 @@ export default function SwitchDocs() {
           </table>
         </div>
       </section>
+
+      <Timestamp date="13-01-2026" />
     </div>
   );
 }

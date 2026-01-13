@@ -1,4 +1,5 @@
 import { Badge } from "@/components/ui/badge";
+import { Timestamp } from "@/components/docs";
 
 // Inline SVG icons (since lucide-react is not installed)
 const CheckIcon = () => (
@@ -230,6 +231,8 @@ export default function BadgeDocs() {
           </table>
         </div>
       </section>
+
+      <Timestamp date="13-01-2026" />
     </div>
   );
 }
