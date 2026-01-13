@@ -5,7 +5,9 @@ import Layout from "./components/layout";
 import ButtonDocs from "./pages/button-docs";
 import InputDocs from "./pages/input-docs";
 import BadgeDocs from "./pages/badge-docs";
-import ControlsDocs from "./pages/controls-docs";
+import SwitchDocs from "./pages/switch-docs";
+import CheckboxDocs from "./pages/checkbox-docs";
+import RadioDocs from "./pages/radio-docs";
 import "@/styles/globals.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
@@ -16,7 +18,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="/" element={<ButtonDocs />} />
           <Route path="/input" element={<InputDocs />} />
           <Route path="/badge" element={<BadgeDocs />} />
-          <Route path="/controls" element={<ControlsDocs />} />
+          <Route path="/switch" element={<SwitchDocs />} />
+          <Route path="/checkbox" element={<CheckboxDocs />} />
+          <Route path="/radio" element={<RadioDocs />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -5,7 +5,9 @@ const navItems = [
   { href: "/", label: "Button" },
   { href: "/input", label: "Input" },
   { href: "/badge", label: "Badge" },
-  { href: "/controls", label: "Controls" },
+  { href: "/switch", label: "Switch" },
+  { href: "/checkbox", label: "Checkbox" },
+  { href: "/radio", label: "Radio" },
 ];
 
 export default function Layout() {
