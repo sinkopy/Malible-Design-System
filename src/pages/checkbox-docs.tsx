@@ -12,7 +12,7 @@ export default function CheckboxDocs() {
 
       <section className="space-y-4">
         <h2>Default</h2>
-        <div className="flex items-center justify-center rounded-lg border bg-background p-8">
+        <div className="flex items-center justify-center rounded-lg border bg-background p-8 text-left">
           <div className="flex items-center gap-2">
             <Checkbox id="terms" />
             <Label htmlFor="terms">Accept terms and conditions</Label>
@@ -26,7 +26,7 @@ export default function CheckboxDocs() {
 
       <section className="space-y-4">
         <h2>States</h2>
-        <div className="flex items-center justify-center rounded-lg border bg-background p-8">
+        <div className="flex items-center justify-center rounded-lg border bg-background p-8 text-left">
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2">
               <Checkbox id="unchecked" />
@@ -51,7 +51,7 @@ export default function CheckboxDocs() {
 
       <section className="space-y-4">
         <h2>Disabled</h2>
-        <div className="flex items-center justify-center rounded-lg border bg-background p-8">
+        <div className="flex items-center justify-center rounded-lg border bg-background p-8 text-left">
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2">
               <Checkbox id="disabled-unchecked" disabled />
