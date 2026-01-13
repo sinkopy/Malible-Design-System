@@ -1,7 +1,7 @@
 # Anti-Patterns
 
-**Version:** 0.1.0  
-**Last Updated:** January 2026
+**Version:** 1.2.0  
+**Last Updated:** January 13, 2026
 
 ---
 
@@ -107,32 +107,6 @@ No prefixes. Match ShadCN exactly.
 
 ---
 
-### ❌ Semantic Token Sprawl
-
-**Wrong:**
-```css
---info: #008ed6;
---info-foreground: #ffffff;
---info-background: #eaf8ff;
---info-border: #70cfff;
---info-light: #c1eafe;
---info-dark: #003651;
-```
-
-**Why it's wrong:**
-- ShadCN pattern is: base + foreground. That's it.
-- More than 2 variables per context = token bloat
-
-**Right:**
-```css
---info: #008ed6;
---info-foreground: #ffffff;
-```
-
-Lighter/darker shades achieved via opacity modifiers, not new tokens.
-
----
-
 ### ❌ Alpha Values as Tokens
 
 **Wrong:**
@@ -172,6 +146,109 @@ Adding `--highlight-yellow: #ffeb3b` used only in one marketing banner.
 
 ---
 
+## Typography Violations
+
+### ❌ Using font-weight: 650
+
+**Wrong:**
+```css
+h1 {
+  font-weight: 650;
+}
+```
+
+**Why it's wrong:**
+- 650 doesn't exist in Typekit's weight mapping
+- Font will fallback or render incorrectly
+
+**Right:**
+```css
+h1 {
+  font-weight: 500; /* DemiBold in Typekit */
+}
+```
+
+**Typekit Mapping:**
+| Name | Typekit Weight |
+|------|---------------|
+| Regular | 300 |
+| Medium | 400 |
+| DemiBold | 500 |
+| Bold | 600 |
+
+---
+
+### ❌ Using Wrong Font for Context
+
+**Wrong:**
+```tsx
+// Using heading font for body text
+<p className="font-heading">Body text here</p>
+
+// Using body font for headings
+<h1 className="font-body">Heading</h1>
+```
+
+**Right:**
+```tsx
+// TT Commons Pro for headings
+<h1 className="font-heading">Heading</h1>
+
+// Inter for body
+<p className="font-body">Body text here</p>
+
+// JetBrains Mono for code
+<code className="font-mono">code</code>
+```
+
+---
+
+## Icon Violations
+
+### ❌ Using Lucide Icons
+
+**Wrong:**
+```tsx
+import { Check, X, Copy } from "lucide-react"
+```
+
+**Why it's wrong:**
+- We standardized on Phosphor icons
+- Mixing icon libraries = inconsistent visual weight
+
+**Right:**
+```tsx
+import { Check, X, Copy } from "@phosphor-icons/react"
+```
+
+**Default weight:** Regular (not Bold or Light)
+
+---
+
+### ❌ Inconsistent Icon Sizes
+
+**Wrong:**
+```tsx
+<Check size={14} />
+<X size={18} />
+<Copy size={16} />
+```
+
+**Right:**
+Standardized sizes per context:
+```tsx
+// In buttons
+<Check size={16} />  // sm button
+<Check size={18} />  // default button
+<Check size={20} />  // lg button
+
+// In badges
+<Check size={12} />  // sm badge
+<Check size={14} />  // default badge
+```
+
+---
+
 ## Component Structure Violations
 
 ### ❌ Encoding States in Component Variants
@@ -185,8 +262,7 @@ Button
 ├── Variant: default-disabled
 ├── Variant: secondary
 ├── Variant: secondary-hover
-├── Variant: secondary-active
-└── Variant: secondary-disabled
+└── ...
 ```
 
 **Why it's wrong:**
@@ -210,49 +286,42 @@ disabled:opacity-50
 
 ---
 
-### ❌ Over-Specifying Typography Tokens
+### ❌ Using Primary Color for Links
 
 **Wrong:**
-```
-text.body.large.default
-text.body.large.emphasis
-text.body.large.subdued
-text.body.large.default.hover
+```tsx
+// Link button using primary (orange)
+link: "text-primary underline-offset-4 hover:underline",
 ```
 
 **Why it's wrong:**
-- Too granular
-- Creates decision paralysis
+- Figma design specifies blue for links
+- Orange primary is for CTAs, not navigation
 
 **Right:**
-Collapse to:
-- `--foreground` (body text)
-- `--muted-foreground` (subdued)
-- Use font-weight utilities for emphasis
+```tsx
+// Link button using info (blue)
+link: "text-info underline underline-offset-4 h-auto p-0",
+```
 
 ---
 
-### ❌ Tokenizing Shadows
+### ❌ Using Primary Color for Switch Checked State
 
 **Wrong:**
-```css
---shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
---shadow-md: 0 4px 6px rgba(0,0,0,0.1);
---shadow-card: 0 2px 8px rgba(0,0,0,0.12);
---shadow-button: 0 1px 3px rgba(0,0,0,0.08);
+```tsx
+// Switch checked state using primary (orange)
+data-[state=checked]:bg-primary
 ```
 
 **Why it's wrong:**
-- Shadows are visual effects, not semantic concepts
-- Tailwind provides shadow-sm, shadow-md, etc.
-- Component-specific shadows → token bloat
+- Figma design specifies green for "on" state
+- Green = positive/enabled convention
 
 **Right:**
-Use Tailwind's shadow utilities:
 ```tsx
-className="shadow-sm"  // Small shadow
-className="shadow-md"  // Medium shadow
-className="shadow-lg"  // Large shadow
+// Switch checked state using success (green)
+data-[state=checked]:bg-success
 ```
 
 ---
@@ -288,7 +357,6 @@ className="shadow-lg"  // Large shadow
 ```css
 .button-primary {
   background: var(--primary) !important;
-  color: var(--primary-foreground) !important;
 }
 ```
 
@@ -329,7 +397,7 @@ Fix the token mapping. If `--primary` is wrong, change what it references in The
 
 **Wrong:**
 ```tsx
-// Custom button that uses --brand-primary instead of --primary
+// Custom button that diverges from ShadCN pattern
 export function CustomButton() {
   return <button className="bg-[var(--brand-primary)]">...</button>
 }
@@ -345,74 +413,47 @@ Map your brand primary **TO** `--primary` in Theme collection. Use ShadCN Button
 
 ---
 
-### ❌ Creating Wrapper Components for Token Translation
+## Documentation Violations
+
+### ❌ Using Tabs for Preview/Code
 
 **Wrong:**
 ```tsx
-// Wrapper that translates semantic tokens to ShadCN
-function ThemedButton({ variant, ...props }) {
-  const bg = variant === 'brand' ? 'var(--surface-brand)' : 'var(--primary)';
-  return <Button style={{ background: bg }} {...props} />;
-}
+<Tabs>
+  <TabsContent value="preview">...</TabsContent>
+  <TabsContent value="code">...</TabsContent>
+</Tabs>
 ```
 
 **Why it's wrong:**
-- Runtime translation overhead
-- Hides what's actually happening
-- Parallel token system in disguise
+- Extra click to see code
+- ShadCN shows both together
 
 **Right:**
-`--primary` **IS** your brand color. No translation needed.
+```tsx
+<ComponentExample code={codeString}>
+  <Button>Preview</Button>
+</ComponentExample>
+// Shows preview AND code simultaneously
+```
 
 ---
 
-## Design Process Violations
-
-### ❌ Pixel-Pushing Instead of Using System
+### ❌ Dark Code Blocks
 
 **Wrong:**
-Designer: "The button padding should be 13px, not 12px or 16px."
+```tsx
+codeToHtml(code, { theme: "github-dark" })
+```
 
 **Why it's wrong:**
-- Breaks spacing scale
-- Creates one-off values
-- System exists to prevent this
+- Dark blocks clash with light documentation
+- Inconsistent with ShadCN docs aesthetic
 
 **Right:**
-Use `spacing-12` (12px) or `spacing-16` (16px). If neither works, the design needs adjustment, not the system.
-
----
-
-### ❌ Adding Tokens Before Components Exist
-
-**Wrong:**
-"Let's add `--tertiary`, `--quaternary`, `--quinary` variants now in case we need them."
-
-**Why it's wrong:**
-- Speculative design
-- Tokens without usage = dead code
-- Adds cognitive load
-
-**Right:**
-Add tokens when you have 5+ actual usages. Not before.
-
----
-
-### ❌ Designing Without Theme Variables
-
-**Wrong (in Figma):**
-Using raw Primitive values directly in components:
-- Button fill: `Primitives/orange-600`
-- Text fill: `Primitives/neutral-950`
-
-**Why it's wrong:**
-- Bypasses Theme layer
-- Can't change globally
-- Breaks semantic intent
-
-**Right:**
-- Button fill: `Theme/primary`
-- Text fill: `Theme/foreground`
+```tsx
+codeToHtml(code, { theme: "github-light" })
+```
 
 ---
 
@@ -435,27 +476,30 @@ Using raw Primitive values directly in components:
 **Right workflow:**
 ```
 1. Design in Figma with Theme variables
-2. Export specifications
+2. Extract specs via Figma API
 3. Implement in code
 4. Sync point: both use same tokens
 ```
 
 ---
 
-### ❌ Not Documenting Decisions
+### ❌ Guessing Figma Values
 
 **Wrong:**
-Make architectural change, don't document why.
+"This looks like about 12px padding and maybe #e5e5e5 for the border..."
 
 **Why it's wrong:**
-- 3 months later: "Why did we do this?"
-- New team member: "This seems wrong..."
-- Temptation to "fix" what was intentional
+- Creates iteration cycles
+- Specs will be off
+- Wastes time
 
 **Right:**
-- Add entry to DESIGN_DECISIONS.md
-- Add entry to CHANGELOG.md
-- Future you will thank you
+Use Figma API to extract exact values:
+```
+1. Get Figma URL with node ID
+2. Call get_design_context
+3. Use exact pixel values, colors, shadows
+```
 
 ---
 
@@ -484,57 +528,20 @@ Validate against principles, don't blindly accept.
 
 ---
 
-## Version Control Violations
+## 🚨 Red Flags (Stop Immediately)
 
-### ❌ Committing Figma Files
-
-**Wrong:**
-```
-git add design-system.fig
-git commit -m "Updated Figma file"
-```
-
-**Why it's wrong:**
-- Binary files in Git
-- Huge repo size
-- Merge conflicts impossible to resolve
-
-**Right:**
-- Keep Figma file on Figma (link in README)
-- Commit JSON exports of variables
-- Commit screenshots for reference
-
----
-
-### ❌ Not Versioning Documentation
-
-**Wrong:**
-Update TOKEN_SYSTEM.md, don't update CHANGELOG.md.
-
-**Why it's wrong:**
-- Can't track when things changed
-- Can't roll back if needed
-- No audit trail
-
-**Right:**
-Every token change → CHANGELOG.md entry with version bump.
-
----
-
-## When You See These, Stop Immediately
-
-🚨 **Red flags that indicate system violation:**
+If you see any of these, stop and fix:
 
 1. A token name contains "component" (e.g., `--button-bg`)
 2. A token name contains "state" (e.g., `--primary-hover`)
-3. More than 2 variables for one semantic context (e.g., `--info`, `--info-foreground`, `--info-border`)
+3. More than 2 variables for one semantic context
 4. A prefix on Theme variables (e.g., `--general-primary`)
 5. Hardcoded hex values in component code
 6. Inline `style={}` with CSS variables
 7. Component variants for states (e.g., `Button/hover`)
 8. Raw Primitive values used directly in components
-
-**If you see any of these, stop and fix before continuing.**
+9. Lucide icons instead of Phosphor
+10. font-weight values not in [300, 400, 500, 600]
 
 ---
 
@@ -546,10 +553,10 @@ Before adding anything new, ask:
 - [ ] Is this a state token? → ❌ Use modifiers instead
 - [ ] Does this have 5+ usages? → If no, don't tokenize
 - [ ] Does this match ShadCN patterns? → If no, rethink
-- [ ] Am I adding a 3rd variable to a context? → Probably wrong
-- [ ] Am I bypassing the token system? → Fix mapping instead
-- [ ] Can this be solved with existing tokens? → Use existing
-- [ ] Does this violate "implementation sanity"? → Simplify
+- [ ] Am I using Phosphor icons? → If no, switch
+- [ ] Is my font-weight standard? → If not 300/400/500/600, wrong
+- [ ] Am I hardcoding values? → Use tokens instead
+- [ ] Did I check Figma specs? → If guessing, use API
 
 **When in doubt, check DESIGN_DECISIONS.md for precedent.**
 

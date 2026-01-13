@@ -1,7 +1,7 @@
 # Design Decisions
 
-**Version:** 0.1.0  
-**Last Updated:** January 2026
+**Version:** 1.2.0  
+**Last Updated:** January 13, 2026
 
 ---
 
@@ -24,7 +24,7 @@ This document explains **why** we made key architectural decisions for the Malib
 
 **Example:**
 - Semantic purity would suggest: Primitives → Semantic → Theme → Components (4 layers)
-- Implementation sanity says: Primitives → Theme → Components (3 layers, semantic in docs only)
+- Implementation sanity says: Primitives → Theme → Components (2 layers, semantic in docs only)
 - We chose implementation sanity
 
 **Precedent set:** January 2026
@@ -37,7 +37,7 @@ This document explains **why** we made key architectural decisions for the Malib
 
 **What we chose:**
 ```
-Primitives (90 variables) → Theme (28 variables) → Components
+Primitives (90 variables) → Theme (33 variables) → Components
 ```
 
 **What we rejected:**
@@ -46,31 +46,13 @@ Primitives → Semantic (surface-*, text-*, border-*) → Theme → Components
 ```
 
 **Why:**
-1. **Maintenance overhead**
-   - 3 layers = 3 places to update
-   - Semantic layer adds indirection with no benefit
-   - Designers don't think in semantic abstractions
+1. **Maintenance overhead** - 3 layers = 3 places to update
+2. **Slower workflow** - Designers select: Theme → Primitive (direct)
+3. **ShadCN alignment** - ShadCN expects 2 layers
 
-2. **Slower workflow**
-   - Designers select: Theme → Semantic → Primitive (too many clicks)
-   - With 2 layers: Theme → Primitive (direct)
+**Trade-off accepted:** Less "pure" from design theory, but faster to use and maintain.
 
-3. **ShadCN alignment**
-   - ShadCN expects 2 layers
-   - Adding semantic creates translation complexity
-   - We're building on ShadCN, not reinventing it
-
-**Trade-off accepted:**
-- Less "pure" from design theory perspective
-- But faster to use and maintain
-
-**Where semantic lives:**
-- Documentation (TOKEN_SYSTEM.md explains rationale)
-- Not as Figma variables or CSS variables
-
-**Precedent set:** January 2026  
-**Decision maker:** Solo (you) + Claude  
-**Revisit when:** Team grows to 5+ people AND semantic layer proves necessary
+**Precedent set:** January 2026
 
 ---
 
@@ -88,28 +70,13 @@ Primitives → Semantic (surface-*, text-*, border-*) → Theme → Components
 ```css
 --malible-background
 --general-primary
---app-destructive
 ```
 
 **Why:**
-1. **ShadCN compatibility**
-   - ShadCN components expect `--primary`, not `--malible-primary`
-   - Forking components to use prefixed names = maintenance hell
+1. **ShadCN compatibility** - Components expect `--primary`, not `--malible-primary`
+2. **Cleaner code** - `bg-primary` > `bg-[var(--malible-primary)]`
 
-2. **Namespace collision unlikely**
-   - These are app-level variables
-   - Not a library consumed by others (yet)
-   - If that changes, revisit
-
-3. **Cleaner code**
-   - `bg-primary` > `bg-[var(--malible-primary)]`
-
-**Trade-off accepted:**
-- If this becomes a published library, we might need prefixes
-- For now, simplicity wins
-
-**Precedent set:** January 2026  
-**Revisit when:** Publishing as standalone package for external use
+**Precedent set:** January 2026
 
 ---
 
@@ -126,30 +93,11 @@ Primitives → Semantic (surface-*, text-*, border-*) → Theme → Components
 ```
 
 **Why:**
-1. **4/8px grid alignment**
-   - Industry standard (Material, iOS, Polaris)
-   - 6, 10, 20 break grid rhythm
+1. **4/8px grid alignment** - Industry standard
+2. **Decision fatigue** - 8 options = clear jumps
+3. **Visual distinction** - 8 vs 12 vs 16 = clearly different
 
-2. **Decision fatigue**
-   - 11 options = "Should this be 10 or 12?"
-   - 8 options = Clear jumps, faster decisions
-
-3. **Visual distinction**
-   - 8 vs 10 vs 12 = barely noticeable
-   - 8 vs 12 vs 16 = clearly different
-
-**Trade-off accepted:**
-- Less granular spacing control
-- Designers must round to nearest value
-- But faster design velocity
-
-**Migration rule:**
-- 6px → 8px (usually)
-- 10px → 12px (usually)
-- 20px → 16px or 24px (context-dependent)
-
-**Precedent set:** January 2026  
-**Revisit when:** Never, unless data shows critical design blockers
+**Precedent set:** January 2026
 
 ---
 
@@ -166,241 +114,280 @@ disabled:opacity-50
 ```css
 --primary-hover: #...;
 --primary-active: #...;
---primary-disabled: #...;
 ```
 
 **Why:**
-1. **Token explosion**
-   - 28 theme variables × 3 states = 84 variables
-   - Unmaintainable
+1. **Token explosion** - 33 theme variables × 3 states = 99 variables
+2. **Tailwind handles this** - Built-in opacity modifiers
+3. **ShadCN pattern** - They use modifiers, not state tokens
 
-2. **Tailwind handles this**
-   - Built-in opacity modifiers
-   - Pseudo-class variants
-   - Why duplicate?
-
-3. **ShadCN pattern**
-   - They use modifiers, not state tokens
-   - We follow their pattern
-
-**Trade-off accepted:**
-- Can't globally change hover opacity (it's inline in components)
-- But token count stays manageable
-
-**Exception:**
-- If product-wide hover style becomes critical (e.g., accessibility requirement)
-- Then consider global hover modifier in Tailwind config
-- Still not CSS variables
-
-**Precedent set:** January 2026  
-**Revisit when:** Accessibility audit requires global hover changes
+**Precedent set:** January 2026
 
 ---
 
-### Decision: Extended Variables (success, warning, info, canvas)
+### Decision: Subtle Background Tokens
+
+**What we added:**
+```css
+--info-subtle: #eaf8ff;
+--success-subtle: #e2f4eb;
+--warning-subtle: #fef6e6;
+--destructive-subtle: #fde8e8;
+```
+
+**Why:**
+1. **Badge backgrounds** - Subtle variants need consistent light backgrounds
+2. **Alert backgrounds** - Same pattern
+3. **10% opacity wasn't enough** - HSL at 10% didn't match Figma specs
+
+**Why not just use opacity?**
+- `bg-info/10` creates transparency, not a light tint
+- Figma designs specify opaque light colors
+- Subtle tokens give exact control
+
+**Precedent set:** January 13, 2026
+
+---
+
+## Component-Specific Decisions
+
+### Decision: Link Button Uses --info (Not --primary)
+
+**What we chose:** Link variant uses blue (#008ed6)
+
+**What we rejected:** Using primary orange (#e0622d)
+
+**Why:**
+1. **Figma design** - Specifies teal/blue for links
+2. **Convention** - Blue has stronger "clickable link" association
+3. **Hierarchy** - Orange primary is for CTAs, not navigation
+
+**Visual:**
+| Variant | Color | Token |
+|---------|-------|-------|
+| default | Orange | --primary |
+| link | Blue | --info |
+
+**Precedent set:** January 13, 2026
+
+---
+
+### Decision: Switch Uses --success When Checked
+
+**What we chose:** Green (#3ea377) for checked state
+
+**What we rejected:** Using primary orange
+
+**Why:**
+1. **Figma design** - Specifies green for "on" state
+2. **Convention** - Green = positive/enabled
+3. **Semantic clarity** - Primary is for actions, success is for positive states
+
+**Visual:**
+| State | Color | Token |
+|-------|-------|-------|
+| Unchecked | Gray | --muted |
+| Checked | Green | --success |
+
+**Precedent set:** January 13, 2026
+
+---
+
+### Decision: Badge Uses Flat 10 Variants
 
 **What we chose:**
-Added 8 variables beyond ShadCN's 20:
-- success, success-foreground
-- warning, warning-foreground
-- info, info-foreground
-- canvas, canvas-foreground
-
-**Why:**
-1. **Real product need**
-   - Form validation requires success/error states
-   - Alerts need warning/info variants
-   - Canvas editor needs distinct color
-
-2. **Follows ShadCN pattern**
-   - Base + foreground pair
-   - No expansion beyond that
-   - Consistent with destructive pattern
-
-3. **Justifies 5+ usages**
-   - Success: form inputs, badges, alerts, toasts, icons (5+)
-   - Warning: similar spread
-   - Info: similar spread
-   - Canvas: editor UI, toolbars, panels (5+)
-
-**What we didn't add:**
-- `--tertiary` (no clear use case)
-- `--info-light`, `--info-dark` (use opacity)
-- `--success-border` (use success with opacity)
-
-**Precedent set:** January 2026  
-**Revisit when:** Adding new component that needs distinct semantic color
-
----
-
-## Component Architecture
-
-### Decision: No Component-Specific Tokens
+```
+default, info, info-solid, success, success-solid, 
+warning, warning-solid, destructive, destructive-solid, outline
+```
 
 **What we rejected:**
-```css
---button-primary-bg
---input-background
---card-header-bg
+```tsx
+// Compound props approach
+<Badge variant="info" fill="subtle" />
+<Badge variant="info" fill="solid" />
 ```
 
 **Why:**
-1. **Duplicate system**
-   - Button already uses `--primary`
-   - Creating `--button-primary-bg` that references `--primary` = pointless layer
+1. **ShadCN pattern** - Uses single variant prop
+2. **Cleaner API** - One prop instead of two
+3. **Direct mapping** - Matches Figma naming
 
-2. **Maintenance overhead**
-   - Change primary color = update button token too
-   - Why have the indirection?
-
-3. **Cognitive load**
-   - Which token do I use? `--primary` or `--button-primary-bg`?
-
-**Trade-off accepted:**
-- Less explicit component-to-token mapping
-- But simpler mental model
-
-**Precedent set:** January 2026  
-**Revisit when:** Never
-
----
-
-### Decision: No Shadow Tokens
-
-**What we rejected:**
-```css
---shadow-sm
---shadow-md
---shadow-button
---shadow-card
+**Usage:**
+```tsx
+<Badge variant="success">Done</Badge>        // Subtle green
+<Badge variant="success-solid">Done</Badge>  // Solid green
 ```
 
-**Why:**
-1. **Tailwind provides this**
-   - `shadow-sm`, `shadow-md`, `shadow-lg` utilities
-   - Already consistent across design
-
-2. **Not semantic concepts**
-   - Shadows are visual effects, not semantic meaning
-   - Don't map to brand identity
-
-3. **Component-specific anyway**
-   - Different shadows per component
-   - Hard to make semantic
-
-**Trade-off accepted:**
-- Can't change shadow globally via token
-- But shadow changes are rare
-- Use Tailwind's shadow scale
-
-**Precedent set:** January 2026  
-**Revisit when:** Brand requires unique shadow style across all components
+**Precedent set:** January 13, 2026
 
 ---
 
-### Decision: States as Interaction Physics (Not Variants)
+## Typography Decisions
 
-**What we chose:**
-Figma components have variants: default, secondary, destructive, ghost  
-States (hover, active, disabled) handled in code via modifiers
+### Decision: Typekit Weight Mapping
 
-**What we rejected:**
-Figma variants: default, default-hover, default-active, default-disabled...
+**What we discovered:** TT Commons Pro via Typekit uses non-standard weights.
 
-**Why:**
-1. **Variant explosion**
-   - 4 variants × 4 states = 16 Figma variants
-   - Unmaintainable
+**Mapping:**
+| Typekit Name | CSS Weight | Tailwind |
+|--------------|------------|----------|
+| Regular | 300 | font-light |
+| Medium | 400 | font-normal |
+| DemiBold | 500 | font-medium |
+| Bold | 600 | font-semibold |
 
-2. **Can't implement this way**
-   - Code doesn't have "hover variant"
-   - Code has CSS `:hover` pseudoclass
+**Critical:** Do NOT use `font-weight: 650`. It doesn't exist.
 
-3. **Design vs. interaction**
-   - Designers design states (visual)
-   - Developers implement interaction (code)
-   - Clean separation
+**Why this matters:**
+- Standard CSS would use 600 for DemiBold
+- Typekit shifts everything down by ~100
+- Using wrong weight = font doesn't render
 
-**How states are documented:**
-- Component spec lists: default appearance
-- Then: "Hover: 90% opacity. Active: 80% opacity. Disabled: 50% opacity."
-- Implemented in code, not Figma variants
+**How we discovered:** h1 was showing bold instead of demibold. DevTools revealed Typekit's mapping.
 
-**Precedent set:** January 2026  
-**Revisit when:** Never
+**Precedent set:** January 13, 2026
 
 ---
 
-## Tool Decisions
+### Decision: JetBrains Mono for Code
+
+**What we chose:** JetBrains Mono via Google Fonts
+
+**What we rejected:** System monospace, Fira Code, SF Mono
+
+**Why:**
+1. **Readability** - Clear distinction between similar characters
+2. **Availability** - Free, Google Fonts hosted
+3. **Consistency** - Same font across all platforms
+
+**Implementation:**
+```html
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+```
+
+**Precedent set:** January 13, 2026
+
+---
+
+## Icon Decisions
+
+### Decision: Phosphor Icons (Not Lucide)
+
+**What we chose:** @phosphor-icons/react
+
+**What we rejected:** lucide-react (ShadCN default)
+
+**Why:**
+1. **Visual weight** - Phosphor Regular matches Inter Medium
+2. **Style consistency** - Cleaner, more geometric
+3. **Variety** - More icon options
+
+**Migration:**
+```tsx
+// Before
+import { Check } from "lucide-react"
+
+// After
+import { Check } from "@phosphor-icons/react"
+```
+
+**Default weight:** Regular (not Bold or Light)
+
+**Precedent set:** January 13, 2026
+
+---
+
+## Documentation Decisions
+
+### Decision: Preview + Code Together (Not Tabbed)
+
+**What we chose:** Show preview and code simultaneously
+
+**What we rejected:** Tabs switching between preview and code
+
+**Why:**
+1. **ShadCN pattern** - Their docs show both together
+2. **Better UX** - See code and result without clicking
+3. **Faster scanning** - Developers can quickly find examples
+
+**Implementation:**
+```tsx
+<ComponentExample code={codeString}>
+  <Button>Preview</Button>
+</ComponentExample>
+```
+
+**Precedent set:** January 13, 2026
+
+---
+
+### Decision: Shiki for Syntax Highlighting
+
+**What we chose:** Shiki with github-light theme
+
+**What we rejected:** Prism, highlight.js, dark themes
+
+**Why:**
+1. **VS Code engine** - Same highlighting as editor
+2. **Light theme** - Matches documentation aesthetic
+3. **Accuracy** - Better TypeScript/TSX support
+
+**Precedent set:** January 13, 2026
+
+---
+
+## Tool & Workflow Decisions
+
+### Decision: Figma API for Spec Extraction
+
+**What we chose:** Use Figma MCP tools to extract exact specs
+
+**What we rejected:** Manual inspection, eyeballing values
+
+**Why:**
+1. **Accuracy** - Exact pixel values, colors, shadows
+2. **Speed** - No iteration cycles
+3. **Consistency** - Same values every time
+
+**Workflow:**
+1. Get Figma URL with node ID
+2. Call `get_design_context` to extract specs
+3. Implement with exact values
+
+**Key learning:** Figma API can identify inner shadows vs drop shadows, extract exact HSL values, and reveal layer structure.
+
+**Precedent set:** January 13, 2026
+
+---
 
 ### Decision: Figma as Source of Truth
 
-**What we chose:**
-Design in Figma → Export specs → Implement in code
+**What we chose:** Design in Figma → Export specs → Implement in code
 
-**What we rejected:**
-- Code first, Figma later
-- "Living style guide" generated from code
-- Storybook as design tool
+**What we rejected:** Code first, Figma later
 
 **Why:**
-1. **Designer workflow**
-   - Designers work in Figma
-   - Not in code or Storybook
+1. **Designer workflow** - Designers work in Figma
+2. **Token binding** - Figma variables are canonical
+3. **Handoff clarity** - Design is "done" when Figma is done
 
-2. **Token binding**
-   - Figma variables are the canonical tokens
-   - Code imports them
-
-3. **Handoff clarity**
-   - Design is "done" when Figma is done
-   - Code implements design (not interprets)
-
-**Trade-off accepted:**
-- Code can't deviate from design without changing Figma first
-- Extra step if developer finds implementation issue
-- But clearer responsibility boundaries
-
-**Precedent set:** January 2026  
-**Revisit when:** Team is 100% developers (no dedicated designer)
+**Precedent set:** January 2026
 
 ---
 
 ### Decision: ShadCN as Execution Layer
 
-**What we chose:**
-- Use ShadCN components as-is
-- Adapt our tokens to their structure
-- Don't fork or heavily modify
+**What we chose:** Use ShadCN components, adapt our tokens to their structure
 
-**What we rejected:**
-- Building from scratch
-- Heavily customizing ShadCN
-- Using different component library
+**What we rejected:** Building from scratch, heavily customizing ShadCN
 
 **Why:**
-1. **Battle-tested**
-   - ShadCN patterns are proven
-   - Accessibility built-in
-   - Active community
+1. **Battle-tested** - Accessibility built-in
+2. **Maintenance** - Upstream updates available
+3. **Adoption** - Developers familiar with patterns
 
-2. **Maintenance**
-   - Upstream updates available
-   - Security patches flow down
-   - We don't maintain component primitives
-
-3. **Adoption**
-   - Developers familiar with ShadCN
-   - Extensive docs and examples
-   - Lower learning curve
-
-**Trade-off accepted:**
-- Constrained by ShadCN's opinions
-- Can't have patterns they don't support
-- But that's a feature, not a bug (prevents over-engineering)
-
-**Precedent set:** January 2026  
-**Revisit when:** ShadCN abandoned OR we need patterns it fundamentally can't support
+**Precedent set:** January 2026
 
 ---
 
@@ -411,52 +398,11 @@ Design in Figma → Export specs → Implement in code
 **The rule:** A token must be used in 5+ places to justify existence.
 
 **Why:**
-1. **Prevents speculation**
-   - "We might need this" = usually don't
-   - Unused tokens = cognitive load
+1. **Prevents speculation** - "We might need this" = usually don't
+2. **Forces consolidation** - Encourages reuse
+3. **Empirical basis** - Real usages, not theoretical
 
-2. **Forces consolidation**
-   - Can existing tokens work?
-   - Encourages reuse over proliferation
-
-3. **Empirical basis**
-   - Real usages, not theoretical
-   - Easier to justify to team
-
-**How to apply:**
-Before adding token, list 5+ actual components/use cases.
-
-**Exception:**
-Intent colors (success, warning, info) added with <5 usages initially because pattern is obvious and expansion is certain.
-
-**Precedent set:** January 2026  
-**Revisit when:** Team questions arbitrary "5" number (could be 3 or 7)
-
----
-
-### Decision: Version Control Strategy
-
-**What we chose:**
-- Token changes = major version
-- Component additions = minor version
-- Bug fixes = patch version
-
-**Why:**
-Semantic versioning makes breaking changes obvious.
-
-**Major breaking changes:**
-- Removing tokens
-- Renaming tokens
-- Changing token architecture
-
-**Minor additions:**
-- New components
-- New tokens (following rules)
-
-**Patches:**
-- Bug fixes
-- Hex value adjustments (same semantic)
-- Documentation
+**Exception:** Intent colors (success, warning, info) added with pattern certainty.
 
 **Precedent set:** January 2026
 
@@ -479,23 +425,11 @@ C) CSS custom properties with data-theme attribute
 
 ### Question: Animation/Transition Tokens
 
-**Status:** Not yet decided
-
-**Current:** Using Tailwind defaults (duration-150, ease-in-out)
+**Status:** Using Tailwind defaults (duration-150, ease-in-out)
 
 **Question:** Do we need design system animation tokens?
 
 **Needs decision when:** Animation becomes brand differentiator
-
----
-
-### Question: Breakpoint Strategy
-
-**Status:** Using Tailwind defaults (sm, md, lg, xl, 2xl)
-
-**Question:** Do we need custom breakpoints for product?
-
-**Needs decision when:** Design requires non-standard responsive behavior
 
 ---
 

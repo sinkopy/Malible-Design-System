@@ -1,8 +1,8 @@
 # Token System Reference
 
-**Version:** 0.1.0  
-**Last Updated:** January 2026  
-**Figma File:** [Link to Figma file]
+**Version:** 1.2.0  
+**Last Updated:** January 13, 2026  
+**Figma File:** Malible-X-ShadCn
 
 ---
 
@@ -12,7 +12,7 @@
 ```
 Primitives (90 variables) → Raw values
     ↓
-Theme (28 variables) → ShadCN-compatible semantics
+Theme (33 variables) → ShadCN-compatible semantics
     ↓
 Components → Consume Theme only
 ```
@@ -27,7 +27,7 @@ Components → Consume Theme only
 | Variable | Hex | Usage |
 |----------|-----|-------|
 | neutral-50 | #fafafa | Lightest gray |
-| neutral-100 | #f5f5f5 | |
+| neutral-100 | #f5f5f5 | Secondary backgrounds |
 | neutral-200 | #e5e5e5 | Borders, muted backgrounds |
 | neutral-300 | #d4d4d4 | Input borders |
 | neutral-400 | #a1a1aa | |
@@ -56,7 +56,7 @@ Components → Consume Theme only
 ### Colors: Red (Critical) (11 values)
 | Variable | Hex | Usage |
 |----------|-----|-------|
-| red-50 | #fbe8e8 | |
+| red-50 | #fde8e8 | Destructive subtle bg |
 | red-100 | #fadbdb | |
 | red-200 | #f6b6b6 | |
 | red-300 | #ed6d6d | Error borders |
@@ -71,13 +71,13 @@ Components → Consume Theme only
 ### Colors: Blue (Info/Focus) (11 values)
 | Variable | Hex | Usage |
 |----------|-----|-------|
-| blue-50 | #eaf8ff | |
+| blue-50 | #eaf8ff | Info subtle bg |
 | blue-100 | #c1eafe | |
 | blue-200 | #99dcff | |
 | blue-300 | #70cfff | |
 | blue-400 | #1eb4ff | |
 | blue-500 | #00a3f4 | |
-| blue-600 | #008ed6 | **Info states** |
+| blue-600 | #008ed6 | **Info states, Link text** |
 | blue-700 | #007ab7 | **Focus rings** |
 | blue-800 | #00517a | |
 | blue-900 | #003651 | |
@@ -86,13 +86,13 @@ Components → Consume Theme only
 ### Colors: Green (Success) (11 values)
 | Variable | Hex | Usage |
 |----------|-----|-------|
-| green-50 | #e2f4eb | |
+| green-50 | #e2f4eb | Success subtle bg |
 | green-100 | #c4e9d6 | |
 | green-200 | #97d8b7 | |
 | green-300 | #7acda3 | Success borders |
 | green-400 | #4ebc8c | |
 | green-500 | #5cc196 | |
-| green-600 | #3ea377 | **Success states** |
+| green-600 | #3ea377 | **Success states, Switch checked** |
 | green-700 | #328561 | Success text |
 | green-800 | #266449 | |
 | green-900 | #1c4936 | |
@@ -101,7 +101,7 @@ Components → Consume Theme only
 ### Colors: Amber (Warning/Caution) (11 values)
 | Variable | Hex | Usage |
 |----------|-----|-------|
-| amber-50 | #fff1d6 | |
+| amber-50 | #fef6e6 | Warning subtle bg |
 | amber-100 | #ffe9c2 | |
 | amber-200 | #ffdb99 | |
 | amber-300 | #ffcc70 | Warning borders |
@@ -135,29 +135,29 @@ Components → Consume Theme only
 | black | #070707 | (Reserved, rarely used) |
 
 ### Spacing (8 values)
-| Variable | Value | Usage |
-|----------|-------|-------|
-| spacing-0 | 0px | No spacing |
-| spacing-2 | 2px | Hairline gaps |
-| spacing-4 | 4px | Tight spacing |
-| spacing-8 | 8px | **Default component spacing** |
-| spacing-12 | 12px | Medium spacing |
-| spacing-16 | 16px | Component padding |
-| spacing-24 | 24px | Section spacing |
-| spacing-32 | 32px | Large sections |
+| Variable | Value | Tailwind | Usage |
+|----------|-------|----------|-------|
+| spacing-0 | 0px | p-0 | No spacing |
+| spacing-2 | 2px | p-0.5 | Hairline gaps |
+| spacing-4 | 4px | p-1 | Tight spacing |
+| spacing-8 | 8px | p-2 | **Default component spacing** |
+| spacing-12 | 12px | p-3 | Medium spacing |
+| spacing-16 | 16px | p-4 | Component padding |
+| spacing-24 | 24px | p-6 | Section spacing |
+| spacing-32 | 32px | p-8 | Large sections, page padding |
 
 ### Radii (3 values)
-| Variable | Value | Usage |
-|----------|-------|-------|
-| radii-4 | 4px | Tight corners (badges) |
-| radii-8 | 8px | **Default corner radius** |
-| radii-full | 9999px | Pills, circles |
+| Variable | Value | Tailwind | Usage |
+|----------|-------|----------|-------|
+| radii-4 | 4px | rounded | Tight corners (inputs) |
+| radii-8 | 8px | rounded-lg | **Default corner radius** |
+| radii-full | 9999px | rounded-full | Pills, badges, circles |
 
 **Primitives Total: 90 variables**
 
 ---
 
-## Collection 2: Theme (28 variables)
+## Collection 2: Theme (33 variables)
 
 ### ShadCN Core (20 variables)
 
@@ -176,14 +176,14 @@ Components → Consume Theme only
 |----------|------------|-----|-------|
 | primary | orange-600 | #e0622d | Primary CTAs |
 | primary-foreground | white | #ffffff | Text on primary |
-| secondary | neutral-50 | #fafafa | Secondary actions |
-| secondary-foreground | neutral-700 | #3f3f46 | Text on secondary |
+| secondary | neutral-100 | #f5f5f5 | Secondary actions |
+| secondary-foreground | neutral-700 | #424242 | Text on secondary |
 
 #### Muted & Accent
 | Variable | References | Hex | Usage |
 |----------|------------|-----|-------|
 | muted | neutral-200 | #e5e5e5 | Disabled backgrounds |
-| muted-foreground | neutral-500 | #71717a | Secondary text |
+| muted-foreground | neutral-500 | #737373 | Secondary text |
 | accent | neutral-50 | #fafafa | Hover states |
 | accent-foreground | neutral-950 | #09090b | Text on accent |
 
@@ -205,12 +205,12 @@ Components → Consume Theme only
 |----------|------------|-------|-------|
 | radius | radii-8 | 8px | Default corners |
 
-### Extended (8 variables)
+### Extended Semantic (8 variables)
 
 #### Success
 | Variable | References | Hex | Usage |
 |----------|------------|-----|-------|
-| success | green-600 | #3ea377 | Success states |
+| success | green-600 | #3ea377 | Success states, Switch checked |
 | success-foreground | white | #ffffff | Text on success |
 
 #### Warning
@@ -222,7 +222,7 @@ Components → Consume Theme only
 #### Info
 | Variable | References | Hex | Usage |
 |----------|------------|-----|-------|
-| info | blue-600 | #008ed6 | Info states |
+| info | blue-600 | #008ed6 | Info states, Link text |
 | info-foreground | white | #ffffff | Text on info |
 
 #### Canvas
@@ -231,60 +231,50 @@ Components → Consume Theme only
 | canvas | purple-600 | #914be6 | Canvas/editor UI |
 | canvas-foreground | purple-700 | #7737c4 | Text on canvas |
 
-**Theme Total: 28 variables**
+### Subtle Backgrounds (5 variables)
+
+| Variable | Hex | Usage |
+|----------|-----|-------|
+| info-subtle | #eaf8ff | Info badge/alert backgrounds |
+| success-subtle | #e2f4eb | Success badge/alert backgrounds |
+| warning-subtle | #fef6e6 | Warning badge/alert backgrounds |
+| destructive-subtle | #fde8e8 | Error badge/alert backgrounds |
+| muted-subtle | #f5f5f5 | Neutral subtle backgrounds |
+
+**Theme Total: 33 variables**
 
 ---
 
-## Semantic Rationale (Documentation Only)
+## Typography Tokens
 
-This conceptual layer explains WHY primitives map to theme variables. **It does not exist as Figma variables.**
+### Font Families
+| Token | Value | Usage |
+|-------|-------|-------|
+| --font-heading | "tt-commons-pro", sans-serif | Headings (h1-h3) |
+| --font-body | "Inter", sans-serif | Body text, UI |
+| --font-mono | "JetBrains Mono", monospace | Code blocks |
 
-### Surface Semantics
-- **surface.default** → `white` (main backgrounds)
-- **surface.subtle** → `neutral-50` (secondary surfaces)
-- **surface.muted** → `neutral-200` (disabled/inactive)
-- **surface.brand** → `orange-600` (primary actions)
-- **surface.critical** → `red-600` (destructive actions)
-- **surface.success** → `green-600` (positive feedback)
-- **surface.caution** → `amber-600` (warnings)
-- **surface.info** → `blue-600` (informational)
-- **surface.canvas** → `purple-600` (editor UI)
+### Typekit Weight Mapping (TT Commons Pro)
 
-### Text Semantics
-- **text.primary** → `neutral-950` (body text)
-- **text.secondary** → `neutral-700` (captions, labels)
-- **text.tertiary** → `neutral-500` (de-emphasized)
-- **text.inverse** → `white` (text on dark backgrounds)
-- **text.critical** → `red-700` (error text)
-- **text.success** → `green-700` (success text)
-- **text.caution** → `amber-700` (warning text)
-- **text.info** → `blue-700` (info text)
-- **text.link** → `blue-600` (hyperlinks)
-- **text.brand** → `orange-600` (brand-colored text)
+**Critical:** Typekit uses non-standard weight mapping.
 
-### Border Semantics
-- **border.default** → `neutral-200` (standard borders)
-- **border.subtle** → `neutral-300` (input borders, more contrast)
-- **border.critical** → `red-300` (error states)
-- **border.success** → `green-300` (success states)
-- **border.caution** → `amber-300` (warning states)
-- **border.info** → `blue-300` (info states)
+| Font Name | Typekit Weight | CSS font-weight |
+|-----------|---------------|-----------------|
+| Regular | 300 | font-light |
+| Medium | 400 | font-normal |
+| DemiBold | 500 | font-medium |
+| Bold | 600 | font-semibold |
 
----
+**Do NOT use font-weight: 650.** It doesn't exist.
 
-## Token Usage Rules
-
-### For Designers (Figma)
-1. **Use Theme variables only** in components
-2. **Never use Primitives directly** (they're reference only)
-3. **No component-specific tokens**
-4. **No state-specific tokens** (hover/active handled by opacity)
-
-### For Developers (Code)
-1. **Use CSS variables** from `globals.css`
-2. **Never use hex values directly**
-3. **No inline arbitrary values** (`bg-[#e0622d]`)
-4. **States via Tailwind modifiers** (`hover:bg-primary/90`)
+### Type Scale
+| Role | Size | Line Height | Weight | Font |
+|------|------|-------------|--------|------|
+| Display (h1) | 36px | 40px | 500 | TT Commons |
+| Heading (h2) | 24px | 32px | 500 | TT Commons |
+| Title (h3) | 18px | 24px | 500 | TT Commons |
+| Body (p) | 14px | 20px | 400 | Inter |
+| Caption (small) | 12px | 16px | 300 | Inter |
 
 ---
 
@@ -295,77 +285,150 @@ For implementation in `globals.css`:
 ```css
 :root {
   /* Core Surfaces */
-  --background: #ffffff;
-  --foreground: #09090b;
-  --card: #ffffff;
-  --card-foreground: #09090b;
-  --popover: #fafafa;
-  --popover-foreground: #3f3f46;
+  --background: 0 0% 100%;
+  --foreground: 0 0% 10%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 10%;
+  --popover: 0 0% 98%;
+  --popover-foreground: 0 0% 25%;
   
   /* Brand Actions */
-  --primary: #e0622d;
-  --primary-foreground: #ffffff;
-  --secondary: #fafafa;
-  --secondary-foreground: #3f3f46;
+  --primary: 17 83% 53%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 0% 96%;
+  --secondary-foreground: 0 0% 26%;
   
   /* Muted & Accent */
-  --muted: #e5e5e5;
-  --muted-foreground: #71717a;
-  --accent: #fafafa;
-  --accent-foreground: #09090b;
+  --muted: 0 0% 90%;
+  --muted-foreground: 0 0% 45%;
+  --accent: 0 0% 98%;
+  --accent-foreground: 0 0% 10%;
   
   /* Destructive */
-  --destructive: #bf1616;
-  --destructive-foreground: #ffffff;
+  --destructive: 0 84% 42%;
+  --destructive-foreground: 0 0% 100%;
   
   /* Borders & Focus */
-  --border: #e5e5e5;
-  --input: #d4d4d4;
-  --ring: #007ab7;
+  --border: 0 0% 90%;
+  --input: 0 0% 83%;
+  --ring: 200 100% 37%;
   
-  /* Extended */
-  --success: #3ea377;
-  --success-foreground: #ffffff;
-  --warning: #e09200;
-  --warning-foreground: #ffffff;
-  --info: #008ed6;
-  --info-foreground: #ffffff;
-  --canvas: #914be6;
-  --canvas-foreground: #7737c4;
+  /* Extended Semantic */
+  --success: 152 48% 45%;
+  --success-foreground: 0 0% 100%;
+  --warning: 38 100% 44%;
+  --warning-foreground: 0 0% 100%;
+  --info: 200 100% 42%;
+  --info-foreground: 0 0% 100%;
+  --canvas: 265 76% 60%;
+  --canvas-foreground: 270 55% 49%;
+  
+  /* Subtle Backgrounds */
+  --info-subtle: 200 100% 96%;
+  --success-subtle: 145 47% 93%;
+  --warning-subtle: 40 95% 95%;
+  --destructive-subtle: 0 90% 95%;
   
   /* Radius */
-  --radius: 8px;
+  --radius: 0.5rem;
 }
 ```
 
 ---
 
-## Token Update Protocol
+## Token Usage Rules
 
-### When Primitive Changes
-1. Update value in Figma Primitives collection
-2. Export `primitives.json`
-3. Commit to repo
-4. Theme variables automatically update (they're aliased)
-5. Update this doc if usage notes change
-6. **Major version bump** in CHANGELOG.md
+### For Designers (Figma)
+1. **Use Theme variables only** in components
+2. **Never use Primitives directly** (they're reference only)
+3. **No component-specific tokens** (no --button-bg)
+4. **No state-specific tokens** (hover/active handled by opacity)
 
-### When Theme Mapping Changes
-1. Update reference in Figma Theme collection
-2. Export `theme.json`
-3. Update this doc
-4. Update `globals.css`
-5. Test all components
-6. **Major version bump** in CHANGELOG.md
+### For Developers (Code)
+1. **Use CSS variables** from `globals.css`
+2. **Never hardcode hex values**
+3. **No arbitrary values** (`bg-[#e0622d]`)
+4. **States via Tailwind modifiers** (`hover:bg-primary/90`)
 
-### When Adding New Token
-**Don't.** Prove 5+ component usages first.
+### State Handling Pattern
+```tsx
+// Default state
+bg-primary text-primary-foreground
 
-If truly needed:
-1. Add to Primitives (if raw value) or Theme (if semantic)
-2. Update this doc
-3. Update COMPONENT_LIBRARY.md (show which components use it)
-4. **Minor version bump** in CHANGELOG.md
+// Hover: reduce opacity
+hover:bg-primary/90
+
+// Active: reduce more
+active:bg-primary/80
+
+// Disabled: half opacity
+disabled:opacity-50 disabled:pointer-events-none
+
+// Focus: ring
+focus-visible:ring-2 focus-visible:ring-ring
+```
+
+---
+
+## Component → Token Mappings
+
+### Button
+| Variant | Background | Text | Border |
+|---------|------------|------|--------|
+| default | --primary | --primary-foreground | none |
+| secondary | --secondary | --secondary-foreground | none |
+| destructive | --destructive | --destructive-foreground | none |
+| outline | transparent | --foreground | --input |
+| ghost | transparent | --foreground | none |
+| link | transparent | --info | none (underline) |
+
+### Badge
+| Variant | Background | Text |
+|---------|------------|------|
+| default | --muted | --muted-foreground |
+| info | --info-subtle | --info |
+| info-solid | --info | --info-foreground |
+| success | --success-subtle | --success |
+| success-solid | --success | --success-foreground |
+| warning | --warning-subtle | --warning |
+| warning-solid | --warning | --warning-foreground |
+| destructive | --destructive-subtle | --destructive |
+| destructive-solid | --destructive | --destructive-foreground |
+| outline | transparent | --foreground |
+
+### Switch
+| State | Background |
+|-------|------------|
+| Unchecked | --muted |
+| Checked | --success |
+| Disabled | 50% opacity |
+
+### Input
+| State | Border | Ring |
+|-------|--------|------|
+| Default | --input | none |
+| Focus | --input | --ring |
+| Error | --destructive | --destructive/20 |
+| Disabled | --input | none + opacity |
+
+---
+
+## Quick Reference Card
+
+| Need | Use Token | Hex |
+|------|-----------|-----|
+| Page background | --background | #ffffff |
+| Body text | --foreground | #1a1a1a |
+| Primary button | --primary | #e0622d |
+| Delete button | --destructive | #bf1616 |
+| Success state | --success | #3ea377 |
+| Warning state | --warning | #e09200 |
+| Info state | --info | #008ed6 |
+| Link text | --info | #008ed6 |
+| Default border | --border | #e5e5e5 |
+| Input border | --input | #d4d4d4 |
+| Focus ring | --ring | #007ab7 |
+| Secondary text | --muted-foreground | #737373 |
 
 ---
 
@@ -373,13 +436,13 @@ If truly needed:
 
 ### Figma
 - [ ] 90 Primitives exist
-- [ ] 28 Theme variables exist
+- [ ] 33 Theme variables exist
 - [ ] All Theme variables reference Primitives
 - [ ] No semantic collection exists
 - [ ] No `general-` prefix
 
 ### Code
-- [ ] `globals.css` has 28 CSS variables
+- [ ] `globals.css` has 33 CSS variables
 - [ ] All match Theme collection values
 - [ ] No hardcoded hex values in components
 - [ ] Tailwind config extends with Theme colors
@@ -391,26 +454,17 @@ If truly needed:
 
 ---
 
-## Quick Reference: Common Mappings
-
-| Need | Use Theme Variable | Resolves To |
-|------|-------------------|-------------|
-| Page background | `background` | white |
-| Body text | `foreground` | neutral-950 |
-| Primary button | `primary` | orange-600 |
-| Delete button | `destructive` | red-600 |
-| Success badge | `success` | green-600 |
-| Warning alert | `warning` | amber-600 |
-| Info message | `info` | blue-600 |
-| Default border | `border` | neutral-200 |
-| Input border | `input` | neutral-300 |
-| Focus ring | `ring` | blue-700 |
-
----
-
 ## Version History
 
-- **v0.1.0** (January 2026) - Initial token system
+- **v1.2.0** (January 13, 2026)
+  - Added subtle background tokens (5)
+  - Link uses --info (not --primary)
+  - Switch uses --success when checked
+  - Added Typekit weight mapping
+  - Total: 33 Theme variables
+
+- **v0.1.0** (January 9, 2026)
+  - Initial token system
   - 90 Primitives
   - 28 Theme variables
   - Light mode only
@@ -419,6 +473,6 @@ If truly needed:
 
 ## See Also
 
-- [Figma Setup Guide](./FIGMA_SETUP.md) - How to rebuild from scratch
-- [Component Library](./COMPONENT_LIBRARY.md) - How components use these tokens
 - [Design Decisions](./DESIGN_DECISIONS.md) - Why this architecture
+- [Anti-Patterns](./ANTI_PATTERNS.md) - What NOT to do
+- [Component Library](./COMPONENT_LIBRARY.md) - Component specifications

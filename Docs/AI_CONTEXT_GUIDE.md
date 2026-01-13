@@ -1,7 +1,7 @@
 # AI Context Guide
 
-**Version:** 0.1.0  
-**Last Updated:** January 2026
+**Version:** 1.2.0  
+**Last Updated:** January 13, 2026
 
 ---
 
@@ -18,7 +18,7 @@ AI tools need the right context to be useful. Too little context → generic res
 **The sweet spot:**
 - Give architectural context once
 - Reference specific docs for tasks
-- Use conversation memory for continuity
+- Use Figma API for exact specs
 
 ---
 
@@ -30,7 +30,7 @@ AI tools need the right context to be useful. Too little context → generic res
 - ✅ Component specifications
 - ✅ Documentation writing
 - ✅ Design system audits
-- ✅ Figma structure planning
+- ✅ Figma spec extraction (via API)
 
 ### When NOT to Use Claude
 - ❌ Writing production code (use Cursor)
@@ -39,17 +39,15 @@ AI tools need the right context to be useful. Too little context → generic res
 
 ### Starting a New Session
 
-**Always provide these 3 docs:**
+**Always provide these 2 docs:**
 1. [TOKEN_SYSTEM.md](./TOKEN_SYSTEM.md) - Full token context
-2. [COMPONENT_LIBRARY.md](./COMPONENT_LIBRARY.md) - What's built, what's next
-3. [ANTI_PATTERNS.md](./ANTI_PATTERNS.md) - What NOT to do
+2. [ANTI_PATTERNS.md](./ANTI_PATTERNS.md) - What NOT to do
 
 **Example prompt:**
 ```
 I'm working on the Malible Design System. Here's the context:
 
 [Paste TOKEN_SYSTEM.md]
-[Paste COMPONENT_LIBRARY.md]
 [Paste ANTI_PATTERNS.md]
 
 I need to [specific task].
@@ -58,22 +56,93 @@ I need to [specific task].
 ### Resuming Work
 
 **After a break, provide:**
-1. Last CHANGELOG.md entry (what was done)
-2. Relevant component doc (if building component)
+1. Last session summary
+2. Relevant component doc (if building)
 3. Specific question or task
 
 **Example prompt:**
 ```
 Resuming work on Malible Design System.
 
-Last completed: [from CHANGELOG.md]
+Last completed: Badge component with 10 variants
+Current task: Build Label and Separator components
 
-Current task: Build Button component
-
-[Paste button section from COMPONENT_LIBRARY.md]
-
-Give me the Figma build instructions for Button, variants: default, secondary, destructive, ghost.
+Continue from where we left off.
 ```
+
+---
+
+## Using Figma API (Critical Workflow)
+
+### Why This Matters
+
+**Old workflow (slow, inaccurate):**
+```
+1. Look at Figma design
+2. Guess values: "looks like 12px padding, maybe #e5e5e5"
+3. Implement
+4. Compare, iterate
+5. Still not quite right
+```
+
+**New workflow (fast, accurate):**
+```
+1. Get Figma node URL
+2. Call get_design_context
+3. Get exact values: 12px padding, #e5e5e5 border
+4. Implement once, correct
+```
+
+### How to Extract Specs
+
+**Step 1: Get the URL**
+From Figma, right-click component → "Copy link to selection"
+
+URL format:
+```
+https://figma.com/design/F0uwJvl8PSwAkciuZfE6Ed/Malible-X-ShadCn?node-id=842-44442
+```
+
+**Step 2: Ask Claude to extract**
+```
+Extract specs from this Figma component:
+https://figma.com/design/F0uwJvl8PSwAkciuZfE6Ed/Malible-X-ShadCn?node-id=842-44442
+```
+
+**Step 3: Claude calls Figma API**
+Claude will call `get_design_context` and return:
+- Exact colors (HSL values)
+- Pixel dimensions
+- Padding/margins
+- Border radius
+- Shadow values (including inner vs drop shadows)
+- Font specs
+
+### What the API Can Extract
+
+| Property | Example Output |
+|----------|----------------|
+| Colors | `bg-[var(--success,#3ea377)]` |
+| Dimensions | `w-[32px] h-[18px]` |
+| Radius | `rounded-[12px]` |
+| Shadows | `shadow-[0px_1px_3px_-1px_rgba(26,26,26,0.05)]` |
+| Inset shadows | `shadow-[inset_0px_-1px_0px_...]` |
+| Typography | `font-["Inter:Medium"] text-[14px]` |
+
+### Real Example
+
+**Request:**
+```
+Get the specs for the Link button variant:
+https://figma.com/design/F0uwJvl8PSwAkciuZfE6Ed/...?node-id=4088-5805
+```
+
+**API Response revealed:**
+- Color: `--info, #008ed6` (not primary!)
+- Has underline decoration
+- Font: Inter Medium 14px
+
+This saved us from implementing wrong (primary orange) and iterating.
 
 ---
 
@@ -81,215 +150,105 @@ Give me the Figma build instructions for Button, variants: default, secondary, d
 
 ### When to Use Cursor
 - ✅ Writing React components
-- ✅ Implementing designs from Figma
+- ✅ Implementing designs from specs
 - ✅ Debugging code
 - ✅ Refactoring
 - ✅ Writing tests
 
-### When NOT to Use Cursor
-- ❌ Making architectural decisions (use Claude)
-- ❌ Changing token system (use Claude + Figma)
-- ❌ Writing design documentation (use Claude)
-
 ### Context Files for Cursor
 
-**In your workspace, keep visible:**
+**Keep visible in workspace:**
 ```
 src/styles/globals.css         # Theme variables
-tailwind.config.ts              # Tailwind config
-docs/TOKEN_SYSTEM.md            # Token reference
-docs/COMPONENT_LIBRARY.md       # Component specs
-docs/ANTI_PATTERNS.md           # What to avoid
+tailwind.config.ts             # Tailwind config
+docs/TOKEN_SYSTEM.md           # Token reference
+docs/ANTI_PATTERNS.md          # What to avoid
 ```
 
 **Example Cursor prompt:**
 ```
-Implement Button component based on:
-1. Theme variables from globals.css
-2. Spec from COMPONENT_LIBRARY.md
-3. Follow ShadCN pattern
-4. No hardcoded colors
-5. Use Tailwind modifiers for states
+Implement Label component based on these specs:
 
-Variants needed: default, secondary, destructive, ghost
-Sizes: sm, default, lg, icon
+- Font: Inter Medium 14px (weight 400 in Typekit)
+- Color: --foreground (#1a1a1a)
+- Disabled: --muted-foreground (#737373)
+- Required asterisk: --destructive (#bf1616)
+
+Follow ShadCN pattern. No hardcoded colors.
 ```
 
 ---
 
 ## Prompt Templates
 
-### 1. New Component Specification
-
-**Use with:** Claude
+### 1. Extract Component Specs from Figma
 
 ```
-I need a complete specification for [Component Name] component.
+Extract specs from this Figma component:
+[Paste Figma URL with node-id]
 
-Context:
-- Token system: [paste TOKEN_SYSTEM.md or link]
-- Existing components: [paste COMPONENT_LIBRARY.md]
-- Design inspiration: [Polaris/Canva/ShadCN]
-
-Requirements:
-- Variants: [list variants]
-- Sizes: [list sizes if applicable]
-- States: default, hover, active, disabled
-- Theme variables only (no primitives)
-
-Output format:
-1. Component structure
-2. Variant → Theme variable table
-3. Size definitions
-4. State handling rules
-5. Figma build instructions
+I need:
+- Colors (as tokens)
+- Dimensions
+- Typography
+- States if visible
 ```
 
-### 2. Token System Audit
-
-**Use with:** Claude
-
-```
-Audit the current token system against our rules.
-
-[Paste TOKEN_SYSTEM.md]
-[Paste current Figma Theme.json export]
-
-Check for:
-1. Token proliferation (component-specific tokens)
-2. State tokens (hover, active, etc.)
-3. ShadCN alignment mismatches
-4. Unused tokens
-5. Missing documentation
-
-Be brutally honest. Flag violations.
-```
-
-### 3. Component Implementation
-
-**Use with:** Cursor
+### 2. New Component Implementation
 
 ```
 Implement [Component Name] component.
 
-Spec: [paste from COMPONENT_LIBRARY.md]
-Theme variables: [paste globals.css]
+Specs from Figma:
+[Paste extracted specs]
 
 Requirements:
-- Use cn() utility for class merging
-- Variants via cva() or similar
-- No hardcoded colors (use --primary, --destructive, etc.)
-- States via Tailwind modifiers (hover:bg-primary/90)
-- TypeScript with proper types
+- Use Theme variables from globals.css
+- States via Tailwind modifiers
+- Use Phosphor icons (not Lucide)
+- Font weights: 300/400/500/600 only
 - Follow ShadCN pattern
-
-Create: src/components/ui/[component-name].tsx
 ```
 
-### 4. Resume After Break
+### 3. Add Component Documentation
 
-**Use with:** Claude
+```
+Create documentation page for [Component].
+
+Pattern to follow:
+- DocPage with category, title, description
+- DocSection for each variant group
+- ComponentExample with preview + code
+- Add to navigation order
+
+Reference existing pages: button-docs.tsx, badge-docs.tsx
+```
+
+### 4. Token Audit
+
+```
+Audit this component against our token rules.
+
+[Paste component code]
+
+Check for:
+1. Hardcoded hex values
+2. Component-specific tokens
+3. State tokens
+4. Lucide icons (should be Phosphor)
+5. Wrong font weights
+```
+
+### 5. Resume After Break
 
 ```
 Resuming Malible Design System work.
 
-Last session: [paste last CHANGELOG entry]
-Current status: [paste COMPONENT_LIBRARY.md status section]
+Last session: [what was done]
+Current status: 6 components complete
 
 Today's task: [specific task]
-
-Context needed:
-[Paste only the relevant doc sections]
-
-Continue from where we left off.
 ```
-
-### 5. Design Decision
-
-**Use with:** Claude
-
-```
-I need to make a decision about [specific issue].
-
-Background:
-[Paste relevant section from DESIGN_DECISIONS.md]
-
-Options:
-A) [describe option]
-B) [describe option]
-
-Constraints:
-- Implementation sanity > semantic purity
-- ShadCN structure non-negotiable
-- No token proliferation
-
-Recommend the best option with reasoning.
-```
-
-### 6. Documentation Update
-
-**Use with:** Claude
-
-```
-Update [DOC_NAME.md] based on recent changes.
-
-Changes made:
-[List changes]
-
-Current doc:
-[Paste current doc]
-
-Update the doc to reflect changes. Keep formatting consistent.
-```
-
----
-
-## Context Management Strategies
-
-### Token Limit Awareness
-
-**Claude's limits:**
-- ~200k tokens total
-- Start trimming at ~150k to be safe
-
-**When approaching limit:**
-1. Start new conversation
-2. Provide only essential context
-3. Reference docs by summary, not full paste
-
-**Essential vs Nice-to-Have:**
-
-**Essential:**
-- TOKEN_SYSTEM.md (always needed)
-- Current component spec (if building)
-- ANTI_PATTERNS.md (prevents mistakes)
-
-**Nice-to-Have:**
-- Full COMPONENT_LIBRARY.md (summarize instead)
-- Historical CHANGELOG (only recent entries)
-- DESIGN_DECISIONS.md (only if making decisions)
-
-### Conversation Memory
-
-**Claude has memory across conversations.** Use it:
-
-**First conversation:**
-```
-I'm building Malible Design System. Here's the full context:
-[Paste all core docs]
-
-Remember this project for future conversations.
-```
-
-**Subsequent conversations:**
-```
-Continue working on Malible Design System.
-
-Today's task: [specific task]
-[Paste only task-specific context]
-```
-
-Claude will remember the core architecture and pull from previous conversations.
 
 ---
 
@@ -297,198 +256,146 @@ Claude will remember the core architecture and pull from previous conversations.
 
 ### Workflow 1: Design New Component
 
-**Tools:** Claude (design) → Figma (implement design) → Cursor (code)
+**Tools:** Claude (specs) → Cursor (code)
 
-1. **Claude: Generate spec**
+1. **Get Figma URL** for component
+2. **Claude: Extract specs**
    ```
-   Create specification for [Component] based on [inspiration].
-   [Provide TOKEN_SYSTEM.md, COMPONENT_LIBRARY.md]
+   Extract specs from: [Figma URL]
    ```
+3. **Cursor: Implement**
+   ```
+   Implement [Component] from these specs:
+   [Paste specs from Claude]
+   ```
+4. **Create doc page**
+5. **Update navigation**
 
-2. **You: Build in Figma**
-   - Follow Claude's Figma instructions
-   - Use Theme variables only
-   - Export component screenshots
+### Workflow 2: Fix Design Mismatch
 
-3. **Claude: Review Figma**
-   ```
-   Review my Figma implementation.
-   [Upload screenshots]
-   [Paste Theme variable bindings]
-   Check against spec.
-   ```
+**Tools:** Claude (diagnose) → Cursor (fix)
 
-4. **Cursor: Implement code**
+1. **Claude: Check Figma**
    ```
-   Implement [Component] from Figma.
-   [Show globals.css, component spec]
+   Our [Component] doesn't match Figma.
+   Extract current specs: [Figma URL]
+   Compare to our implementation.
    ```
-
-5. **Update docs**
+2. **Cursor: Apply fix**
    ```
-   [In Claude] Update COMPONENT_LIBRARY.md with completion.
-   [In Claude] Add CHANGELOG.md entry.
+   Update [Component] with correct specs:
+   [Paste corrections]
    ```
 
-### Workflow 2: Fix Token Issue
+### Workflow 3: Add Token
 
-**Tools:** Claude (diagnose) → Figma (fix) → Cursor (update code)
+**Only if you have 5+ usages!**
 
-1. **Claude: Diagnose**
-   ```
-   I have a token issue: [describe problem]
-   Current tokens: [paste Theme.json]
-   Expected behavior: [describe]
-   ```
-
-2. **You: Fix in Figma**
-   - Update based on Claude's recommendation
-   - Export new Theme.json
-
-3. **Cursor: Update code**
-   ```
-   Update globals.css with new token values.
-   [Provide new Theme.json]
-   ```
-
-4. **Test components**
-   - Visual regression check
-   - Update docs if mappings changed
-
-### Workflow 3: Add Extended Token
-
-**Tools:** Claude (justify) → Figma (add) → Cursor (implement)
-
-1. **Claude: Justify need**
+1. **Claude: Justify**
    ```
    I want to add [new token].
    
-   Usage:
+   Usages:
    - Component 1: [usage]
    - Component 2: [usage]
    - Component 3: [usage]
    - Component 4: [usage]
    - Component 5: [usage]
    
-   Does this meet the "5+ usages" rule?
-   Should this be a Theme variable or can we use existing?
+   Does this meet our rules?
    ```
-
-2. **If approved, add in Figma**
-   - Add to Theme collection
-   - Follow naming pattern
-   - Export Theme.json
-
-3. **Cursor: Update code**
-   ```
-   Add [new-token] to globals.css and use in components.
-   [List component files that need it]
-   ```
-
-4. **Update docs**
-   ```
-   [In Claude] Update TOKEN_SYSTEM.md with new token.
-   [In Claude] Update COMPONENT_LIBRARY.md component specs.
-   ```
+2. **If approved:**
+   - Add to Figma Theme collection
+   - Update globals.css
+   - Update TOKEN_SYSTEM.md
 
 ---
 
 ## Debugging with AI
 
-### When Claude/Cursor Gets It Wrong
+### When Claude Gets It Wrong
 
-**Claude gives wrong advice:**
-1. Check against ANTI_PATTERNS.md
-2. Reference TOKEN_SYSTEM.md directly
-3. Provide more specific constraints
+**Claude suggests state token:**
+```
+You: "No. Check ANTI_PATTERNS.md - we don't use state tokens.
+     Give me hover rule using opacity modifiers."
+```
 
-**Cursor writes wrong code:**
+**Claude suggests wrong color:**
+```
+You: "Check Figma. Link should use --info (blue), not --primary.
+     Extract specs from: [Figma URL]"
+```
+
+### When Cursor Writes Wrong Code
+
 1. Check if globals.css is visible
-2. Check if component spec is in context
-3. Explicitly state "no hardcoded colors"
+2. Explicitly state constraints:
+   ```
+   Requirements:
+   - NO hardcoded hex values
+   - NO Lucide icons (use Phosphor)
+   - Font weights ONLY 300/400/500/600
+   ```
 
 ### Validate AI Output
 
 **Always verify:**
-- [ ] Theme variables used (not Primitives)
+- [ ] Theme variables used (not hex)
 - [ ] No component-specific tokens
 - [ ] No state tokens
 - [ ] States via Tailwind modifiers
-- [ ] Matches ShadCN pattern
-
-**Don't blindly trust AI.** It's a tool, not truth.
+- [ ] Phosphor icons (not Lucide)
+- [ ] Font weights are standard
 
 ---
 
 ## Best Practices
 
 ### Do
-✅ Provide full context at conversation start
-✅ Reference docs by name after initial context
+✅ Use Figma API for exact specs
+✅ Provide TOKEN_SYSTEM.md + ANTI_PATTERNS.md
 ✅ Be specific about constraints
 ✅ Validate output against rules
 ✅ Update docs after changes
 
 ### Don't
-❌ Assume AI remembers across tools (Claude ≠ Cursor)
-❌ Skip context and expect good results
+❌ Guess Figma values (use API)
 ❌ Accept violations of core principles
 ❌ Let AI change architecture without review
-❌ Forget to update documentation
-
----
-
-## Troubleshooting
-
-### "Claude suggests adding state tokens"
-
-**Response:**
-```
-No. Our system uses Tailwind modifiers for states, not tokens.
-Reference ANTI_PATTERNS.md section on state tokens.
-Give me hover/active rules using opacity modifiers.
-```
-
-### "Cursor hardcodes colors"
-
-**Fix:**
-1. Make sure globals.css is in workspace
-2. Explicitly state: "Use --primary variable, not #e0622d"
-3. Show example of correct usage
-
-### "Can't remember what we decided last time"
-
-**Solution:**
-1. Check DESIGN_DECISIONS.md
-2. Check CHANGELOG.md for recent entries
-3. Search previous Claude conversations
-4. If not documented, re-decide and document
+❌ Use Lucide icons
+❌ Use non-standard font weights
 
 ---
 
 ## Quick Reference Card
 
 **When starting work:**
-1. Open TOKEN_SYSTEM.md
-2. Open COMPONENT_LIBRARY.md
-3. Open ANTI_PATTERNS.md
-4. Paste to Claude or make visible in Cursor
+1. Have TOKEN_SYSTEM.md ready
+2. Have ANTI_PATTERNS.md ready
+3. Get Figma URLs for components
+
+**When building component:**
+1. Extract specs via Figma API
+2. Implement with exact values
+3. Validate against anti-patterns
+4. Create documentation
 
 **When stuck:**
-1. Check ANTI_PATTERNS.md first
-2. Check relevant component spec
-3. Ask Claude with specific context
+1. Check ANTI_PATTERNS.md
+2. Check DESIGN_DECISIONS.md
+3. Extract fresh specs from Figma
 
 **Before finishing:**
-1. Update COMPONENT_LIBRARY.md
-2. Add CHANGELOG.md entry
-3. Commit changes
-4. Take break
+1. Validate no anti-patterns
+2. Doc page complete
+3. Navigation updated
+4. Commit changes
 
 ---
 
 ## See Also
 
-- [Prompt Templates](./PROMPT_TEMPLATES.md) - Copy-paste prompts
-- [Design Decisions](./DESIGN_DECISIONS.md) - Architectural choices
+- [Token System](./TOKEN_SYSTEM.md) - Complete token reference
 - [Anti-Patterns](./ANTI_PATTERNS.md) - What not to do
+- [Design Decisions](./DESIGN_DECISIONS.md) - Architectural choices

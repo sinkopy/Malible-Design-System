@@ -1,17 +1,18 @@
 # Documentation Index
 
 **Malible Design System - Complete Documentation Package**  
-**Version:** 0.1.0  
-**Date:** January 9, 2026
+**Version:** 1.2.0  
+**Date:** January 13, 2026
 
 ---
 
-## What You Have
+## What We Have
 
-✅ **Complete token foundation** (90 Primitives + 28 Theme variables)  
-✅ **Full documentation system** (9 core documents)  
-✅ **AI-optimized workflows** (Claude + Cursor ready)  
-✅ **Clear architectural decisions** (with rationale)
+✅ **6 components built** (Button, Input, Badge, Switch, Checkbox, Radio)  
+✅ **33 theme tokens** (90 Primitives + 33 Theme)  
+✅ **Documentation site** running at localhost:5173  
+✅ **Full documentation system** (7 core documents)  
+✅ **AI-optimized workflows** (Figma API integration)
 
 ---
 
@@ -19,234 +20,182 @@
 
 ### 🚀 Start Here (Required Reading)
 
-1. **[README.md](./README.md)** (5 min)
-   - Project overview
-   - Quick links
-   - Current status
-
-2. **[QUICK_START.md](./QUICK_START.md)** (10 min)
-   - Get running in 5 minutes
-   - Core principles
-   - Common tasks
-
-3. **[TOKEN_SYSTEM.md](./TOKEN_SYSTEM.md)** (20 min)
-   - Complete token reference
-   - All 90 Primitives + 28 Theme variables
-   - Hex values, mappings, rationale
-
-4. **[ANTI_PATTERNS.md](./ANTI_PATTERNS.md)** (15 min)
-   - Critical: What NOT to do
-   - Common violations
-   - How to avoid mistakes
-
----
+| Doc | Time | Purpose |
+|-----|------|---------|
+| [QUICK_START.md](./QUICK_START.md) | 5 min | Get running fast |
+| [TOKEN_SYSTEM.md](./TOKEN_SYSTEM.md) | 15 min | All 33 tokens with values |
+| [ANTI_PATTERNS.md](./ANTI_PATTERNS.md) | 10 min | What NOT to do |
 
 ### 📚 Reference (Read as Needed)
 
-5. **[PROJECT_STRUCTURE.md](./PROJECT_STRUCTURE.md)**
-   - File organization
-   - Naming conventions
-   - Version control strategy
+| Doc | Purpose |
+|-----|---------|
+| [PROJECT_STRUCTURE.md](./PROJECT_STRUCTURE.md) | File organization |
+| [DESIGN_DECISIONS.md](./DESIGN_DECISIONS.md) | Why we made key choices |
+| [AI_CONTEXT_GUIDE.md](./AI_CONTEXT_GUIDE.md) | Working with Claude/Cursor |
 
-6. **[DESIGN_DECISIONS.md](./DESIGN_DECISIONS.md)**
-   - Why we made key choices
-   - Trade-offs accepted
-   - When to revisit decisions
+### 📝 Working Documents
 
-7. **[AI_CONTEXT_GUIDE.md](./AI_CONTEXT_GUIDE.md)**
-   - How to work with Claude/Cursor
-   - Prompt templates
-   - Context management
-
----
-
-### 📝 Working Documents (Update Frequently)
-
-8. **[CHANGELOG.md](./CHANGELOG.md)**
-   - Version history
-   - What changed when
-   - Upcoming milestones
-
-9. **[THEME_VARIABLES_REFERENCE.md](./THEME_VARIABLES_REFERENCE.md)**
-   - Quick theme variable lookup
-   - (Superseded by TOKEN_SYSTEM.md, kept for reference)
+| Doc | Purpose |
+|-----|---------|
+| [CHANGELOG.md](../CHANGELOG.md) | Version history |
+| This file | Navigation |
 
 ---
 
 ## Read in This Order
 
-### Day 1: Foundation (50 min)
-1. README.md → Understand project
-2. QUICK_START.md → Get oriented
-3. TOKEN_SYSTEM.md → Learn tokens
-4. ANTI_PATTERNS.md → Know what NOT to do
+### First Session (30 min)
+1. **QUICK_START.md** → Get oriented
+2. **TOKEN_SYSTEM.md** → Learn tokens
+3. **ANTI_PATTERNS.md** → Know what NOT to do
 
-**Goal:** Ready to build first component
+**Goal:** Ready to build components
 
----
+### Deep Dive (30 min)
+4. **PROJECT_STRUCTURE.md** → Understand files
+5. **DESIGN_DECISIONS.md** → Know why
+6. **AI_CONTEXT_GUIDE.md** → Optimize workflow
 
-### Day 2: Deep Dive (60 min)
-5. PROJECT_STRUCTURE.md → Understand file organization
-6. DESIGN_DECISIONS.md → Know why we made choices
-7. AI_CONTEXT_GUIDE.md → Optimize workflow
-
-**Goal:** Understand architecture deeply
-
----
-
-### Ongoing: Reference
-- CHANGELOG.md → Track progress
-- AI_CONTEXT_GUIDE.md → When resuming work
-- ANTI_PATTERNS.md → When in doubt
+**Goal:** Understand architecture
 
 ---
 
 ## Document Purposes
 
-| Document | Purpose | Read When |
-|----------|---------|-----------|
-| README.md | Overview & navigation | First time, onboarding |
-| QUICK_START.md | Fast ramp-up | First time, need quick ref |
-| TOKEN_SYSTEM.md | Complete token reference | Building components, verifying tokens |
-| ANTI_PATTERNS.md | Avoid mistakes | Before making changes, when stuck |
-| PROJECT_STRUCTURE.md | File organization | Setting up, organizing work |
-| DESIGN_DECISIONS.md | Architectural rationale | Questioning choices, onboarding |
-| AI_CONTEXT_GUIDE.md | AI workflow optimization | Using Claude/Cursor, resuming work |
-| CHANGELOG.md | Version tracking | Starting session, documenting changes |
+| Document | Read When |
+|----------|-----------|
+| QUICK_START.md | First time, need quick ref |
+| TOKEN_SYSTEM.md | Building components, verifying tokens |
+| ANTI_PATTERNS.md | Before making changes, when stuck |
+| PROJECT_STRUCTURE.md | Setting up, finding files |
+| DESIGN_DECISIONS.md | Questioning choices |
+| AI_CONTEXT_GUIDE.md | Using Claude/Cursor |
 
 ---
 
-## How to Use These Docs
+## Live Documentation Site
 
-### For Solo Work (Now)
-1. **Read** foundation docs (Day 1 list)
-2. **Reference** AI_CONTEXT_GUIDE.md when using Claude/Cursor
-3. **Update** CHANGELOG.md after each milestone
-4. **Check** ANTI_PATTERNS.md when making architectural choices
+The design system has a live documentation site:
 
-### When Team Grows (Later)
-1. **Onboard** new members with Day 1 + Day 2 reading
-2. **Reference** PROJECT_STRUCTURE.md for conventions
-3. **Discuss** DESIGN_DECISIONS.md when questioning architecture
-4. **Enforce** ANTI_PATTERNS.md in code reviews
+**URL:** http://localhost:5173
 
-### For AI Sessions
-**Always provide to Claude:**
-- TOKEN_SYSTEM.md
-- ANTI_PATTERNS.md
-- Relevant section of current task
+**Pages:**
 
-**Keep visible in Cursor:**
-- TOKEN_SYSTEM.md
-- ANTI_PATTERNS.md
-- PROJECT_STRUCTURE.md
+| Route | Content |
+|-------|---------|
+| `/tokens` | Design tokens (spacing, radius, shadows) |
+| `/colors` | Color system with swatches |
+| `/typography` | Type scale, font families |
+| `/` | Button component |
+| `/input` | Input component |
+| `/badge` | Badge component |
+| `/switch` | Switch component |
+| `/checkbox` | Checkbox component |
+| `/radio` | Radio component |
+
+---
+
+## Current Status
+
+### Components
+
+| Component | Status | Variants |
+|-----------|--------|----------|
+| Button | ✅ Complete | 6 variants, 3 sizes, 3 icon sizes |
+| Input | ✅ Complete | Default, disabled, error |
+| Badge | ✅ Complete | 10 variants, 2 sizes |
+| Switch | ✅ Complete | On/off, disabled |
+| Checkbox | ✅ Complete | Unchecked, checked, indeterminate |
+| Radio | ✅ Complete | Via RadioGroup |
+| Label | 🔲 Next | - |
+| Separator | 🔲 Next | - |
+| Card | 🔲 Planned | - |
+| Alert | 🔲 Planned | - |
+
+### Tokens
+
+| Category | Count | Status |
+|----------|-------|--------|
+| Primitives | 90 | ✅ Complete |
+| Theme Core | 20 | ✅ Complete |
+| Theme Extended | 8 | ✅ Complete |
+| Theme Subtle | 5 | ✅ Complete |
+| **Total** | **123** | - |
+
+---
+
+## Key Decisions Summary
+
+| Decision | Choice | Rationale |
+|----------|--------|-----------|
+| Token layers | 2 (not 3) | Implementation sanity |
+| Link color | --info (blue) | Convention, Figma spec |
+| Switch checked | --success (green) | Positive state convention |
+| Badge variants | 10 flat | ShadCN pattern |
+| Icons | Phosphor | Visual weight match |
+| Font weights | 300/400/500/600 | Typekit mapping |
+| Code highlighting | Shiki, github-light | Matches aesthetic |
+
+---
+
+## Quick Actions
+
+### "I need to build a component"
+
+1. Get Figma URL with node-id
+2. Ask Claude to extract specs
+3. Implement in Cursor
+4. Create doc page
+5. Add to navigation
+
+### "I need to check a token"
+
+→ Open [TOKEN_SYSTEM.md](./TOKEN_SYSTEM.md)
+
+### "I'm not sure if this is allowed"
+
+→ Check [ANTI_PATTERNS.md](./ANTI_PATTERNS.md)
+
+### "Why did we do it this way?"
+
+→ Check [DESIGN_DECISIONS.md](./DESIGN_DECISIONS.md)
+
+### "How do I use AI effectively?"
+
+→ Check [AI_CONTEXT_GUIDE.md](./AI_CONTEXT_GUIDE.md)
 
 ---
 
 ## Maintenance Schedule
 
-### Daily
-- [ ] Update CHANGELOG.md when you complete something
+### After Each Component
+- [ ] Doc page created
+- [ ] Navigation updated
+- [ ] CHANGELOG updated
 
 ### Weekly
-- [ ] Review ANTI_PATTERNS.md - any new patterns to add?
-- [ ] Check TOKEN_SYSTEM.md - still accurate?
+- [ ] Review docs for staleness
+- [ ] Check TOKEN_SYSTEM.md accuracy
 
-### Monthly
-- [ ] Review DESIGN_DECISIONS.md - any decisions to revisit?
-- [ ] Check all docs for staleness
-- [ ] Clean up outdated information
-
-### Per Milestone
-- [ ] Update README.md status
-- [ ] Bump version in CHANGELOG.md
-- [ ] Review all docs for accuracy
-
----
-
-## Doc Health Checklist
-
-### Is Documentation Healthy?
-
-✅ **Yes** if:
-- README.md status section is current
-- TOKEN_SYSTEM.md matches Figma
-- CHANGELOG.md has recent entries
-- ANTI_PATTERNS.md catches real mistakes
-
-❌ **No** if:
-- Docs haven't been updated in 2+ weeks
-- TOKEN_SYSTEM.md doesn't match implementation
-- Team questions decisions not in DESIGN_DECISIONS.md
-- New mistakes not documented in ANTI_PATTERNS.md
-
----
-
-## Quick Reference Card
-
-**Need to...?**
-
-- **Understand tokens** → TOKEN_SYSTEM.md
-- **Avoid mistakes** → ANTI_PATTERNS.md
-- **Start fast** → QUICK_START.md
-- **Know why** → DESIGN_DECISIONS.md
-- **Find files** → PROJECT_STRUCTURE.md
-- **Use AI tools** → AI_CONTEXT_GUIDE.md
-- **Track changes** → CHANGELOG.md
-- **Onboard someone** → README.md → QUICK_START.md
-
----
-
-## What's Missing (Intentionally)
-
-These docs don't exist yet because they're not needed:
-
-- **Component Library** - Will be created when first component is built
-- **Component Build Playbook** - Will be created with Button component
-- **Figma Setup Guide** - Covered in TOKEN_SYSTEM.md for now
-- **Prompt Templates** - Integrated into AI_CONTEXT_GUIDE.md
-
-These will be added as project evolves.
-
----
-
-## Documentation Philosophy
-
-**Principles:**
-1. **Practical over comprehensive** - Document what's needed, not everything
-2. **Single source of truth** - Each fact lives in one place
-3. **Easy to maintain** - If it's hard to update, it won't be updated
-4. **AI-friendly** - Structured for copy-paste into Claude/Cursor
-5. **Version controlled** - All docs in Git, track changes
-
-**Not principles:**
-- ❌ Documenting for documentation's sake
-- ❌ Theoretical design system concepts
-- ❌ Documenting every possible scenario
-- ❌ Writing for external audiences (yet)
-
----
-
-## Next Steps
-
-1. ✅ **Documentation complete** (you're reading it!)
-2. ⬜ **Build Button component** (first real test)
-3. ⬜ **Validate token usage** (does it work in practice?)
-4. ⬜ **Iterate on docs** (fix what doesn't work)
-5. ⬜ **Continue building** (Input, Card, Badge, Alert)
+### After Token Changes
+- [ ] Update TOKEN_SYSTEM.md
+- [ ] Update globals.css
+- [ ] Test all components
 
 ---
 
 ## Questions?
 
-Check:
-1. QUICK_START.md - "Getting Help" section
-2. AI_CONTEXT_GUIDE.md - Prompt templates
-3. ANTI_PATTERNS.md - Is it a known issue?
-4. DESIGN_DECISIONS.md - Was this decided already?
+**Check in this order:**
+1. ANTI_PATTERNS.md - Is it forbidden?
+2. TOKEN_SYSTEM.md - What token should I use?
+3. DESIGN_DECISIONS.md - Why was this decided?
+4. AI_CONTEXT_GUIDE.md - How do I ask Claude?
 
-Still stuck? Start a Claude session with TOKEN_SYSTEM.md + ANTI_PATTERNS.md context.
+**Still stuck?**
+Start a Claude session with TOKEN_SYSTEM.md + ANTI_PATTERNS.md context.
 
 ---
 
-**Ready to build. Documentation complete. Let's ship.**
+**Ready to build. Documentation complete.**

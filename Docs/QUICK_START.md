@@ -9,22 +9,23 @@
 **Design System Stack:**
 - Figma (design source of truth)
 - ShadCN (component execution)
-- 2-layer tokens: Primitives (90) → Theme (28)
+- 2-layer tokens: Primitives (90) → Theme (33)
 - Rule: Implementation sanity > semantic purity
 
-**Already built:**
-- ✅ Primitives collection (colors, spacing, radii)
-- ✅ Theme collection (ShadCN-compatible variables)
-- ✅ Complete documentation
+**What's Built:**
+- ✅ 6 components: Button, Input, Badge, Switch, Checkbox, Radio
+- ✅ 33 theme tokens
+- ✅ Documentation site at localhost:5173
+- ✅ Full specs in Figma
 
-**Next:** Build components using Theme variables.
+**Next:** Label, Separator, Card, Alert
 
 ---
 
 ## For Designers
 
 ### 1. Access Figma File
-[Link to Figma file]
+Malible-X-ShadCn (link in project)
 
 ### 2. Understand Token Structure
 
@@ -34,12 +35,10 @@
 - Radii: 4, 8, full
 
 **Theme** (use these in components):
-- background, foreground
-- primary, primary-foreground
-- destructive, destructive-foreground
-- success, warning, info, canvas
-- border, input, ring
-- radius
+- Core: background, foreground, primary, secondary, destructive
+- Semantic: success, warning, info, canvas
+- Subtle: info-subtle, success-subtle, warning-subtle, destructive-subtle
+- UI: border, input, ring, muted
 
 ### 3. Design Rule: Use Theme Only
 
@@ -50,55 +49,49 @@
 - Button background: `Theme/primary` (not `Primitives/orange-600`)
 - Text color: `Theme/foreground` (not `Primitives/neutral-950`)
 
-### 4. States? Use Properties, Not Variants
+### 4. Key Color Decisions
 
-❌ Don't create: Button/default, Button/hover, Button/active  
-✅ Do create: Button with variant property (default, secondary, destructive)
-
-States handled in code via opacity modifiers.
+| Element | Color | Token |
+|---------|-------|-------|
+| Primary CTA | Orange | --primary |
+| Link text | Blue | --info |
+| Switch checked | Green | --success |
+| Error states | Red | --destructive |
 
 ---
 
 ## For Developers
 
-### 1. Clone Repo
+### 1. Clone and Run
 
 ```bash
 git clone [repo-url]
 cd malible-design-system
 npm install
+npm run dev
 ```
 
-### 2. Understand File Structure
+Open http://localhost:5173
 
-```
-/docs        # Documentation (read these!)
-/figma       # Token exports, component refs
-/src         # Implementation
-  /components/ui   # ShadCN components
-  /styles          # globals.css with tokens
-```
+### 2. Key Files
 
-### 3. Key Files
+| File | Purpose |
+|------|---------|
+| `src/styles/globals.css` | 33 CSS variables |
+| `tailwind.config.ts` | Theme colors, fonts |
+| `src/components/ui/` | All components |
+| `src/pages/` | Documentation pages |
 
-**Must read:**
-- [TOKEN_SYSTEM.md](./TOKEN_SYSTEM.md) - Complete token reference
-- [ANTI_PATTERNS.md](./ANTI_PATTERNS.md) - What NOT to do
-
-**Reference:**
-- [COMPONENT_LIBRARY.md](./COMPONENT_LIBRARY.md) - Component specs
-- [AI_CONTEXT_GUIDE.md](./AI_CONTEXT_GUIDE.md) - Working with AI tools
-
-### 4. Token Usage in Code
+### 3. Token Usage
 
 **In globals.css:**
 ```css
 :root {
-  --background: #ffffff;
-  --foreground: #09090b;
-  --primary: #e0622d;
-  --primary-foreground: #ffffff;
-  /* ... 24 more variables */
+  --primary: 17 83% 53%;
+  --primary-foreground: 0 0% 100%;
+  --info: 200 100% 42%;
+  --success: 152 48% 45%;
+  /* ... 29 more variables */
 }
 ```
 
@@ -117,50 +110,39 @@ npm install
 
 **States:**
 ```tsx
-// ✅ Right
+// ✅ Right - modifiers
 className="bg-primary hover:bg-primary/90 active:bg-primary/80"
 
-// ❌ Wrong
-className="bg-primary bg-primary-hover:hover"  // No such token!
+// ❌ Wrong - no state tokens exist
+className="bg-primary-hover"
 ```
 
-### 5. Component Pattern
+### 4. Current Components
 
-Follow ShadCN structure:
+| Component | Variants | Import |
+|-----------|----------|--------|
+| Button | default, secondary, destructive, outline, ghost, link | `@/components/ui/button` |
+| Input | default + states | `@/components/ui/input` |
+| Badge | 10 variants (subtle + solid pairs) | `@/components/ui/badge` |
+| Switch | on/off with success color | `@/components/ui/switch` |
+| Checkbox | unchecked, checked, indeterminate | `@/components/ui/checkbox` |
+| Radio | via RadioGroup | `@/components/ui/radio-group` |
+
+### 5. Icon Usage
 
 ```tsx
-// src/components/ui/button.tsx
-import { cn } from "@/lib/utils"
+// ✅ Right - Phosphor
+import { Check, Copy, X } from "@phosphor-icons/react"
 
-interface ButtonProps {
-  variant?: "default" | "secondary" | "destructive" | "ghost"
-  size?: "default" | "sm" | "lg" | "icon"
-}
-
-export function Button({ variant = "default", size = "default", className, ...props }: ButtonProps) {
-  return (
-    <button
-      className={cn(
-        "inline-flex items-center justify-center rounded-md",
-        // Base styles using Theme variables
-        variant === "default" && "bg-primary text-primary-foreground hover:bg-primary/90",
-        variant === "destructive" && "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        // Size variants
-        size === "default" && "h-10 px-4 py-2",
-        size === "sm" && "h-9 px-3",
-        className
-      )}
-      {...props}
-    />
-  )
-}
+// ❌ Wrong - Lucide
+import { Check } from "lucide-react"
 ```
 
 ---
 
 ## For AI-Assisted Development
 
-### Working with Claude (Architecture/Design)
+### Working with Claude
 
 **Starting a session:**
 ```
@@ -168,23 +150,18 @@ I'm working on Malible Design System.
 
 Context:
 [Paste TOKEN_SYSTEM.md]
-[Paste COMPONENT_LIBRARY.md]
 [Paste ANTI_PATTERNS.md]
 
 Task: [Your specific task]
 ```
 
-**Resuming work:**
+**Using Figma API:**
 ```
-Continuing Malible Design System.
-
-Last completed: [from CHANGELOG.md]
-Current task: [specific task]
-
-[Paste relevant doc section only]
+Extract specs from Figma for [component].
+URL: https://figma.com/design/F0uwJvl8PSwAkciuZfE6Ed/...?node-id=XXX-XXX
 ```
 
-### Working with Cursor (Implementation)
+### Working with Cursor
 
 **Make these files visible:**
 - `src/styles/globals.css`
@@ -193,38 +170,36 @@ Current task: [specific task]
 
 **Example prompt:**
 ```
-Implement Button component.
+Implement [Component] component.
 
 Requirements:
 - Use Theme variables from globals.css
 - No hardcoded colors
 - States via Tailwind modifiers
 - Follow ShadCN pattern
-
-Variants: default, secondary, destructive, ghost
-Sizes: sm, default, lg, icon
+- Use Phosphor icons
 ```
 
 ---
 
-## Core Principles (Memorize These)
+## Core Principles (Memorize)
 
 1. **Implementation Sanity > Semantic Purity**
    - Pragmatic over perfect
    - Maintainable over theoretically correct
 
 2. **No Token Proliferation**
-   - No component-specific tokens (e.g., `--button-bg`)
-   - No state tokens (e.g., `--primary-hover`)
+   - No component-specific tokens
+   - No state tokens
    - Every token needs 5+ usages
 
 3. **ShadCN Non-Negotiable**
    - Their structure is law
-   - We adapt to them, not vice versa
+   - We adapt to them
 
 4. **Figma is Source of Truth**
-   - Design first, code follows
-   - Theme variables drive both
+   - Use Figma API for exact specs
+   - Don't guess values
 
 5. **States = Modifiers, Not Tokens**
    - `hover:bg-primary/90` ✅
@@ -234,61 +209,50 @@ Sizes: sm, default, lg, icon
 
 ## Common Tasks
 
-### Task: Build a New Component
+### Build a New Component
 
-1. **Check spec** in [COMPONENT_LIBRARY.md](./COMPONENT_LIBRARY.md)
-2. **Design in Figma** using Theme variables
-3. **Implement in code** following ShadCN pattern
-4. **Update docs**: COMPONENT_LIBRARY.md + CHANGELOG.md
+1. Design in Figma using Theme variables
+2. Get specs via Figma API (`get_design_context`)
+3. Implement following ShadCN pattern
+4. Create doc page
+5. Add to navigation
 
-### Task: Add a New Token
+### Fix Token Issue
 
-**Stop.** Do you have 5+ usages? No? Don't add it.
+1. Check TOKEN_SYSTEM.md for correct token
+2. Update Figma if needed
+3. Update globals.css
+4. Test components
 
-If yes:
-1. Add to Figma Theme collection
-2. Export `theme.json`
-3. Update `globals.css`
-4. Update TOKEN_SYSTEM.md
-5. Update CHANGELOG.md (minor version bump)
+### Add Documentation
 
-### Task: Fix a Token Issue
-
-1. **Diagnose** with Claude (provide TOKEN_SYSTEM.md)
-2. **Fix in Figma** Theme collection
-3. **Export** new `theme.json`
-4. **Update** `globals.css`
-5. **Test** all components
-6. **Update** docs
-
-### Task: Resume After Break
-
-1. Read last CHANGELOG.md entry
-2. Check COMPONENT_LIBRARY.md status
-3. Load relevant docs into Claude/Cursor
-4. Continue work
+1. Create page in `src/pages/[component]-docs.tsx`
+2. Use DocPage, DocSection, ComponentExample
+3. Add to router
+4. Add to sidebar navigation
+5. Add to DocNavigation order
 
 ---
 
 ## Validation Checklist
 
-Before committing, verify:
+### Before Committing
 
-### Design (Figma)
-- [ ] Components use Theme variables, not Primitives
-- [ ] No state variants (hover, active, disabled)
-- [ ] No component-specific tokens created
+**Design:**
+- [ ] Uses Theme variables (not Primitives)
+- [ ] No state variants in Figma
+- [ ] Matches existing patterns
 
-### Code
+**Code:**
 - [ ] No hardcoded hex values
-- [ ] Using Theme variables (`--primary`, not `--orange-600`)
-- [ ] States via modifiers (`hover:bg-primary/90`)
-- [ ] Matches ShadCN pattern
+- [ ] States via Tailwind modifiers
+- [ ] Uses Phosphor icons
+- [ ] Font weights are 300/400/500/600
 
-### Documentation
-- [ ] COMPONENT_LIBRARY.md updated
-- [ ] CHANGELOG.md entry added
-- [ ] No outdated information
+**Docs:**
+- [ ] Doc page created
+- [ ] All variants shown
+- [ ] Code examples work
 
 ---
 
@@ -296,60 +260,39 @@ Before committing, verify:
 
 ### "I'm stuck on [issue]"
 
-1. Check [ANTI_PATTERNS.md](./ANTI_PATTERNS.md) - Is it a known violation?
-2. Check [TOKEN_SYSTEM.md](./TOKEN_SYSTEM.md) - Is there a token for this?
-3. Check [AI_CONTEXT_GUIDE.md](./AI_CONTEXT_GUIDE.md) - Prompt templates
+1. Check [ANTI_PATTERNS.md](./ANTI_PATTERNS.md)
+2. Check [TOKEN_SYSTEM.md](./TOKEN_SYSTEM.md)
+3. Check [DESIGN_DECISIONS.md](./DESIGN_DECISIONS.md)
 
-### "The AI is suggesting something wrong"
+### "The AI suggests something wrong"
 
 Validate against:
-- TOKEN_SYSTEM.md (correct token usage)
+- TOKEN_SYSTEM.md (correct tokens)
 - ANTI_PATTERNS.md (what NOT to do)
 - DESIGN_DECISIONS.md (why we made choices)
-
-Don't blindly accept AI suggestions.
 
 ### "Should I add a new token?"
 
 Ask:
-1. Do I have 5+ usages? (If no → don't add)
-2. Can I use an existing token? (If yes → use existing)
-3. Is this component-specific? (If yes → don't add)
-4. Is this a state? (If yes → use modifiers)
-
-Still unsure? Ask Claude with TOKEN_SYSTEM.md context.
+1. Do I have 5+ usages?
+2. Can I use an existing token?
+3. Is this component-specific? (Don't add)
+4. Is this a state? (Use modifiers)
 
 ---
 
-## Next Steps
+## Quick Reference
 
-1. **Read these docs** (30 min):
-   - [TOKEN_SYSTEM.md](./TOKEN_SYSTEM.md)
-   - [ANTI_PATTERNS.md](./ANTI_PATTERNS.md)
-   - [COMPONENT_LIBRARY.md](./COMPONENT_LIBRARY.md)
-
-2. **Explore Figma** (15 min):
-   - Open the file
-   - Look at Primitives collection
-   - Look at Theme collection
-   - See how they reference each other
-
-3. **Build first component** (2-4 hours):
-   - Start with Button (well-specified)
-   - Follow [COMPONENT_BUILD_PLAYBOOK.md](./COMPONENT_BUILD_PLAYBOOK.md)
-   - Use AI tools with proper context
-
-4. **Ship it**:
-   - Update COMPONENT_LIBRARY.md
-   - Add CHANGELOG.md entry
-   - Commit and push
+| Need | Token | Hex |
+|------|-------|-----|
+| Primary button | --primary | #e0622d |
+| Link text | --info | #008ed6 |
+| Switch on | --success | #3ea377 |
+| Error | --destructive | #bf1616 |
+| Body text | --foreground | #1a1a1a |
+| Secondary text | --muted-foreground | #737373 |
+| Borders | --border | #e5e5e5 |
 
 ---
-
-## Questions?
-
-- Check [AI_CONTEXT_GUIDE.md](./AI_CONTEXT_GUIDE.md) for prompt templates
-- Reference [PROJECT_STRUCTURE.md](./PROJECT_STRUCTURE.md) for file organization
-- Read [DESIGN_DECISIONS.md](./DESIGN_DECISIONS.md) for architectural rationale
 
 **You're ready. Go build.**
