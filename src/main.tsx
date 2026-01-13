@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/layout";
 import ButtonDocs from "./pages/button-docs";
 import InputDocs from "./pages/input-docs";
+import BadgeDocs from "./pages/badge-docs";
 import ControlsDocs from "./pages/controls-docs";
 import "@/styles/globals.css";
 
@@ -14,6 +15,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <Route element={<Layout />}>
           <Route path="/" element={<ButtonDocs />} />
           <Route path="/input" element={<InputDocs />} />
+          <Route path="/badge" element={<BadgeDocs />} />
           <Route path="/controls" element={<ControlsDocs />} />
         </Route>
       </Routes>

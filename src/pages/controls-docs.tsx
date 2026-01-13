@@ -1,7 +1,6 @@
 import { Switch } from "@/components/ui/switch";
 import { Checkbox } from "@/components/ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
 
 // Icons
@@ -72,7 +71,7 @@ export default function ControlsDocs() {
           </div>
           <h1 className="text-3xl font-bold tracking-tight text-foreground">Form Controls</h1>
           <p className="text-muted-foreground mt-2 text-lg">
-            Switch, Checkbox, Radio, and Badge components.
+            Switch, Checkbox, and Radio components.
           </p>
         </div>
       </div>
@@ -356,121 +355,6 @@ export default function ControlsDocs() {
           </ExampleSection>
         </section>
 
-        {/* ==================== BADGE ==================== */}
-        <section className="space-y-8">
-          <div>
-            <h2 className="text-2xl font-semibold tracking-tight">Badge</h2>
-            <p className="text-muted-foreground mt-1">Displays a badge with semantic colors and optional icons.</p>
-          </div>
-
-          {/* Preview */}
-          <div className="rounded-xl border bg-card p-8 flex items-center justify-center gap-4 flex-wrap">
-            <Badge>Neutral</Badge>
-            <Badge variant="info">Info</Badge>
-            <Badge variant="success">Success</Badge>
-            <Badge variant="warning">Warning</Badge>
-            <Badge variant="critical">Critical</Badge>
-          </div>
-
-          <ExampleSection 
-            title="Tones (Subtle)" 
-            code={`<Badge variant="neutral">Neutral</Badge>
-<Badge variant="info">Info</Badge>
-<Badge variant="success">Success</Badge>
-<Badge variant="warning">Warning</Badge>
-<Badge variant="critical">Critical</Badge>`}
-          >
-            <div className="flex gap-2 flex-wrap">
-              <Badge variant="neutral">Neutral</Badge>
-              <Badge variant="info">Info</Badge>
-              <Badge variant="success">Success</Badge>
-              <Badge variant="warning">Warning</Badge>
-              <Badge variant="critical">Critical</Badge>
-            </div>
-          </ExampleSection>
-
-          <ExampleSection 
-            title="Tones (Solid)" 
-            code={`<Badge variant="neutral-solid">Neutral</Badge>
-<Badge variant="info-solid">Info</Badge>
-<Badge variant="success-solid">Success</Badge>
-<Badge variant="warning-solid">Warning</Badge>
-<Badge variant="critical-solid">Critical</Badge>`}
-          >
-            <div className="flex gap-2 flex-wrap">
-              <Badge variant="neutral-solid">Neutral</Badge>
-              <Badge variant="info-solid">Info</Badge>
-              <Badge variant="success-solid">Success</Badge>
-              <Badge variant="warning-solid">Warning</Badge>
-              <Badge variant="critical-solid">Critical</Badge>
-            </div>
-          </ExampleSection>
-
-          <ExampleSection 
-            title="With Icons" 
-            code={`<Badge variant="success" icon={<CheckIcon />}>Completed</Badge>
-<Badge variant="critical" icon={<AlertIcon />}>Error</Badge>
-<Badge variant="info" icon={<InfoIcon />}>Information</Badge>`}
-          >
-            <div className="flex gap-2 flex-wrap">
-              <Badge variant="success" icon={<CheckIcon />}>Completed</Badge>
-              <Badge variant="critical" icon={<AlertIcon />}>Error</Badge>
-              <Badge variant="info" icon={<InfoIcon />}>Information</Badge>
-            </div>
-          </ExampleSection>
-
-          <ExampleSection 
-            title="Sizes" 
-            code={`<Badge size="sm">Small</Badge>
-<Badge size="default">Default</Badge>`}
-          >
-            <div className="flex gap-2 items-center">
-              <Badge size="sm">Small</Badge>
-              <Badge size="default">Default</Badge>
-            </div>
-          </ExampleSection>
-
-          <ExampleSection 
-            title="All Variants Grid" 
-            code={`// 5 tones × subtle/solid × 2 sizes`}
-          >
-            <div className="space-y-4">
-              <div className="text-xs text-muted-foreground font-medium">Subtle</div>
-              <div className="grid grid-cols-5 gap-2">
-                <Badge variant="neutral">Label</Badge>
-                <Badge variant="info">Label</Badge>
-                <Badge variant="success">Label</Badge>
-                <Badge variant="warning">Label</Badge>
-                <Badge variant="critical">Label</Badge>
-              </div>
-              <div className="text-xs text-muted-foreground font-medium">Solid</div>
-              <div className="grid grid-cols-5 gap-2">
-                <Badge variant="neutral-solid">Label</Badge>
-                <Badge variant="info-solid">Label</Badge>
-                <Badge variant="success-solid">Label</Badge>
-                <Badge variant="warning-solid">Label</Badge>
-                <Badge variant="critical-solid">Label</Badge>
-              </div>
-              <div className="text-xs text-muted-foreground font-medium">With Icons (Subtle)</div>
-              <div className="grid grid-cols-5 gap-2">
-                <Badge variant="neutral" icon={<CheckIcon />}>Label</Badge>
-                <Badge variant="info" icon={<InfoIcon />}>Label</Badge>
-                <Badge variant="success" icon={<CheckIcon />}>Label</Badge>
-                <Badge variant="warning" icon={<AlertIcon />}>Label</Badge>
-                <Badge variant="critical" icon={<AlertIcon />}>Label</Badge>
-              </div>
-              <div className="text-xs text-muted-foreground font-medium">With Icons (Solid)</div>
-              <div className="grid grid-cols-5 gap-2">
-                <Badge variant="neutral-solid" icon={<CheckIcon />}>Label</Badge>
-                <Badge variant="info-solid" icon={<InfoIcon />}>Label</Badge>
-                <Badge variant="success-solid" icon={<CheckIcon />}>Label</Badge>
-                <Badge variant="warning-solid" icon={<AlertIcon />}>Label</Badge>
-                <Badge variant="critical-solid" icon={<AlertIcon />}>Label</Badge>
-              </div>
-            </div>
-          </ExampleSection>
-        </section>
-
         {/* ==================== PROPS TABLES ==================== */}
         <section className="space-y-8">
           <h2 className="text-2xl font-semibold tracking-tight">Props Reference</h2>
@@ -574,38 +458,6 @@ export default function ControlsDocs() {
             </div>
           </div>
 
-          {/* Badge Props */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-medium">Badge</h3>
-            <div className="rounded-lg border overflow-hidden">
-              <table className="w-full text-sm">
-                <thead className="bg-muted/50">
-                  <tr>
-                    <th className="text-left p-4 font-medium">Prop</th>
-                    <th className="text-left p-4 font-medium">Type</th>
-                    <th className="text-left p-4 font-medium">Description</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y">
-                  <tr>
-                    <td className="p-4 font-mono text-xs">variant</td>
-                    <td className="p-4 font-mono text-xs text-muted-foreground">"neutral" | "info" | "success" | "warning" | "critical" | "*-solid"</td>
-                    <td className="p-4 text-muted-foreground">Color variant</td>
-                  </tr>
-                  <tr>
-                    <td className="p-4 font-mono text-xs">size</td>
-                    <td className="p-4 font-mono text-xs text-muted-foreground">"sm" | "default"</td>
-                    <td className="p-4 text-muted-foreground">Badge size</td>
-                  </tr>
-                  <tr>
-                    <td className="p-4 font-mono text-xs">icon</td>
-                    <td className="p-4 font-mono text-xs text-muted-foreground">ReactNode</td>
-                    <td className="p-4 text-muted-foreground">Icon to display before label</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
         </section>
 
       </div>

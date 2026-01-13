@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 const navItems = [
   { href: "/", label: "Button" },
   { href: "/input", label: "Input" },
+  { href: "/badge", label: "Badge" },
   { href: "/controls", label: "Controls" },
 ];
 
