@@ -8,6 +8,7 @@ const navItems = [
   { href: "/switch", label: "Switch" },
   { href: "/checkbox", label: "Checkbox" },
   { href: "/radio", label: "Radio" },
+  { href: "/typography", label: "Typography" },
 ];
 
 export default function Layout() {
@@ -18,8 +19,8 @@ export default function Layout() {
       {/* Sidebar */}
       <aside className="fixed left-0 top-0 h-screen w-56 border-r border-border bg-background p-6">
         <div className="mb-8">
-          <h1 className="text-lg font-bold">Malible DS</h1>
-          <p className="text-xs text-muted-foreground">Design System</p>
+          <h1 className="text-lg font-bold">Malible</h1>
+          <p className="text-xs text-muted-foreground">v1.2</p>
         </div>
         <nav className="space-y-1">
           {navItems.map((item) => (

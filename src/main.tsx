@@ -8,6 +8,7 @@ import BadgeDocs from "./pages/badge-docs";
 import SwitchDocs from "./pages/switch-docs";
 import CheckboxDocs from "./pages/checkbox-docs";
 import RadioDocs from "./pages/radio-docs";
+import TypographyDocs from "./pages/typography-docs";
 import "@/styles/globals.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
@@ -21,6 +22,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="/switch" element={<SwitchDocs />} />
           <Route path="/checkbox" element={<CheckboxDocs />} />
           <Route path="/radio" element={<RadioDocs />} />
+          <Route path="/typography" element={<TypographyDocs />} />
         </Route>
       </Routes>
     </BrowserRouter>
