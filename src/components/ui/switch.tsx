@@ -17,8 +17,8 @@ const Switch = React.forwardRef<
       // Unchecked state - gray track
       "bg-input",
       
-      // Checked state - primary color (uses your orange or could be info blue)
-      "data-[state=checked]:bg-primary",
+      // Checked state - success color (green #3ea377)
+      "data-[state=checked]:bg-success",
       
       // Focus ring - uses --ring token
       "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
