@@ -289,7 +289,7 @@ export default function ButtonDocs() {
                 </tr>
                 <tr>
                   <td className="p-4 font-mono text-xs">--secondary</td>
-                  <td className="p-4 font-mono text-xs text-muted-foreground">#fafafa</td>
+                  <td className="p-4 font-mono text-xs text-muted-foreground">#f5f5f5</td>
                   <td className="p-4 text-muted-foreground">Secondary button background</td>
                 </tr>
                 <tr>
