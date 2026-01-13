@@ -351,49 +351,6 @@ export default function Example() {
             </code>
           </div>
         </div>
-
-        {/* Props Table */}
-        <div className="mt-8 space-y-4">
-          <h2 className="text-2xl font-bold tracking-tight">Props</h2>
-          <div className="overflow-hidden rounded-lg border">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b bg-muted/50">
-                  <th className="px-4 py-3 text-left font-medium">Prop</th>
-                  <th className="px-4 py-3 text-left font-medium">Type</th>
-                  <th className="px-4 py-3 text-left font-medium">Default</th>
-                  <th className="px-4 py-3 text-left font-medium">Description</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-b">
-                  <td className="px-4 py-3 font-mono">variant</td>
-                  <td className="px-4 py-3 font-mono text-muted-foreground">
-                    "default" | "secondary" | "destructive" | "ghost"
-                  </td>
-                  <td className="px-4 py-3 font-mono text-muted-foreground">"default"</td>
-                  <td className="px-4 py-3">The visual style of the button.</td>
-                </tr>
-                <tr className="border-b">
-                  <td className="px-4 py-3 font-mono">size</td>
-                  <td className="px-4 py-3 font-mono text-muted-foreground">
-                    "sm" | "default" | "lg"
-                  </td>
-                  <td className="px-4 py-3 font-mono text-muted-foreground">"default"</td>
-                  <td className="px-4 py-3">The size of the button.</td>
-                </tr>
-                <tr className="border-b">
-                  <td className="px-4 py-3 font-mono">asChild</td>
-                  <td className="px-4 py-3 font-mono text-muted-foreground">boolean</td>
-                  <td className="px-4 py-3 font-mono text-muted-foreground">false</td>
-                  <td className="px-4 py-3">
-                    Change the default rendered element for the one passed as a child.
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
       </div>
     </div>
   )
