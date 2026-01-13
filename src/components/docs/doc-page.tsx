@@ -17,7 +17,7 @@ export function DocPage({ title, description, category = "Components", children 
         
         {/* Title + Description */}
         <div className="space-y-1">
-          <h1>{title}</h1>
+          <h1 className="font-medium">{title}</h1>
           <p className="text-lg text-muted-foreground">{description}</p>
         </div>
       </div>
