@@ -8,27 +8,16 @@ const badgeVariants = cva(
   {
     variants: {
       variant: {
-        // Neutral - gray
-        neutral: "bg-muted text-muted-foreground",
-        
-        // Info - blue
-        info: "bg-info/10 text-info",
-        
-        // Success - green
-        success: "bg-success/10 text-success",
-        
-        // Warning - amber
-        warning: "bg-warning/10 text-warning-foreground",
-        
-        // Critical - red
-        critical: "bg-destructive/10 text-destructive",
-        
-        // Solid variants (filled background)
-        "neutral-solid": "bg-secondary-foreground text-background",
+        default: "bg-muted text-muted-foreground",
+        info: "bg-info-subtle text-info",
         "info-solid": "bg-info text-info-foreground",
+        success: "bg-success-subtle text-success",
         "success-solid": "bg-success text-success-foreground",
+        warning: "bg-warning-subtle text-warning",
         "warning-solid": "bg-warning text-warning-foreground",
-        "critical-solid": "bg-destructive text-destructive-foreground",
+        destructive: "bg-destructive-subtle text-destructive",
+        "destructive-solid": "bg-destructive text-destructive-foreground",
+        outline: "border border-border text-foreground bg-transparent",
       },
       size: {
         sm: "h-5 px-2 text-xs",
@@ -36,7 +25,7 @@ const badgeVariants = cva(
       },
     },
     defaultVariants: {
-      variant: "neutral",
+      variant: "default",
       size: "default",
     },
   }
