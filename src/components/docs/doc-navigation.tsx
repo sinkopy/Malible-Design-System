@@ -11,6 +11,7 @@ const allPages = [
   { href: "/switch", label: "Switch", category: "Components" },
   { href: "/checkbox", label: "Checkbox", category: "Components" },
   { href: "/radio", label: "Radio", category: "Components" },
+  { href: "/separator", label: "Separator", category: "Components" },
 ];
 
 interface DocNavigationProps {

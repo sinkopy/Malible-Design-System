@@ -19,6 +19,7 @@ const navSections = [
       { href: "/switch", label: "Switch" },
       { href: "/checkbox", label: "Checkbox" },
       { href: "/radio", label: "Radio" },
+      { href: "/separator", label: "Separator" },
     ],
   },
 ];
