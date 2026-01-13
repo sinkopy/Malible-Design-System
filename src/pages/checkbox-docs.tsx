@@ -1,17 +1,14 @@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import { Timestamp } from "@/components/docs";
+import { DocPage, Timestamp } from "@/components/docs";
 
 export default function CheckboxDocs() {
   return (
-    <div className="space-y-8 p-8">
-      <div>
-        <p className="text-sm text-muted-foreground">Docs/Components/Checkbox</p>
-        <h1>Checkbox</h1>
-        <p className="text-muted-foreground">
-          A control for selecting one or more items from a set.
-        </p>
-      </div>
+    <DocPage
+      title="Checkbox"
+      description="A control for selecting one or more items from a set."
+      category="Components"
+    >
 
       <section className="space-y-4">
         <h2>Default</h2>
@@ -110,6 +107,6 @@ export default function CheckboxDocs() {
       </section>
 
       <Timestamp date="13-01-2026" />
-    </div>
+    </DocPage>
   );
 }

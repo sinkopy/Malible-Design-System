@@ -1,17 +1,14 @@
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
-import { Timestamp } from "@/components/docs";
+import { DocPage, Timestamp } from "@/components/docs";
 
 export default function SwitchDocs() {
   return (
-    <div className="space-y-8 p-8">
-      <div>
-        <p className="text-sm text-muted-foreground">Docs/Components/Switch</p>
-        <h1>Switch</h1>
-        <p className="text-muted-foreground">
-          A toggle control for binary on/off states.
-        </p>
-      </div>
+    <DocPage
+      title="Switch"
+      description="A toggle control for binary on/off states."
+      category="Components"
+    >
 
       <section className="space-y-4">
         <h2>Default</h2>
@@ -98,6 +95,6 @@ export default function SwitchDocs() {
       </section>
 
       <Timestamp date="13-01-2026" />
-    </div>
+    </DocPage>
   );
 }

@@ -72,6 +72,7 @@ export default function ColorsDocs() {
     <DocPage
       title="Colors"
       description="The color system for consistent, accessible interfaces."
+      category="Foundation"
     >
       <DocSection title="Core Colors" description="Primary palette for actions and UI.">
         <ColorTable colors={coreColors} />

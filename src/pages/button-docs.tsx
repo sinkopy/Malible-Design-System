@@ -20,6 +20,7 @@ export default function ButtonDocs() {
     <DocPage
       title="Button"
       description="Displays a button or a component that looks like a button."
+      category="Components"
     >
       <DocSection title="Default">
         <ComponentExample code={`<Button>Button</Button>`}>

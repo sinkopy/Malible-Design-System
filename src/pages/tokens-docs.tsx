@@ -14,6 +14,7 @@ export default function TokensDocs() {
     <DocPage
       title="Design Tokens"
       description="The foundational values that power the design system."
+      category="Foundation"
     >
       {/* Download */}
       <DocSection title="Download">

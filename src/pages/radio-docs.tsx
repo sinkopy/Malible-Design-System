@@ -1,17 +1,14 @@
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-import { Timestamp } from "@/components/docs";
+import { DocPage, Timestamp } from "@/components/docs";
 
 export default function RadioDocs() {
   return (
-    <div className="space-y-8 p-8">
-      <div>
-        <p className="text-sm text-muted-foreground">Docs/Components/Radio</p>
-        <h1>Radio Group</h1>
-        <p className="text-muted-foreground">
-          A set of checkable buttons where only one can be checked at a time.
-        </p>
-      </div>
+    <DocPage
+      title="Radio Group"
+      description="A set of checkable buttons where only one can be checked at a time."
+      category="Components"
+    >
 
       <section className="space-y-4">
         <h2>Default</h2>
@@ -127,6 +124,6 @@ export default function RadioDocs() {
       </section>
 
       <Timestamp date="13-01-2026" />
-    </div>
+    </DocPage>
   );
 }

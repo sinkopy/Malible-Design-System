@@ -5,6 +5,7 @@ export default function TypographyDocs() {
     <DocPage
       title="Typography"
       description="A consistent type scale for hierarchy and readability."
+      category="Foundation"
     >
       {/* Scale Overview */}
       <DocSection title="Type Scale">

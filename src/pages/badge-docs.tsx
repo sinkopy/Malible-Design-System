@@ -1,5 +1,5 @@
 import { Badge } from "@/components/ui/badge";
-import { Timestamp } from "@/components/docs";
+import { DocPage, Timestamp } from "@/components/docs";
 
 // Inline SVG icons (since lucide-react is not installed)
 const CheckIcon = () => (
@@ -33,14 +33,11 @@ const AlertTriangleIcon = () => (
 
 export default function BadgeDocs() {
   return (
-    <div className="space-y-8 p-8">
-      <div>
-        <p className="text-sm text-muted-foreground">Docs/Components/Badge</p>
-        <h1>Badge</h1>
-        <p className="text-muted-foreground">
-          Badges are used to inform users of status or categorization.
-        </p>
-      </div>
+    <DocPage
+      title="Badge"
+      description="Badges are used to inform users of status or categorization."
+      category="Components"
+    >
 
       {/* Subtle Variants */}
       <section className="space-y-4">
@@ -233,6 +230,6 @@ export default function BadgeDocs() {
       </section>
 
       <Timestamp date="13-01-2026" />
-    </div>
+    </DocPage>
   );
 }
