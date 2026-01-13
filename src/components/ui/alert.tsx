@@ -1,18 +1,17 @@
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
-import { Info, CheckCircle, Warning, WarningCircle } from "@phosphor-icons/react"
 import { cn } from "@/lib/utils"
 
 const alertVariants = cva(
-  "relative w-full rounded-lg p-3 flex gap-2 items-start shadow-sm",
+  "relative w-full rounded-lg p-3 shadow-sm [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-3 [&>svg]:top-3 [&>svg]:size-5",
   {
     variants: {
       variant: {
-        default: "bg-background border border-border text-foreground",
-        info: "bg-info-subtle text-foreground",
-        success: "bg-success-subtle text-foreground",
-        warning: "bg-warning-subtle text-foreground",
-        destructive: "bg-destructive-subtle text-foreground",
+        default: "bg-background border border-border text-foreground [&>svg]:text-foreground",
+        info: "bg-info-subtle text-foreground [&>svg]:text-info",
+        success: "bg-success-subtle text-foreground [&>svg]:text-success",
+        warning: "bg-warning-subtle text-foreground [&>svg]:text-warning",
+        destructive: "bg-destructive-subtle text-destructive [&>svg]:text-destructive",
       },
     },
     defaultVariants: {
@@ -21,59 +20,26 @@ const alertVariants = cva(
   }
 )
 
-const iconMap = {
-  default: Info,
-  info: Info,
-  success: CheckCircle,
-  warning: Warning,
-  destructive: WarningCircle,
-}
-
-const iconColorMap = {
-  default: "text-foreground",
-  info: "text-info",
-  success: "text-success",
-  warning: "text-warning",
-  destructive: "text-destructive",
-}
-
-interface AlertProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof alertVariants> {
-  showIcon?: boolean
-}
-
-const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
-  ({ className, variant = "default", showIcon = true, children, ...props }, ref) => {
-    const Icon = iconMap[variant || "default"]
-    const iconColor = iconColorMap[variant || "default"]
-    
-    return (
-      <div
-        ref={ref}
-        role="alert"
-        className={cn(alertVariants({ variant }), className)}
-        {...props}
-      >
-        {showIcon && <Icon size={20} className={cn("shrink-0 mt-0.5", iconColor)} weight="fill" />}
-        <div className="flex-1 space-y-0.5">{children}</div>
-      </div>
-    )
-  }
-)
+const Alert = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof alertVariants>
+>(({ className, variant, ...props }, ref) => (
+  <div
+    ref={ref}
+    role="alert"
+    className={cn(alertVariants({ variant }), className)}
+    {...props}
+  />
+))
 Alert.displayName = "Alert"
 
 const AlertTitle = React.forwardRef<
   HTMLParagraphElement,
-  React.HTMLAttributes<HTMLHeadingElement> & { variant?: "default" | "destructive" }
->(({ className, variant = "default", ...props }, ref) => (
+  React.HTMLAttributes<HTMLHeadingElement>
+>(({ className, ...props }, ref) => (
   <h5
     ref={ref}
-    className={cn(
-      "text-sm font-semibold leading-5 tracking-tight",
-      variant === "destructive" ? "text-destructive" : "text-foreground",
-      className
-    )}
+    className={cn("text-sm font-semibold leading-5 tracking-tight", className)}
     {...props}
   />
 ))
