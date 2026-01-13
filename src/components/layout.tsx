@@ -21,6 +21,7 @@ const navSections = [
       { href: "/radio", label: "Radio" },
       { href: "/separator", label: "Separator" },
       { href: "/label", label: "Label" },
+      { href: "/textarea", label: "Textarea" },
     ],
   },
 ];

@@ -13,6 +13,7 @@ const allPages = [
   { href: "/radio", label: "Radio", category: "Components" },
   { href: "/separator", label: "Separator", category: "Components" },
   { href: "/label", label: "Label", category: "Components" },
+  { href: "/textarea", label: "Textarea", category: "Components" },
 ];
 
 interface DocNavigationProps {
