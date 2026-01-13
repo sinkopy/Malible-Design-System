@@ -20,6 +20,7 @@ const navSections = [
       { href: "/checkbox", label: "Checkbox" },
       { href: "/radio", label: "Radio" },
       { href: "/separator", label: "Separator" },
+      { href: "/label", label: "Label" },
     ],
   },
 ];
