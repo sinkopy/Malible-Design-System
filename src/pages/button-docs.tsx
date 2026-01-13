@@ -1,19 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { DocPage, DocSection, ComponentExample, Timestamp } from "@/components/docs";
-
-// Inline SVG icons (since lucide-react is not installed)
-const MailIcon = ({ className }: { className?: string }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <rect width="20" height="16" x="2" y="4" rx="2"/>
-    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-  </svg>
-);
-
-const Loader2Icon = ({ className }: { className?: string }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
-  </svg>
-);
+import { Envelope, SpinnerGap } from "@phosphor-icons/react";
 
 export default function ButtonDocs() {
   return (
@@ -75,12 +62,12 @@ export default function ButtonDocs() {
       <DocSection title="With Icon">
         <ComponentExample
           code={`<Button>
-  <MailIcon className="h-4 w-4" />
+  <Envelope size={16} />
   Login with Email
 </Button>`}
         >
           <Button>
-            <MailIcon className="h-4 w-4" />
+            <Envelope size={16} />
             Login with Email
           </Button>
         </ComponentExample>
@@ -89,12 +76,12 @@ export default function ButtonDocs() {
       <DocSection title="Loading">
         <ComponentExample
           code={`<Button disabled>
-  <Loader2Icon className="h-4 w-4 animate-spin" />
+  <SpinnerGap size={16} className="animate-spin" />
   Please wait
 </Button>`}
         >
           <Button disabled>
-            <Loader2Icon className="h-4 w-4 animate-spin" />
+            <SpinnerGap size={16} className="animate-spin" />
             Please wait
           </Button>
         </ComponentExample>

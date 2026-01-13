@@ -119,7 +119,7 @@
     font-family: var(--font-heading);
     font-size: 2.25rem;
     line-height: 2.5rem;
-    font-weight: 500;  /* DemiBold in TT Commons Pro Typekit */
+    font-weight: 500 !important;  /* DemiBold in TT Commons Pro Typekit */
     letter-spacing: -0.025em;
   }
   

@@ -1,35 +1,6 @@
 import { Badge } from "@/components/ui/badge";
-import { DocPage, Timestamp } from "@/components/docs";
-
-// Inline SVG icons (since lucide-react is not installed)
-const CheckIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M20 6 9 17l-5-5"/>
-  </svg>
-);
-
-const XIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M18 6 6 18"/>
-    <path d="m6 6 12 12"/>
-  </svg>
-);
-
-const InfoIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="10"/>
-    <path d="M12 16v-4"/>
-    <path d="M12 8h.01"/>
-  </svg>
-);
-
-const AlertTriangleIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/>
-    <path d="M12 9v4"/>
-    <path d="M12 17h.01"/>
-  </svg>
-);
+import { DocPage, DocSection, CodeBlock, Timestamp } from "@/components/docs";
+import { Check, X, Info, Warning } from "@phosphor-icons/react";
 
 export default function BadgeDocs() {
   return (
@@ -38,13 +9,7 @@ export default function BadgeDocs() {
       description="Badges are used to inform users of status or categorization."
       category="Components"
     >
-
-      {/* Subtle Variants */}
-      <section className="space-y-4">
-        <h2>Subtle Variants</h2>
-        <p className="text-muted-foreground">
-          Low-emphasis badges with tinted backgrounds.
-        </p>
+      <DocSection title="Subtle Variants" description="Low-emphasis badges with tinted backgrounds.">
         <div className="flex items-center justify-center rounded-lg border bg-background p-8">
           <div className="flex flex-wrap items-center gap-2">
             <Badge>Default</Badge>
@@ -55,22 +20,15 @@ export default function BadgeDocs() {
             <Badge variant="outline">Outline</Badge>
           </div>
         </div>
-        <pre className="rounded-lg bg-muted px-4 py-3 text-sm">
-{`<Badge>Default</Badge>
+        <CodeBlock code={`<Badge>Default</Badge>
 <Badge variant="info">Info</Badge>
 <Badge variant="success">Success</Badge>
 <Badge variant="warning">Warning</Badge>
 <Badge variant="destructive">Destructive</Badge>
-<Badge variant="outline">Outline</Badge>`}
-        </pre>
-      </section>
+<Badge variant="outline">Outline</Badge>`} />
+      </DocSection>
 
-      {/* Solid Variants */}
-      <section className="space-y-4">
-        <h2>Solid Variants</h2>
-        <p className="text-muted-foreground">
-          High-emphasis badges with solid backgrounds.
-        </p>
+      <DocSection title="Solid Variants" description="High-emphasis badges with solid backgrounds.">
         <div className="flex items-center justify-center rounded-lg border bg-background p-8">
           <div className="flex flex-wrap items-center gap-2">
             <Badge variant="info-solid">Info</Badge>
@@ -79,93 +37,68 @@ export default function BadgeDocs() {
             <Badge variant="destructive-solid">Destructive</Badge>
           </div>
         </div>
-        <pre className="rounded-lg bg-muted px-4 py-3 text-sm">
-{`<Badge variant="info-solid">Info</Badge>
+        <CodeBlock code={`<Badge variant="info-solid">Info</Badge>
 <Badge variant="success-solid">Success</Badge>
 <Badge variant="warning-solid">Warning</Badge>
-<Badge variant="destructive-solid">Destructive</Badge>`}
-        </pre>
-      </section>
+<Badge variant="destructive-solid">Destructive</Badge>`} />
+      </DocSection>
 
-      {/* Sizes */}
-      <section className="space-y-4">
-        <h2>Sizes</h2>
-        <p className="text-muted-foreground">
-          Available in small (20px) and default (24px) sizes.
-        </p>
+      <DocSection title="Sizes" description="Available in small (20px) and default (24px) sizes.">
         <div className="flex items-center justify-center rounded-lg border bg-background p-8">
           <div className="flex items-center gap-4">
             <Badge size="sm">Small</Badge>
             <Badge size="default">Default</Badge>
           </div>
         </div>
-        <pre className="rounded-lg bg-muted px-4 py-3 text-sm">
-{`<Badge size="sm">Small</Badge>
-<Badge size="default">Default</Badge>`}
-        </pre>
-      </section>
+        <CodeBlock code={`<Badge size="sm">Small</Badge>
+<Badge size="default">Default</Badge>`} />
+      </DocSection>
 
-      {/* With Icon */}
-      <section className="space-y-4">
-        <h2>With Icon</h2>
-        <p className="text-muted-foreground">
-          Icons are passed via the icon prop and automatically sized.
-        </p>
+      <DocSection title="With Icon" description="Icons are passed via the icon prop and automatically sized.">
         <div className="flex items-center justify-center rounded-lg border bg-background p-8">
           <div className="flex flex-wrap items-center gap-2">
-            <Badge variant="success-solid" icon={<CheckIcon />}>
+            <Badge variant="success-solid" icon={<Check size={14} />}>
               Complete
             </Badge>
-            <Badge variant="destructive-solid" icon={<XIcon />}>
+            <Badge variant="destructive-solid" icon={<X size={14} />}>
               Failed
             </Badge>
-            <Badge variant="info" icon={<InfoIcon />}>
+            <Badge variant="info" icon={<Info size={14} />}>
               Pending
             </Badge>
-            <Badge variant="warning" icon={<AlertTriangleIcon />}>
+            <Badge variant="warning" icon={<Warning size={14} />}>
               Caution
             </Badge>
           </div>
         </div>
-        <pre className="rounded-lg bg-muted px-4 py-3 text-sm">
-{`<Badge variant="success-solid" icon={<CheckIcon />}>
+        <CodeBlock code={`<Badge variant="success-solid" icon={<Check size={14} />}>
   Complete
 </Badge>
-<Badge variant="destructive-solid" icon={<XIcon />}>
+<Badge variant="destructive-solid" icon={<X size={14} />}>
   Failed
-</Badge>`}
-        </pre>
-      </section>
+</Badge>`} />
+      </DocSection>
 
-      {/* Small with Icon */}
-      <section className="space-y-4">
-        <h2>Small with Icon</h2>
-        <p className="text-muted-foreground">
-          Icons scale down automatically in small badges.
-        </p>
+      <DocSection title="Small with Icon" description="Icons scale down automatically in small badges.">
         <div className="flex items-center justify-center rounded-lg border bg-background p-8">
           <div className="flex flex-wrap items-center gap-2">
-            <Badge variant="success" size="sm" icon={<CheckIcon />}>
+            <Badge variant="success" size="sm" icon={<Check size={14} />}>
               Done
             </Badge>
-            <Badge variant="destructive" size="sm" icon={<XIcon />}>
+            <Badge variant="destructive" size="sm" icon={<X size={14} />}>
               Error
             </Badge>
-            <Badge variant="info" size="sm" icon={<InfoIcon />}>
+            <Badge variant="info" size="sm" icon={<Info size={14} />}>
               New
             </Badge>
           </div>
         </div>
-        <pre className="rounded-lg bg-muted px-4 py-3 text-sm">
-{`<Badge variant="success" size="sm" icon={<CheckIcon />}>
+        <CodeBlock code={`<Badge variant="success" size="sm" icon={<Check size={14} />}>
   Done
-</Badge>`}
-        </pre>
-      </section>
+</Badge>`} />
+      </DocSection>
 
-      {/* Props */}
-      <section className="space-y-4">
-        <h2>Props</h2>
+      <DocSection title="Props">
         <div className="rounded-lg border overflow-hidden">
           <table className="w-full text-sm">
             <thead className="bg-muted/50">
@@ -189,11 +122,9 @@ export default function BadgeDocs() {
             </tbody>
           </table>
         </div>
-      </section>
+      </DocSection>
 
-      {/* Design Tokens */}
-      <section className="space-y-4">
-        <h2>Design Tokens</h2>
+      <DocSection title="Design Tokens">
         <div className="rounded-lg border overflow-hidden">
           <table className="w-full text-sm">
             <thead className="bg-muted/50">
@@ -227,7 +158,7 @@ export default function BadgeDocs() {
             </tbody>
           </table>
         </div>
-      </section>
+      </DocSection>
 
       <Timestamp date="13-01-2026" />
     </DocPage>

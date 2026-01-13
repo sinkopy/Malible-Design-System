@@ -17,7 +17,7 @@ export function DocPage({ title, description, category = "Components", children 
         
         {/* Title + Description */}
         <div className="space-y-1">
-          <h1 className="font-[650]">{title}</h1>
+          <h1>{title}</h1>
           <p className="text-lg text-muted-foreground">{description}</p>
         </div>
       </div>
@@ -40,7 +40,7 @@ export function DocSection({ title, description, children }: DocSectionProps) {
   return (
     <div className="space-y-4">
       <div className="space-y-1">
-        <h2>{title}</h2>
+        <p className="text-lg font-medium">{title}</p>
         {description && (
           <p className="text-sm text-muted-foreground">{description}</p>
         )}

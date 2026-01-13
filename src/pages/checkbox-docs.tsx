@@ -1,6 +1,6 @@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import { DocPage, Timestamp } from "@/components/docs";
+import { DocPage, DocSection, CodeBlock, Timestamp } from "@/components/docs";
 
 export default function CheckboxDocs() {
   return (
@@ -9,25 +9,20 @@ export default function CheckboxDocs() {
       description="A control for selecting one or more items from a set."
       category="Components"
     >
-
-      <section className="space-y-4">
-        <h2>Default</h2>
+      <DocSection title="Default">
         <div className="flex items-center justify-center rounded-lg border bg-background p-8 text-left">
           <div className="flex items-center gap-2">
             <Checkbox id="terms" />
             <Label htmlFor="terms">Accept terms and conditions</Label>
           </div>
         </div>
-        <pre className="rounded-lg bg-muted px-4 py-3 text-sm">
-{`<Checkbox id="terms" />
-<Label htmlFor="terms">Accept terms</Label>`}
-        </pre>
-      </section>
+        <CodeBlock code={`<Checkbox id="terms" />
+<Label htmlFor="terms">Accept terms</Label>`} />
+      </DocSection>
 
-      <section className="space-y-4">
-        <h2>States</h2>
+      <DocSection title="States">
         <div className="flex items-center justify-center rounded-lg border bg-background p-8 text-left">
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
               <Checkbox id="unchecked" />
               <Label htmlFor="unchecked">Unchecked</Label>
@@ -42,17 +37,14 @@ export default function CheckboxDocs() {
             </div>
           </div>
         </div>
-        <pre className="rounded-lg bg-muted px-4 py-3 text-sm">
-{`<Checkbox />
+        <CodeBlock code={`<Checkbox />
 <Checkbox defaultChecked />
-<Checkbox checked="indeterminate" />`}
-        </pre>
-      </section>
+<Checkbox checked="indeterminate" />`} />
+      </DocSection>
 
-      <section className="space-y-4">
-        <h2>Disabled</h2>
+      <DocSection title="Disabled">
         <div className="flex items-center justify-center rounded-lg border bg-background p-8 text-left">
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
               <Checkbox id="disabled-unchecked" disabled />
               <Label htmlFor="disabled-unchecked" className="text-muted-foreground">Disabled</Label>
@@ -63,14 +55,11 @@ export default function CheckboxDocs() {
             </div>
           </div>
         </div>
-        <pre className="rounded-lg bg-muted px-4 py-3 text-sm">
-{`<Checkbox disabled />
-<Checkbox disabled defaultChecked />`}
-        </pre>
-      </section>
+        <CodeBlock code={`<Checkbox disabled />
+<Checkbox disabled defaultChecked />`} />
+      </DocSection>
 
-      <section className="space-y-4">
-        <h2>Props</h2>
+      <DocSection title="Props">
         <div className="rounded-lg border overflow-hidden">
           <table className="w-full text-sm">
             <thead className="bg-muted/50">
@@ -104,7 +93,7 @@ export default function CheckboxDocs() {
             </tbody>
           </table>
         </div>
-      </section>
+      </DocSection>
 
       <Timestamp date="13-01-2026" />
     </DocPage>

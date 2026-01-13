@@ -1,6 +1,6 @@
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
-import { DocPage, Timestamp } from "@/components/docs";
+import { DocPage, DocSection, CodeBlock, Timestamp } from "@/components/docs";
 
 export default function SwitchDocs() {
   return (
@@ -9,36 +9,28 @@ export default function SwitchDocs() {
       description="A toggle control for binary on/off states."
       category="Components"
     >
-
-      <section className="space-y-4">
-        <h2>Default</h2>
+      <DocSection title="Default">
         <div className="flex items-center justify-center rounded-lg border bg-background p-8">
           <div className="flex items-center gap-2">
             <Switch id="default-switch" />
             <Label htmlFor="default-switch">Airplane Mode</Label>
           </div>
         </div>
-        <pre className="rounded-lg bg-muted px-4 py-3 text-sm">
-{`<Switch id="airplane" />
-<Label htmlFor="airplane">Airplane Mode</Label>`}
-        </pre>
-      </section>
+        <CodeBlock code={`<Switch id="airplane" />
+<Label htmlFor="airplane">Airplane Mode</Label>`} />
+      </DocSection>
 
-      <section className="space-y-4">
-        <h2>Checked</h2>
+      <DocSection title="Checked">
         <div className="flex items-center justify-center rounded-lg border bg-background p-8">
           <div className="flex items-center gap-2">
             <Switch id="checked-switch" defaultChecked />
             <Label htmlFor="checked-switch">Notifications</Label>
           </div>
         </div>
-        <pre className="rounded-lg bg-muted px-4 py-3 text-sm">
-{`<Switch id="notifications" defaultChecked />`}
-        </pre>
-      </section>
+        <CodeBlock code={`<Switch id="notifications" defaultChecked />`} />
+      </DocSection>
 
-      <section className="space-y-4">
-        <h2>Disabled</h2>
+      <DocSection title="Disabled">
         <div className="flex items-center justify-center rounded-lg border bg-background p-8">
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
@@ -51,14 +43,11 @@ export default function SwitchDocs() {
             </div>
           </div>
         </div>
-        <pre className="rounded-lg bg-muted px-4 py-3 text-sm">
-{`<Switch disabled />
-<Switch disabled defaultChecked />`}
-        </pre>
-      </section>
+        <CodeBlock code={`<Switch disabled />
+<Switch disabled defaultChecked />`} />
+      </DocSection>
 
-      <section className="space-y-4">
-        <h2>Props</h2>
+      <DocSection title="Props">
         <div className="rounded-lg border overflow-hidden">
           <table className="w-full text-sm">
             <thead className="bg-muted/50">
@@ -92,7 +81,7 @@ export default function SwitchDocs() {
             </tbody>
           </table>
         </div>
-      </section>
+      </DocSection>
 
       <Timestamp date="13-01-2026" />
     </DocPage>

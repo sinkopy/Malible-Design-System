@@ -63,7 +63,7 @@ export default function TypographyDocs() {
 
       {/* Visual Examples */}
       <DocSection title="Examples">
-        <div className="space-y-6 rounded-lg border p-8">
+        <div className="space-y-8 rounded-lg border p-8">
           <div className="space-y-1">
             <p className="text-xs text-muted-foreground font-mono">Display / h1 / 36px</p>
             <h1>The quick brown fox jumps</h1>
@@ -125,7 +125,7 @@ export default function TypographyDocs() {
 
       {/* Font Samples */}
       <DocSection title="Font Samples">
-        <div className="space-y-4 rounded-lg border p-8">
+        <div className="space-y-8 rounded-lg border p-8">
           <div className="space-y-1">
             <p className="text-xs text-muted-foreground">TT Commons Pro (Headings)</p>
             <p className="font-heading text-2xl font-semibold">
@@ -161,7 +161,7 @@ export default function TypographyDocs() {
           <p className="text-muted-foreground">
             The type scale uses clear ratios for visual hierarchy:
           </p>
-          <div className="space-y-2 font-mono text-sm">
+          <div className="space-y-1 font-mono text-sm">
             <p>Display (36px) → Heading (24px) = <span className="text-success font-semibold">1.5×</span></p>
             <p>Heading (24px) → Title (18px) = <span className="text-success font-semibold">1.33×</span></p>
             <p>Title (18px) → Body (14px) = <span className="text-success font-semibold">1.29×</span></p>

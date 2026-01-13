@@ -1,6 +1,6 @@
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-import { DocPage, Timestamp } from "@/components/docs";
+import { DocPage, DocSection, CodeBlock, Timestamp } from "@/components/docs";
 
 export default function RadioDocs() {
   return (
@@ -9,9 +9,7 @@ export default function RadioDocs() {
       description="A set of checkable buttons where only one can be checked at a time."
       category="Components"
     >
-
-      <section className="space-y-4">
-        <h2>Default</h2>
+      <DocSection title="Default">
         <div className="flex items-center justify-center rounded-lg border bg-background p-8">
           <RadioGroup defaultValue="option-1">
             <div className="flex items-center gap-2">
@@ -28,19 +26,16 @@ export default function RadioDocs() {
             </div>
           </RadioGroup>
         </div>
-        <pre className="rounded-lg bg-muted px-4 py-3 text-sm">
-{`<RadioGroup defaultValue="option-1">
+        <CodeBlock code={`<RadioGroup defaultValue="option-1">
   <div className="flex items-center gap-2">
     <RadioGroupItem value="option-1" id="option-1" />
     <Label htmlFor="option-1">Option 1</Label>
   </div>
   ...
-</RadioGroup>`}
-        </pre>
-      </section>
+</RadioGroup>`} />
+      </DocSection>
 
-      <section className="space-y-4">
-        <h2>Horizontal</h2>
+      <DocSection title="Horizontal">
         <div className="flex items-center justify-center rounded-lg border bg-background p-8">
           <RadioGroup defaultValue="sm" className="flex gap-4">
             <div className="flex items-center gap-2">
@@ -57,15 +52,12 @@ export default function RadioDocs() {
             </div>
           </RadioGroup>
         </div>
-        <pre className="rounded-lg bg-muted px-4 py-3 text-sm">
-{`<RadioGroup className="flex gap-4">
+        <CodeBlock code={`<RadioGroup className="flex gap-4">
   ...
-</RadioGroup>`}
-        </pre>
-      </section>
+</RadioGroup>`} />
+      </DocSection>
 
-      <section className="space-y-4">
-        <h2>Disabled</h2>
+      <DocSection title="Disabled">
         <div className="flex items-center justify-center rounded-lg border bg-background p-8">
           <RadioGroup defaultValue="enabled" disabled>
             <div className="flex items-center gap-2">
@@ -78,15 +70,12 @@ export default function RadioDocs() {
             </div>
           </RadioGroup>
         </div>
-        <pre className="rounded-lg bg-muted px-4 py-3 text-sm">
-{`<RadioGroup disabled>
+        <CodeBlock code={`<RadioGroup disabled>
   ...
-</RadioGroup>`}
-        </pre>
-      </section>
+</RadioGroup>`} />
+      </DocSection>
 
-      <section className="space-y-4">
-        <h2>Props</h2>
+      <DocSection title="Props">
         <h3>RadioGroup</h3>
         <div className="rounded-lg border overflow-hidden">
           <table className="w-full text-sm">
@@ -121,7 +110,7 @@ export default function RadioDocs() {
             </tbody>
           </table>
         </div>
-      </section>
+      </DocSection>
 
       <Timestamp date="13-01-2026" />
     </DocPage>

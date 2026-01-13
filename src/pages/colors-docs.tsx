@@ -89,7 +89,7 @@ export default function ColorsDocs() {
       <DocSection title="Usage">
         <div className="rounded-lg border p-8 space-y-4">
           <div>
-            <h4 className="font-medium mb-2">Tailwind Classes</h4>
+            <h4 className="font-medium mb-1">Tailwind Classes</h4>
             <pre className="bg-muted rounded-lg p-4 text-sm overflow-x-auto">
 {`bg-primary          /* Background */
 text-primary        /* Text color */
@@ -101,7 +101,7 @@ text-info           /* Colored text */`}
           </div>
           
           <div>
-            <h4 className="font-medium mb-2">CSS Variables</h4>
+            <h4 className="font-medium mb-1">CSS Variables</h4>
             <pre className="bg-muted rounded-lg p-4 text-sm overflow-x-auto">
 {`background-color: hsl(var(--primary));
 color: hsl(var(--primary-foreground));`}
