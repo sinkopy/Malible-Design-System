@@ -11,6 +11,7 @@ import RadioDocs from "./pages/radio-docs";
 import SeparatorDocs from "./pages/separator-docs";
 import LabelDocs from "./pages/label-docs";
 import TextareaDocs from "./pages/textarea-docs";
+import AlertDocs from "./pages/alert-docs";
 import TypographyDocs from "./pages/typography-docs";
 import ColorsDocs from "./pages/colors-docs";
 import TokensDocs from "./pages/tokens-docs";
@@ -30,6 +31,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="/separator" element={<SeparatorDocs />} />
           <Route path="/label" element={<LabelDocs />} />
           <Route path="/textarea" element={<TextareaDocs />} />
+          <Route path="/alert" element={<AlertDocs />} />
           <Route path="/typography" element={<TypographyDocs />} />
           <Route path="/colors" element={<ColorsDocs />} />
           <Route path="/tokens" element={<TokensDocs />} />
