@@ -6,15 +6,15 @@ interface DocPageProps {
 
 export function DocPage({ title, description, children }: DocPageProps) {
   return (
-    <div className="space-y-8 pb-16">
+    <div className="space-y-8">
       {/* Header */}
       <div className="space-y-2">
-        <h1 className="text-3xl font-bold tracking-tight">{title}</h1>
-        <p className="text-lg text-muted-foreground">{description}</p>
+        <h1>{title}</h1>
+        <p className="text-muted-foreground">{description}</p>
       </div>
 
       {/* Content */}
-      <div className="space-y-12">
+      <div className="space-y-8">
         {children}
       </div>
     </div>
@@ -31,7 +31,7 @@ export function DocSection({ title, description, children }: DocSectionProps) {
   return (
     <div className="space-y-4">
       <div className="space-y-1">
-        <h2 className="text-xl font-semibold tracking-tight">{title}</h2>
+        <h2>{title}</h2>
         {description && (
           <p className="text-sm text-muted-foreground">{description}</p>
         )}

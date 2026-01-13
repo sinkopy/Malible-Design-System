@@ -16,7 +16,7 @@ export default function Layout() {
   return (
     <div className="flex min-h-screen">
       {/* Sidebar */}
-      <aside className="fixed left-0 top-0 h-screen w-56 border-r border-border bg-background p-4">
+      <aside className="fixed left-0 top-0 h-screen w-56 border-r border-border bg-background p-6">
         <div className="mb-8">
           <h1 className="text-lg font-bold">Malible DS</h1>
           <p className="text-xs text-muted-foreground">Design System</p>
@@ -39,9 +39,9 @@ export default function Layout() {
         </nav>
       </aside>
       
-      {/* Main Content - pushed right by sidebar width */}
-      <main className="flex-1 ml-56 p-10">
-        <div className="mx-auto max-w-3xl">
+      {/* Main Content */}
+      <main className="flex-1 ml-56">
+        <div className="mx-auto max-w-3xl px-8 py-8">
           <Outlet />
         </div>
       </main>

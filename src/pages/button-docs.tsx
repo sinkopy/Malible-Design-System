@@ -21,50 +21,43 @@ export default function ButtonDocs() {
       title="Button"
       description="Displays a button or a component that looks like a button."
     >
-      {/* Default */}
       <DocSection title="Default">
         <ComponentExample code={`<Button>Button</Button>`}>
           <Button>Button</Button>
         </ComponentExample>
       </DocSection>
 
-      {/* Secondary */}
       <DocSection title="Secondary">
         <ComponentExample code={`<Button variant="secondary">Secondary</Button>`}>
           <Button variant="secondary">Secondary</Button>
         </ComponentExample>
       </DocSection>
 
-      {/* Destructive */}
       <DocSection title="Destructive">
         <ComponentExample code={`<Button variant="destructive">Destructive</Button>`}>
           <Button variant="destructive">Destructive</Button>
         </ComponentExample>
       </DocSection>
 
-      {/* Outline */}
       <DocSection title="Outline">
         <ComponentExample code={`<Button variant="outline">Outline</Button>`}>
           <Button variant="outline">Outline</Button>
         </ComponentExample>
       </DocSection>
 
-      {/* Ghost */}
       <DocSection title="Ghost">
         <ComponentExample code={`<Button variant="ghost">Ghost</Button>`}>
           <Button variant="ghost">Ghost</Button>
         </ComponentExample>
       </DocSection>
 
-      {/* Link */}
       <DocSection title="Link">
         <ComponentExample code={`<Button variant="link">Link</Button>`}>
           <Button variant="link">Link</Button>
         </ComponentExample>
       </DocSection>
 
-      {/* Sizes */}
-      <DocSection title="Sizes" description="Different button sizes for various contexts.">
+      <DocSection title="Sizes">
         <ComponentExample
           code={`<Button size="sm">Small</Button>
 <Button>Default</Button>
@@ -78,7 +71,6 @@ export default function ButtonDocs() {
         </ComponentExample>
       </DocSection>
 
-      {/* With Icon */}
       <DocSection title="With Icon">
         <ComponentExample
           code={`<Button>
@@ -93,7 +85,6 @@ export default function ButtonDocs() {
         </ComponentExample>
       </DocSection>
 
-      {/* Loading */}
       <DocSection title="Loading">
         <ComponentExample
           code={`<Button disabled>
