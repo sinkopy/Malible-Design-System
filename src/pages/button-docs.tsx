@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 
-export default function ButtonPage() {
+export default function ButtonDocs() {
   return (
     <div className="container relative pb-10">
       <div className="mx-auto flex max-w-[980px] flex-col items-start gap-2 px-4 py-8 md:py-12 md:pb-8 lg:py-24 lg:pb-20">
