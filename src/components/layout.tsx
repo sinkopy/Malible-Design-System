@@ -40,8 +40,10 @@ export default function Layout() {
       </aside>
       
       {/* Main Content - pushed right by sidebar width */}
-      <main className="flex-1 ml-56 p-8">
-        <Outlet />
+      <main className="flex-1 ml-56 p-10">
+        <div className="mx-auto max-w-3xl">
+          <Outlet />
+        </div>
       </main>
     </div>
   );
