@@ -1,0 +1,161 @@
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
+
+@layer base {
+  :root {
+    /* ============================================
+       THEME COLORS - 28 CSS Variables
+       Updated to match Figma exactly
+       ============================================ */
+    
+    /* Background & Foreground */
+    --background: 0 0% 100%;           /* #ffffff */
+    --foreground: 240 6% 10%;          /* #18181b - Neutral/950 */
+    
+    /* Card */
+    --card: 0 0% 100%;                 /* #ffffff */
+    --card-foreground: 240 6% 10%;     /* #18181b */
+    
+    /* Popover */
+    --popover: 0 0% 100%;              /* #ffffff */
+    --popover-foreground: 240 6% 10%;  /* #18181b */
+    
+    /* Primary (Orange) */
+    --primary: 25 95% 53%;             /* #f97316 - Orange/600 */
+    --primary-foreground: 0 0% 100%;   /* #ffffff */
+    
+    /* Secondary (Light Gray) */
+    --secondary: 240 5% 96%;           /* #fafafa - Neutral/50 */
+    --secondary-foreground: 240 4% 26%; /* #3f3f46 - Neutral/700 FIXED */
+    
+    /* Muted (Medium Gray) */
+    --muted: 0 0% 90%;                 /* #e5e5e5 - Neutral/200 FIXED */
+    --muted-foreground: 240 4% 46%;    /* #71717a - Neutral/500 */
+    
+    /* Accent */
+    --accent: 240 5% 96%;              /* #f5f5f6 - Neutral/100 */
+    --accent-foreground: 240 6% 10%;   /* #18181b */
+    
+    /* Destructive (Red) */
+    --destructive: 0 79% 42%;          /* #bf1616 - Figma exact FIXED */
+    --destructive-foreground: 0 0% 100%; /* #ffffff */
+    
+    /* Success (Green) */
+    --success: 142 71% 45%;            /* #22c55e - Green/600 */
+    --success-foreground: 0 0% 100%;   /* #ffffff */
+    
+    /* Warning (Amber) */
+    --warning: 38 92% 50%;             /* #f59e0b - Amber/500 */
+    --warning-foreground: 240 6% 10%;  /* #18181b */
+    
+    /* Info (Blue) */
+    --info: 199 89% 48%;               /* #0ea5e9 - Blue/500 */
+    --info-foreground: 0 0% 100%;      /* #ffffff */
+    
+    /* Borders & Inputs */
+    --border: 0 0% 90%;                /* #e5e5e5 - Neutral/200 FIXED */
+    --input: 0 0% 83%;                 /* #d4d4d4 - Neutral/300 FIXED */
+    --ring: 200 100% 36%;              /* #007ab7 - Focus blue FIXED */
+    
+    /* Radius */
+    --radius: 0.75rem;                 /* 12px - Button radius */
+    --radius-input: 0.5rem;            /* 8px - Input radius */
+
+    /* ============================================
+       BUTTON SHADOW SYSTEM
+       Exact values from Figma API
+       ============================================ */
+    
+    /* Button On-Fill Shadows (primary, destructive) */
+    --shadow-button-onfill-default: 
+      inset 0px 1px 0px 0px rgba(255, 255, 255, 0.2),
+      inset 1px 0px 0px 0px rgba(255, 255, 255, 0.2),
+      inset -1px 0px 0px 0px rgba(11, 10, 10, 0.23),
+      inset 0px 1px 0px 0px rgba(245, 245, 245, 0.32),
+      inset 0px -1px 0px 0px rgba(11, 10, 10, 0.32);
+    
+    --shadow-button-onfill-hover:
+      inset 0px 1px 0px 0px rgba(255, 255, 255, 0.2),
+      inset 1px 0px 0px 0px rgba(255, 255, 255, 0.2),
+      inset -1px 0px 0px 0px rgba(11, 10, 10, 0.23),
+      inset 0px 1px 0px 0px rgba(245, 245, 245, 0.32),
+      inset 0px -2px 0px 0px rgba(11, 10, 10, 0.32);
+    
+    --shadow-button-onfill-active:
+      inset 0px 1px 2px 0px rgba(26, 26, 26, 0.15),
+      inset 0px 4px 2px 0px rgba(26, 26, 26, 0.15);
+    
+    /* Button On-Light Shadows (secondary) */
+    --shadow-button-onlight-default:
+      inset 0px 1px 0px 0px rgba(255, 255, 255, 0.2),
+      inset 1px 0px 0px 0px rgba(255, 255, 255, 0.2),
+      inset -1px 0px 0px 0px rgba(11, 10, 10, 0.23),
+      inset 0px 1px 0px 0px rgba(245, 245, 245, 0.32),
+      inset 0px -1px 0px 0px rgba(11, 10, 10, 0.32);
+    
+    --shadow-button-onlight-hover:
+      inset 0px 1px 0px 0px rgba(255, 255, 255, 0.2),
+      inset 1px 0px 0px 0px rgba(255, 255, 255, 0.2),
+      inset -1px 0px 0px 0px rgba(11, 10, 10, 0.23),
+      inset 0px 1px 0px 0px rgba(245, 245, 245, 0.32),
+      inset 0px -2px 0px 0px rgba(11, 10, 10, 0.32);
+    
+    --shadow-button-onlight-active:
+      inset 0px 1px 2px 0px rgba(26, 26, 26, 0.15),
+      inset 0px 4px 2px 0px rgba(26, 26, 26, 0.15);
+
+    /* ============================================
+       INPUT SHADOW SYSTEM
+       Focus ring values from Figma API
+       ============================================ */
+    
+    --shadow-input-focus: 0 0 0 2px hsl(var(--ring) / 0.32);
+    --shadow-input-error: 0 0 0 2px hsl(var(--destructive) / 0.32);
+  }
+
+  .dark {
+    /* Dark mode tokens - placeholder for future */
+    --background: 240 6% 10%;
+    --foreground: 0 0% 98%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+}
+
+@layer utilities {
+  /* Button Shadow Utilities */
+  .shadow-button-onfill-default {
+    box-shadow: var(--shadow-button-onfill-default);
+  }
+  .shadow-button-onfill-hover {
+    box-shadow: var(--shadow-button-onfill-hover);
+  }
+  .shadow-button-onfill-active {
+    box-shadow: var(--shadow-button-onfill-active);
+  }
+  .shadow-button-onlight-default {
+    box-shadow: var(--shadow-button-onlight-default);
+  }
+  .shadow-button-onlight-hover {
+    box-shadow: var(--shadow-button-onlight-hover);
+  }
+  .shadow-button-onlight-active {
+    box-shadow: var(--shadow-button-onlight-active);
+  }
+  
+  /* Input Shadow Utilities */
+  .shadow-input-focus {
+    box-shadow: var(--shadow-input-focus);
+  }
+  .shadow-input-error {
+    box-shadow: var(--shadow-input-error);
+  }
+}
