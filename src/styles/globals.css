@@ -58,8 +58,7 @@
     --ring: 200 100% 36%;              /* #007ab7 - Focus blue FIXED */
     
     /* Radius */
-    --radius: 0.75rem;                 /* 12px - Button radius */
-    --radius-input: 0.5rem;            /* 8px - Input radius */
+    --radius: 0.5rem;   /* 8px */
 
     /* ============================================
        BUTTON SHADOW SYSTEM
