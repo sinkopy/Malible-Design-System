@@ -19,6 +19,7 @@ const allPages = [
   { href: "/avatar", label: "Avatar", category: "Components" },
   { href: "/breadcrumb", label: "Breadcrumb", category: "Components" },
   { href: "/tabs", label: "Tabs", category: "Components" },
+  { href: "/file-input", label: "FileInput", category: "Components" },
 ];
 
 interface DocNavigationProps {

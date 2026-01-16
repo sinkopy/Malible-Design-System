@@ -61,10 +61,15 @@ const config = {
         muted: {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
+          subtle: "hsl(var(--muted-subtle))",
         },
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
+        },
+        canvas: {
+          DEFAULT: "hsl(var(--canvas))",
+          foreground: "hsl(var(--canvas-foreground))",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",

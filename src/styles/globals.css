@@ -45,6 +45,13 @@
     --destructive-foreground: 0 0% 100%;
     --destructive-subtle: 0 90% 95%;   /* #fde8e8 */
     
+    /* Canvas */
+    --canvas: 265 76% 60%;             /* #914be6 */
+    --canvas-foreground: 270 55% 49%;  /* #7737c4 */
+    
+    /* Muted Subtle */
+    --muted-subtle: 0 0% 96%;          /* #f5f5f5 */
+    
     --border: 0 0% 90%;
     --input: 0 0% 83%;
     --ring: 200 100% 36%;

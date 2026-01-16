@@ -1,8 +1,8 @@
 # Malible Design System
 
-**Status:** In Development  
-**Version:** 0.1.0  
-**Last Updated:** January 2026
+**Status:** Active Development  
+**Version:** 1.2.0  
+**Last Updated:** January 13, 2026
 
 ---
 
@@ -23,20 +23,17 @@ Malible is a production-ready design system built on:
 - [Quick Start Guide](./docs/QUICK_START.md) - Get up and running in 5 minutes
 
 ### Token System
-- [Token System Reference](./docs/TOKEN_SYSTEM.md) - Complete primitives + theme mappings
-- [Figma Setup Guide](./docs/FIGMA_SETUP.md) - How to set up Figma from scratch
+- [Token System Reference](./Docs/TOKEN_SYSTEM.md) - Complete primitives + theme mappings (33 tokens)
 
 ### Component Library
-- [Component Library](./docs/COMPONENT_LIBRARY.md) - Build order and specifications
-- [Component Build Playbook](./docs/COMPONENT_BUILD_PLAYBOOK.md) - Step-by-step component creation
+- [Component Update Log](./Docs/COMPONENT_UPDATE_LOG.md) - Component history and updates
 
 ### Working with AI
-- [AI Context Guide](./docs/AI_CONTEXT_GUIDE.md) - How to resume work with Claude/Cursor
-- [Prompt Templates](./docs/PROMPT_TEMPLATES.md) - Copy-paste prompts for common tasks
+- [AI Context Guide](./Docs/AI_CONTEXT_GUIDE.md) - How to resume work with Claude/Cursor
 
 ### Decision Log
-- [Design Decisions](./docs/DESIGN_DECISIONS.md) - Why we made key architectural choices
-- [Anti-Patterns](./docs/ANTI_PATTERNS.md) - What NOT to do
+- [Design Decisions](./Docs/DESIGN_DECISIONS.md) - Why we made key architectural choices
+- [Anti-Patterns](./Docs/ANTI_PATTERNS.md) - What NOT to do
 - [Changelog](./CHANGELOG.md) - Version history
 
 ---
@@ -45,19 +42,21 @@ Malible is a production-ready design system built on:
 
 ### ✅ Complete
 - [x] Primitives collection (90 variables)
-- [x] Theme collection (28 variables)
+- [x] Theme collection (33 variables)
 - [x] Token architecture finalized
 - [x] Documentation framework
+- [x] **15 components built:** Button, Input, Badge, Switch, Checkbox, Radio, Label, Separator, Textarea, Alert, Card, Avatar, Breadcrumb, Tabs, FileInput
+- [x] **18 documentation pages** (4 foundation + 14 components)
 
 ### 🔄 In Progress
-- [ ] Button component
-- [ ] Input component
-- [ ] Card component
+- [ ] FileInput documentation page (component exists, needs docs)
 
 ### 📋 Planned
-- [ ] Badge component
-- [ ] Alert component
-- [ ] Remaining Tier 1 components
+- [ ] Select component
+- [ ] Dropdown component
+- [ ] Dialog component
+- [ ] Popover component
+- [ ] Tooltip component
 
 ---
 
@@ -85,19 +84,18 @@ Malible is a production-ready design system built on:
 
 ```
 /
-├── docs/                    # All documentation
+├── Docs/                    # All documentation
 │   ├── PROJECT_STRUCTURE.md
 │   ├── TOKEN_SYSTEM.md
-│   ├── COMPONENT_LIBRARY.md
-│   ├── FIGMA_SETUP.md
+│   ├── COMPONENT_UPDATE_LOG.md
 │   ├── AI_CONTEXT_GUIDE.md
 │   └── ...
-├── figma/                   # Figma exports and references
-│   ├── tokens/
-│   ├── components/
-│   └── assets/
+├── Figma/                   # Figma exports and references
+│   └── Tokens/
+│       └── theme.json
 ├── src/                     # Implementation
 │   ├── components/
+│   ├── pages/
 │   ├── styles/
 │   └── ...
 ├── README.md               # This file
@@ -111,10 +109,10 @@ Malible is a production-ready design system built on:
 Currently solo development. Documentation designed to scale to small team (2-3 people).
 
 When bringing others on:
-1. Start with [Quick Start Guide](./docs/QUICK_START.md)
-2. Read [Design Decisions](./docs/DESIGN_DECISIONS.md)
-3. Review [Anti-Patterns](./docs/ANTI_PATTERNS.md)
-4. Follow [Component Build Playbook](./docs/COMPONENT_BUILD_PLAYBOOK.md)
+1. Start with [Quick Start Guide](./Docs/QUICK_START.md)
+2. Read [Design Decisions](./Docs/DESIGN_DECISIONS.md)
+3. Review [Anti-Patterns](./Docs/ANTI_PATTERNS.md)
+4. Check [Component Update Log](./Docs/COMPONENT_UPDATE_LOG.md) for component history
 
 ---
 
@@ -126,14 +124,14 @@ This project is optimized for AI-assisted development:
 - **Claude** for architecture, design decisions, documentation
 - **Cursor** for implementation, component building
 
-See [AI Context Guide](./docs/AI_CONTEXT_GUIDE.md) for effective prompting strategies.
+See [AI Context Guide](./Docs/AI_CONTEXT_GUIDE.md) for effective prompting strategies.
 
 ### Resuming Work
 
 1. Read the relevant doc for your task
 2. Check CHANGELOG.md for recent changes
-3. Use prompt templates from [Prompt Templates](./docs/PROMPT_TEMPLATES.md)
-4. Reference [AI Context Guide](./docs/AI_CONTEXT_GUIDE.md) for context management
+3. Reference [AI Context Guide](./Docs/AI_CONTEXT_GUIDE.md) for context management
+4. Review [Documentation Index](./Docs/DOCUMENTATION_INDEX.md) for complete doc map
 
 ---
 

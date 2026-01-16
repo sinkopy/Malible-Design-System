@@ -293,7 +293,7 @@ For implementation in `globals.css`:
   --popover-foreground: 0 0% 25%;
   
   /* Brand Actions */
-  --primary: 17 83% 53%;
+  --primary: 18 74% 53%;
   --primary-foreground: 0 0% 100%;
   --secondary: 0 0% 96%;
   --secondary-foreground: 0 0% 26%;

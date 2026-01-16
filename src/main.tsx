@@ -16,6 +16,7 @@ import CardDocs from "./pages/card-docs";
 import AvatarDocs from "./pages/avatar-docs";
 import BreadcrumbDocs from "./pages/breadcrumb-docs";
 import TabsDocs from "./pages/tabs-docs";
+import FileInputDocs from "./pages/file-input-docs";
 import TypographyDocs from "./pages/typography-docs";
 import ColorsDocs from "./pages/colors-docs";
 import TokensDocs from "./pages/tokens-docs";
@@ -41,6 +42,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="/avatar" element={<AvatarDocs />} />
           <Route path="/breadcrumb" element={<BreadcrumbDocs />} />
           <Route path="/tabs" element={<TabsDocs />} />
+          <Route path="/file-input" element={<FileInputDocs />} />
           <Route path="/typography" element={<TypographyDocs />} />
           <Route path="/colors" element={<ColorsDocs />} />
           <Route path="/tokens" element={<TokensDocs />} />

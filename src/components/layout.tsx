@@ -28,6 +28,7 @@ const navSections = [
       { href: "/avatar", label: "Avatar" },
       { href: "/breadcrumb", label: "Breadcrumb" },
       { href: "/tabs", label: "Tabs" },
+      { href: "/file-input", label: "FileInput" },
     ],
   },
 ];
