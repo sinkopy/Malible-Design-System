@@ -8,6 +8,7 @@ const navSections = [
       { href: "/tokens", label: "Tokens" },
       { href: "/colors", label: "Colors" },
       { href: "/typography", label: "Typography" },
+      { href: "/shadows", label: "Shadows" },
     ],
   },
   {
@@ -23,6 +24,8 @@ const navSections = [
       { href: "/label", label: "Label" },
       { href: "/textarea", label: "Textarea" },
       { href: "/alert", label: "Alert" },
+      { href: "/card", label: "Card" },
+      { href: "/avatar", label: "Avatar" },
     ],
   },
 ];

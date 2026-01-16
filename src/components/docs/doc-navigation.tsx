@@ -15,6 +15,8 @@ const allPages = [
   { href: "/label", label: "Label", category: "Components" },
   { href: "/textarea", label: "Textarea", category: "Components" },
   { href: "/alert", label: "Alert", category: "Components" },
+  { href: "/card", label: "Card", category: "Components" },
+  { href: "/avatar", label: "Avatar", category: "Components" },
 ];
 
 interface DocNavigationProps {

@@ -12,9 +12,12 @@ import SeparatorDocs from "./pages/separator-docs";
 import LabelDocs from "./pages/label-docs";
 import TextareaDocs from "./pages/textarea-docs";
 import AlertDocs from "./pages/alert-docs";
+import CardDocs from "./pages/card-docs";
+import AvatarDocs from "./pages/avatar-docs";
 import TypographyDocs from "./pages/typography-docs";
 import ColorsDocs from "./pages/colors-docs";
 import TokensDocs from "./pages/tokens-docs";
+import ShadowsDocs from "./pages/shadows-docs";
 import "@/styles/globals.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
@@ -32,9 +35,12 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="/label" element={<LabelDocs />} />
           <Route path="/textarea" element={<TextareaDocs />} />
           <Route path="/alert" element={<AlertDocs />} />
+          <Route path="/card" element={<CardDocs />} />
+          <Route path="/avatar" element={<AvatarDocs />} />
           <Route path="/typography" element={<TypographyDocs />} />
           <Route path="/colors" element={<ColorsDocs />} />
           <Route path="/tokens" element={<TokensDocs />} />
+          <Route path="/shadows" element={<ShadowsDocs />} />
         </Route>
       </Routes>
     </BrowserRouter>
