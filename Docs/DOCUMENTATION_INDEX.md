@@ -33,6 +33,7 @@
 | [PROJECT_STRUCTURE.md](./PROJECT_STRUCTURE.md) | File organization |
 | [DESIGN_DECISIONS.md](./DESIGN_DECISIONS.md) | Why we made key choices |
 | [AI_CONTEXT_GUIDE.md](./AI_CONTEXT_GUIDE.md) | Working with Claude/Cursor |
+| [COMPONENT_UPDATE_LOG.md](./COMPONENT_UPDATE_LOG.md) | Component history and updates |
 
 ### 📝 Working Documents
 

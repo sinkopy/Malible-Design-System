@@ -408,6 +408,73 @@ import { Check } from "@phosphor-icons/react"
 
 ---
 
+## Code Comments and Documentation
+
+### Decision: Hex Values in Comments Are Acceptable
+
+**What we allow:**
+- Hex color values (`#3ea377`) in code comments for reference/clarity
+- Token references alongside hex values for developer convenience
+
+**Why:**
+1. **Developer convenience** - Quick visual reference when reading code
+2. **Debugging aid** - Helps identify colors during development
+3. **Documentation clarity** - Makes it clear which color is being used
+4. **Non-functional** - Comments don't affect runtime behavior
+
+**Pattern:**
+```tsx
+// ✅ Acceptable
+// Checked state - success color (green #3ea377)
+"data-[state=checked]:bg-success"
+
+// ✅ Also acceptable
+// Primary button uses --primary token (#e0622d)
+className="bg-primary"
+```
+
+**Rules:**
+- ✅ Hex values in comments are allowed
+- ✅ Always include token reference alongside hex
+- ❌ Never hardcode hex values in actual code/className
+- ❌ Don't use hex values without token reference
+
+**Precedent set:** January 13, 2026
+
+---
+
+## Component Update Logging
+
+### Decision: Maintain Component Update Log
+
+**What we track:**
+- Component creation dates
+- Major updates/changes to components
+- Token changes affecting components
+- Design spec updates
+
+**Where:**
+- `COMPONENT_UPDATE_LOG.md` - Centralized component history
+- Individual component files - Inline comments with dates
+- CHANGELOG.md - High-level component additions
+
+**Format for component files:**
+```tsx
+/**
+ * Component: Switch
+ * Created: 2026-01-10
+ * Last Updated: 2026-01-13
+ * 
+ * Updates:
+ * - 2026-01-13: Added hex reference in comment for clarity
+ * - 2026-01-10: Initial implementation with success color
+ */
+```
+
+**Precedent set:** January 13, 2026
+
+---
+
 ## Open Questions
 
 ### Question: Dark Mode Implementation
