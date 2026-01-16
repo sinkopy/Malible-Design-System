@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/layout";
 import ButtonDocs from "./pages/button-docs";
 import IconButtonDocs from "./pages/icon-button-docs";
+import TooltipDocs from "./pages/tooltip-docs";
 import InputDocs from "./pages/input-docs";
 import BadgeDocs from "./pages/badge-docs";
 import SwitchDocs from "./pages/switch-docs";
@@ -31,6 +32,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <Route element={<Layout />}>
           <Route path="/" element={<ButtonDocs />} />
           <Route path="/icon-button" element={<IconButtonDocs />} />
+          <Route path="/tooltip" element={<TooltipDocs />} />
           <Route path="/input" element={<InputDocs />} />
           <Route path="/badge" element={<BadgeDocs />} />
           <Route path="/switch" element={<SwitchDocs />} />

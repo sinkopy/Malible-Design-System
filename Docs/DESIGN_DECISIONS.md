@@ -475,6 +475,23 @@ className="bg-primary"
 
 ---
 
+## Component-Specific Decisions
+
+### Decision: Tooltip Component
+
+| Decision | Choice | Rationale |
+|----------|--------|-----------|
+| Background color | `--foreground` (#09090b) | Darker than Figma's #3f3f46; better contrast, consistent with inverted UI pattern |
+| Padding | 8px uniform | Matches Figma; consistent with spacing system |
+| Radius | 8px | Matches system --radius token |
+| Font weight | 500 (Medium) | Figma spec; slightly bolder for readability on dark bg |
+| Max width | 200px | Prevents overly wide tooltips; forces text wrap |
+| Arrow | fill-foreground | Must match tooltip background color |
+
+**Date:** January 13, 2026
+
+---
+
 ## Open Questions
 
 ### Question: Dark Mode Implementation
