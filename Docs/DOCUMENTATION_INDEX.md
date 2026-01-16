@@ -40,7 +40,7 @@
 | Doc | Purpose |
 |-----|---------|
 | [CHANGELOG.md](../CHANGELOG.md) | Version history |
-| [GAP_ANALYSIS.md](./GAP_ANALYSIS.md) | Documentation gap analysis |
+| [COMPREHENSIVE_GAP_ANALYSIS.md](./COMPREHENSIVE_GAP_ANALYSIS.md) | Complete project gap analysis |
 | This file | Navigation |
 
 ---
