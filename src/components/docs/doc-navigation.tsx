@@ -6,6 +6,7 @@ const allPages = [
   { href: "/colors", label: "Colors", category: "Foundation" },
   { href: "/typography", label: "Typography", category: "Foundation" },
   { href: "/", label: "Button", category: "Components" },
+  { href: "/icon-button", label: "Icon Button", category: "Components" },
   { href: "/input", label: "Input", category: "Components" },
   { href: "/badge", label: "Badge", category: "Components" },
   { href: "/switch", label: "Switch", category: "Components" },

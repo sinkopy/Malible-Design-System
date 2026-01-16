@@ -15,6 +15,7 @@ const navSections = [
     title: "Components",
     items: [
       { href: "/", label: "Button" },
+      { href: "/icon-button", label: "Icon Button" },
       { href: "/input", label: "Input" },
       { href: "/badge", label: "Badge" },
       { href: "/switch", label: "Switch" },
