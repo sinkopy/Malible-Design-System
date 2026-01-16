@@ -27,6 +27,7 @@ const navSections = [
       { href: "/card", label: "Card" },
       { href: "/avatar", label: "Avatar" },
       { href: "/breadcrumb", label: "Breadcrumb" },
+      { href: "/tabs", label: "Tabs" },
     ],
   },
 ];

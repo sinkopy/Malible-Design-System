@@ -15,6 +15,7 @@ import AlertDocs from "./pages/alert-docs";
 import CardDocs from "./pages/card-docs";
 import AvatarDocs from "./pages/avatar-docs";
 import BreadcrumbDocs from "./pages/breadcrumb-docs";
+import TabsDocs from "./pages/tabs-docs";
 import TypographyDocs from "./pages/typography-docs";
 import ColorsDocs from "./pages/colors-docs";
 import TokensDocs from "./pages/tokens-docs";
@@ -39,6 +40,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="/card" element={<CardDocs />} />
           <Route path="/avatar" element={<AvatarDocs />} />
           <Route path="/breadcrumb" element={<BreadcrumbDocs />} />
+          <Route path="/tabs" element={<TabsDocs />} />
           <Route path="/typography" element={<TypographyDocs />} />
           <Route path="/colors" element={<ColorsDocs />} />
           <Route path="/tokens" element={<TokensDocs />} />
