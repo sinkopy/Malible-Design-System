@@ -5,7 +5,6 @@ import * as React from "react"
 
 export default function SliderDocs() {
   const [singleValue, setSingleValue] = React.useState([50])
-  const [rangeValue, setRangeValue] = React.useState([25, 75])
   const [labeledValue, setLabeledValue] = React.useState([40, 60])
 
   return (
@@ -135,7 +134,7 @@ const [value, setValue] = useState([50])
               </tr>
               <tr className="border-b border-border">
                 <td className="py-2 px-4 text-sm text-foreground font-medium">onValueChange</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">(value: number[]) => void</td>
+                <td className="py-2 px-4 text-sm text-muted-foreground">{"(value: number[]) => void"}</td>
                 <td className="py-2 px-4 text-sm text-muted-foreground">-</td>
                 <td className="py-2 px-4 text-sm text-muted-foreground">Callback when value changes.</td>
               </tr>
