@@ -506,6 +506,19 @@ className="bg-primary"
 
 ---
 
+### Scroll Area
+
+| Decision | Choice | Rationale |
+|----------|--------|-----------|
+| Scrollbar width | 6px | Figma spec; thin, unobtrusive |
+| Thumb background | `--muted` | Subtle, matches system |
+| Thumb hover | `--muted-foreground` | Darker on hover for feedback |
+| Thumb radius | full (pill) | Smooth, modern appearance |
+
+**Date:** January 16, 2026
+
+---
+
 ## Open Questions
 
 ### Question: Dark Mode Implementation

@@ -1,8 +1,9 @@
 # Malible Design System - Current Context
 
-**Date:** January 13, 2026  
+**Date:** January 16, 2026  
 **Version:** 1.2  
-**Status:** Documentation site live at localhost:5173
+**Status:** Documentation site live at localhost:5174  
+**Progress:** 15/23 components complete (65%)
 
 ---
 
@@ -26,9 +27,9 @@
 | Avatar | sm/default/lg, circle/square | Radix UI Avatar primitive |
 | Breadcrumb | Link, Page, Separator, Ellipsis | Phosphor icons (CaretRight, DotsThree) |
 | Tabs | pill (default), underline | Pill uses --info for underline variant |
-| FileInput | styled file upload | ⚠️ Component exists, needs docs page |
+| FileInput | styled file upload | Component + docs complete |
 
-### ✅ Documentation Pages (18)
+### ✅ Documentation Pages (19)
 
 **Foundation:**
 - `/tokens` - Design tokens, spacing, radius, shadows
@@ -51,16 +52,27 @@
 - `/avatar`
 - `/breadcrumb`
 - `/tabs`
+- `/file-input`
 
-### 🔲 Next Components
+### 🔲 Next Components (8 Remaining)
 
-1. Select
-2. Dropdown
-3. Dialog
-4. Popover
-5. Tooltip
-6. Progress
-7. Skeleton
+**Priority: High**
+1. Select - Dropdown with trigger + list (Medium complexity)
+2. Dialog - Modal overlay (Medium complexity)
+
+**Priority: Medium**
+3. Dropdown Menu - Context menus (Medium complexity)
+4. Popover - Floating content (Medium complexity)
+
+**Priority: Low**
+5. Icon Button - Button size variants (Low - extends Button)
+6. Tooltip - Hover hints (Low)
+7. Slider - Range input (Low)
+8. Scroll Area - Custom scrollbar (Low)
+
+**Future Scope:**
+- Progress
+- Skeleton
 
 ---
 
@@ -228,13 +240,19 @@ docs/                 # Markdown documentation
 
 ## Next Immediate Actions
 
-1. Create FileInput documentation page (component exists but missing docs)
-2. Design Select in Figma
-3. Extract specs via Figma API
-4. Implement in code
-5. Add documentation pages
+**Quick Wins (2 hours):**
+1. Icon Button - Add size variants to Button component
+2. Tooltip - Radix primitive + minimal styling
+3. Slider - Track/thumb styling
+4. Scroll Area - Custom scrollbar
+
+**High Priority (4 hours):**
+5. Select - Trigger + dropdown implementation
+6. Dialog - Modal overlay + transitions
+7. Dropdown Menu - Context menu patterns
+8. Popover - Floating content positioning
 
 ---
 
-**Last Updated:** January 13, 2026  
-**Next Session:** FileInput docs + Select component
+**Last Updated:** January 16, 2026  
+**Next Session:** Icon Button + Quick wins → 78% complete
