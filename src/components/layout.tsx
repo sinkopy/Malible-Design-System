@@ -19,6 +19,7 @@ const navSections = [
       { href: "/tooltip", label: "Tooltip" },
       { href: "/slider", label: "Slider" },
       { href: "/scroll-area", label: "Scroll Area" },
+      { href: "/select", label: "Select" },
       { href: "/input", label: "Input" },
       { href: "/badge", label: "Badge" },
       { href: "/switch", label: "Switch" },

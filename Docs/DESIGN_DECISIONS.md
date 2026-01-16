@@ -519,6 +519,21 @@ className="bg-primary"
 
 ---
 
+### Select
+
+| Decision | Choice | Rationale |
+|----------|--------|-----------|
+| Sizes | 1 (default 40px only) | Simplicity; sm rarely needed for Select |
+| 2-line variants | Removed | Use external Label component instead |
+| Menu item states | 5 (Default, Hover, Selected, Disabled, Destructive) | Covers all use cases |
+| Checkmark position | Right side | ShadCN pattern |
+| Error state | `error` prop on trigger | Explicit, not className-based |
+| Left decorations | Via className/children | Not built into component |
+
+**Date:** January 17, 2026
+
+---
+
 ## Open Questions
 
 ### Question: Dark Mode Implementation

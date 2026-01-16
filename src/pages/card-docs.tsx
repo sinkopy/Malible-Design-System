@@ -84,7 +84,7 @@ export default function CardDocs() {
               <p className="text-sm text-muted-foreground">This action cannot be undone.</p>
             </CardContent>
             <CardFooter>
-              <Button variant="outline">Cancel</Button>
+              <Button variant="secondary">Cancel</Button>
               <Button>Confirm</Button>
             </CardFooter>
           </Card>

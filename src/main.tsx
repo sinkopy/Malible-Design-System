@@ -7,6 +7,7 @@ import IconButtonDocs from "./pages/icon-button-docs";
 import TooltipDocs from "./pages/tooltip-docs";
 import SliderDocs from "./pages/slider-docs";
 import ScrollAreaDocs from "./pages/scroll-area-docs";
+import SelectDocs from "./pages/select-docs";
 import InputDocs from "./pages/input-docs";
 import BadgeDocs from "./pages/badge-docs";
 import SwitchDocs from "./pages/switch-docs";
@@ -37,6 +38,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="/tooltip" element={<TooltipDocs />} />
           <Route path="/slider" element={<SliderDocs />} />
           <Route path="/scroll-area" element={<ScrollAreaDocs />} />
+          <Route path="/select" element={<SelectDocs />} />
           <Route path="/input" element={<InputDocs />} />
           <Route path="/badge" element={<BadgeDocs />} />
           <Route path="/switch" element={<SwitchDocs />} />

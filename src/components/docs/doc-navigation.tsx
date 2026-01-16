@@ -10,6 +10,7 @@ const allPages = [
   { href: "/tooltip", label: "Tooltip", category: "Components" },
   { href: "/slider", label: "Slider", category: "Components" },
   { href: "/scroll-area", label: "Scroll Area", category: "Components" },
+  { href: "/select", label: "Select", category: "Components" },
   { href: "/input", label: "Input", category: "Components" },
   { href: "/badge", label: "Badge", category: "Components" },
   { href: "/switch", label: "Switch", category: "Components" },
