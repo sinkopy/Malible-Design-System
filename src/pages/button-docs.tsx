@@ -27,12 +27,6 @@ export default function ButtonDocs() {
         </ComponentExample>
       </DocSection>
 
-      <DocSection title="Outline" description="Lower emphasis. Good for secondary actions in dense UIs.">
-        <ComponentExample code={`<Button variant="outline">Outline</Button>`}>
-          <Button variant="outline">Outline</Button>
-        </ComponentExample>
-      </DocSection>
-
       <DocSection title="Ghost" description="Minimal emphasis. Use for tertiary actions or toolbars.">
         <ComponentExample code={`<Button variant="ghost">Ghost</Button>`}>
           <Button variant="ghost">Ghost</Button>

@@ -70,7 +70,7 @@ export default function CardDocs() {
     <p>This action cannot be undone.</p>
   </CardContent>
   <CardFooter>
-    <Button variant="outline">Cancel</Button>
+    <Button variant="secondary">Cancel</Button>
     <Button>Confirm</Button>
   </CardFooter>
 </Card>`}
