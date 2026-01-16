@@ -492,6 +492,20 @@ className="bg-primary"
 
 ---
 
+### Decision: Slider Component
+
+| Decision | Choice | Rationale |
+|----------|--------|-----------|
+| Thumb size | 16×16 | Figma spec; compact, clean appearance |
+| Thumb border | 1px `--muted-foreground` | Figma spec; subtle gray border instead of bold primary |
+| Track height | 4px | Standard slider track height |
+| Range support | Included | Radix handles dual thumbs natively via array values |
+| Focus ring | ring-2, ring-offset-1 | Consistent with other form components |
+
+**Date:** January 16, 2026
+
+---
+
 ## Open Questions
 
 ### Question: Dark Mode Implementation
