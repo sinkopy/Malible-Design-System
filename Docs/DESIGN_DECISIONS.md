@@ -564,6 +564,23 @@ className="bg-primary"
 
 ---
 
+### Dialog
+
+| Decision | Choice | Rationale |
+|----------|--------|-----------|
+| Overlay opacity | 50% | Lighter than Figma's 60%; less intrusive |
+| Shadow | shadow-lg | Figma spec |
+| Padding | 16px (header/footer) | Figma spec; more compact |
+| Max-width | 480px | More focused than Figma's 640px |
+| Radius | 12px (rounded-xl) | Figma spec; softer than 8px |
+| Header border | Default on | Separator between header and content |
+| Footer border | Default on | Separator between content and footer |
+| Close button | DialogCloseButton component | Consistent pattern |
+
+**Date:** January 17, 2026
+
+---
+
 ## Open Questions
 
 ### Question: Dark Mode Implementation
