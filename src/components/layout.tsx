@@ -41,15 +41,19 @@ export default function Layout() {
   return (
     <div className="flex min-h-screen">
       {/* Sidebar */}
-      <aside className="fixed left-0 top-0 h-screen w-56 border-r border-border bg-background p-6">
-        <div className="mb-6 flex items-center gap-2 px-3">
-          <img src="/malible-logo.svg" alt="Malible" className="h-8 w-8" />
-          <div>
-            <p className="text-base font-medium leading-none">Malible</p>
-            <p className="text-xs text-muted-foreground mt-0.5">v1.2</p>
+      <aside className="fixed left-0 top-0 h-screen w-56 flex flex-col border-r border-border bg-background">
+        {/* Fixed header/logo - does NOT scroll */}
+        <div className="shrink-0 p-6 pb-4 border-b border-border">
+          <div className="flex items-center gap-2 px-3">
+            <img src="/malible-logo.svg" alt="Malible" className="h-8 w-8" />
+            <div>
+              <p className="text-base font-medium leading-none">Malible</p>
+              <p className="text-xs text-muted-foreground mt-0.5">v1.2</p>
+            </div>
           </div>
         </div>
-        <nav className="space-y-6">
+        {/* Scrollable navigation - THIS scrolls */}
+        <nav className="flex-1 overflow-y-auto p-6 pt-4 space-y-6">
           {navSections.map((section) => (
             <div key={section.title} className="space-y-1">
               <p className="px-3 text-xs font-medium text-muted-foreground uppercase tracking-wider">

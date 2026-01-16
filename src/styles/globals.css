@@ -168,6 +168,24 @@
 }
 
 @layer utilities {
+  /* Subtle scrollbar for sidebar navigation */
+  nav::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  nav::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  nav::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted));
+    border-radius: 3px;
+  }
+
+  nav::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground));
+  }
+
   .shadow-button-onfill-default {
     box-shadow: var(--shadow-button-onfill-default);
   }
