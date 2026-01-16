@@ -81,7 +81,12 @@ const config = {
         sm: "calc(var(--radius) - 4px)",
       },
       boxShadow: {
-        sm: "0 1px 3px -1px rgba(26, 26, 26, 0.1), 0 1px 2px 0 rgba(26, 26, 26, 0.06)",
+        xs: "var(--shadow-xs)",
+        sm: "var(--shadow-sm)",
+        md: "var(--shadow-md)",
+        lg: "var(--shadow-lg)",
+        xl: "var(--shadow-xl)",
+        "sm-default": "0 1px 3px -1px rgba(26, 26, 26, 0.1), 0 1px 2px 0 rgba(26, 26, 26, 0.06)",
         'button-onfill-default': 'var(--shadow-button-onfill-default)',
         'button-onfill-hover': 'var(--shadow-button-onfill-hover)',
         'button-onfill-active': 'var(--shadow-button-onfill-active)',
