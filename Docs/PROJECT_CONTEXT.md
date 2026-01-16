@@ -8,7 +8,7 @@
 
 ## Project Status
 
-### ✅ Completed Components (6)
+### ✅ Completed Components (15)
 
 | Component | Variants | Key Decisions |
 |-----------|----------|---------------|
@@ -18,13 +18,23 @@
 | Switch | on/off, disabled | Checked uses --success (green) |
 | Checkbox | unchecked, checked, indeterminate, disabled | - |
 | Radio | via RadioGroup | - |
+| Label | default, with peer states | Radix UI Label primitive |
+| Separator | horizontal, vertical | Radix UI Separator primitive |
+| Textarea | default, error, disabled | Matches Input styling pattern |
+| Alert | default, info, success, warning, destructive | ShadCN pattern (icons as children) |
+| Card | Header, Title, Description, Content, Footer | Radix UI patterns |
+| Avatar | sm/default/lg, circle/square | Radix UI Avatar primitive |
+| Breadcrumb | Link, Page, Separator, Ellipsis | Phosphor icons (CaretRight, DotsThree) |
+| Tabs | pill (default), underline | Pill uses --info for underline variant |
+| FileInput | styled file upload | ⚠️ Component exists, needs docs page |
 
-### ✅ Documentation Pages (9)
+### ✅ Documentation Pages (18)
 
 **Foundation:**
 - `/tokens` - Design tokens, spacing, radius, shadows
 - `/colors` - Color system with swatches  
 - `/typography` - Type scale, font families
+- `/shadows` - Shadow system (5 levels)
 
 **Components:**
 - `/` (Button)
@@ -33,15 +43,24 @@
 - `/switch`
 - `/checkbox`
 - `/radio`
+- `/separator`
+- `/label`
+- `/textarea`
+- `/alert`
+- `/card`
+- `/avatar`
+- `/breadcrumb`
+- `/tabs`
 
 ### 🔲 Next Components
 
-1. Label
-2. Separator
-3. Card
-4. Alert
-5. Select
-6. Textarea
+1. Select
+2. Dropdown
+3. Dialog
+4. Popover
+5. Tooltip
+6. Progress
+7. Skeleton
 
 ---
 
@@ -209,8 +228,8 @@ docs/                 # Markdown documentation
 
 ## Next Immediate Actions
 
-1. Design Label in Figma
-2. Design Separator in Figma
+1. Create FileInput documentation page (component exists but missing docs)
+2. Design Select in Figma
 3. Extract specs via Figma API
 4. Implement in code
 5. Add documentation pages
@@ -218,4 +237,4 @@ docs/                 # Markdown documentation
 ---
 
 **Last Updated:** January 13, 2026  
-**Next Session:** Label + Separator components
+**Next Session:** FileInput docs + Select component

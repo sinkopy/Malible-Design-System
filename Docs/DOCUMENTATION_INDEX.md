@@ -8,10 +8,10 @@
 
 ## What We Have
 
-✅ **6 components built** (Button, Input, Badge, Switch, Checkbox, Radio)  
+✅ **15 components built** (Button, Input, Badge, Switch, Checkbox, Radio, Label, Separator, Textarea, Alert, Card, Avatar, Breadcrumb, Tabs, FileInput)  
 ✅ **33 theme tokens** (90 Primitives + 33 Theme)  
 ✅ **Documentation site** running at localhost:5173  
-✅ **Full documentation system** (7 core documents)  
+✅ **Full documentation system** (8 core documents)  
 ✅ **AI-optimized workflows** (Figma API integration)
 
 ---
@@ -39,6 +39,7 @@
 | Doc | Purpose |
 |-----|---------|
 | [CHANGELOG.md](../CHANGELOG.md) | Version history |
+| [GAP_ANALYSIS.md](./GAP_ANALYSIS.md) | Documentation gap analysis |
 | This file | Navigation |
 
 ---
@@ -87,12 +88,21 @@ The design system has a live documentation site:
 | `/tokens` | Design tokens (spacing, radius, shadows) |
 | `/colors` | Color system with swatches |
 | `/typography` | Type scale, font families |
+| `/shadows` | Shadow system (5 levels) |
 | `/` | Button component |
 | `/input` | Input component |
 | `/badge` | Badge component |
 | `/switch` | Switch component |
 | `/checkbox` | Checkbox component |
 | `/radio` | Radio component |
+| `/separator` | Separator component |
+| `/label` | Label component |
+| `/textarea` | Textarea component |
+| `/alert` | Alert component |
+| `/card` | Card component |
+| `/avatar` | Avatar component |
+| `/breadcrumb` | Breadcrumb component |
+| `/tabs` | Tabs component |
 
 ---
 
@@ -108,10 +118,15 @@ The design system has a live documentation site:
 | Switch | ✅ Complete | On/off, disabled |
 | Checkbox | ✅ Complete | Unchecked, checked, indeterminate |
 | Radio | ✅ Complete | Via RadioGroup |
-| Label | 🔲 Next | - |
-| Separator | 🔲 Next | - |
-| Card | 🔲 Planned | - |
-| Alert | 🔲 Planned | - |
+| Label | ✅ Complete | Default, with peer states |
+| Separator | ✅ Complete | Horizontal, vertical |
+| Textarea | ✅ Complete | Default, error, disabled |
+| Alert | ✅ Complete | 5 variants (default, info, success, warning, destructive) |
+| Card | ✅ Complete | With Header, Title, Description, Content, Footer |
+| Avatar | ✅ Complete | 3 sizes, 2 shapes (circle/square) |
+| Breadcrumb | ✅ Complete | With Link, Page, Separator, Ellipsis |
+| Tabs | ✅ Complete | 2 variants (pill, underline) |
+| FileInput | ⚠️ Needs Docs | Styled file upload |
 
 ### Tokens
 

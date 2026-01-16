@@ -17,14 +17,21 @@ malible-design-system/
 ├── src/
 │   ├── components/
 │   │   ├── ui/                     # ShadCN-style components
-│   │   │   ├── button.tsx
-│   │   │   ├── input.tsx
+│   │   │   ├── alert.tsx
+│   │   │   ├── avatar.tsx
 │   │   │   ├── badge.tsx
-│   │   │   ├── switch.tsx
+│   │   │   ├── breadcrumb.tsx
+│   │   │   ├── button.tsx
+│   │   │   ├── card.tsx
 │   │   │   ├── checkbox.tsx
-│   │   │   ├── radio-group.tsx
+│   │   │   ├── file-input.tsx
+│   │   │   ├── input.tsx
 │   │   │   ├── label.tsx
-│   │   │   └── file-input.tsx
+│   │   │   ├── radio-group.tsx
+│   │   │   ├── separator.tsx
+│   │   │   ├── switch.tsx
+│   │   │   ├── tabs.tsx
+│   │   │   └── textarea.tsx
 │   │   │
 │   │   ├── docs/                   # Documentation components
 │   │   │   ├── doc-page.tsx        # Page wrapper with breadcrumb
@@ -37,15 +44,24 @@ malible-design-system/
 │   │   └── layout.tsx              # App layout with sidebar
 │   │
 │   ├── pages/                      # Documentation pages
-│   │   ├── button-docs.tsx
-│   │   ├── input-docs.tsx
+│   │   ├── alert-docs.tsx
+│   │   ├── avatar-docs.tsx
 │   │   ├── badge-docs.tsx
-│   │   ├── switch-docs.tsx
+│   │   ├── breadcrumb-docs.tsx
+│   │   ├── button-docs.tsx
+│   │   ├── card-docs.tsx
 │   │   ├── checkbox-docs.tsx
-│   │   ├── radio-docs.tsx
-│   │   ├── typography-docs.tsx
 │   │   ├── colors-docs.tsx
-│   │   └── tokens-docs.tsx
+│   │   ├── input-docs.tsx
+│   │   ├── label-docs.tsx
+│   │   ├── radio-docs.tsx
+│   │   ├── separator-docs.tsx
+│   │   ├── shadows-docs.tsx
+│   │   ├── switch-docs.tsx
+│   │   ├── tabs-docs.tsx
+│   │   ├── textarea-docs.tsx
+│   │   ├── tokens-docs.tsx
+│   │   └── typography-docs.tsx
 │   │
 │   ├── styles/
 │   │   └── globals.css             # Theme variables + base styles
@@ -92,14 +108,21 @@ malible-design-system/
 
 | File | Contains |
 |------|----------|
-| `button.tsx` | 6 variants, 3 sizes, 3 icon sizes |
-| `input.tsx` | Default, disabled, error states |
+| `alert.tsx` | 5 variants (default, info, success, warning, destructive) |
+| `avatar.tsx` | 3 sizes, 2 shapes (circle/square) |
 | `badge.tsx` | 10 variants, 2 sizes |
-| `switch.tsx` | Green success when checked |
+| `breadcrumb.tsx` | Link, Page, Separator, Ellipsis components |
+| `button.tsx` | 6 variants, 3 sizes, 3 icon sizes |
+| `card.tsx` | Header, Title, Description, Content, Footer |
 | `checkbox.tsx` | Unchecked, checked, indeterminate |
-| `radio-group.tsx` | Radio group + items |
-| `label.tsx` | Form labels |
 | `file-input.tsx` | Styled file upload |
+| `input.tsx` | Default, disabled, error states |
+| `label.tsx` | Form labels with peer states |
+| `radio-group.tsx` | Radio group + items |
+| `separator.tsx` | Horizontal, vertical dividers |
+| `switch.tsx` | Green success when checked |
+| `tabs.tsx` | Pill and underline variants |
+| `textarea.tsx` | Default, error, disabled states |
 
 ### Documentation Components
 
@@ -165,7 +188,8 @@ malible-design-system/
 FOUNDATION
 ├── /tokens      → tokens-docs.tsx
 ├── /colors      → colors-docs.tsx
-└── /typography  → typography-docs.tsx
+├── /typography  → typography-docs.tsx
+└── /shadows     → shadows-docs.tsx
 
 COMPONENTS
 ├── /            → button-docs.tsx (home)
@@ -173,7 +197,15 @@ COMPONENTS
 ├── /badge       → badge-docs.tsx
 ├── /switch      → switch-docs.tsx
 ├── /checkbox    → checkbox-docs.tsx
-└── /radio       → radio-docs.tsx
+├── /radio       → radio-docs.tsx
+├── /separator   → separator-docs.tsx
+├── /label       → label-docs.tsx
+├── /textarea    → textarea-docs.tsx
+├── /alert       → alert-docs.tsx
+├── /card        → card-docs.tsx
+├── /avatar      → avatar-docs.tsx
+├── /breadcrumb  → breadcrumb-docs.tsx
+└── /tabs        → tabs-docs.tsx
 ```
 
 ### Page Order (for navigation)
@@ -186,6 +218,14 @@ COMPONENTS
 7. Switch
 8. Checkbox
 9. Radio
+10. Separator
+11. Label
+12. Textarea
+13. Alert
+14. Card
+15. Avatar
+16. Breadcrumb
+17. Tabs
 
 ---
 

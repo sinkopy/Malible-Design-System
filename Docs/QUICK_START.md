@@ -13,12 +13,12 @@
 - Rule: Implementation sanity > semantic purity
 
 **What's Built:**
-- ✅ 6 components: Button, Input, Badge, Switch, Checkbox, Radio
+- ✅ 15 components: Button, Input, Badge, Switch, Checkbox, Radio, Label, Separator, Textarea, Alert, Card, Avatar, Breadcrumb, Tabs, FileInput
 - ✅ 33 theme tokens
 - ✅ Documentation site at localhost:5173
 - ✅ Full specs in Figma
 
-**Next:** Label, Separator, Card, Alert
+**Next:** Select, Dropdown, Dialog, Popover, Tooltip
 
 ---
 
@@ -127,6 +127,15 @@ className="bg-primary-hover"
 | Switch | on/off with success color | `@/components/ui/switch` |
 | Checkbox | unchecked, checked, indeterminate | `@/components/ui/checkbox` |
 | Radio | via RadioGroup | `@/components/ui/radio-group` |
+| Label | default, with peer states | `@/components/ui/label` |
+| Separator | horizontal, vertical | `@/components/ui/separator` |
+| Textarea | default, error, disabled | `@/components/ui/textarea` |
+| Alert | default, info, success, warning, destructive | `@/components/ui/alert` |
+| Card | with Header, Title, Description, Content, Footer | `@/components/ui/card` |
+| Avatar | sm/default/lg, circle/square | `@/components/ui/avatar` |
+| Breadcrumb | with Link, Page, Separator, Ellipsis | `@/components/ui/breadcrumb` |
+| Tabs | pill, underline variants | `@/components/ui/tabs` |
+| FileInput | styled file upload | `@/components/ui/file-input` |
 
 ### 5. Icon Usage
 
