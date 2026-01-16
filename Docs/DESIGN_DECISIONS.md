@@ -534,6 +534,21 @@ className="bg-primary"
 
 ---
 
+### Popover
+
+| Decision | Choice | Rationale |
+|----------|--------|-----------|
+| Padding | 16px | Figma spec; more spacious than dropdown/select |
+| Border | 1px `--border` | Consistent with other floating elements |
+| Radius | 8px | System standard |
+| Shadow | shadow-md | Consistent with tooltip, dropdown |
+| Default width | w-72 (288px) | Figma reference; overridable via className |
+| sideOffset | 4px | Slight gap from trigger |
+
+**Date:** January 17, 2026
+
+---
+
 ## Open Questions
 
 ### Question: Dark Mode Implementation
