@@ -549,6 +549,21 @@ className="bg-primary"
 
 ---
 
+### Dropdown Menu
+
+| Decision | Choice | Rationale |
+|----------|--------|-----------|
+| Container styling | Same as Select dropdown | Consistency |
+| Item styling | Same as SelectItem | Shared menu pattern |
+| Checkmark position | Left side | Standard menu convention (different from Select) |
+| `destructive` prop | On DropdownMenuItem | Explicit danger styling |
+| Icon sizing | 16px via [&>svg]:size-4 | Consistent, auto-applied |
+| Shortcut component | Separate span | Allows custom keyboard hints |
+
+**Date:** January 17, 2026
+
+---
+
 ## Open Questions
 
 ### Question: Dark Mode Implementation

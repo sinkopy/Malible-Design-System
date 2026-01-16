@@ -9,6 +9,7 @@ import SliderDocs from "./pages/slider-docs";
 import ScrollAreaDocs from "./pages/scroll-area-docs";
 import SelectDocs from "./pages/select-docs";
 import PopoverDocs from "./pages/popover-docs";
+import DropdownMenuDocs from "./pages/dropdown-menu-docs";
 import InputDocs from "./pages/input-docs";
 import BadgeDocs from "./pages/badge-docs";
 import SwitchDocs from "./pages/switch-docs";
@@ -41,6 +42,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="/scroll-area" element={<ScrollAreaDocs />} />
           <Route path="/select" element={<SelectDocs />} />
           <Route path="/popover" element={<PopoverDocs />} />
+          <Route path="/dropdown-menu" element={<DropdownMenuDocs />} />
           <Route path="/input" element={<InputDocs />} />
           <Route path="/badge" element={<BadgeDocs />} />
           <Route path="/switch" element={<SwitchDocs />} />

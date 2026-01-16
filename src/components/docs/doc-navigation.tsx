@@ -12,6 +12,7 @@ const allPages = [
   { href: "/scroll-area", label: "Scroll Area", category: "Components" },
   { href: "/select", label: "Select", category: "Components" },
   { href: "/popover", label: "Popover", category: "Components" },
+  { href: "/dropdown-menu", label: "Dropdown Menu", category: "Components" },
   { href: "/input", label: "Input", category: "Components" },
   { href: "/badge", label: "Badge", category: "Components" },
   { href: "/switch", label: "Switch", category: "Components" },

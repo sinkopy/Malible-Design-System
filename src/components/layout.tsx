@@ -21,6 +21,7 @@ const navSections = [
       { href: "/scroll-area", label: "Scroll Area" },
       { href: "/select", label: "Select" },
       { href: "/popover", label: "Popover" },
+      { href: "/dropdown-menu", label: "Dropdown Menu" },
       { href: "/input", label: "Input" },
       { href: "/badge", label: "Badge" },
       { href: "/switch", label: "Switch" },
