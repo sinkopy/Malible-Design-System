@@ -17,6 +17,7 @@ const allPages = [
   { href: "/alert", label: "Alert", category: "Components" },
   { href: "/card", label: "Card", category: "Components" },
   { href: "/avatar", label: "Avatar", category: "Components" },
+  { href: "/breadcrumb", label: "Breadcrumb", category: "Components" },
 ];
 
 interface DocNavigationProps {
