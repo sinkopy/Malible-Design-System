@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "@phosphor-icons/react";
 
 const allPages = [
+  { href: "/getting-started", label: "Getting Started", category: "Foundation" },
   { href: "/tokens", label: "Tokens", category: "Foundation" },
   { href: "/colors", label: "Colors", category: "Foundation" },
   { href: "/typography", label: "Typography", category: "Foundation" },

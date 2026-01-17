@@ -5,6 +5,7 @@ const navSections = [
   {
     title: "Foundation",
     items: [
+      { href: "/getting-started", label: "Getting Started" },
       { href: "/tokens", label: "Tokens" },
       { href: "/colors", label: "Colors" },
       { href: "/typography", label: "Typography" },

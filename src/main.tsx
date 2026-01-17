@@ -30,6 +30,7 @@ import TypographyDocs from "./pages/typography-docs";
 import ColorsDocs from "./pages/colors-docs";
 import TokensDocs from "./pages/tokens-docs";
 import ShadowsDocs from "./pages/shadows-docs";
+import GettingStarted from "./pages/getting-started";
 import "@/styles/globals.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
@@ -37,6 +38,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
+          <Route path="/getting-started" element={<GettingStarted />} />
           <Route path="/" element={<ButtonDocs />} />
           <Route path="/icon-button" element={<IconButtonDocs />} />
           <Route path="/tooltip" element={<TooltipDocs />} />
