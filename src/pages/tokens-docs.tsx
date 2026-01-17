@@ -10,8 +10,8 @@ export default function TokensDocs() {
     >
       {/* Download */}
       <DocSection title="Download" description="Get all tokens as JSON for tooling integration.">
-        <a 
-          href="/malible-tokens.json" 
+        <a
+          href="/malible-tokens.json"
           download="malible-tokens.json"
           className="inline-flex items-center gap-2 rounded-lg border bg-background px-4 py-2 text-sm font-medium hover:bg-muted transition-colors"
         >
@@ -21,18 +21,18 @@ export default function TokensDocs() {
       </DocSection>
 
       {/* Spacing */}
-      <DocSection title="Spacing" description="Consistent spacing scale for layout and components.">
-        <div className="rounded-lg border overflow-hidden">
+      <DocSection title="Spacing" description="Consistent spacing scale for layout and components." level={2}>
+        <div className="rounded-lg border border-border/50 overflow-hidden">
           <table className="w-full text-sm">
-            <thead className="bg-muted/50">
+            <thead className="bg-muted/30">
               <tr>
-                <th className="text-left p-4 font-medium">Token</th>
-                <th className="text-left p-4 font-medium">Value</th>
-                <th className="text-left p-4 font-medium">Tailwind</th>
-                <th className="text-left p-4 font-medium">Preview</th>
+                <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Token</th>
+                <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Value</th>
+                <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Tailwind</th>
+                <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Preview</th>
               </tr>
             </thead>
-            <tbody className="divide-y">
+            <tbody className="divide-y divide-border/50">
               {[
                 { token: "space-0", value: "0px", tw: "p-0, m-0, gap-0" },
                 { token: "space-2", value: "2px", tw: "p-0.5, m-0.5, gap-0.5" },
@@ -44,12 +44,12 @@ export default function TokensDocs() {
                 { token: "space-32", value: "32px", tw: "p-8, m-8, gap-8" },
               ].map((item) => (
                 <tr key={item.token}>
-                  <td className="p-4 font-mono text-xs">{item.token}</td>
-                  <td className="p-4 font-mono text-xs">{item.value}</td>
-                  <td className="p-4 font-mono text-xs text-muted-foreground">{item.tw}</td>
+                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">{item.token}</code></td>
+                  <td className="p-4 font-mono text-[11px] text-muted-foreground">{item.value}</td>
+                  <td className="p-4 text-muted-foreground text-[13px]">{item.tw}</td>
                   <td className="p-4">
-                    <div 
-                      className="bg-primary h-4" 
+                    <div
+                      className="bg-info/60 h-4 rounded-sm"
                       style={{ width: item.value === "0px" ? "2px" : item.value }}
                     />
                   </td>
@@ -60,98 +60,87 @@ export default function TokensDocs() {
         </div>
       </DocSection>
 
-      {/* Radius */}
-      <DocSection title="Border Radius" description="Consistent corner rounding.">
-        <div className="rounded-lg border overflow-hidden">
-          <table className="w-full text-sm">
-            <thead className="bg-muted/50">
-              <tr>
-                <th className="text-left p-4 font-medium">Token</th>
-                <th className="text-left p-4 font-medium">Value</th>
-                <th className="text-left p-4 font-medium">Tailwind</th>
-                <th className="text-left p-4 font-medium">Preview</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y">
-              <tr>
-                <td className="p-4 font-mono text-xs">--radius</td>
-                <td className="p-4 font-mono text-xs">8px</td>
-                <td className="p-4 font-mono text-xs text-muted-foreground">rounded-lg</td>
-                <td className="p-4">
-                  <div className="h-8 w-16 bg-primary rounded-lg" />
-                </td>
-              </tr>
-              <tr>
-                <td className="p-4 font-mono text-xs">radius-sm</td>
-                <td className="p-4 font-mono text-xs">4px</td>
-                <td className="p-4 font-mono text-xs text-muted-foreground">rounded</td>
-                <td className="p-4">
-                  <div className="h-8 w-16 bg-primary rounded" />
-                </td>
-              </tr>
-              <tr>
-                <td className="p-4 font-mono text-xs">radius-full</td>
-                <td className="p-4 font-mono text-xs">9999px</td>
-                <td className="p-4 font-mono text-xs text-muted-foreground">rounded-full</td>
-                <td className="p-4">
-                  <div className="h-8 w-16 bg-primary rounded-full" />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <DocSection title="Radius & Shadows" description="Foundational depth and corner tokens." level={2}>
+        <DocSection title="Border Radius" description="Consistent corner rounding tokens.">
+          <div className="rounded-lg border border-border/50 overflow-hidden">
+            <table className="w-full text-sm">
+              <thead className="bg-muted/30">
+                <tr>
+                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Token</th>
+                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Value</th>
+                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Tailwind</th>
+                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Preview</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border/50">
+                <tr>
+                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">--radius</code></td>
+                  <td className="p-4 font-mono text-[11px] text-muted-foreground">8px</td>
+                  <td className="p-4 text-muted-foreground text-[13px]">rounded-lg</td>
+                  <td className="p-4">
+                    <div className="h-8 w-16 bg-muted border border-border/50 rounded-lg" />
+                  </td>
+                </tr>
+                <tr>
+                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">radius-full</code></td>
+                  <td className="p-4 font-mono text-[11px] text-muted-foreground">9999px</td>
+                  <td className="p-4 text-muted-foreground text-[13px]">rounded-full</td>
+                  <td className="p-4">
+                    <div className="h-8 w-16 bg-muted border border-border/50 rounded-full" />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </DocSection>
+
+        <DocSection title="Shadow Tokens" description="Elevation and depth effects for functional elements.">
+          <div className="rounded-lg border border-border/50 overflow-hidden">
+            <table className="w-full text-sm">
+              <thead className="bg-muted/30">
+                <tr>
+                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Token</th>
+                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Usage</th>
+                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Preview</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border/50">
+                <tr>
+                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">shadow-xs</code></td>
+                  <td className="p-4 text-muted-foreground text-[13px]">Alerts, simple inputs</td>
+                  <td className="p-4">
+                    <div className="h-8 w-16 bg-card border border-border/50 rounded-lg shadow-xs" />
+                  </td>
+                </tr>
+                <tr>
+                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">shadow-md</code></td>
+                  <td className="p-4 text-muted-foreground text-[13px]">Cards, elevated panels</td>
+                  <td className="p-4">
+                    <div className="h-8 w-16 bg-card border border-border/50 rounded-lg shadow-md" />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </DocSection>
       </DocSection>
 
-      {/* Shadows */}
-      <DocSection title="Shadows" description="Elevation and depth effects for buttons and inputs.">
-        <div className="rounded-lg border overflow-hidden">
-          <table className="w-full text-sm">
-            <thead className="bg-muted/50">
-              <tr>
-                <th className="text-left p-4 font-medium">Token</th>
-                <th className="text-left p-4 font-medium">Usage</th>
-                <th className="text-left p-4 font-medium">Preview</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y">
-              <tr>
-                <td className="p-4 font-mono text-xs">shadow-button-onfill-default</td>
-                <td className="p-4 text-muted-foreground">Primary/destructive buttons</td>
-                <td className="p-4">
-                  <div className="h-8 w-24 bg-primary rounded-lg shadow-button-onfill-default" />
-                </td>
-              </tr>
-              <tr>
-                <td className="p-4 font-mono text-xs">shadow-button-onlight-default</td>
-                <td className="p-4 text-muted-foreground">Secondary buttons</td>
-                <td className="p-4">
-                  <div className="h-8 w-24 bg-secondary border rounded-lg shadow-button-onlight-default" />
-                </td>
-              </tr>
-              <tr>
-                <td className="p-4 font-mono text-xs">shadow-input-focus</td>
-                <td className="p-4 text-muted-foreground">Input focus ring</td>
-                <td className="p-4">
-                  <div className="h-8 w-24 bg-background border border-ring rounded-lg shadow-input-focus" />
-                </td>
-              </tr>
-              <tr>
-                <td className="p-4 font-mono text-xs">shadow-input-error</td>
-                <td className="p-4 text-muted-foreground">Input error ring</td>
-                <td className="p-4">
-                  <div className="h-8 w-24 bg-background border border-destructive rounded-lg shadow-input-error" />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </DocSection>
+      <DocSection title="Technical Reference" description="Complete token and variable reference for developers." level={2}>
+        <DocSection title="Download" description="Get all tokens as JSON for tooling integration.">
+          <a
+            href="/malible-tokens.json"
+            download="malible-tokens.json"
+            className="inline-flex items-center gap-2 rounded-lg border border-border/50 bg-background px-4 py-2 text-sm font-medium hover:bg-muted transition-colors"
+          >
+            <DownloadSimple size={16} />
+            Download Tokens (JSON)
+          </a>
+        </DocSection>
 
-      {/* All CSS Variables */}
-      <DocSection title="All CSS Variables" description="Complete token reference for globals.css.">
-        <div className="rounded-lg border p-4">
-          <pre className="text-xs overflow-x-auto">
-{`:root {
+        <DocSection title="CSS Variables" description="Complete variable reference for the global stylesheet.">
+          <div className="rounded-lg border border-border/50 bg-muted/30 p-6 overflow-hidden">
+            <pre className="text-[12px] font-mono leading-relaxed overflow-x-auto text-muted-foreground selection:bg-info/20">
+              {`:root {
   /* Colors */
   --background: 0 0% 100%;
   --foreground: 240 6% 10%;
@@ -185,8 +174,9 @@ export default function TokensDocs() {
   --font-body: "Inter", sans-serif;
   --font-mono: "Menlo", monospace;
 }`}
-          </pre>
-        </div>
+            </pre>
+          </div>
+        </DocSection>
       </DocSection>
 
       <Timestamp date="13-01-2026" />

@@ -51,11 +51,69 @@ export default function TextareaDocs() {
         <ComponentExample
           code={`<Textarea defaultValue="This is some existing content that the user can edit." />`}
         >
-          <Textarea 
-            defaultValue="This is some existing content that the user can edit." 
-            className="max-w-sm" 
+          <Textarea
+            defaultValue="This is some existing content that the user can edit."
+            className="max-w-sm"
           />
         </ComponentExample>
+      </DocSection>
+
+      <DocSection title="State Reference">
+        <div className="rounded-lg border overflow-hidden">
+          <table className="w-full text-sm">
+            <thead className="bg-muted/50">
+              <tr>
+                <th className="text-left p-3 font-medium">State</th>
+                <th className="text-left p-3 font-medium">Style</th>
+                <th className="text-left p-3 font-medium">Token/Value</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y">
+              <tr>
+                <td className="p-3 font-medium">Default</td>
+                <td className="p-3 text-muted-foreground">Border</td>
+                <td className="p-3 font-mono text-xs text-muted-foreground">border-input</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-medium">Focus</td>
+                <td className="p-3 text-muted-foreground">Ring</td>
+                <td className="p-3 font-mono text-xs text-muted-foreground">ring-2 ring-ring</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-medium">Error</td>
+                <td className="p-3 text-muted-foreground">Red border</td>
+                <td className="p-3 font-mono text-xs text-muted-foreground">border-destructive</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-medium">Disabled</td>
+                <td className="p-3 text-muted-foreground">Muted</td>
+                <td className="p-3 font-mono text-xs text-muted-foreground">opacity-50 cursor-not-allowed</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </DocSection>
+
+      <DocSection title="Best Practices">
+        <div className="space-y-4 text-sm">
+          <div className="flex gap-3">
+            <span className="text-green-600 font-medium">✅ Do:</span>
+            <p className="text-muted-foreground">Use textarea for multi-line content like comments, descriptions, or messages.</p>
+          </div>
+          <div className="flex gap-3">
+            <span className="text-red-600 font-medium">❌ Don't:</span>
+            <p className="text-muted-foreground">Use textarea for single-line inputs—use Input instead.</p>
+          </div>
+
+          <div className="flex gap-3">
+            <span className="text-green-600 font-medium">✅ Do:</span>
+            <p className="text-muted-foreground">Provide adequate height for expected content length.</p>
+          </div>
+          <div className="flex gap-3">
+            <span className="text-red-600 font-medium">❌ Don't:</span>
+            <p className="text-muted-foreground">Make textareas too small—users will struggle to review their content.</p>
+          </div>
+        </div>
       </DocSection>
     </DocPage>
   )

@@ -10,11 +10,11 @@ interface ComponentExampleProps {
   className?: string;
 }
 
-export function ComponentExample({ 
-  children, 
-  code, 
+export function ComponentExample({
+  children,
+  code,
   language = "tsx",
-  className 
+  className
 }: ComponentExampleProps) {
   const [copied, setCopied] = useState(false);
   const [html, setHtml] = useState("");
@@ -42,28 +42,36 @@ export function ComponentExample({
   };
 
   return (
-    <div className={cn("rounded-lg border overflow-hidden", className)}>
-      {/* Preview */}
-      <div className="flex min-h-40 items-center justify-center p-8 bg-background">
-        {children}
-      </div>
+    <div className={cn("group relative my-4 flex flex-col space-y-2", className)}>
+      <div className="rounded-lg border bg-background transition-all">
+        {/* Preview Container */}
+        <div className="relative flex min-h-40 items-center justify-center p-10 bg-muted/10">
+          {children}
+        </div>
 
-      {/* Code */}
-      <div className="relative border-t bg-zinc-50">
-        <button
-          onClick={copy}
-          className="absolute right-3 top-3 flex h-6 w-6 items-center justify-center rounded hover:bg-zinc-200 z-10"
-        >
-          {copied ? (
-            <Check size={14} className="text-success" />
-          ) : (
-            <Copy size={14} className="text-zinc-500" />
-          )}
-        </button>
-        <div 
-          className="p-4 overflow-x-auto font-mono text-[13px] leading-relaxed [&_pre]:!bg-transparent [&_pre]:!m-0 [&_pre]:!p-0 [&_code]:!bg-transparent"
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
+        {/* Code Container */}
+        <div className="relative border-t bg-background">
+          <div className="flex items-center justify-between px-4 py-2 border-b bg-muted/20">
+            <span className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground/60 select-none">
+              Source Code
+            </span>
+            <button
+              onClick={copy}
+              className="flex h-7 w-7 items-center justify-center rounded-md hover:bg-muted transition-colors"
+              title="Copy code"
+            >
+              {copied ? (
+                <Check size={14} className="text-success" />
+              ) : (
+                <Copy size={14} className="text-muted-foreground" />
+              )}
+            </button>
+          </div>
+          <div
+            className="p-5 overflow-x-auto font-mono text-[13px] leading-relaxed [&_pre]:!bg-transparent [&_pre]:!m-0 [&_pre]:!p-0 [&_code]:!bg-transparent selection:bg-primary/20"
+            dangerouslySetInnerHTML={{ __html: html }}
+          />
+        </div>
       </div>
     </div>
   );

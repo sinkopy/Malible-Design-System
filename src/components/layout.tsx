@@ -15,7 +15,7 @@ const navSections = [
   {
     title: "Components",
     items: [
-      { href: "/", label: "Button" },
+      { href: "/button", label: "Button" },
       { href: "/icon-button", label: "Icon Button" },
       { href: "/tooltip", label: "Tooltip" },
       { href: "/slider", label: "Slider" },
@@ -45,7 +45,7 @@ const navSections = [
 
 export default function Layout() {
   const location = useLocation();
-  
+
   return (
     <div className="flex min-h-screen">
       {/* Sidebar */}
@@ -62,6 +62,17 @@ export default function Layout() {
         </div>
         {/* Scrollable navigation - THIS scrolls */}
         <nav className="flex-1 overflow-y-auto p-6 pt-4 space-y-6">
+          <Link
+            to="/"
+            className={cn(
+              "block rounded-lg px-3 py-2 text-sm transition-colors mb-6",
+              location.pathname === "/"
+                ? "bg-secondary text-foreground font-medium"
+                : "text-muted-foreground hover:bg-secondary/50"
+            )}
+          >
+            Home
+          </Link>
           {navSections.map((section) => (
             <div key={section.title} className="space-y-1">
               <p className="px-3 text-xs font-medium text-muted-foreground uppercase tracking-wider">
@@ -87,10 +98,10 @@ export default function Layout() {
           ))}
         </nav>
       </aside>
-      
+
       {/* Main Content */}
       <main className="flex-1 ml-56">
-        <div className="mx-auto max-w-3xl px-8 py-8">
+        <div className="mx-auto max-w-5xl px-12 py-12">
           <Outlet />
         </div>
       </main>

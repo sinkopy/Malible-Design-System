@@ -6,97 +6,98 @@
   :root {
     --background: 0 0% 100%;
     --foreground: 240 6% 10%;
-    
+
     --card: 0 0% 100%;
     --card-foreground: 240 6% 10%;
-    
+
     --popover: 0 0% 100%;
     --popover-foreground: 240 6% 10%;
-    
+
     --primary: 18 74% 53%;
     --primary-foreground: 0 0% 100%;
-    
+
     --secondary: 240 5% 96%;
     --secondary-foreground: 240 4% 26%;
-    
+
     --muted: 0 0% 96%;
     --muted-foreground: 240 4% 46%;
-    
+
     --accent: 240 5% 96%;
     --accent-foreground: 240 6% 10%;
-    
+
     /* Info */
-    --info: 200 100% 42%;              /* #008ed6 */
+    --info: 200 100% 42%;
+    /* #008ed6 */
     --info-foreground: 0 0% 100%;
-    --info-subtle: 200 100% 95%;       /* #eaf8ff */
-    
+    --info-subtle: 200 100% 95%;
+    /* #eaf8ff */
+
     /* Success */
-    --success: 152 48% 45%;            /* #3ea377 */
+    --success: 152 48% 45%;
+    /* #3ea377 */
     --success-foreground: 0 0% 100%;
-    --success-subtle: 145 47% 93%;     /* #e2f4eb */
-    
+    --success-subtle: 145 47% 93%;
+    /* #e2f4eb */
+
     /* Warning */
-    --warning: 38 100% 44%;            /* #e09200 */
+    --warning: 38 100% 44%;
+    /* #e09200 */
     --warning-foreground: 0 0% 100%;
-    --warning-subtle: 40 95% 95%;      /* #fef6e6 */
-    
+    --warning-subtle: 40 95% 95%;
+    /* #fef6e6 */
+
     /* Destructive */
-    --destructive: 0 79% 42%;          /* #bf1616 */
+    --destructive: 0 79% 42%;
+    /* #bf1616 */
     --destructive-foreground: 0 0% 100%;
-    --destructive-subtle: 0 90% 95%;   /* #fde8e8 */
-    
+    --destructive-subtle: 0 90% 95%;
+    /* #fde8e8 */
+
     /* Canvas */
-    --canvas: 265 76% 60%;             /* #914be6 */
-    --canvas-foreground: 270 55% 49%;  /* #7737c4 */
-    
+    --canvas: 265 76% 60%;
+    /* #914be6 */
+    --canvas-foreground: 270 55% 49%;
+    /* #7737c4 */
+
     /* Muted Subtle */
-    --muted-subtle: 0 0% 96%;          /* #f5f5f5 */
-    
+    --muted-subtle: 0 0% 96%;
+    /* #f5f5f5 */
+
     --border: 0 0% 90%;
     --input: 0 0% 83%;
     --ring: 200 100% 36%;
-    
+
     --radius: 0.5rem;
 
     --font-heading: "tt-commons-pro", ui-sans-serif, system-ui, sans-serif;
     --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
     --font-mono: "Menlo", ui-monospace, monospace;
 
-    --shadow-button-onfill-default: 
-      inset 0px 1px 0px 0px rgba(255, 255, 255, 0.2),
-      inset 1px 0px 0px 0px rgba(255, 255, 255, 0.2),
-      inset -1px 0px 0px 0px rgba(11, 10, 10, 0.23),
-      inset 0px 1px 0px 0px rgba(245, 245, 245, 0.32),
-      inset 0px -1px 0px 0px rgba(11, 10, 10, 0.32);
-    
+    --shadow-button-onfill-default:
+      inset 0px 1px 0px 0px rgba(255, 255, 255, 0.25),
+      inset 0px -1.5px 0px 0px rgba(0, 0, 0, 0.15),
+      0px 1px 1px 0px rgba(0, 0, 0, 0.05);
+
     --shadow-button-onfill-hover:
-      inset 0px 1px 0px 0px rgba(255, 255, 255, 0.2),
-      inset 1px 0px 0px 0px rgba(255, 255, 255, 0.2),
-      inset -1px 0px 0px 0px rgba(11, 10, 10, 0.23),
-      inset 0px 1px 0px 0px rgba(245, 245, 245, 0.32),
-      inset 0px -2px 0px 0px rgba(11, 10, 10, 0.32);
-    
+      inset 0px 1px 0px 0px rgba(255, 255, 255, 0.25),
+      inset 0px -2px 0px 0px rgba(0, 0, 0, 0.15),
+      0px 1px 1px 0px rgba(0, 0, 0, 0.05);
+
     --shadow-button-onfill-active:
-      inset 0px 1px 2px 0px rgba(26, 26, 26, 0.15),
-      inset 0px 4px 2px 0px rgba(26, 26, 26, 0.15);
-    
+      inset 0px 1.5px 2px 0px rgba(0, 0, 0, 0.2);
+
     --shadow-button-onlight-default:
-      inset 0px 1px 0px 0px rgba(255, 255, 255, 0.2),
-      inset 1px 0px 0px 0px rgba(255, 255, 255, 0.2),
-      inset -1px 0px 0px 0px rgba(11, 10, 10, 0.23),
-      inset 0px 1px 0px 0px rgba(245, 245, 245, 0.32),
-      inset 0px -1px 0px 0px rgba(11, 10, 10, 0.32);
-    
+      inset 0px 1px 0px 0px rgba(255, 255, 255, 1),
+      inset 0px -1px 0px 0px rgba(0, 0, 0, 0.05),
+      0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+
     --shadow-button-onlight-hover:
-      inset 0px 1px 0px 0px rgba(255, 255, 255, 0.2),
-      inset 1px 0px 0px 0px rgba(255, 255, 255, 0.2),
-      inset -1px 0px 0px 0px rgba(11, 10, 10, 0.23),
-      inset 0px 1px 0px 0px rgba(245, 245, 245, 0.32),
-      inset 0px -2px 0px 0px rgba(11, 10, 10, 0.32);
-    
+      inset 0px 1px 0px 0px rgba(255, 255, 255, 1),
+      inset 0px -1px 0px 0px rgba(0, 0, 0, 0.1),
+      0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+
     --shadow-button-onlight-active:
-      inset 0px 1px 2px 0px rgba(26, 26, 26, 0.15),
-      inset 0px 4px 2px 0px rgba(26, 26, 26, 0.15);
+      inset 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
 
     --shadow-input-focus: 0 0 0 2px hsl(var(--ring) / 0.32);
     --shadow-input-error: 0 0 0 2px hsl(var(--destructive) / 0.32);
@@ -107,6 +108,14 @@
     --shadow-md: 0px 4px 6px -2px rgba(26, 26, 26, 0.10);
     --shadow-lg: 0px 8px 16px -4px rgba(26, 26, 26, 0.12);
     --shadow-xl: 0px 12px 20px -8px rgba(26, 26, 26, 0.14);
+
+    /* Motion System - Polaris/Wise aligned */
+    --duration-fast: 100ms;
+    --duration-base: 150ms;
+    --duration-slow: 200ms;
+    --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-out: cubic-bezier(0, 0, 0.2, 1);
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .dark {
@@ -115,9 +124,9 @@
   }
 
   * {
-    border-color: hsl(var(--border));
+    border-color: hsl(var(--border) / 0.5);
   }
-  
+
   body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
@@ -128,15 +137,16 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  
+
   h1 {
     font-family: var(--font-heading);
     font-size: 2.25rem;
     line-height: 2.5rem;
-    font-weight: 500 !important;  /* DemiBold in TT Commons Pro Typekit */
+    font-weight: 500 !important;
+    /* DemiBold in TT Commons Pro Typekit */
     letter-spacing: -0.025em;
   }
-  
+
   h2 {
     font-family: var(--font-heading);
     font-size: 1.5rem;
@@ -144,23 +154,29 @@
     font-weight: 600;
     letter-spacing: -0.025em;
   }
-  
-  h3, h4 {
+
+  h3,
+  h4 {
     font-family: var(--font-heading);
     font-size: 1.125rem;
     line-height: 1.5rem;
     font-weight: 600;
     letter-spacing: -0.015em;
   }
-  
-  h5, h6, small {
+
+  h5,
+  h6,
+  small {
     font-family: var(--font-body);
     font-size: 0.75rem;
     line-height: 1rem;
     font-weight: 400;
   }
-  
-  code, pre, kbd, samp {
+
+  code,
+  pre,
+  kbd,
+  samp {
     font-family: var(--font-mono);
     font-size: 0.875rem;
     line-height: 1.25rem;
@@ -168,6 +184,7 @@
 }
 
 @layer utilities {
+
   /* Subtle scrollbar for sidebar navigation */
   nav::-webkit-scrollbar {
     width: 6px;
@@ -189,25 +206,63 @@
   .shadow-button-onfill-default {
     box-shadow: var(--shadow-button-onfill-default);
   }
+
   .shadow-button-onfill-hover {
     box-shadow: var(--shadow-button-onfill-hover);
   }
+
   .shadow-button-onfill-active {
     box-shadow: var(--shadow-button-onfill-active);
   }
+
   .shadow-button-onlight-default {
     box-shadow: var(--shadow-button-onlight-default);
   }
+
   .shadow-button-onlight-hover {
     box-shadow: var(--shadow-button-onlight-hover);
   }
+
   .shadow-button-onlight-active {
     box-shadow: var(--shadow-button-onlight-active);
   }
+
   .shadow-input-focus {
     box-shadow: var(--shadow-input-focus);
   }
+
   .shadow-input-error {
     box-shadow: var(--shadow-input-error);
   }
+}
+
+/* Micro-animation Keyframes */
+@keyframes check-in {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-check-in {
+  animation: check-in var(--duration-fast) var(--ease-out);
+}
+
+.animate-fade-in {
+  animation: fade-in var(--duration-base) var(--ease-out);
 }

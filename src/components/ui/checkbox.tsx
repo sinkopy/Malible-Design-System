@@ -17,20 +17,20 @@ const Checkbox = React.forwardRef<
     ref={ref}
     className={cn(
       // Base - 16px × 16px square with 4px radius
-      "peer h-4 w-4 shrink-0 rounded-[4px] border transition-colors",
-      
-      // Default state - gray border
-      "border-input bg-background",
-      
+      "peer h-4 w-4 shrink-0 rounded-[4px] border transition-colors duration-100",
+
+      // Default state - gray border with hover
+      "border-input bg-background hover:border-muted-foreground",
+
       // Checked state - primary fill (orange)
       "data-[state=checked]:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground",
-      
+
       // Indeterminate state - primary fill
       "data-[state=indeterminate]:border-primary data-[state=indeterminate]:bg-primary data-[state=indeterminate]:text-primary-foreground",
-      
+
       // Focus ring - uses --ring token
       "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-      
+
       // Error state - red border and ring
       error && [
         "border-destructive",
@@ -38,16 +38,16 @@ const Checkbox = React.forwardRef<
         "data-[state=checked]:border-destructive data-[state=checked]:bg-destructive",
         "data-[state=indeterminate]:border-destructive data-[state=indeterminate]:bg-destructive",
       ],
-      
+
       // Disabled state
       "disabled:cursor-not-allowed disabled:opacity-50",
-      
+
       className
     )}
     {...props}
   >
     <CheckboxPrimitives.Indicator
-      className={cn("flex items-center justify-center text-current")}
+      className={cn("flex items-center justify-center text-current animate-check-in")}
     >
       {props.checked === "indeterminate" ? (
         // Minus icon for indeterminate

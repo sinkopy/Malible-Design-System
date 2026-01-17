@@ -8,7 +8,7 @@ const toggleGroupVariants = cva(
 )
 
 const toggleGroupItemVariants = cva(
-  "inline-flex items-center justify-center gap-1.5 rounded-sm text-sm font-medium transition-colors",
+  "inline-flex items-center justify-center gap-1.5 rounded-sm text-sm font-medium transition-colors duration-150",
   {
     variants: {
       variant: {
@@ -38,7 +38,7 @@ const ToggleGroupContext = React.createContext<
 const ToggleGroup = React.forwardRef<
   React.ElementRef<typeof ToggleGroupPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof ToggleGroupPrimitive.Root> &
-    VariantProps<typeof toggleGroupItemVariants>
+  VariantProps<typeof toggleGroupItemVariants>
 >(({ className, variant, size, children, ...props }, ref) => (
   <ToggleGroupPrimitive.Root
     ref={ref}
@@ -55,7 +55,7 @@ ToggleGroup.displayName = ToggleGroupPrimitive.Root.displayName
 const ToggleGroupItem = React.forwardRef<
   React.ElementRef<typeof ToggleGroupPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof ToggleGroupPrimitive.Item> &
-    VariantProps<typeof toggleGroupItemVariants>
+  VariantProps<typeof toggleGroupItemVariants>
 >(({ className, children, variant, size, ...props }, ref) => {
   const context = React.useContext(ToggleGroupContext)
 

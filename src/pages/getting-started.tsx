@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { CodeBlock } from "@/components/docs/code-block"
+import { DocPage, DocSection, Timestamp } from "@/components/docs"
 
 const cssVariables = `@tailwind base;
 @tailwind components;
@@ -122,6 +123,7 @@ const config = {
       fontFamily: {
         heading: ['var(--font-heading)'],
         body: ['var(--font-body)'],
+        mono: ['Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
       },
       boxShadow: {
         xs: "var(--shadow-xs)",
@@ -165,82 +167,53 @@ const installCommand = `npm install @radix-ui/react-avatar @radix-ui/react-check
 
 export default function GettingStarted() {
   return (
-    <div className="max-w-3xl mx-auto py-12 px-8">
-      {/* Header */}
-      <h1 className="font-heading text-3xl font-medium tracking-tight mb-4">
-        Getting Started
-      </h1>
-      <p className="text-muted-foreground mb-12">
-        Get up and running with Malible in minutes.
-      </p>
-
-      {/* Installation */}
-      <section className="mb-12">
-        <h2 className="font-heading text-xl font-medium mb-4">Installation</h2>
-        <p className="text-sm text-muted-foreground mb-4">
-          Install the required dependencies:
-        </p>
-        <CodeBlock 
+    <DocPage
+      title="Getting Started"
+      description="Get up and running with Malible in minutes."
+      category="Foundation"
+    >
+      <DocSection title="Installation" description="Install the required dependencies to begin using the design system.">
+        <CodeBlock
           code={installCommand}
           language="bash"
         />
-      </section>
+      </DocSection>
 
-      {/* CSS Variables */}
-      <section className="mb-12">
-        <h2 className="font-heading text-xl font-medium mb-4">CSS Variables</h2>
-        <p className="text-sm text-muted-foreground mb-4">
-          Add these CSS variables to your global stylesheet:
-        </p>
-        <CodeBlock 
+      <DocSection title="CSS Variables" description="Add these core CSS variables to your global stylesheet.">
+        <CodeBlock
           code={cssVariables}
           language="css"
         />
-      </section>
+      </DocSection>
 
-      {/* Tailwind Config */}
-      <section className="mb-12">
-        <h2 className="font-heading text-xl font-medium mb-4">Tailwind Configuration</h2>
-        <p className="text-sm text-muted-foreground mb-4">
-          Extend your Tailwind config to use the CSS variables:
-        </p>
-        <CodeBlock 
+      <DocSection title="Tailwind Configuration" description="Extend your Tailwind config to use the design system tokens.">
+        <CodeBlock
           code={tailwindConfig}
           language="typescript"
         />
-      </section>
+      </DocSection>
 
-      {/* Utils */}
-      <section className="mb-12">
-        <h2 className="font-heading text-xl font-medium mb-4">Utility Function</h2>
-        <p className="text-sm text-muted-foreground mb-4">
-          Create a utility function for merging class names:
-        </p>
-        <CodeBlock 
+      <DocSection title="Utility Function" description="Create a utility function for merging Tailwind classes effectively.">
+        <CodeBlock
           code={utilsCode}
           language="typescript"
         />
-      </section>
+      </DocSection>
 
-      {/* Usage */}
-      <section className="mb-12">
-        <h2 className="font-heading text-xl font-medium mb-4">Usage</h2>
-        <p className="text-sm text-muted-foreground mb-4">
-          Import and use components:
-        </p>
-        <CodeBlock 
+      <DocSection title="Usage" description="Import and use components in your application.">
+        <CodeBlock
           code={usageExample}
           language="tsx"
         />
-      </section>
+      </DocSection>
 
-      {/* Next Steps */}
-      <section>
-        <h2 className="font-heading text-xl font-medium mb-4">Next Steps</h2>
-        <p className="text-sm text-muted-foreground">
-          Browse the <Link to="/" className="text-info hover:underline">component library</Link> to see all available components.
+      <DocSection title="Next Steps">
+        <p className="text-[15px] text-muted-foreground leading-relaxed">
+          Browse the <Link to="/" className="text-info hover:underline font-medium">component library</Link> to see all available components and their documentation.
         </p>
-      </section>
-    </div>
+      </DocSection>
+
+      <Timestamp date="17-01-2026" />
+    </DocPage>
   )
 }

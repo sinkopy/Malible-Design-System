@@ -8,7 +8,7 @@ const config = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
-	],
+  ],
   prefix: "",
   theme: {
     container: {
@@ -22,7 +22,7 @@ const config = {
       fontFamily: {
         heading: ['var(--font-heading)'],
         body: ['var(--font-body)'],
-        mono: ['"JetBrains Mono"', 'Menlo', 'Monaco', 'monospace'],
+        mono: ['Menlo', 'ui-monospace', 'monospace'],
       },
       colors: {
         border: "hsl(var(--border))",

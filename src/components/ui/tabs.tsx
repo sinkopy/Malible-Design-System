@@ -22,7 +22,7 @@ const tabsListVariants = cva(
 
 interface TabsListProps
   extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>,
-    VariantProps<typeof tabsListVariants> {}
+  VariantProps<typeof tabsListVariants> { }
 
 const TabsList = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.List>,
@@ -37,7 +37,7 @@ const TabsList = React.forwardRef<
 TabsList.displayName = TabsPrimitive.List.displayName
 
 const tabsTriggerVariants = cva(
-  "inline-flex items-center justify-center gap-1 whitespace-nowrap px-2 py-1 text-sm font-semibold transition-all min-h-[32px] min-w-[32px] disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center gap-1 whitespace-nowrap px-2 py-1 text-sm font-semibold transition-all duration-150 min-h-[32px] min-w-[32px] disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
@@ -61,7 +61,7 @@ const tabsTriggerVariants = cva(
 
 interface TabsTriggerProps
   extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>,
-    VariantProps<typeof tabsTriggerVariants> {}
+  VariantProps<typeof tabsTriggerVariants> { }
 
 const TabsTrigger = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Trigger>,
@@ -83,6 +83,7 @@ const TabsContent = React.forwardRef<
     ref={ref}
     className={cn(
       "mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+      "animate-fade-in",
       className
     )}
     {...props}

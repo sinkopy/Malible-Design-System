@@ -56,11 +56,11 @@ export default function SliderDocs() {
                 {labeledValue[0]} - {labeledValue[1]}
               </span>
             </div>
-            <Slider 
-              value={labeledValue} 
+            <Slider
+              value={labeledValue}
               onValueChange={setLabeledValue}
-              max={100} 
-              step={1} 
+              max={100}
+              step={1}
             />
           </div>
         </ComponentExample>
@@ -170,6 +170,69 @@ const [value, setValue] = useState([50])
               </tr>
             </tbody>
           </table>
+        </div>
+      </DocSection>
+
+      <DocSection title="State Reference">
+        <div className="rounded-lg border overflow-hidden">
+          <table className="w-full text-sm">
+            <thead className="bg-muted/50">
+              <tr>
+                <th className="text-left p-3 font-medium">Element</th>
+                <th className="text-left p-3 font-medium">State</th>
+                <th className="text-left p-3 font-medium">Token/Value</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y">
+              <tr>
+                <td className="p-3 font-medium">Track</td>
+                <td className="p-3 text-muted-foreground">Default</td>
+                <td className="p-3 font-mono text-xs text-muted-foreground">bg-muted</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-medium">Range</td>
+                <td className="p-3 text-muted-foreground">Default</td>
+                <td className="p-3 font-mono text-xs text-muted-foreground">bg-primary</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-medium">Thumb</td>
+                <td className="p-3 text-muted-foreground">Default</td>
+                <td className="p-3 font-mono text-xs text-muted-foreground">bg-background border-2 border-primary</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-medium">Thumb</td>
+                <td className="p-3 text-muted-foreground">Hover</td>
+                <td className="p-3 font-mono text-xs text-muted-foreground">ring-2 ring-ring</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-medium">Thumb</td>
+                <td className="p-3 text-muted-foreground">Disabled</td>
+                <td className="p-3 font-mono text-xs text-muted-foreground">opacity-50 cursor-not-allowed</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </DocSection>
+
+      <DocSection title="Best Practices">
+        <div className="space-y-4 text-sm">
+          <div className="flex gap-3">
+            <span className="text-green-600 font-medium">✅ Do:</span>
+            <p className="text-muted-foreground">Show the current value alongside the slider (e.g., "Volume: 75%").</p>
+          </div>
+          <div className="flex gap-3">
+            <span className="text-red-600 font-medium">❌ Don't:</span>
+            <p className="text-muted-foreground">Use sliders without any value feedback—users need to know the selection.</p>
+          </div>
+
+          <div className="flex gap-3">
+            <span className="text-green-600 font-medium">✅ Do:</span>
+            <p className="text-muted-foreground">Use sliders for ranges like volume, brightness, or price filters.</p>
+          </div>
+          <div className="flex gap-3">
+            <span className="text-red-600 font-medium">❌ Don't:</span>
+            <p className="text-muted-foreground">Use sliders when users need precise numeric input—use a number input.</p>
+          </div>
         </div>
       </DocSection>
 

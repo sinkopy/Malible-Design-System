@@ -256,6 +256,64 @@ const [value, setValue] = useState("center")
         </div>
       </DocSection>
 
+      <DocSection title="State Reference">
+        <div className="rounded-lg border overflow-hidden">
+          <table className="w-full text-sm">
+            <thead className="bg-muted/50">
+              <tr>
+                <th className="text-left p-3 font-medium">State</th>
+                <th className="text-left p-3 font-medium">Style</th>
+                <th className="text-left p-3 font-medium">Token/Value</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y">
+              <tr>
+                <td className="p-3 font-medium">Unselected</td>
+                <td className="p-3 text-muted-foreground">Muted background</td>
+                <td className="p-3 font-mono text-xs text-muted-foreground">bg-transparent text-muted-foreground</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-medium">Hover</td>
+                <td className="p-3 text-muted-foreground">Subtle background</td>
+                <td className="p-3 font-mono text-xs text-muted-foreground">hover:bg-muted hover:text-muted-foreground</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-medium">Selected</td>
+                <td className="p-3 text-muted-foreground">Accent background</td>
+                <td className="p-3 font-mono text-xs text-muted-foreground">bg-accent text-accent-foreground</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-medium">Disabled</td>
+                <td className="p-3 text-muted-foreground">50% opacity</td>
+                <td className="p-3 font-mono text-xs text-muted-foreground">opacity-50 pointer-events-none</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </DocSection>
+
+      <DocSection title="Best Practices">
+        <div className="space-y-4 text-sm">
+          <div className="flex gap-3">
+            <span className="text-green-600 font-medium">✅ Do:</span>
+            <p className="text-muted-foreground">Use toggle groups for mutually exclusive options like text alignment or view modes.</p>
+          </div>
+          <div className="flex gap-3">
+            <span className="text-red-600 font-medium">❌ Don't:</span>
+            <p className="text-muted-foreground">Use for more than 4-5 options—consider a select or radio group.</p>
+          </div>
+
+          <div className="flex gap-3">
+            <span className="text-green-600 font-medium">✅ Do:</span>
+            <p className="text-muted-foreground">Include aria-label on icon-only toggle items for screen readers.</p>
+          </div>
+          <div className="flex gap-3">
+            <span className="text-red-600 font-medium">❌ Don't:</span>
+            <p className="text-muted-foreground">Use icon-only toggles without tooltips or labels for accessibility.</p>
+          </div>
+        </div>
+      </DocSection>
+
       <Timestamp date="17-01-2026" />
     </DocPage>
   )

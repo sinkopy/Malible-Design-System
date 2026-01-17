@@ -147,6 +147,28 @@ export default function SwitchDocs() {
         </div>
       </DocSection>
 
+      <DocSection title="Best Practices">
+        <div className="space-y-4 text-sm">
+          <div className="flex gap-3">
+            <span className="text-green-600 font-medium">✅ Do:</span>
+            <p className="text-muted-foreground">Use switches for binary on/off settings that take effect immediately.</p>
+          </div>
+          <div className="flex gap-3">
+            <span className="text-red-600 font-medium">❌ Don't:</span>
+            <p className="text-muted-foreground">Use switches for yes/no questions that require form submission.</p>
+          </div>
+
+          <div className="flex gap-3">
+            <span className="text-green-600 font-medium">✅ Do:</span>
+            <p className="text-muted-foreground">Always pair with a label that describes what happens when "on".</p>
+          </div>
+          <div className="flex gap-3">
+            <span className="text-red-600 font-medium">❌ Don't:</span>
+            <p className="text-muted-foreground">Use ambiguous labels like "Setting" without explaining the effect.</p>
+          </div>
+        </div>
+      </DocSection>
+
       <Timestamp date="13-01-2026" />
     </DocPage>
   );

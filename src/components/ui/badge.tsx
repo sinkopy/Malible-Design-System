@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 const badgeVariants = cva(
   // Base styles - pill shape, inline-flex
-  "inline-flex items-center gap-1 rounded-full font-medium transition-colors",
+  "inline-flex items-center gap-1 rounded-full font-medium transition-colors duration-150",
   {
     variants: {
       variant: {
@@ -33,7 +33,7 @@ const badgeVariants = cva(
 
 export interface BadgeProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof badgeVariants> {
+  VariantProps<typeof badgeVariants> {
   /** Optional icon to display before the label */
   icon?: React.ReactNode;
 }

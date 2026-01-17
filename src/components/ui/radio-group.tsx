@@ -32,38 +32,38 @@ const RadioGroupItem = React.forwardRef<
       ref={ref}
       className={cn(
         // Base - 16px circle
-        "aspect-square h-4 w-4 rounded-full border transition-colors",
-        
-        // Default state - gray border
-        "border-input bg-background",
-        
+        "aspect-square h-4 w-4 rounded-full border transition-colors duration-100",
+
+        // Default state - gray border with hover
+        "border-input bg-background hover:border-muted-foreground",
+
         // Checked state - primary border (orange)
         "data-[state=checked]:border-primary",
-        
+
         // Focus ring - uses --ring token
         "focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-        
+
         // Error state - red border and ring
         error && [
           "border-destructive",
           "focus-visible:ring-destructive",
           "data-[state=checked]:border-destructive",
         ],
-        
+
         // Disabled state
         "disabled:cursor-not-allowed disabled:opacity-50",
-        
+
         className
       )}
       {...props}
     >
-      <RadioGroupPrimitives.Indicator className="flex items-center justify-center">
+      <RadioGroupPrimitives.Indicator className="flex items-center justify-center animate-check-in">
         {/* Inner dot - 8px */}
-        <div 
+        <div
           className={cn(
             "h-2 w-2 rounded-full",
             error ? "bg-destructive" : "bg-primary"
-          )} 
+          )}
         />
       </RadioGroupPrimitives.Indicator>
     </RadioGroupPrimitives.Item>

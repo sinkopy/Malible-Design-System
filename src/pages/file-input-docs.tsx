@@ -39,7 +39,7 @@ export default function FileInputDocs() {
   }}
 />`}
         >
-          <FileInput 
+          <FileInput
             className="max-w-sm"
             onFileSelect={(file) => {
               // File selection handled
@@ -66,6 +66,69 @@ export default function FileInputDocs() {
             <FileInput accept=".pdf,.doc,.docx" />
           </div>
         </ComponentExample>
+      </DocSection>
+
+      <DocSection title="State Reference">
+        <div className="rounded-lg border overflow-hidden">
+          <table className="w-full text-sm">
+            <thead className="bg-muted/50">
+              <tr>
+                <th className="text-left p-3 font-medium">State</th>
+                <th className="text-left p-3 font-medium">Style</th>
+                <th className="text-left p-3 font-medium">Token/Value</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y">
+              <tr>
+                <td className="p-3 font-medium">Default</td>
+                <td className="p-3 text-muted-foreground">Border</td>
+                <td className="p-3 font-mono text-xs text-muted-foreground">border-input</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-medium">Hover</td>
+                <td className="p-3 text-muted-foreground">Background tint</td>
+                <td className="p-3 font-mono text-xs text-muted-foreground">hover:bg-secondary</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-medium">Focus</td>
+                <td className="p-3 text-muted-foreground">Ring</td>
+                <td className="p-3 font-mono text-xs text-muted-foreground">focus-within:ring-2 ring-ring</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-medium">Disabled</td>
+                <td className="p-3 text-muted-foreground">Muted</td>
+                <td className="p-3 font-mono text-xs text-muted-foreground">opacity-50 cursor-not-allowed</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-medium">Selected</td>
+                <td className="p-3 text-muted-foreground">Shows filename</td>
+                <td className="p-3 font-mono text-xs text-muted-foreground">text-foreground</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </DocSection>
+
+      <DocSection title="Best Practices">
+        <div className="space-y-4 text-sm">
+          <div className="flex gap-3">
+            <span className="text-green-600 font-medium">✅ Do:</span>
+            <p className="text-muted-foreground">Specify accepted file types with the accept prop to prevent invalid uploads.</p>
+          </div>
+          <div className="flex gap-3">
+            <span className="text-red-600 font-medium">❌ Don't:</span>
+            <p className="text-muted-foreground">Accept all file types when you only need specific formats.</p>
+          </div>
+
+          <div className="flex gap-3">
+            <span className="text-green-600 font-medium">✅ Do:</span>
+            <p className="text-muted-foreground">Show the selected filename and provide a way to clear the selection.</p>
+          </div>
+          <div className="flex gap-3">
+            <span className="text-red-600 font-medium">❌ Don't:</span>
+            <p className="text-muted-foreground">Leave users guessing if their file was selected—show clear feedback.</p>
+          </div>
+        </div>
       </DocSection>
     </DocPage>
   );

@@ -46,7 +46,7 @@ function ColorTable({ colors }: { colors: typeof coreColors }) {
           {colors.map((color) => (
             <tr key={color.token}>
               <td className="p-3">
-                <div 
+                <div
                   className="h-6 w-6 rounded border"
                   style={{ backgroundColor: color.hex }}
                 />
@@ -70,40 +70,53 @@ export default function ColorsDocs() {
       description="The color system for consistent, accessible interfaces."
       category="Foundation"
     >
-      <DocSection title="Core Colors" description="Primary palette for actions and interactive UI.">
-        <ColorTable colors={coreColors} />
+      <DocSection title="Palette" description="The primary color tokens used throughout the system." level={2}>
+        <DocSection title="Core Colors" description="Primary palette for actions and interactive UI components.">
+          <ColorTable colors={coreColors} />
+        </DocSection>
+
+        <DocSection title="Semantic Colors" description="Feedback and status colors for informational states.">
+          <ColorTable colors={semanticColors} />
+        </DocSection>
+
+        <DocSection title="System Surfaces" description="Backgrounds, borders, and structural colors.">
+          <ColorTable colors={uiColors} />
+        </DocSection>
       </DocSection>
 
-      <DocSection title="Semantic Colors" description="Status and feedback colors with subtle variants.">
-        <ColorTable colors={semanticColors} />
-      </DocSection>
+      <DocSection title="Reference" description="Technical details for applying colors in your project." level={2}>
+        <DocSection title="Usage" description="Applying color tokens via Tailwind or CSS variables.">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-3">
+              <h4 className="font-medium text-[13px] uppercase tracking-wider text-muted-foreground">Tailwind Classes</h4>
+              <div className="rounded-lg border bg-muted/30 p-4 font-mono text-[12px] space-y-2">
+                <div className="text-foreground/80"><span className="text-info">bg-primary</span> <span className="text-muted-foreground">/* Background */</span></div>
+                <div className="text-foreground/80"><span className="text-info">text-primary</span> <span className="text-muted-foreground">/* Text color */</span></div>
+                <div className="text-foreground/80"><span className="text-info">border-primary</span> <span className="text-muted-foreground">/* Border color */</span></div>
+                <div className="pt-2 text-foreground/80"><span className="text-info">bg-info-subtle</span> <span className="text-muted-foreground">/* Subtle background */</span></div>
+                <div className="text-foreground/80"><span className="text-info">text-info</span> <span className="text-muted-foreground">/* Colored text */</span></div>
+              </div>
+            </div>
 
-      <DocSection title="UI Colors" description="Backgrounds, borders, and surfaces.">
-        <ColorTable colors={uiColors} />
-      </DocSection>
-
-      <DocSection title="Usage" description="How to apply colors in Tailwind and CSS.">
-        <div className="rounded-lg border p-8 space-y-4">
-          <div>
-            <h4 className="font-medium mb-1">Tailwind Classes</h4>
-            <pre className="bg-muted rounded-lg p-4 text-sm overflow-x-auto">
-{`bg-primary          /* Background */
-text-primary        /* Text color */
-border-primary      /* Border color */
-
-bg-info-subtle      /* Subtle background */
-text-info           /* Colored text */`}
-            </pre>
+            <div className="space-y-3">
+              <h4 className="font-medium text-[13px] uppercase tracking-wider text-muted-foreground">CSS Variables</h4>
+              <div className="rounded-lg border bg-muted/30 p-4 font-mono text-[12px] space-y-2">
+                <div className="text-foreground/80"><span className="text-info">background-color:</span> <span className="text-success">hsl(var(--primary));</span></div>
+                <div className="text-foreground/80"><span className="text-info">color:</span> <span className="text-success">hsl(var(--primary-foreground));</span></div>
+              </div>
+            </div>
           </div>
-          
-          <div>
-            <h4 className="font-medium mb-1">CSS Variables</h4>
-            <pre className="bg-muted rounded-lg p-4 text-sm overflow-x-auto">
-{`background-color: hsl(var(--primary));
-color: hsl(var(--primary-foreground));`}
-            </pre>
+        </DocSection>
+
+        <DocSection title="Accessibility">
+          <div className="p-4 rounded-lg bg-info/5 border border-info/10 text-[14px]">
+            <p className="text-muted-foreground leading-relaxed">
+              All color combinations in the Malible design system are tested for WCAG 2.1 AA compliance.
+              The <code className="text-xs font-mono bg-muted/50 px-1 rounded">Primary</code> and <code className="text-xs font-mono bg-muted/50 px-1 rounded">Destructive</code> palettes
+              automatically adjust their foreground colors to maintain high contrast ratios.
+            </p>
           </div>
-        </div>
+        </DocSection>
       </DocSection>
 
       <Timestamp date="13-01-2026" />

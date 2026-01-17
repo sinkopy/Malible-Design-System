@@ -24,7 +24,9 @@ const Slider = React.forwardRef<
           key={index}
           className={cn(
             "block h-4 w-4 rounded-full bg-background border border-muted-foreground shadow-sm",
-            "transition-colors",
+            "transition-all duration-150",
+            "hover:scale-110 hover:shadow-md",
+            "active:scale-100",
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
             "disabled:pointer-events-none disabled:opacity-50"
           )}

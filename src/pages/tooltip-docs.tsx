@@ -199,6 +199,28 @@ import { Button } from "@/components/ui/button"
         </div>
       </DocSection>
 
+      <DocSection title="Best Practices">
+        <div className="space-y-4 text-sm">
+          <div className="flex gap-3">
+            <span className="text-green-600 font-medium">✅ Do:</span>
+            <p className="text-muted-foreground">Use tooltips to explain icon-only buttons or provide additional context.</p>
+          </div>
+          <div className="flex gap-3">
+            <span className="text-red-600 font-medium">❌ Don't:</span>
+            <p className="text-muted-foreground">Put essential information only in tooltips—some users can't access them.</p>
+          </div>
+
+          <div className="flex gap-3">
+            <span className="text-green-600 font-medium">✅ Do:</span>
+            <p className="text-muted-foreground">Keep tooltip text brief (1-2 short sentences max).</p>
+          </div>
+          <div className="flex gap-3">
+            <span className="text-red-600 font-medium">❌ Don't:</span>
+            <p className="text-muted-foreground">Use tooltips for long content—use a popover instead.</p>
+          </div>
+        </div>
+      </DocSection>
+
       <Timestamp date="13-01-2026" />
     </DocPage>
   );

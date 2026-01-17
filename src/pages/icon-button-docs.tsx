@@ -12,33 +12,33 @@ export default function IconButtonDocs() {
       <DocSection title="Sizes" description="Three size variants for different contexts.">
         <ComponentExample
           code={`<Button size="icon-sm">
-  <Plus size={16} />
+  <Plus />
 </Button>
 <Button size="icon">
-  <Plus size={20} />
+  <Plus />
 </Button>
 <Button size="icon-lg">
-  <Plus size={24} />
+  <Plus />
 </Button>`}
         >
           <div className="flex items-center gap-4">
             <div className="flex flex-col items-center gap-2">
               <Button size="icon-sm">
-                <Plus size={16} />
+                <Plus />
               </Button>
-              <span className="text-xs text-muted-foreground">icon-sm</span>
+              <span className="text-xs text-muted-foreground">icon-sm (16px)</span>
             </div>
             <div className="flex flex-col items-center gap-2">
               <Button size="icon">
-                <Plus size={20} />
+                <Plus />
               </Button>
-              <span className="text-xs text-muted-foreground">icon</span>
+              <span className="text-xs text-muted-foreground">icon (20px)</span>
             </div>
             <div className="flex flex-col items-center gap-2">
               <Button size="icon-lg">
-                <Plus size={24} />
+                <Plus />
               </Button>
-              <span className="text-xs text-muted-foreground">icon-lg</span>
+              <span className="text-xs text-muted-foreground">icon-lg (24px)</span>
             </div>
           </div>
         </ComponentExample>
@@ -130,53 +130,92 @@ import { Plus, X, DotsThree, Trash } from "@phosphor-icons/react"
         </ComponentExample>
       </DocSection>
 
-      <DocSection title="Icon Size Reference" description="Recommended icon sizes for each button size.">
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse">
-            <thead>
-              <tr className="border-b border-border">
-                <th className="text-left py-2 px-4 text-sm font-semibold text-foreground">Button Size</th>
-                <th className="text-left py-2 px-4 text-sm font-semibold text-foreground">Icon Size</th>
-                <th className="text-left py-2 px-4 text-sm font-semibold text-foreground">Dimensions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="border-b border-border">
-                <td className="py-2 px-4 text-sm text-foreground">icon-sm</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">16px</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">32×32px</td>
-              </tr>
-              <tr className="border-b border-border">
-                <td className="py-2 px-4 text-sm text-foreground">icon</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">20px</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">36×36px</td>
-              </tr>
-              <tr>
-                <td className="py-2 px-4 text-sm text-foreground">icon-lg</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">24px</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">44×44px</td>
-              </tr>
-            </tbody>
-          </table>
+      <DocSection title="Icon Heuristics" description="Automatic scaling and weight handling.">
+        <div className="space-y-6">
+          <p className="text-sm text-muted-foreground">
+            Icons within buttons are automatically scaled based on the button size. You do not need to pass a
+            <code className="px-1 py-0.5 bg-muted rounded text-xs">size</code> prop to individual icons unless you
+            need to override the default behavior.
+          </p>
+          <div className="overflow-x-auto rounded-lg border border-border/50">
+            <table className="w-full text-sm">
+              <thead className="bg-muted/30">
+                <tr>
+                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Button Size</th>
+                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Auto Icon Size</th>
+                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Button Dimensions</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border/50">
+                <tr>
+                  <td className="p-4 font-medium">icon-sm</td>
+                  <td className="p-4 text-muted-foreground">16px</td>
+                  <td className="p-4 text-muted-foreground">32×32px</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-medium">icon</td>
+                  <td className="p-4 text-muted-foreground">20px</td>
+                  <td className="p-4 text-muted-foreground">36×36px</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-medium">icon-lg</td>
+                  <td className="p-4 text-muted-foreground">24px</td>
+                  <td className="p-4 text-muted-foreground">44×44px</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="p-4 rounded-lg bg-info/5 border border-info/20 text-sm text-info-foreground/80">
+            <p className="flex items-center gap-2 font-medium mb-1">
+              <span className="text-info">ℹ️</span> Unified Weight
+            </p>
+            <p>
+              Buttons use <code className="px-1 py-0.5 bg-info/10 rounded text-xs text-info">IconContext</code> to
+              automatically apply a <strong>bold</strong> weight to Phosphor icons, ensuring better visual
+              presence and consistency.
+            </p>
+          </div>
         </div>
       </DocSection>
 
       <DocSection title="Props" description="Icon buttons use the same Button component props. Size accepts 'icon-sm' | 'icon' | 'icon-lg'.">
         <div className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong className="text-foreground">Note:</strong> Icon buttons extend the base Button component. 
-            All Button props are available, including <code className="px-1 py-0.5 bg-muted rounded text-xs">variant</code>, 
+            <strong className="text-foreground">Note:</strong> Icon buttons extend the base Button component.
+            All Button props are available, including <code className="px-1 py-0.5 bg-muted rounded text-xs">variant</code>,
             <code className="px-1 py-0.5 bg-muted rounded text-xs">size</code>, and <code className="px-1 py-0.5 bg-muted rounded text-xs">disabled</code>.
           </p>
           <p>
-            <strong className="text-foreground">Size variants:</strong> Use <code className="px-1 py-0.5 bg-muted rounded text-xs">size="icon-sm"</code>, 
-            <code className="px-1 py-0.5 bg-muted rounded text-xs">size="icon"</code>, or 
+            <strong className="text-foreground">Size variants:</strong> Use <code className="px-1 py-0.5 bg-muted rounded text-xs">size="icon-sm"</code>,
+            <code className="px-1 py-0.5 bg-muted rounded text-xs">size="icon"</code>, or
             <code className="px-1 py-0.5 bg-muted rounded text-xs">size="icon-lg"</code>.
           </p>
           <p>
-            <strong className="text-foreground">Not recommended:</strong> <code className="px-1 py-0.5 bg-muted rounded text-xs">variant="outline"</code> and 
+            <strong className="text-foreground">Not recommended:</strong> <code className="px-1 py-0.5 bg-muted rounded text-xs">variant="outline"</code> and
             <code className="px-1 py-0.5 bg-muted rounded text-xs">variant="link"</code> are not recommended for icon buttons.
           </p>
+        </div>
+      </DocSection>
+
+      <DocSection title="Best Practices">
+        <div className="space-y-4 text-sm">
+          <div className="flex gap-3">
+            <span className="text-green-600 font-medium">✅ Do:</span>
+            <p className="text-muted-foreground">Always include a tooltip or aria-label to describe the action.</p>
+          </div>
+          <div className="flex gap-3">
+            <span className="text-red-600 font-medium">❌ Don't:</span>
+            <p className="text-muted-foreground">Use icon buttons without any text alternatives—screen readers need context.</p>
+          </div>
+
+          <div className="flex gap-3">
+            <span className="text-green-600 font-medium">✅ Do:</span>
+            <p className="text-muted-foreground">Use ghost variant for toolbar buttons to reduce visual weight.</p>
+          </div>
+          <div className="flex gap-3">
+            <span className="text-red-600 font-medium">❌ Don't:</span>
+            <p className="text-muted-foreground">Use primary icon buttons for multiple actions in a row—they compete.</p>
+          </div>
         </div>
       </DocSection>
 

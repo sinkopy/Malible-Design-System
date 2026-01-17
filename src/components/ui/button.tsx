@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
+import { IconContext } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
@@ -11,7 +12,8 @@ const buttonVariants = cva(
     "rounded-lg transition-all duration-150",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
     "disabled:pointer-events-none disabled:opacity-50",
-    "[&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+    "active:scale-[0.98]",
+    "[&_svg]:pointer-events-none [&_svg]:shrink-0",
   ],
   {
     variants: {
@@ -60,12 +62,12 @@ const buttonVariants = cva(
         ],
       },
       size: {
-        sm: "h-8 px-3 text-xs",
-        default: "h-9 px-4 py-2",
-        lg: "h-11 px-6 text-base",
-        "icon-sm": "h-8 w-8 p-2",
-        icon: "h-9 w-9 p-2",
-        "icon-lg": "h-11 w-11 p-2.5",
+        sm: "h-8 px-3 text-xs [&_svg]:size-[14px]",
+        default: "h-9 px-4 py-2 [&_svg]:size-4",
+        lg: "h-11 px-6 text-base [&_svg]:size-5",
+        "icon-sm": "h-8 w-8 p-2 [&_svg]:size-4",
+        icon: "h-9 w-9 p-2 [&_svg]:size-5",
+        "icon-lg": "h-11 w-11 p-2.5 [&_svg]:size-6",
       },
     },
     defaultVariants: {
@@ -77,7 +79,7 @@ const buttonVariants = cva(
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
+  VariantProps<typeof buttonVariants> {
   asChild?: boolean;
 }
 
@@ -90,10 +92,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         {...props}
       >
-        {/* Content needs z-index to appear above the overlay */}
-        <span className="relative z-10 inline-flex items-center justify-center gap-2">
-          {children}
-        </span>
+        <IconContext.Provider value={{ weight: "bold", mirrored: false }}>
+          <span className="relative z-10 inline-flex items-center justify-center gap-2">
+            {children}
+          </span>
+        </IconContext.Provider>
       </Comp>
     );
   }

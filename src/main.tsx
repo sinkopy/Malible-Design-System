@@ -31,6 +31,8 @@ import ColorsDocs from "./pages/colors-docs";
 import TokensDocs from "./pages/tokens-docs";
 import ShadowsDocs from "./pages/shadows-docs";
 import GettingStarted from "./pages/getting-started";
+import CompositionsDocs from "./pages/compositions-docs";
+import Home from "./pages/home";
 import "@/styles/globals.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
@@ -38,8 +40,10 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
+          <Route path="/" element={<Home />} />
           <Route path="/getting-started" element={<GettingStarted />} />
-          <Route path="/" element={<ButtonDocs />} />
+          <Route path="/compositions" element={<CompositionsDocs />} />
+          <Route path="/button" element={<ButtonDocs />} />
           <Route path="/icon-button" element={<IconButtonDocs />} />
           <Route path="/tooltip" element={<TooltipDocs />} />
           <Route path="/slider" element={<SliderDocs />} />
