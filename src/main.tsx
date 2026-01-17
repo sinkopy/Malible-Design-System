@@ -32,6 +32,7 @@ import TokensDocs from "./pages/tokens-docs";
 import ShadowsDocs from "./pages/shadows-docs";
 import GettingStarted from "./pages/getting-started";
 import CompositionsDocs from "./pages/compositions-docs";
+import SkeletonDocs from "./pages/skeleton-docs";
 import Home from "./pages/home";
 import "@/styles/globals.css";
 
@@ -48,6 +49,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="/tooltip" element={<TooltipDocs />} />
           <Route path="/slider" element={<SliderDocs />} />
           <Route path="/scroll-area" element={<ScrollAreaDocs />} />
+          <Route path="/skeleton" element={<SkeletonDocs />} />
           <Route path="/select" element={<SelectDocs />} />
           <Route path="/popover" element={<PopoverDocs />} />
           <Route path="/dropdown-menu" element={<DropdownMenuDocs />} />

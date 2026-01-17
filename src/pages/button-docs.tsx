@@ -166,7 +166,7 @@ export default function ButtonDocs() {
         </div>
       </DocSection>
 
-      <Timestamp date="13-01-2026" />
+      <Timestamp date="17-01-2026 08:34PM" />
     </DocPage>
   );
 }

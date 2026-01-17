@@ -219,7 +219,7 @@ import { Plus, X, DotsThree, Trash } from "@phosphor-icons/react"
         </div>
       </DocSection>
 
-      <Timestamp date="13-01-2026" />
+      <Timestamp date="17-01-2026 08:34PM" />
     </DocPage>
   );
 }

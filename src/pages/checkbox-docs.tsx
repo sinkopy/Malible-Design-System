@@ -165,7 +165,7 @@ export default function CheckboxDocs() {
         </DocSection>
       </DocSection>
 
-      <Timestamp date="13-01-2026" />
+      <Timestamp date="17-01-2026 08:34PM" />
     </DocPage>
   );
 }

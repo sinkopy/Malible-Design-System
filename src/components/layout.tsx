@@ -20,6 +20,7 @@ const navSections = [
       { href: "/tooltip", label: "Tooltip" },
       { href: "/slider", label: "Slider" },
       { href: "/scroll-area", label: "Scroll Area" },
+      { href: "/skeleton", label: "Skeleton" },
       { href: "/select", label: "Select" },
       { href: "/popover", label: "Popover" },
       { href: "/dropdown-menu", label: "Dropdown Menu" },
