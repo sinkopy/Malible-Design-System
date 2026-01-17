@@ -23,6 +23,7 @@ const navSections = [
       { href: "/popover", label: "Popover" },
       { href: "/dropdown-menu", label: "Dropdown Menu" },
       { href: "/dialog", label: "Dialog" },
+      { href: "/toggle-group", label: "Toggle Group" },
       { href: "/input", label: "Input" },
       { href: "/badge", label: "Badge" },
       { href: "/switch", label: "Switch" },

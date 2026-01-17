@@ -581,6 +581,22 @@ className="bg-primary"
 
 ---
 
+### Toggle Group
+
+| Decision | Choice | Rationale |
+|----------|--------|-----------|
+| Variant | Outline only | Ghost is redundant (use Button ghost in flex) |
+| Item height | 32px | Compact toolbar size, matches menu items |
+| Container padding | 4px (p-1) | Space between border and items |
+| Item radius | 4px (rounded-sm) | Slightly inset from container's 8px |
+| On state | bg-secondary + shadow-sm | Visual distinction from off |
+| Off text | --muted-foreground | Deemphasized |
+| On text | --secondary-foreground | Darker for active |
+
+**Date:** January 17, 2026
+
+---
+
 ## Open Questions
 
 ### Question: Dark Mode Implementation

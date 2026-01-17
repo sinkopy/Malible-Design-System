@@ -14,6 +14,7 @@ const allPages = [
   { href: "/popover", label: "Popover", category: "Components" },
   { href: "/dropdown-menu", label: "Dropdown Menu", category: "Components" },
   { href: "/dialog", label: "Dialog", category: "Components" },
+  { href: "/toggle-group", label: "Toggle Group", category: "Components" },
   { href: "/input", label: "Input", category: "Components" },
   { href: "/badge", label: "Badge", category: "Components" },
   { href: "/switch", label: "Switch", category: "Components" },
