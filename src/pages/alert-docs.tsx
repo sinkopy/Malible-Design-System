@@ -1,6 +1,6 @@
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert"
 import { Info, CheckCircle, Warning, WarningCircle } from "@phosphor-icons/react"
-import { DocPage, DocSection, ComponentExample } from "@/components/docs"
+import { DocPage, DocSection, ComponentExample, StateTable, PropsTable } from "@/components/docs"
 
 export default function AlertDocs() {
   return (
@@ -92,45 +92,29 @@ export default function AlertDocs() {
       </DocSection>
 
       <DocSection title="Reference" description="Technical details and configuration for the alert component." level={2}>
-        <DocSection title="Variant Reference">
-          <div className="rounded-lg border border-border/50 overflow-hidden">
-            <table className="w-full text-sm">
-              <thead className="bg-muted/30">
-                <tr>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Variant</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Use Case</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Token</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border/50">
-                <tr>
-                  <td className="p-4 font-medium">Default</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">General information</td>
-                  <td className="p-4 font-mono text-xs text-info/80">--foreground</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-info">Info</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Tips and helpful context</td>
-                  <td className="p-4 font-mono text-xs text-info/80">--info</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-success">Success</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Confirmations</td>
-                  <td className="p-4 font-mono text-xs text-info/80">--success</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-warning">Warning</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Caution notices</td>
-                  <td className="p-4 font-mono text-xs text-info/80">--warning</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-destructive">Destructive</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Errors</td>
-                  <td className="p-4 font-mono text-xs text-info/80">--destructive</td>
-                </tr>
-              </tbody>
-            </table>
+        <DocSection title="Accessibility">
+          <div className="space-y-4 text-[14px] text-muted-foreground leading-relaxed">
+            <p>
+              Alerts use the <code className="text-[13px] bg-muted/20 border border-border/30 px-1 rounded">alert</code> role to provide an automated way to communicate important information to assistive technologies.
+            </p>
+            <ul className="list-disc list-inside space-y-2 ml-2">
+              <li>Use the <code className="text-[13px] bg-muted/20 border border-border/30 px-1 rounded">alert</code> role for messages that are not interactive.</li>
+              <li>Ensure the alert is visible and clear to the user.</li>
+              <li>Avoid using alerts for information that is not critical or time-sensitive.</li>
+            </ul>
           </div>
+        </DocSection>
+
+        <DocSection title="Variant Reference">
+          <StateTable
+            states={[
+              { state: "Default", style: "Neutral information", token: "border-border" },
+              { state: "Info", style: "Informational context", token: "border-info/50 bg-info/5" },
+              { state: "Success", style: "Positive confirmation", token: "border-success/50 bg-success/5" },
+              { state: "Warning", style: "Cautionary notice", token: "border-warning/50 bg-warning/5" },
+              { state: "Destructive", style: "Critical error", token: "border-destructive/50 bg-destructive/5" },
+            ]}
+          />
         </DocSection>
 
         <DocSection title="Best Practices">

@@ -33,6 +33,12 @@ import ShadowsDocs from "./pages/shadows-docs";
 import GettingStarted from "./pages/getting-started";
 import CompositionsDocs from "./pages/compositions-docs";
 import SkeletonDocs from "./pages/skeleton-docs";
+import SheetDocs from "./pages/sheet-docs";
+import LayoutDocs from "./pages/layout-docs";
+import FormFieldDocs from "./pages/form-field-docs";
+import AutoCompleteDocs from "./pages/autocomplete-docs";
+import DrawerDocs from "./pages/drawer-docs";
+import ModalDocs from "./pages/modal-docs";
 import Home from "./pages/home";
 import "@/styles/globals.css";
 
@@ -50,6 +56,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="/slider" element={<SliderDocs />} />
           <Route path="/scroll-area" element={<ScrollAreaDocs />} />
           <Route path="/skeleton" element={<SkeletonDocs />} />
+          <Route path="/sheet" element={<SheetDocs />} />
           <Route path="/select" element={<SelectDocs />} />
           <Route path="/popover" element={<PopoverDocs />} />
           <Route path="/dropdown-menu" element={<DropdownMenuDocs />} />
@@ -69,8 +76,13 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="/breadcrumb" element={<BreadcrumbDocs />} />
           <Route path="/tabs" element={<TabsDocs />} />
           <Route path="/file-input" element={<FileInputDocs />} />
+          <Route path="/form-field" element={<FormFieldDocs />} />
           <Route path="/typography" element={<TypographyDocs />} />
+          <Route path="/layout" element={<LayoutDocs />} />
           <Route path="/colors" element={<ColorsDocs />} />
+          <Route path="/autocomplete" element={<AutoCompleteDocs />} />
+          <Route path="/drawer" element={<DrawerDocs />} />
+          <Route path="/modal" element={<ModalDocs />} />
           <Route path="/tokens" element={<TokensDocs />} />
           <Route path="/shadows" element={<ShadowsDocs />} />
         </Route>

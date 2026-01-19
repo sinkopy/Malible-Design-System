@@ -1,6 +1,6 @@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import { DocPage, DocSection, ComponentExample, Timestamp } from "@/components/docs";
+import { DocPage, DocSection, ComponentExample, Timestamp, PropsTable, StateTable } from "@/components/docs";
 
 export default function CheckboxDocs() {
   return (
@@ -72,71 +72,52 @@ export default function CheckboxDocs() {
       </DocSection>
 
       <DocSection title="Reference" description="Technical details and configuration for the checkbox component." level={2}>
-        <DocSection title="State Reference">
-          <div className="rounded-lg border border-border/50 overflow-hidden">
-            <table className="w-full text-sm">
-              <thead className="bg-muted/30">
-                <tr>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">State</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Style</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Token/Value</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border/50">
-                <tr>
-                  <td className="p-4 font-medium">Unchecked</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Border only</td>
-                  <td className="p-4 font-mono text-xs text-info/80">border-input</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium">Checked</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Primary background + checkmark</td>
-                  <td className="p-4 font-mono text-xs text-info/80">bg-primary</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium">Indeterminate</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Primary background + dash</td>
-                  <td className="p-4 font-mono text-xs text-info/80">bg-primary</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium">Disabled</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">50% opacity</td>
-                  <td className="p-4 font-mono text-xs text-info/80">opacity-50</td>
-                </tr>
-              </tbody>
-            </table>
+        <DocSection title="Accessibility">
+          <div className="space-y-4 text-[14px] text-muted-foreground leading-relaxed">
+            <p>
+              Checkboxes use semantic HTML and ARIA attributes to ensure they are accessible.
+            </p>
+            <ul className="list-disc list-inside space-y-2 ml-2">
+              <li>Use the <code className="text-[13px] bg-muted/20 border border-border/30 px-1 rounded">Label</code> component with <code className="text-[13px] bg-muted/20 border border-border/30 px-1 rounded">htmlFor</code> to provide a text label.</li>
+              <li>Supports <code className="text-[13px] bg-muted/20 border border-border/30 px-1 rounded">indeterminate</code> state for partial selection.</li>
+              <li>Keyboard: <kbd className="text-[11px] font-sans bg-muted/20 px-1 rounded border border-border/20">Space</kbd> to toggle.</li>
+            </ul>
           </div>
         </DocSection>
 
+        <DocSection title="State Reference">
+          <StateTable
+            states={[
+              { state: "Unchecked", style: "Border only", token: "border-input" },
+              { state: "Checked", style: "Primary background", token: "bg-primary" },
+              { state: "Indeterminate", style: "Dash indicator", token: "bg-primary" },
+              { state: "Disabled", style: "50% opacity", token: "opacity-50" },
+            ]}
+          />
+        </DocSection>
+
         <DocSection title="Props">
-          <div className="rounded-lg border border-border/50 overflow-hidden">
-            <table className="w-full text-sm">
-              <thead className="bg-muted/30">
-                <tr>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Prop</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Type</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Default</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border/50">
-                <tr>
-                  <td className="p-4 font-mono text-xs text-info/80 font-semibold leading-tight">checked</td>
-                  <td className="p-4 font-mono text-xs text-info/80">boolean | "indeterminate"</td>
-                  <td className="p-4 font-mono text-xs text-muted-foreground">—</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-mono text-xs text-info/80 font-semibold leading-tight">defaultChecked</td>
-                  <td className="p-4 font-mono text-xs text-info/80">boolean</td>
-                  <td className="p-4 font-mono text-xs text-muted-foreground">false</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-mono text-xs text-info/80 font-semibold leading-tight">disabled</td>
-                  <td className="p-4 font-mono text-xs text-info/80">boolean</td>
-                  <td className="p-4 font-mono text-xs text-muted-foreground">false</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <PropsTable
+            props={[
+              {
+                name: "checked",
+                type: 'boolean | "indeterminate"',
+                description: "The checked state of the checkbox."
+              },
+              {
+                name: "defaultChecked",
+                type: "boolean",
+                default: "false",
+                description: "The initial checked state."
+              },
+              {
+                name: "disabled",
+                type: "boolean",
+                default: "false",
+                description: "Whether the checkbox is disabled."
+              },
+            ]}
+          />
         </DocSection>
 
         <DocSection title="Best Practices">

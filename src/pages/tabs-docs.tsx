@@ -1,5 +1,5 @@
 import { Tabs, TabsList, TabsTrigger, TabsContent, TabsCounter } from "@/components/ui/tabs"
-import { DocPage, DocSection, ComponentExample } from "@/components/docs"
+import { DocPage, DocSection, ComponentExample, PropsTable, StateTable } from "@/components/docs"
 import { Square, MagnifyingGlass, TrendUp } from "@phosphor-icons/react"
 
 export default function TabsDocs() {
@@ -166,44 +166,37 @@ export default function TabsDocs() {
       </DocSection>
 
       <DocSection title="State Reference">
-        <div className="rounded-lg border overflow-hidden">
-          <table className="w-full text-sm">
-            <thead className="bg-muted/50">
-              <tr>
-                <th className="text-left p-3 font-medium">Variant</th>
-                <th className="text-left p-3 font-medium">State</th>
-                <th className="text-left p-3 font-medium">Style</th>
-                <th className="text-left p-3 font-medium">Token/Value</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y">
-              <tr>
-                <td className="p-3 font-medium">Pill</td>
-                <td className="p-3 text-muted-foreground">Inactive</td>
-                <td className="p-3 text-muted-foreground">No background</td>
-                <td className="p-3 font-mono text-xs text-muted-foreground">text-muted-foreground</td>
-              </tr>
-              <tr>
-                <td className="p-3 font-medium">Pill</td>
-                <td className="p-3 text-muted-foreground">Active</td>
-                <td className="p-3 text-muted-foreground">Background + border</td>
-                <td className="p-3 font-mono text-xs text-muted-foreground">bg-background border-border</td>
-              </tr>
-              <tr>
-                <td className="p-3 font-medium">Underline</td>
-                <td className="p-3 text-muted-foreground">Inactive</td>
-                <td className="p-3 text-muted-foreground">No indicator</td>
-                <td className="p-3 font-mono text-xs text-muted-foreground">text-muted-foreground</td>
-              </tr>
-              <tr>
-                <td className="p-3 font-medium">Underline</td>
-                <td className="p-3 text-muted-foreground">Active</td>
-                <td className="p-3 text-muted-foreground">Bottom border</td>
-                <td className="p-3 font-mono text-xs text-muted-foreground">border-b-2 border-primary</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <StateTable
+          states={[
+            { state: "Inactive (Pill)", style: "No background, soft text", token: "text-muted-foreground" },
+            { state: "Active (Pill)", style: "Background + subtle border", token: "bg-background border-border" },
+            { state: "Inactive (Underline)", style: "No indicator", token: "text-muted-foreground" },
+            { state: "Active (Underline)", style: "Bottom border indicator", token: "border-b-2 border-primary" },
+          ]}
+        />
+      </DocSection>
+
+      <DocSection title="Props" description="Tabs component configuration.">
+        <PropsTable
+          props={[
+            {
+              name: "variant",
+              type: '"pill" | "underline"',
+              default: '"pill"',
+              description: "The visual style of the tabs."
+            },
+            {
+              name: "value",
+              type: "string",
+              description: "The unique value for the tab trigger or content."
+            },
+            {
+              name: "defaultValue",
+              type: "string",
+              description: "The value of the tab to be visible by default."
+            }
+          ]}
+        />
       </DocSection>
 
       <DocSection title="Best Practices">

@@ -17,20 +17,22 @@ export default function ShadowsDocs() {
     >
       <DocSection title="Examples" description="Visual demonstrations and technical specifications of the shadow system." level={2}>
         <DocSection title="Shadow Scale" description="5 elevation levels for different UI contexts.">
-          <div className="rounded-lg border border-border/50 overflow-hidden">
-            <table className="w-full text-sm">
-              <thead className="bg-muted/30">
+          <div className="rounded-xl border border-border/40 overflow-hidden">
+            <table className="w-full text-left text-sm">
+              <thead className="border-b border-border/40 bg-muted/20">
                 <tr>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Token</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Preview</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Use Case</th>
+                  <th className="p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground/70">Token</th>
+                  <th className="p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground/70">Preview</th>
+                  <th className="p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground/70">Use Case</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-border/50">
+              <tbody className="divide-y divide-border/30">
                 {shadowScale.map((shadow) => (
                   <tr key={shadow.name}>
-                    <td className="p-4">
-                      <code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">{shadow.name}</code>
+                    <td className="p-4 bg-muted/5">
+                      <code className="text-[13px] font-mono text-foreground/80 bg-muted/20 border border-border/30 px-1.5 py-0.5 rounded leading-none">
+                        {shadow.name}
+                      </code>
                     </td>
                     <td className="p-4">
                       <div className={`w-24 h-12 bg-card rounded-lg border border-border/50 ${shadow.name}`} />
@@ -57,19 +59,19 @@ export default function ShadowsDocs() {
             <div className="flex gap-6 items-end">
               <div className="flex flex-col items-center gap-2">
                 <div className="w-20 h-14 bg-card rounded-lg border border-border/50" />
-                <span className="text-[11px] font-mono text-muted-foreground">none</span>
+                <span className="text-[11px] font-mono text-muted-foreground/60">none</span>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <div className="w-20 h-14 bg-card rounded-lg border border-border/50 shadow-md" />
-                <span className="text-[11px] font-mono text-muted-foreground">shadow-md</span>
+                <span className="text-[11px] font-mono text-muted-foreground/60">shadow-md</span>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <div className="w-20 h-14 bg-card rounded-lg border border-border/50 shadow-lg" />
-                <span className="text-[11px] font-mono text-muted-foreground">shadow-lg</span>
+                <span className="text-[11px] font-mono text-muted-foreground/60">shadow-lg</span>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <div className="w-20 h-14 bg-card rounded-lg border border-border/50 shadow-xl" />
-                <span className="text-[11px] font-mono text-muted-foreground">shadow-xl</span>
+                <span className="text-[11px] font-mono text-muted-foreground/60">shadow-xl</span>
               </div>
             </div>
           </ComponentExample>
@@ -78,31 +80,37 @@ export default function ShadowsDocs() {
 
       <DocSection title="Reference" description="Technical mapping and principles for the shadow system." level={2}>
         <DocSection title="Component Mapping" description="Recommended shadow levels per component.">
-          <div className="rounded-lg border border-border/50 overflow-hidden">
-            <table className="w-full text-sm">
-              <thead className="bg-muted/30">
+          <div className="rounded-xl border border-border/40 overflow-hidden">
+            <table className="w-full text-left text-sm">
+              <thead className="border-b border-border/40 bg-muted/20">
                 <tr>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Component</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Shadow</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Notes</th>
+                  <th className="p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground/70">Component</th>
+                  <th className="p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground/70">Shadow</th>
+                  <th className="p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground/70">Notes</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-border/50">
+              <tbody className="divide-y divide-border/30">
                 <tr>
-                  <td className="p-4 font-medium text-[13px]">Card</td>
+                  <td className="p-4 font-medium text-[13px] text-foreground/80">Card</td>
                   <td className="p-4">
-                    <code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">none</code> <span className="text-muted-foreground mx-1">/</span> <code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">shadow-md</code>
+                    <code className="text-[13px] font-mono text-foreground/70 bg-muted/20 border border-border/30 px-1 rounded">none</code>
+                    <span className="text-muted-foreground/40 mx-2">/</span>
+                    <code className="text-[13px] font-mono text-foreground/70 bg-muted/20 border border-border/30 px-1 rounded">shadow-md</code>
                   </td>
                   <td className="p-4 text-muted-foreground text-[13px]">On-demand elevation</td>
                 </tr>
                 <tr>
-                  <td className="p-4 font-medium text-[13px]">Dropdown / Select</td>
-                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">shadow-lg</code></td>
+                  <td className="p-4 font-medium text-[13px] text-foreground/80">Dropdown / Select</td>
+                  <td className="p-4">
+                    <code className="text-[13px] font-mono text-foreground/70 bg-muted/20 border border-border/30 px-1 rounded">shadow-lg</code>
+                  </td>
                   <td className="p-4 text-muted-foreground text-[13px]">Floating interaction layer</td>
                 </tr>
                 <tr>
-                  <td className="p-4 font-medium text-[13px]">Modal / Dialog</td>
-                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">shadow-xl</code></td>
+                  <td className="p-4 font-medium text-[13px] text-foreground/80">Modal / Dialog</td>
+                  <td className="p-4">
+                    <code className="text-[13px] font-mono text-foreground/70 bg-muted/20 border border-border/30 px-1 rounded">shadow-xl</code>
+                  </td>
                   <td className="p-4 text-muted-foreground text-[13px]">Highest visual stack point</td>
                 </tr>
               </tbody>

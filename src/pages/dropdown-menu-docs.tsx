@@ -8,7 +8,7 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu"
 import { Button } from "@/components/ui/button"
-import { DocPage, DocSection, ComponentExample, Timestamp } from "@/components/docs"
+import { DocPage, DocSection, ComponentExample, Timestamp, PropsTable, StateTable } from "@/components/docs"
 import { User, Gear, CreditCard, Trash, Copy, FileText } from "@phosphor-icons/react"
 import * as React from "react"
 
@@ -186,39 +186,43 @@ const [showActivity, setShowActivity] = useState(false)
       </DocSection>
 
       <DocSection title="Reference" description="Technical details and configuration for the dropdown menu component." level={2}>
+        <DocSection title="State Reference">
+          <StateTable
+            states={[
+              { state: "Item Hover", style: "Soft background", token: "bg-accent text-accent-foreground" },
+              { state: "Checkbox Checked", style: "Icon indicator", token: "bg-primary text-primary-foreground" },
+              { state: "Destructive Hover", style: "Red background", token: "bg-destructive text-destructive-foreground" },
+            ]}
+          />
+        </DocSection>
+
         <DocSection title="Props" description="Dropdown Menu component props configuration.">
-          <div className="rounded-lg border border-border/50 overflow-hidden">
-            <table className="w-full text-sm">
-              <thead className="bg-muted/30">
-                <tr>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Component</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Prop</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Type</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Description</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border/50">
-                <tr>
-                  <td className="p-4 font-medium text-[13px]">DropdownMenuItem</td>
-                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">destructive</code></td>
-                  <td className="p-4 text-muted-foreground text-[13px]">boolean</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Apply destructive styling (red text)</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-[13px]">DropdownMenuContent</td>
-                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">side</code></td>
-                  <td className="p-4 text-muted-foreground text-[13px]">string</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Side of trigger (top, right, bottom, left)</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-[13px]">DropdownMenuCheckboxItem</td>
-                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">checked</code></td>
-                  <td className="p-4 text-muted-foreground text-[13px]">boolean</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Selected state of the item</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <PropsTable
+            props={[
+              {
+                name: "destructive",
+                type: "boolean",
+                default: "false",
+                description: "Apply destructive styling (red text) to the menu item."
+              },
+              {
+                name: "side",
+                type: '"top" | "right" | "bottom" | "left"',
+                default: '"bottom"',
+                description: "The preferred side of the trigger element to render against."
+              },
+              {
+                name: "checked",
+                type: "boolean",
+                description: "The controlled checked state of the checkbox item."
+              },
+              {
+                name: "onCheckedChange",
+                type: "(checked: boolean) => void",
+                description: "Event handler called when the checked state changes."
+              }
+            ]}
+          />
         </DocSection>
 
         <DocSection title="Best Practices">

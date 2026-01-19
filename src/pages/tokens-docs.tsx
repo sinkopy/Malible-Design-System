@@ -22,17 +22,17 @@ export default function TokensDocs() {
 
       {/* Spacing */}
       <DocSection title="Spacing" description="Consistent spacing scale for layout and components." level={2}>
-        <div className="rounded-lg border border-border/50 overflow-hidden">
-          <table className="w-full text-sm">
-            <thead className="bg-muted/30">
+        <div className="rounded-xl border border-border/40 overflow-hidden">
+          <table className="w-full text-left text-sm">
+            <thead className="border-b border-border/40 bg-muted/20">
               <tr>
-                <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Token</th>
-                <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Value</th>
-                <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Tailwind</th>
-                <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Preview</th>
+                <th className="p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground/70">Token</th>
+                <th className="p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground/70">Value</th>
+                <th className="p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground/70">Tailwind</th>
+                <th className="p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground/70">Preview</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-border/50">
+            <tbody className="divide-y divide-border/30">
               {[
                 { token: "space-0", value: "0px", tw: "p-0, m-0, gap-0" },
                 { token: "space-2", value: "2px", tw: "p-0.5, m-0.5, gap-0.5" },
@@ -44,12 +44,16 @@ export default function TokensDocs() {
                 { token: "space-32", value: "32px", tw: "p-8, m-8, gap-8" },
               ].map((item) => (
                 <tr key={item.token}>
-                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">{item.token}</code></td>
-                  <td className="p-4 font-mono text-[11px] text-muted-foreground">{item.value}</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">{item.tw}</td>
+                  <td className="p-4 bg-muted/5">
+                    <code className="text-[13px] font-mono text-foreground/80 bg-muted/20 border border-border/30 px-1.5 py-0.5 rounded leading-none">
+                      {item.token}
+                    </code>
+                  </td>
+                  <td className="p-4 font-mono text-[13px] text-muted-foreground/90">{item.value}</td>
+                  <td className="p-4 text-muted-foreground/70 text-[13px]">{item.tw}</td>
                   <td className="p-4">
                     <div
-                      className="bg-info/60 h-4 rounded-sm"
+                      className="bg-muted-foreground/20 h-4 rounded-sm"
                       style={{ width: item.value === "0px" ? "2px" : item.value }}
                     />
                   </td>
@@ -62,29 +66,37 @@ export default function TokensDocs() {
 
       <DocSection title="Radius & Shadows" description="Foundational depth and corner tokens." level={2}>
         <DocSection title="Border Radius" description="Consistent corner rounding tokens.">
-          <div className="rounded-lg border border-border/50 overflow-hidden">
-            <table className="w-full text-sm">
-              <thead className="bg-muted/30">
+          <div className="rounded-xl border border-border/40 overflow-hidden">
+            <table className="w-full text-left text-sm">
+              <thead className="border-b border-border/40 bg-muted/20">
                 <tr>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Token</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Value</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Tailwind</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Preview</th>
+                  <th className="p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground/70">Token</th>
+                  <th className="p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground/70">Value</th>
+                  <th className="p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground/70">Tailwind</th>
+                  <th className="p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground/70">Preview</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-border/50">
+              <tbody className="divide-y divide-border/30">
                 <tr>
-                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">--radius</code></td>
-                  <td className="p-4 font-mono text-[11px] text-muted-foreground">8px</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">rounded-lg</td>
+                  <td className="p-4 bg-muted/5">
+                    <code className="text-[13px] font-mono text-foreground/80 bg-muted/20 border border-border/30 px-1.5 py-0.5 rounded leading-none">
+                      --radius
+                    </code>
+                  </td>
+                  <td className="p-4 font-mono text-[13px] text-muted-foreground/90">8px</td>
+                  <td className="p-4 text-muted-foreground/70 text-[13px]">rounded-lg</td>
                   <td className="p-4">
                     <div className="h-8 w-16 bg-muted border border-border/50 rounded-lg" />
                   </td>
                 </tr>
                 <tr>
-                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">radius-full</code></td>
-                  <td className="p-4 font-mono text-[11px] text-muted-foreground">9999px</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">rounded-full</td>
+                  <td className="p-4 bg-muted/5">
+                    <code className="text-[13px] font-mono text-foreground/80 bg-muted/20 border border-border/30 px-1.5 py-0.5 rounded leading-none">
+                      radius-full
+                    </code>
+                  </td>
+                  <td className="p-4 font-mono text-[13px] text-muted-foreground/90">9999px</td>
+                  <td className="p-4 text-muted-foreground/70 text-[13px]">rounded-full</td>
                   <td className="p-4">
                     <div className="h-8 w-16 bg-muted border border-border/50 rounded-full" />
                   </td>
@@ -95,26 +107,34 @@ export default function TokensDocs() {
         </DocSection>
 
         <DocSection title="Shadow Tokens" description="Elevation and depth effects for functional elements.">
-          <div className="rounded-lg border border-border/50 overflow-hidden">
-            <table className="w-full text-sm">
-              <thead className="bg-muted/30">
+          <div className="rounded-xl border border-border/40 overflow-hidden">
+            <table className="w-full text-left text-sm">
+              <thead className="border-b border-border/40 bg-muted/20">
                 <tr>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Token</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Usage</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Preview</th>
+                  <th className="p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground/70">Token</th>
+                  <th className="p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground/70">Usage</th>
+                  <th className="p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground/70">Preview</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-border/50">
+              <tbody className="divide-y divide-border/30">
                 <tr>
-                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">shadow-xs</code></td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Alerts, simple inputs</td>
+                  <td className="p-4 bg-muted/5">
+                    <code className="text-[13px] font-mono text-foreground/80 bg-muted/20 border border-border/30 px-1.5 py-0.5 rounded leading-none">
+                      shadow-xs
+                    </code>
+                  </td>
+                  <td className="p-4 text-muted-foreground/70 text-[13px]">Alerts, simple inputs</td>
                   <td className="p-4">
                     <div className="h-8 w-16 bg-card border border-border/50 rounded-lg shadow-xs" />
                   </td>
                 </tr>
                 <tr>
-                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">shadow-md</code></td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Cards, elevated panels</td>
+                  <td className="p-4 bg-muted/5">
+                    <code className="text-[13px] font-mono text-foreground/80 bg-muted/20 border border-border/30 px-1.5 py-0.5 rounded leading-none">
+                      shadow-md
+                    </code>
+                  </td>
+                  <td className="p-4 text-muted-foreground/70 text-[13px]">Cards, elevated panels</td>
                   <td className="p-4">
                     <div className="h-8 w-16 bg-card border border-border/50 rounded-lg shadow-md" />
                   </td>
@@ -138,8 +158,8 @@ export default function TokensDocs() {
         </DocSection>
 
         <DocSection title="CSS Variables" description="Complete variable reference for the global stylesheet.">
-          <div className="rounded-lg border border-border/50 bg-muted/30 p-6 overflow-hidden">
-            <pre className="text-[12px] font-mono leading-relaxed overflow-x-auto text-muted-foreground selection:bg-info/20">
+          <div className="rounded-xl border border-border/40 bg-muted/10 p-6 overflow-hidden">
+            <pre className="text-[13px] font-mono leading-relaxed overflow-x-auto text-muted-foreground/80 selection:bg-info/20">
               {`:root {
   /* Colors */
   --background: 0 0% 100%;

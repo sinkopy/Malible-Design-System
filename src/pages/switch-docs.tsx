@@ -1,6 +1,6 @@
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
-import { DocPage, DocSection, ComponentExample, Timestamp } from "@/components/docs";
+import { DocPage, DocSection, ComponentExample, Timestamp, PropsTable, StateTable } from "@/components/docs";
 
 export default function SwitchDocs() {
   return (
@@ -80,71 +80,58 @@ export default function SwitchDocs() {
         </ComponentExample>
       </DocSection>
 
-      <DocSection title="State Reference">
-        <div className="rounded-lg border overflow-hidden">
-          <table className="w-full text-sm">
-            <thead className="bg-muted/50">
-              <tr>
-                <th className="text-left p-3 font-medium">State</th>
-                <th className="text-left p-3 font-medium">Style</th>
-                <th className="text-left p-3 font-medium">Token/Value</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y">
-              <tr>
-                <td className="p-3 font-medium">Off</td>
-                <td className="p-3 text-muted-foreground">Muted background</td>
-                <td className="p-3 font-mono text-xs text-muted-foreground">bg-muted</td>
-              </tr>
-              <tr>
-                <td className="p-3 font-medium">On</td>
-                <td className="p-3 text-muted-foreground">Success background</td>
-                <td className="p-3 font-mono text-xs text-muted-foreground">bg-success</td>
-              </tr>
-              <tr>
-                <td className="p-3 font-medium">Disabled</td>
-                <td className="p-3 text-muted-foreground">50% opacity</td>
-                <td className="p-3 font-mono text-xs text-muted-foreground">opacity-50</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </DocSection>
+      <DocSection title="Reference" description="Technical details and compliance for the switch component." level={2}>
+        <DocSection title="Accessibility">
+          <div className="space-y-4 text-[14px] text-muted-foreground leading-relaxed">
+            <p>
+              Switches provide a clear visual and semantic indication of on/off states.
+            </p>
+            <ul className="list-disc list-inside space-y-2 ml-2">
+              <li>Always associate the switch with a <code className="text-[13px] bg-muted/20 border border-border/30 px-1 rounded">Label</code> using <code className="text-[13px] bg-muted/20 border border-border/30 px-1 rounded">id</code> and <code className="text-[13px] bg-muted/20 border border-border/30 px-1 rounded">htmlFor</code>.</li>
+              <li>The component uses <code className="text-[13px] bg-muted/20 border border-border/30 px-1 rounded">role="switch"</code> and manages <code className="text-[13px] bg-muted/20 border border-border/30 px-1 rounded">aria-checked</code> automatically.</li>
+              <li>Keyboard: <kbd className="text-[11px] font-sans bg-muted/20 px-1 rounded border border-border/20">Space</kbd> or <kbd className="text-[11px] font-sans bg-muted/20 px-1 rounded border border-border/20">Enter</kbd> to toggle.</li>
+            </ul>
+          </div>
+        </DocSection>
 
-      <DocSection title="Props">
-        <div className="rounded-lg border overflow-hidden">
-          <table className="w-full text-sm">
-            <thead className="bg-muted/50">
-              <tr>
-                <th className="text-left p-4 font-medium">Prop</th>
-                <th className="text-left p-4 font-medium">Type</th>
-                <th className="text-left p-4 font-medium">Default</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y">
-              <tr>
-                <td className="p-4 font-mono text-xs">checked</td>
-                <td className="p-4 font-mono text-xs text-muted-foreground">boolean</td>
-                <td className="p-4 font-mono text-xs text-muted-foreground">—</td>
-              </tr>
-              <tr>
-                <td className="p-4 font-mono text-xs">defaultChecked</td>
-                <td className="p-4 font-mono text-xs text-muted-foreground">boolean</td>
-                <td className="p-4 font-mono text-xs text-muted-foreground">false</td>
-              </tr>
-              <tr>
-                <td className="p-4 font-mono text-xs">onCheckedChange</td>
-                <td className="p-4 font-mono text-xs text-muted-foreground">(checked: boolean) =&gt; void</td>
-                <td className="p-4 font-mono text-xs text-muted-foreground">—</td>
-              </tr>
-              <tr>
-                <td className="p-4 font-mono text-xs">disabled</td>
-                <td className="p-4 font-mono text-xs text-muted-foreground">boolean</td>
-                <td className="p-4 font-mono text-xs text-muted-foreground">false</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <DocSection title="State Reference">
+          <StateTable
+            states={[
+              { state: "Off", style: "Muted background", token: "bg-muted" },
+              { state: "On", style: "Success background", token: "bg-success" },
+              { state: "Disabled", style: "50% opacity", token: "opacity-50" },
+            ]}
+          />
+        </DocSection>
+
+        <DocSection title="Props" description="Switch component props configuration.">
+          <PropsTable
+            props={[
+              {
+                name: "checked",
+                type: "boolean",
+                description: "The controlled checked state."
+              },
+              {
+                name: "defaultChecked",
+                type: "boolean",
+                default: "false",
+                description: "The default checked state."
+              },
+              {
+                name: "onCheckedChange",
+                type: "(checked: boolean) => void",
+                description: "Event handler called when the checked state changes."
+              },
+              {
+                name: "disabled",
+                type: "boolean",
+                default: "false",
+                description: "Whether the switch is disabled."
+              },
+            ]}
+          />
+        </DocSection>
       </DocSection>
 
       <DocSection title="Best Practices">

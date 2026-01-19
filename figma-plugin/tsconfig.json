@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "target": "ES2015",
+        "lib": [
+            "ES2015"
+        ],
+        "types": [
+            "@figma/plugin-typings"
+        ],
+        "strict": false,
+        "skipLibCheck": true
+    },
+    "include": [
+        "code.ts"
+    ]
+}

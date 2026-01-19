@@ -1,5 +1,5 @@
 import { Skeleton } from "@/components/ui/skeleton"
-import { DocPage, DocSection, ComponentExample, Timestamp } from "@/components/docs"
+import { DocPage, DocSection, ComponentExample, Timestamp, PropsTable } from "@/components/docs"
 
 export default function SkeletonDocs() {
     return (
@@ -56,6 +56,32 @@ export default function SkeletonDocs() {
                         </div>
                     ))}
                 </div>
+            </DocSection>
+            <DocSection title="Reference" description="Technical details and compliance for the skeleton component." level={2}>
+                <DocSection title="Accessibility">
+                    <div className="space-y-4 text-[14px] text-muted-foreground leading-relaxed">
+                        <p>
+                            Skeletons are used to indicate that content is loading and should be treated as decorative.
+                        </p>
+                        <ul className="list-disc list-inside space-y-2 ml-2">
+                            <li>Skeletons have <code className="text-[13px] bg-muted/20 border border-border/30 px-1 rounded">aria-hidden="true"</code> by default as they don't contain interactive content.</li>
+                            <li>Ensure the parent container has appropriate loading states (e.g., <code className="text-[13px] bg-muted/20 border border-border/30 px-1 rounded">aria-busy="true"</code>).</li>
+                            <li>Avoid using skeletons for long periods; provide text-based fallbacks if loading takes significant time.</li>
+                        </ul>
+                    </div>
+                </DocSection>
+
+                <DocSection title="Props" description="Skeleton component props configuration.">
+                    <PropsTable
+                        props={[
+                            {
+                                name: "className",
+                                type: "string",
+                                description: "Additional CSS classes to style the skeleton (usually height and width)."
+                            },
+                        ]}
+                    />
+                </DocSection>
             </DocSection>
 
             <Timestamp date="17-01-2026 08:34PM" />

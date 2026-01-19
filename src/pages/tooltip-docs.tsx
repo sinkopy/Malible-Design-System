@@ -5,7 +5,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { Button } from "@/components/ui/button"
-import { DocPage, DocSection, ComponentExample, Timestamp } from "@/components/docs"
+import { DocPage, DocSection, ComponentExample, Timestamp, PropsTable, StateTable } from "@/components/docs"
 import { Info, Question, Warning, X } from "@phosphor-icons/react"
 
 export default function TooltipDocs() {
@@ -164,61 +164,62 @@ import { Button } from "@/components/ui/button"
         </ComponentExample>
       </DocSection>
 
-      <DocSection title="Props" description="TooltipContent props for positioning and customization.">
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse">
-            <thead>
-              <tr className="border-b border-border">
-                <th className="text-left py-2 px-4 text-sm font-semibold text-foreground">Prop</th>
-                <th className="text-left py-2 px-4 text-sm font-semibold text-foreground">Type</th>
-                <th className="text-left py-2 px-4 text-sm font-semibold text-foreground">Default</th>
-                <th className="text-left py-2 px-4 text-sm font-semibold text-foreground">Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="border-b border-border">
-                <td className="py-2 px-4 text-sm text-foreground font-medium">side</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">"top" | "bottom" | "left" | "right"</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">"top"</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">Side of the trigger to show tooltip</td>
-              </tr>
-              <tr className="border-b border-border">
-                <td className="py-2 px-4 text-sm text-foreground font-medium">sideOffset</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">number</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">4</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">Distance in pixels from the trigger</td>
-              </tr>
-              <tr>
-                <td className="py-2 px-4 text-sm text-foreground font-medium">align</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">"start" | "center" | "end"</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">"center"</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">Alignment along the side</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </DocSection>
+      <DocSection title="Reference" description="Technical details and configuration for the tooltip component." level={2}>
+        <DocSection title="State Reference">
+          <StateTable
+            states={[
+              { state: "Closed", style: "Hidden from DOM", token: "opacity-0 scale-95" },
+              { state: "Open", style: "Floating layer", token: "opacity-100 scale-100" },
+            ]}
+          />
+        </DocSection>
 
-      <DocSection title="Best Practices">
-        <div className="space-y-4 text-sm">
-          <div className="flex gap-3">
-            <span className="text-green-600 font-medium">✅ Do:</span>
-            <p className="text-muted-foreground">Use tooltips to explain icon-only buttons or provide additional context.</p>
-          </div>
-          <div className="flex gap-3">
-            <span className="text-red-600 font-medium">❌ Don't:</span>
-            <p className="text-muted-foreground">Put essential information only in tooltips—some users can't access them.</p>
-          </div>
+        <DocSection title="Props" description="TooltipContent props for positioning and customization.">
+          <PropsTable
+            props={[
+              {
+                name: "side",
+                type: '"top" | "bottom" | "left" | "right"',
+                default: '"top"',
+                description: "The preferred side of the trigger element to render against."
+              },
+              {
+                name: "sideOffset",
+                type: "number",
+                default: "4",
+                description: "The distance in pixels from the trigger."
+              },
+              {
+                name: "align",
+                type: '"start" | "center" | "end"',
+                default: '"center"',
+                description: "The preferred alignment against the trigger element."
+              }
+            ]}
+          />
+        </DocSection>
 
-          <div className="flex gap-3">
-            <span className="text-green-600 font-medium">✅ Do:</span>
-            <p className="text-muted-foreground">Keep tooltip text brief (1-2 short sentences max).</p>
+        <DocSection title="Best Practices">
+          <div className="space-y-4 text-sm">
+            <div className="flex gap-3">
+              <span className="text-green-600 font-medium">✅ Do:</span>
+              <p className="text-muted-foreground">Use tooltips to explain icon-only buttons or provide additional context.</p>
+            </div>
+            <div className="flex gap-3">
+              <span className="text-red-600 font-medium">❌ Don't:</span>
+              <p className="text-muted-foreground">Put essential information only in tooltips—some users can't access them.</p>
+            </div>
+
+            <div className="flex gap-3">
+              <span className="text-green-600 font-medium">✅ Do:</span>
+              <p className="text-muted-foreground">Keep tooltip text brief (1-2 short sentences max).</p>
+            </div>
+            <div className="flex gap-3">
+              <span className="text-red-600 font-medium">❌ Don't:</span>
+              <p className="text-muted-foreground">Use tooltips for long content—use a popover instead.</p>
+            </div>
           </div>
-          <div className="flex gap-3">
-            <span className="text-red-600 font-medium">❌ Don't:</span>
-            <p className="text-muted-foreground">Use tooltips for long content—use a popover instead.</p>
-          </div>
-        </div>
+        </DocSection>
       </DocSection>
 
       <Timestamp date="17-01-2026 08:34PM" />

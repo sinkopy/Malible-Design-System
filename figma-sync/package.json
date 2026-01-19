@@ -1,0 +1,19 @@
+{
+    "name": "figma-sync",
+    "version": "1.0.0",
+    "description": "Figma sync tools for Malible Design System",
+    "type": "module",
+    "scripts": {
+        "sync-tokens": "tsx src/sync-tokens.ts",
+        "serve-changelog": "tsx src/changelog-server.ts",
+        "update-figma": "tsx src/update-figma-text.ts"
+    },
+    "dependencies": {
+        "dotenv": "^16.3.1"
+    },
+    "devDependencies": {
+        "@types/node": "^20.10.0",
+        "tsx": "^4.7.0",
+        "typescript": "^5.3.0"
+    }
+}

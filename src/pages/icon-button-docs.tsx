@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { DocPage, DocSection, ComponentExample, Timestamp } from "@/components/docs";
+import { DocPage, DocSection, ComponentExample, Timestamp, PropsTable, StateTable } from "@/components/docs";
 import { Plus, X, DotsThree, Trash } from "@phosphor-icons/react";
 
 export default function IconButtonDocs() {
@@ -134,43 +134,22 @@ import { Plus, X, DotsThree, Trash } from "@phosphor-icons/react"
         <div className="space-y-6">
           <p className="text-sm text-muted-foreground">
             Icons within buttons are automatically scaled based on the button size. You do not need to pass a
-            <code className="px-1 py-0.5 bg-muted rounded text-xs">size</code> prop to individual icons unless you
+            <code className="px-1 py-0.5 bg-muted/20 border border-border/30 rounded text-[13px]">size</code> prop to individual icons unless you
             need to override the default behavior.
           </p>
-          <div className="overflow-x-auto rounded-lg border border-border/50">
-            <table className="w-full text-sm">
-              <thead className="bg-muted/30">
-                <tr>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Button Size</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Auto Icon Size</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Button Dimensions</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border/50">
-                <tr>
-                  <td className="p-4 font-medium">icon-sm</td>
-                  <td className="p-4 text-muted-foreground">16px</td>
-                  <td className="p-4 text-muted-foreground">32×32px</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium">icon</td>
-                  <td className="p-4 text-muted-foreground">20px</td>
-                  <td className="p-4 text-muted-foreground">36×36px</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium">icon-lg</td>
-                  <td className="p-4 text-muted-foreground">24px</td>
-                  <td className="p-4 text-muted-foreground">44×44px</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <StateTable
+            states={[
+              { state: "icon-sm", style: "32×32px button", token: "16px icon" },
+              { state: "icon", style: "36×36px button", token: "20px icon" },
+              { state: "icon-lg", style: "44×44px button", token: "24px icon" },
+            ]}
+          />
           <div className="p-4 rounded-lg bg-info/5 border border-info/20 text-sm text-info-foreground/80">
             <p className="flex items-center gap-2 font-medium mb-1">
               <span className="text-info">ℹ️</span> Unified Weight
             </p>
             <p>
-              Buttons use <code className="px-1 py-0.5 bg-info/10 rounded text-xs text-info">IconContext</code> to
+              Buttons use <code className="px-1 py-0.5 bg-info/10 rounded text-[13px] text-info">IconContext</code> to
               automatically apply a <strong>bold</strong> weight to Phosphor icons, ensuring better visual
               presence and consistency.
             </p>
@@ -178,23 +157,38 @@ import { Plus, X, DotsThree, Trash } from "@phosphor-icons/react"
         </div>
       </DocSection>
 
-      <DocSection title="Props" description="Icon buttons use the same Button component props. Size accepts 'icon-sm' | 'icon' | 'icon-lg'.">
-        <div className="text-sm text-muted-foreground space-y-2">
-          <p>
-            <strong className="text-foreground">Note:</strong> Icon buttons extend the base Button component.
-            All Button props are available, including <code className="px-1 py-0.5 bg-muted rounded text-xs">variant</code>,
-            <code className="px-1 py-0.5 bg-muted rounded text-xs">size</code>, and <code className="px-1 py-0.5 bg-muted rounded text-xs">disabled</code>.
-          </p>
-          <p>
-            <strong className="text-foreground">Size variants:</strong> Use <code className="px-1 py-0.5 bg-muted rounded text-xs">size="icon-sm"</code>,
-            <code className="px-1 py-0.5 bg-muted rounded text-xs">size="icon"</code>, or
-            <code className="px-1 py-0.5 bg-muted rounded text-xs">size="icon-lg"</code>.
-          </p>
-          <p>
-            <strong className="text-foreground">Not recommended:</strong> <code className="px-1 py-0.5 bg-muted rounded text-xs">variant="outline"</code> and
-            <code className="px-1 py-0.5 bg-muted rounded text-xs">variant="link"</code> are not recommended for icon buttons.
-          </p>
-        </div>
+      <DocSection title="Reference" description="Technical details and compliance for icon buttons." level={2}>
+        <DocSection title="Accessibility">
+          <div className="space-y-4 text-[14px] text-muted-foreground leading-relaxed">
+            <p>
+              Icon buttons require special attention to accessibility as they lack visible text.
+            </p>
+            <ul className="list-disc list-inside space-y-2 ml-2">
+              <li>Always provide an <code className="text-[13px] bg-muted/20 border border-border/30 px-1 rounded">aria-label</code> or use the <code className="text-[13px] bg-muted/20 border border-border/30 px-1 rounded">Tooltip</code> component.</li>
+              <li>Icons are marked as <code className="text-[13px] bg-muted/20 border border-border/30 px-1 rounded">aria-hidden="true"</code> by default if a label is present.</li>
+              <li>Visible focus indicators are critical for keyboard navigation.</li>
+            </ul>
+          </div>
+        </DocSection>
+
+        <DocSection title="Props" description="Icon buttons extension of the base Button component.">
+          <PropsTable
+            props={[
+              {
+                name: "size",
+                type: '"icon-sm" | "icon" | "icon-lg"',
+                default: '"icon"',
+                description: "The square dimension of the button."
+              },
+              {
+                name: "variant",
+                type: '"default" | "secondary" | "ghost" | "destructive"',
+                default: '"default"',
+                description: "The visual style variant."
+              },
+            ]}
+          />
+        </DocSection>
       </DocSection>
 
       <DocSection title="Best Practices">

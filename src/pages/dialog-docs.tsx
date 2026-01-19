@@ -11,7 +11,7 @@ import {
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { DocPage, DocSection, ComponentExample, Timestamp } from "@/components/docs"
+import { DocPage, DocSection, ComponentExample, Timestamp, PropsTable, StateTable } from "@/components/docs"
 import * as React from "react"
 
 export default function DialogDocs() {
@@ -176,39 +176,36 @@ export default function DialogDocs() {
       </DocSection>
 
       <DocSection title="Reference" description="Technical details and configuration for the dialog component." level={2}>
+        <DocSection title="State Reference">
+          <StateTable
+            states={[
+              { state: "Closed", style: "Hidden from DOM", token: "opacity-0 scale-95" },
+              { state: "Open", style: "Centered modal overlay", token: "opacity-100 scale-100" },
+              { state: "Overlay", style: "Full screen backdrop", token: "bg-black/80" },
+            ]}
+          />
+        </DocSection>
+
         <DocSection title="Props" description="Dialog component props configuration.">
-          <div className="rounded-lg border border-border/50 overflow-hidden">
-            <table className="w-full text-sm">
-              <thead className="bg-muted/30">
-                <tr>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Component</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Prop</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Type</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Description</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border/50">
-                <tr>
-                  <td className="p-4 font-medium text-[13px]">DialogContent</td>
-                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">className</code></td>
-                  <td className="p-4 text-muted-foreground text-[13px]">string</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Custom styling (e.g., max-w-[400px])</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-[13px]">DialogHeader</td>
-                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">className</code></td>
-                  <td className="p-4 text-muted-foreground text-[13px]">string</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Header styling (border-b by default)</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-[13px]">DialogFooter</td>
-                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">className</code></td>
-                  <td className="p-4 text-muted-foreground text-[13px]">string</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Footer styling (border-t by default)</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <PropsTable
+            props={[
+              {
+                name: "className",
+                type: "string",
+                description: "Custom styling applied to the content, header, or footer."
+              },
+              {
+                name: "open",
+                type: "boolean",
+                description: "The controlled open state of the dialog."
+              },
+              {
+                name: "onOpenChange",
+                type: "(open: boolean) => void",
+                description: "Event handler called when the open state changes."
+              }
+            ]}
+          />
         </DocSection>
 
         <DocSection title="Best Practices">

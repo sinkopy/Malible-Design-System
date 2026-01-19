@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 12px;
+      color: #333;
+      padding: 16px;
+      background: #fff;
+    }
+
+    h1 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #1a1a1a;
+    }
+
+    .section {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      font-size: 11px;
+      font-weight: 500;
+      color: #666;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid #e5e5e5;
+      border-radius: 6px;
+      font-size: 12px;
+      font-family: inherit;
+      outline: none;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: #e0622d;
+      box-shadow: 0 0 0 2px rgba(224, 98, 45, 0.1);
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-primary {
+      background: #e0622d;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #c95526;
+    }
+
+    .btn-primary:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    .btn-secondary {
+      background: #f5f5f5;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    .btn-secondary:hover {
+      background: #e5e5e5;
+    }
+
+    .status {
+      margin-top: 12px;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 11px;
+    }
+
+    .status.loading {
+      background: #eaf8ff;
+      color: #007ab7;
+    }
+
+    .status.success {
+      background: #e2f4eb;
+      color: #328561;
+    }
+
+    .status.error {
+      background: #fde8e8;
+      color: #bf1616;
+    }
+
+    .selection-info {
+      padding: 10px;
+      background: #f5f5f5;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      font-size: 11px;
+    }
+
+    .selection-info .node-id {
+      font-family: monospace;
+      color: #666;
+    }
+
+    .divider {
+      height: 1px;
+      background: #e5e5e5;
+      margin: 16px 0;
+    }
+
+    .help {
+      font-size: 10px;
+      color: #999;
+      line-height: 1.5;
+    }
+
+    .preview {
+      background: #f9f9f9;
+      border: 1px solid #e5e5e5;
+      border-radius: 6px;
+      padding: 12px;
+      margin-top: 12px;
+      font-size: 11px;
+    }
+
+    .preview-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .entry-preview {
+      margin-bottom: 8px;
+      padding-bottom: 8px;
+      border-bottom: 1px dashed #ddd;
+    }
+
+    .entry-preview:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .entry-version {
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+
+    .entry-date {
+      color: #666;
+      font-size: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>📋 Malible Changelog Sync</h1>
+
+  <div class="section">
+    <label>Target List Frame ID</label>
+    <input type="text" id="nodeId" placeholder="e.g., 842:52083" value="842:52083" />
+    <button class="btn-secondary" onclick="getSelection()" style="margin-top: 8px;">
+      📍 Use Current Selection
+    </button>
+  </div>
+
+  <div id="selectionInfo" class="selection-info" style="display: none;">
+    <strong>Selected:</strong> <span id="nodeName"></span><br>
+    <span class="node-id">ID: <span id="selectedNodeId"></span></span>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <label>Changelog Entries (paste from artifact)</label>
+    <textarea id="entriesText" placeholder="Paste changelog in format:
+## [1.3.0] - Jan 19, 2026
+Content here...
+
+## [1.2.0] - Jan 17, 2026
+Content here..."></textarea>
+  </div>
+
+  <button class="btn-primary" id="createBtn" onclick="createEntries()">
+    ✨ Create Changelog Entries
+  </button>
+
+  <div id="preview" class="preview" style="display: none;">
+    <div class="preview-title">Preview:</div>
+    <div id="previewContent"></div>
+  </div>
+
+  <div id="status" class="status" style="display: none;"></div>
+
+  <div class="divider"></div>
+
+  <div class="help">
+    <strong>Format:</strong><br>
+    ## [VERSION] - DATE<br>
+    Content with bullet points...
+  </div>
+
+  <script>
+    const nodeIdInput = document.getElementById('nodeId');
+    const entriesText = document.getElementById('entriesText');
+    const statusDiv = document.getElementById('status');
+    const createBtn = document.getElementById('createBtn');
+    const selectionInfo = document.getElementById('selectionInfo');
+    const nodeNameSpan = document.getElementById('nodeName');
+    const selectedNodeIdSpan = document.getElementById('selectedNodeId');
+    const previewDiv = document.getElementById('preview');
+    const previewContent = document.getElementById('previewContent');
+
+    function showStatus(message, type) {
+      statusDiv.textContent = message;
+      statusDiv.className = 'status ' + type;
+      statusDiv.style.display = 'block';
+    }
+
+    function getSelection() {
+      parent.postMessage({ pluginMessage: { type: 'get-selection' } }, '*');
+    }
+
+    function parseChangelog(text) {
+      const entries = [];
+      // Match ## [VERSION] - DATE pattern
+      const regex = /##\s*\[([^\]]+)\]\s*-\s*([^\n]+)\n([\s\S]*?)(?=##\s*\[|$)/g;
+      let match;
+
+      while ((match = regex.exec(text)) !== null) {
+        const version = match[1].trim();
+        const date = match[2].trim();
+        let content = match[3].trim();
+
+        // Clean up content - convert markdown bullets to plain text
+        content = content
+          .replace(/^### .+$/gm, '') // Remove section headers
+          .replace(/^- \*\*([^*]+)\*\*/gm, '• $1') // Bold items to bullets
+          .replace(/^- /gm, '• ') // Regular bullets
+          .replace(/^\s+- /gm, '  ◦ ') // Nested bullets
+          .replace(/\n{3,}/g, '\n\n') // Reduce multiple newlines
+          .trim();
+
+        if (version && date && content) {
+          entries.push({ version, date, content });
+        }
+      }
+
+      return entries;
+    }
+
+    function updatePreview() {
+      const text = entriesText.value;
+      const entries = parseChangelog(text);
+
+      if (entries.length > 0) {
+        previewDiv.style.display = 'block';
+        previewContent.innerHTML = entries.map(e =>
+          `<div class="entry-preview">
+            <span class="entry-version">${e.version}</span>
+            <span class="entry-date">${e.date}</span>
+          </div>`
+        ).join('');
+      } else {
+        previewDiv.style.display = 'none';
+      }
+    }
+
+    entriesText.addEventListener('input', updatePreview);
+
+    function createEntries() {
+      const nodeId = nodeIdInput.value.trim();
+      const text = entriesText.value.trim();
+
+      if (!nodeId) {
+        showStatus('Please enter a target node ID', 'error');
+        return;
+      }
+
+      const entries = parseChangelog(text);
+
+      if (entries.length === 0) {
+        showStatus('No valid entries found. Check format.', 'error');
+        return;
+      }
+
+      createBtn.disabled = true;
+      showStatus(`Creating ${entries.length} entries...`, 'loading');
+
+      parent.postMessage({
+        pluginMessage: {
+          type: 'create-changelog-entries',
+          nodeId: nodeId,
+          entries: entries
+        }
+      }, '*');
+    }
+
+    // Listen for messages from plugin
+    window.onmessage = (event) => {
+      const msg = event.data.pluginMessage;
+      if (!msg) return;
+
+      if (msg.type === 'success') {
+        showStatus('✅ ' + msg.message, 'success');
+        createBtn.disabled = false;
+      }
+
+      if (msg.type === 'error') {
+        showStatus('❌ ' + msg.message, 'error');
+        createBtn.disabled = false;
+      }
+
+      if (msg.type === 'selection') {
+        if (msg.nodeId) {
+          nodeIdInput.value = msg.nodeId;
+          nodeNameSpan.textContent = msg.nodeName + ' (' + msg.nodeType + ')';
+          selectedNodeIdSpan.textContent = msg.nodeId;
+          selectionInfo.style.display = 'block';
+        } else {
+          selectionInfo.style.display = 'none';
+          showStatus('No node selected', 'error');
+        }
+      }
+    };
+  </script>
+</body>
+
+</html>

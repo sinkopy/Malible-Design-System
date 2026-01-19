@@ -9,6 +9,7 @@ const navSections = [
       { href: "/tokens", label: "Tokens" },
       { href: "/colors", label: "Colors" },
       { href: "/typography", label: "Typography" },
+      { href: "/layout", label: "Layout" },
       { href: "/shadows", label: "Shadows" },
     ],
   },
@@ -22,6 +23,7 @@ const navSections = [
       { href: "/scroll-area", label: "Scroll Area" },
       { href: "/skeleton", label: "Skeleton" },
       { href: "/select", label: "Select" },
+      { href: "/sheet", label: "Sheet" },
       { href: "/popover", label: "Popover" },
       { href: "/dropdown-menu", label: "Dropdown Menu" },
       { href: "/dialog", label: "Dialog" },
@@ -40,6 +42,10 @@ const navSections = [
       { href: "/breadcrumb", label: "Breadcrumb" },
       { href: "/tabs", label: "Tabs" },
       { href: "/file-input", label: "FileInput" },
+      { href: "/form-field", label: "Form Field" },
+      { href: "/autocomplete", label: "Auto Complete" },
+      { href: "/drawer", label: "Drawer" },
+      { href: "/modal", label: "Modal" },
     ],
   },
 ];
@@ -52,43 +58,39 @@ export default function Layout() {
       {/* Sidebar */}
       <aside className="fixed left-0 top-0 h-screen w-56 flex flex-col border-r border-border bg-background">
         {/* Fixed header/logo - does NOT scroll */}
-        <div className="shrink-0 p-6 pb-4 border-b border-border">
-          <div className="flex items-center gap-2 px-3">
-            <img src="/malible-logo.svg" alt="Malible" className="h-8 w-8" />
-            <div>
-              <p className="text-base font-medium leading-none">Malible</p>
-              <p className="text-xs text-muted-foreground mt-0.5">v1.2</p>
-            </div>
-          </div>
+        <div className="shrink-0 p-8 pb-4">
+          <Link to="/" className="block px-1">
+            <img src="/logo.png" alt="Malible" className="h-7 w-auto" />
+          </Link>
         </div>
         {/* Scrollable navigation - THIS scrolls */}
-        <nav className="flex-1 overflow-y-auto p-6 pt-4 space-y-6">
+        <nav className="flex-1 overflow-y-auto p-6 pt-6 space-y-8">
           <Link
             to="/"
             className={cn(
-              "block rounded-lg px-3 py-2 text-sm transition-colors mb-6",
+              "block rounded-lg px-3 py-2 text-sm transition-all duration-200 mb-8",
               location.pathname === "/"
-                ? "bg-secondary text-foreground font-medium"
-                : "text-muted-foreground hover:bg-secondary/50"
+                ? "bg-secondary text-foreground font-medium shadow-sm"
+                : "text-muted-foreground/70 hover:bg-secondary/50 hover:text-foreground"
             )}
           >
-            Home
+            Overview
           </Link>
           {navSections.map((section) => (
-            <div key={section.title} className="space-y-1">
-              <p className="px-3 text-xs font-medium text-muted-foreground uppercase tracking-wider">
+            <div key={section.title} className="space-y-2">
+              <p className="px-3 text-[10px] font-bold text-muted-foreground/30 uppercase tracking-[0.2em] mb-3">
                 {section.title}
               </p>
-              <div className="space-y-1">
+              <div className="space-y-0.5">
                 {section.items.map((item) => (
                   <Link
                     key={item.href}
                     to={item.href}
                     className={cn(
-                      "block rounded-lg px-3 py-2 text-sm transition-colors",
+                      "block rounded-lg px-3 py-1.5 text-sm transition-all duration-200",
                       location.pathname === item.href
-                        ? "bg-secondary text-foreground font-medium"
-                        : "text-muted-foreground hover:bg-secondary/50"
+                        ? "bg-secondary text-foreground font-medium shadow-sm"
+                        : "text-muted-foreground/60 hover:bg-secondary/40 hover:text-foreground"
                     )}
                   >
                     {item.label}

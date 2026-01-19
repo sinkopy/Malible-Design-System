@@ -1,4 +1,4 @@
-import { DocPage, DocSection, ComponentExample } from "@/components/docs"
+import { DocPage, DocSection, ComponentExample, PropsTable } from "@/components/docs"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -139,49 +139,16 @@ export default function CardDocs() {
 
       <DocSection title="Reference" description="Technical details and configuration for the card component." level={2}>
         <DocSection title="Anatomy">
-          <div className="rounded-lg border border-border/50 overflow-hidden">
-            <table className="w-full text-sm">
-              <thead className="bg-muted/30">
-                <tr>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Part</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Required</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Description</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border/50">
-                <tr>
-                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">Card</code></td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Yes</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Main container component</td>
-                </tr>
-                <tr>
-                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">CardHeader</code></td>
-                  <td className="p-4 text-muted-foreground text-[13px]">No</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Groups title and description</td>
-                </tr>
-                <tr>
-                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">CardTitle</code></td>
-                  <td className="p-4 text-muted-foreground text-[13px]">No</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Primary heading component</td>
-                </tr>
-                <tr>
-                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">CardDescription</code></td>
-                  <td className="p-4 text-muted-foreground text-[13px]">No</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Secondary text component</td>
-                </tr>
-                <tr>
-                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">CardContent</code></td>
-                  <td className="p-4 text-muted-foreground text-[13px]">No</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Main body content area</td>
-                </tr>
-                <tr>
-                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">CardFooter</code></td>
-                  <td className="p-4 text-muted-foreground text-[13px]">No</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Action buttons area</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <PropsTable
+            props={[
+              { name: "Card", type: "Component", default: "-", description: "Main container component (required)" },
+              { name: "CardHeader", type: "Component", default: "-", description: "Groups title and description" },
+              { name: "CardTitle", type: "Component", default: "-", description: "Primary heading component" },
+              { name: "CardDescription", type: "Component", default: "-", description: "Secondary text component" },
+              { name: "CardContent", type: "Component", default: "-", description: "Main body content area" },
+              { name: "CardFooter", type: "Component", default: "-", description: "Action buttons area" },
+            ]}
+          />
         </DocSection>
 
         <DocSection title="Best Practices">

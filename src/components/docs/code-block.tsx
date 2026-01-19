@@ -37,9 +37,9 @@ export function CodeBlock({ code, language = "text", className }: CodeBlockProps
 
   return (
     <div className={cn("relative", className)}>
-      <div className="overflow-x-auto rounded-lg border bg-muted p-4 text-sm">
-        <div 
-          className="font-mono text-[13px] leading-relaxed [&_pre]:!bg-transparent [&_pre]:!m-0 [&_pre]:!p-0 [&_code]:!bg-transparent"
+      <div className="overflow-x-auto rounded-lg border border-border/30 bg-muted/20 p-4">
+        <div
+          className="font-mono text-[--font-size-mono] leading-relaxed [&_pre]:!bg-transparent [&_pre]:!m-0 [&_pre]:!p-0 [&_code]:!bg-transparent"
           dangerouslySetInnerHTML={{ __html: html }}
         />
       </div>

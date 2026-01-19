@@ -1,6 +1,6 @@
 import { Slider } from "@/components/ui/slider"
 import { Label } from "@/components/ui/label"
-import { DocPage, DocSection, ComponentExample, Timestamp } from "@/components/docs"
+import { DocPage, DocSection, ComponentExample, Timestamp, PropsTable, StateTable } from "@/components/docs"
 import * as React from "react"
 
 export default function SliderDocs() {
@@ -108,110 +108,78 @@ const [value, setValue] = useState([50])
         </ComponentExample>
       </DocSection>
 
-      <DocSection title="Props" description="Slider component props.">
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse">
-            <thead>
-              <tr className="border-b border-border">
-                <th className="text-left py-2 px-4 text-sm font-semibold text-foreground">Prop</th>
-                <th className="text-left py-2 px-4 text-sm font-semibold text-foreground">Type</th>
-                <th className="text-left py-2 px-4 text-sm font-semibold text-foreground">Default</th>
-                <th className="text-left py-2 px-4 text-sm font-semibold text-foreground">Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="border-b border-border">
-                <td className="py-2 px-4 text-sm text-foreground font-medium">defaultValue</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">number[]</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">[50]</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">Initial value(s). Array length determines number of thumbs.</td>
-              </tr>
-              <tr className="border-b border-border">
-                <td className="py-2 px-4 text-sm text-foreground font-medium">value</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">number[]</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">-</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">Controlled value(s). Use with onValueChange.</td>
-              </tr>
-              <tr className="border-b border-border">
-                <td className="py-2 px-4 text-sm text-foreground font-medium">onValueChange</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">{"(value: number[]) => void"}</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">-</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">Callback when value changes.</td>
-              </tr>
-              <tr className="border-b border-border">
-                <td className="py-2 px-4 text-sm text-foreground font-medium">max</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">number</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">100</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">Maximum value</td>
-              </tr>
-              <tr className="border-b border-border">
-                <td className="py-2 px-4 text-sm text-foreground font-medium">min</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">number</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">0</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">Minimum value</td>
-              </tr>
-              <tr className="border-b border-border">
-                <td className="py-2 px-4 text-sm text-foreground font-medium">step</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">number</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">1</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">Step increment</td>
-              </tr>
-              <tr className="border-b border-border">
-                <td className="py-2 px-4 text-sm text-foreground font-medium">orientation</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">"horizontal" | "vertical"</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">"horizontal"</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">Slider orientation</td>
-              </tr>
-              <tr>
-                <td className="py-2 px-4 text-sm text-foreground font-medium">disabled</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">boolean</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">false</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">Disable interaction</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </DocSection>
+      <DocSection title="Reference" description="Technical details and compliance for the slider component." level={2}>
+        <DocSection title="Accessibility">
+          <div className="space-y-4 text-[14px] text-muted-foreground leading-relaxed">
+            <p>
+              Sliders are implemented with semantic ARIA attributes to ensure they are fully navigable by keyboard and screen readers.
+            </p>
+            <ul className="list-disc list-inside space-y-2 ml-2">
+              <li>Use the <code className="text-[13px] bg-muted/20 border border-border/30 px-1 rounded">Label</code> component to associate a text title with the slider.</li>
+              <li>Provide current value feedback via a visible text element or <code className="text-[13px] bg-muted/20 border border-border/30 px-1 rounded">aria-valuetext</code>.</li>
+              <li>Keyboard: <kbd className="text-[11px] font-sans bg-muted/20 px-1 rounded border border-border/20">Arrow Keys</kbd> to adjust value, <kbd className="text-[11px] font-sans bg-muted/20 px-1 rounded border border-border/20">Home/End</kbd> for min/max.</li>
+            </ul>
+          </div>
+        </DocSection>
 
-      <DocSection title="State Reference">
-        <div className="rounded-lg border overflow-hidden">
-          <table className="w-full text-sm">
-            <thead className="bg-muted/50">
-              <tr>
-                <th className="text-left p-3 font-medium">Element</th>
-                <th className="text-left p-3 font-medium">State</th>
-                <th className="text-left p-3 font-medium">Token/Value</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y">
-              <tr>
-                <td className="p-3 font-medium">Track</td>
-                <td className="p-3 text-muted-foreground">Default</td>
-                <td className="p-3 font-mono text-xs text-muted-foreground">bg-muted</td>
-              </tr>
-              <tr>
-                <td className="p-3 font-medium">Range</td>
-                <td className="p-3 text-muted-foreground">Default</td>
-                <td className="p-3 font-mono text-xs text-muted-foreground">bg-primary</td>
-              </tr>
-              <tr>
-                <td className="p-3 font-medium">Thumb</td>
-                <td className="p-3 text-muted-foreground">Default</td>
-                <td className="p-3 font-mono text-xs text-muted-foreground">bg-background border-2 border-primary</td>
-              </tr>
-              <tr>
-                <td className="p-3 font-medium">Thumb</td>
-                <td className="p-3 text-muted-foreground">Hover</td>
-                <td className="p-3 font-mono text-xs text-muted-foreground">ring-2 ring-ring</td>
-              </tr>
-              <tr>
-                <td className="p-3 font-medium">Thumb</td>
-                <td className="p-3 text-muted-foreground">Disabled</td>
-                <td className="p-3 font-mono text-xs text-muted-foreground">opacity-50 cursor-not-allowed</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <DocSection title="State Reference">
+          <StateTable
+            states={[
+              { state: "Track", style: "Default background", token: "bg-muted" },
+              { state: "Range", style: "Filled area", token: "bg-primary" },
+              { state: "Thumb", style: "Circular indicator", token: "bg-background border-primary" },
+              { state: "Thumb:Hover", style: "Inner ring", token: "ring-ring" },
+              { state: "Disabled", style: "50% opacity", token: "opacity-50" },
+            ]}
+          />
+        </DocSection>
+
+        <DocSection title="Props" description="Slider component props configuration.">
+          <PropsTable
+            props={[
+              {
+                name: "defaultValue",
+                type: "number[]",
+                default: "[50]",
+                description: "Initial value(s). Array length determines number of thumbs."
+              },
+              {
+                name: "value",
+                type: "number[]",
+                description: "Controlled value(s)."
+              },
+              {
+                name: "onValueChange",
+                type: "(value: number[]) => void",
+                description: "Callback when value changes."
+              },
+              {
+                name: "max",
+                type: "number",
+                default: "100",
+                description: "Maximum value"
+              },
+              {
+                name: "min",
+                type: "number",
+                default: "0",
+                description: "Minimum value"
+              },
+              {
+                name: "step",
+                type: "number",
+                default: "1",
+                description: "Step increment"
+              },
+              {
+                name: "orientation",
+                type: '"horizontal" | "vertical"',
+                default: '"horizontal"',
+                description: "Slider orientation"
+              },
+            ]}
+          />
+        </DocSection>
       </DocSection>
 
       <DocSection title="Best Practices">

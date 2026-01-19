@@ -1,6 +1,6 @@
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-import { DocPage, DocSection, ComponentExample, Timestamp } from "@/components/docs";
+import { DocPage, DocSection, ComponentExample, Timestamp, PropsTable } from "@/components/docs";
 
 export default function RadioDocs() {
   return (
@@ -91,40 +91,41 @@ export default function RadioDocs() {
         </DocSection>
       </DocSection>
 
-      <DocSection title="Reference" description="Technical details and configuration for the radio group component." level={2}>
-        <DocSection title="Props" description="Radio Group component props configuration.">
-          <div className="rounded-lg border border-border/50 overflow-hidden">
-            <table className="w-full text-sm">
-              <thead className="bg-muted/30">
-                <tr>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Prop</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Type</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Default</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Description</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border/50">
-                <tr>
-                  <td className="p-4 font-medium text-[13px]">defaultValue</td>
-                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">string</code></td>
-                  <td className="p-4 text-muted-foreground text-[13px]">-</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">The value of the radio item that should be checked by default.</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-[13px]">onValueChange</td>
-                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">function</code></td>
-                  <td className="p-4 text-muted-foreground text-[13px]">-</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Event handler called when the value changes.</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-[13px]">disabled</td>
-                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">boolean</code></td>
-                  <td className="p-4 text-muted-foreground text-[13px]">false</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Whether the entire group is disabled.</td>
-                </tr>
-              </tbody>
-            </table>
+      <DocSection title="Reference" description="Technical details and compliance for the radio group component." level={2}>
+        <DocSection title="Accessibility">
+          <div className="space-y-4 text-[14px] text-muted-foreground leading-relaxed">
+            <p>
+              Radio groups use standard ARIA patterns to ensure they are accessible.
+            </p>
+            <ul className="list-disc list-inside space-y-2 ml-2">
+              <li>Use the <code className="text-[13px] bg-muted/20 border border-border/30 px-1 rounded">RadioGroup</code> and <code className="text-[13px] bg-muted/20 border border-border/30 px-1 rounded">RadioGroupItem</code> components together.</li>
+              <li>Each item must be associated with a <code className="text-[13px] bg-muted/20 border border-border/30 px-1 rounded">Label</code> via <code className="text-[13px] bg-muted/20 border border-border/30 px-1 rounded">id</code> and <code className="text-[13px] bg-muted/20 border border-border/30 px-1 rounded">htmlFor</code>.</li>
+              <li>Keyboard: <kbd className="text-[11px] font-sans bg-muted/20 px-1 rounded border border-border/20">Arrow Keys</kbd> to navigate, <kbd className="text-[11px] font-sans bg-muted/20 px-1 rounded border border-border/20">Space</kbd> to select.</li>
+            </ul>
           </div>
+        </DocSection>
+
+        <DocSection title="Props" description="Radio Group component props configuration.">
+          <PropsTable
+            props={[
+              {
+                name: "defaultValue",
+                type: "string",
+                description: "The value of the radio item checked by default."
+              },
+              {
+                name: "onValueChange",
+                type: "(value: string) => void",
+                description: "Event handler called when the value changes."
+              },
+              {
+                name: "disabled",
+                type: "boolean",
+                default: "false",
+                description: "Whether the entire group is disabled."
+              },
+            ]}
+          />
         </DocSection>
 
         <DocSection title="Best Practices">

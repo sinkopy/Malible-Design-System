@@ -31,30 +31,50 @@ const uiColors = [
 
 function ColorTable({ colors }: { colors: typeof coreColors }) {
   return (
-    <div className="rounded-lg border overflow-hidden text-sm">
-      <table className="w-full">
-        <thead className="bg-muted/50">
+    <div className="rounded-lg border border-border/40 overflow-hidden">
+      <table className="w-full text-sm table-fixed">
+        <thead className="bg-muted/20">
           <tr>
-            <th className="text-left p-3 font-medium w-10"></th>
-            <th className="text-left p-3 font-medium">Name</th>
-            <th className="text-left p-3 font-medium">Token</th>
-            <th className="text-left p-3 font-medium">Value</th>
-            <th className="text-left p-3 font-medium">Usage</th>
+            <th className="text-left py-2.5 px-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground w-[80px]">
+              Preview
+            </th>
+            <th className="text-left py-2.5 px-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground w-[180px]">
+              Name
+            </th>
+            <th className="text-left py-2.5 px-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground w-[240px]">
+              Token
+            </th>
+            <th className="text-left py-2.5 px-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground w-[120px]">
+              Value
+            </th>
+            <th className="text-left py-2.5 px-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">
+              Usage
+            </th>
           </tr>
         </thead>
-        <tbody className="divide-y">
+        <tbody className="divide-y divide-border/30">
           {colors.map((color) => (
-            <tr key={color.token}>
-              <td className="p-3">
+            <tr key={color.token} className="group hover:bg-muted/5 transition-colors">
+              <td className="py-3 px-4">
                 <div
-                  className="h-6 w-6 rounded border"
+                  className="h-6 w-6 rounded border border-border/50 shadow-sm"
                   style={{ backgroundColor: color.hex }}
                 />
               </td>
-              <td className="p-3 font-medium whitespace-nowrap">{color.name}</td>
-              <td className="p-3 font-mono text-muted-foreground">{color.token}</td>
-              <td className="p-3 font-mono text-muted-foreground">{color.hex}</td>
-              <td className="p-3 text-muted-foreground">{color.usage}</td>
+              <td className="py-3 px-4 font-medium text-[13px] truncate">{color.name}</td>
+              <td className="py-3 px-4">
+                <code className="text-[13px] font-mono text-foreground/80 bg-muted/20 px-1 border border-border/30 rounded truncate block w-fit max-w-full">
+                  {color.token}
+                </code>
+              </td>
+              <td className="py-3 px-4">
+                <code className="text-[13px] font-mono text-muted-foreground truncate block">
+                  {color.hex}
+                </code>
+              </td>
+              <td className="py-3 px-4 text-[13px] text-muted-foreground/80 leading-snug truncate">
+                {color.usage}
+              </td>
             </tr>
           ))}
         </tbody>
@@ -88,31 +108,53 @@ export default function ColorsDocs() {
         <DocSection title="Usage" description="Applying color tokens via Tailwind or CSS variables.">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-3">
-              <h4 className="font-medium text-[13px] uppercase tracking-wider text-muted-foreground">Tailwind Classes</h4>
-              <div className="rounded-lg border bg-muted/30 p-4 font-mono text-[12px] space-y-2">
-                <div className="text-foreground/80"><span className="text-info">bg-primary</span> <span className="text-muted-foreground">/* Background */</span></div>
-                <div className="text-foreground/80"><span className="text-info">text-primary</span> <span className="text-muted-foreground">/* Text color */</span></div>
-                <div className="text-foreground/80"><span className="text-info">border-primary</span> <span className="text-muted-foreground">/* Border color */</span></div>
-                <div className="pt-2 text-foreground/80"><span className="text-info">bg-info-subtle</span> <span className="text-muted-foreground">/* Subtle background */</span></div>
-                <div className="text-foreground/80"><span className="text-info">text-info</span> <span className="text-muted-foreground">/* Colored text */</span></div>
+              <h4 className="font-medium text-[12px] uppercase tracking-wider text-muted-foreground/70">Tailwind Classes</h4>
+              <div className="rounded-lg border border-border/30 bg-muted/10 p-4 font-mono text-[13px] space-y-2 leading-relaxed">
+                <div className="flex justify-between items-center group">
+                  <span className="text-foreground/90">bg-primary</span>
+                  <span className="text-muted-foreground/50 text-[11px] uppercase tracking-tighter">Background</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-foreground/90">text-primary</span>
+                  <span className="text-muted-foreground/50 text-[11px] uppercase tracking-tighter">Text color</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-foreground/90">border-primary</span>
+                  <span className="text-muted-foreground/50 text-[11px] uppercase tracking-tighter">Border color</span>
+                </div>
+                <div className="h-px bg-border/20 my-2" />
+                <div className="flex justify-between items-center">
+                  <span className="text-foreground/90">bg-info-subtle</span>
+                  <span className="text-muted-foreground/50 text-[11px] uppercase tracking-tighter">Subtle bg</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-foreground/90">text-info</span>
+                  <span className="text-muted-foreground/50 text-[11px] uppercase tracking-tighter">Colored text</span>
+                </div>
               </div>
             </div>
 
             <div className="space-y-3">
-              <h4 className="font-medium text-[13px] uppercase tracking-wider text-muted-foreground">CSS Variables</h4>
-              <div className="rounded-lg border bg-muted/30 p-4 font-mono text-[12px] space-y-2">
-                <div className="text-foreground/80"><span className="text-info">background-color:</span> <span className="text-success">hsl(var(--primary));</span></div>
-                <div className="text-foreground/80"><span className="text-info">color:</span> <span className="text-success">hsl(var(--primary-foreground));</span></div>
+              <h4 className="font-medium text-[12px] uppercase tracking-wider text-muted-foreground/70">CSS Variables</h4>
+              <div className="rounded-lg border border-border/30 bg-muted/10 p-4 font-mono text-[13px] space-y-2 leading-relaxed h-full">
+                <div className="flex flex-col gap-1">
+                  <span className="text-muted-foreground/50 text-[11px] uppercase tracking-tighter">Background Utility</span>
+                  <span className="text-foreground/90">background-color: <span className="text-muted-foreground/70">hsl(var(--primary));</span></span>
+                </div>
+                <div className="flex flex-col gap-1 mt-4">
+                  <span className="text-muted-foreground/50 text-[11px] uppercase tracking-tighter">Text color Utility</span>
+                  <span className="text-foreground/90">color: <span className="text-muted-foreground/70">hsl(var(--primary-foreground));</span></span>
+                </div>
               </div>
             </div>
           </div>
         </DocSection>
 
         <DocSection title="Accessibility">
-          <div className="p-4 rounded-lg bg-info/5 border border-info/10 text-[14px]">
+          <div className="p-5 rounded-lg bg-muted/5 border border-border/20 text-[14px]">
             <p className="text-muted-foreground leading-relaxed">
-              All color combinations in the Malible design system are tested for WCAG 2.1 AA compliance.
-              The <code className="text-xs font-mono bg-muted/50 px-1 rounded">Primary</code> and <code className="text-xs font-mono bg-muted/50 px-1 rounded">Destructive</code> palettes
+              All color combinations in the Malible design system are tested for <span className="text-foreground font-medium">WCAG 2.1 AA compliance</span>.
+              The <code className="text-[13px] font-mono bg-muted/20 border border-border/30 px-1 rounded mx-0.5">Primary</code> and <code className="text-[13px] font-mono bg-muted/20 border border-border/30 px-1 rounded mx-0.5">Destructive</code> palettes
               automatically adjust their foreground colors to maintain high contrast ratios.
             </p>
           </div>

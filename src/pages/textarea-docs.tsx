@@ -1,6 +1,6 @@
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import { DocPage, DocSection, ComponentExample } from "@/components/docs"
+import { DocPage, DocSection, ComponentExample, PropsTable, StateTable } from "@/components/docs"
 
 export default function TextareaDocs() {
   return (
@@ -59,39 +59,32 @@ export default function TextareaDocs() {
       </DocSection>
 
       <DocSection title="State Reference">
-        <div className="rounded-lg border overflow-hidden">
-          <table className="w-full text-sm">
-            <thead className="bg-muted/50">
-              <tr>
-                <th className="text-left p-3 font-medium">State</th>
-                <th className="text-left p-3 font-medium">Style</th>
-                <th className="text-left p-3 font-medium">Token/Value</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y">
-              <tr>
-                <td className="p-3 font-medium">Default</td>
-                <td className="p-3 text-muted-foreground">Border</td>
-                <td className="p-3 font-mono text-xs text-muted-foreground">border-input</td>
-              </tr>
-              <tr>
-                <td className="p-3 font-medium">Focus</td>
-                <td className="p-3 text-muted-foreground">Ring</td>
-                <td className="p-3 font-mono text-xs text-muted-foreground">ring-2 ring-ring</td>
-              </tr>
-              <tr>
-                <td className="p-3 font-medium">Error</td>
-                <td className="p-3 text-muted-foreground">Red border</td>
-                <td className="p-3 font-mono text-xs text-muted-foreground">border-destructive</td>
-              </tr>
-              <tr>
-                <td className="p-3 font-medium">Disabled</td>
-                <td className="p-3 text-muted-foreground">Muted</td>
-                <td className="p-3 font-mono text-xs text-muted-foreground">opacity-50 cursor-not-allowed</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <StateTable
+          states={[
+            { state: "Default", style: "Border", token: "border-input" },
+            { state: "Focus", style: "Ring", token: "ring-2 ring-ring" },
+            { state: "Error", style: "Red border", token: "border-destructive" },
+            { state: "Disabled", style: "Muted", token: "opacity-50 cursor-not-allowed" },
+          ]}
+        />
+      </DocSection>
+
+      <DocSection title="Props">
+        <PropsTable
+          props={[
+            {
+              name: "error",
+              type: "boolean",
+              default: "false",
+              description: "Whether the textarea is in an error state."
+            },
+            {
+              name: "className",
+              type: "string",
+              description: "Optional CSS classes for styling."
+            }
+          ]}
+        />
       </DocSection>
 
       <DocSection title="Best Practices">

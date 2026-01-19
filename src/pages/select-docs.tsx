@@ -8,7 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { DocPage, DocSection, ComponentExample, Timestamp } from "@/components/docs"
+import { DocPage, DocSection, ComponentExample, Timestamp, PropsTable, StateTable } from "@/components/docs"
 
 export default function SelectDocs() {
   return (
@@ -134,39 +134,39 @@ export default function SelectDocs() {
       </DocSection>
 
       <DocSection title="Reference" description="Technical details and configuration for the select component." level={2}>
+        <DocSection title="State Reference">
+          <StateTable
+            states={[
+              { state: "Default", style: "Border only", token: "border-input" },
+              { state: "Focus", style: "Ring indicator", token: "ring-2 ring-ring" },
+              { state: "Error", style: "Destructive border", token: "border-destructive" },
+              { state: "Disabled", style: "50% opacity", token: "opacity-50" },
+            ]}
+          />
+        </DocSection>
+
         <DocSection title="Props" description="Select component props configuration.">
-          <div className="rounded-lg border border-border/50 overflow-hidden">
-            <table className="w-full text-sm">
-              <thead className="bg-muted/30">
-                <tr>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Component</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Prop</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Type</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Description</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border/50">
-                <tr>
-                  <td className="p-4 font-medium text-[13px]">SelectTrigger</td>
-                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">error</code></td>
-                  <td className="p-4 text-muted-foreground text-[13px]">boolean</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Apply error styling (red border)</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-[13px]">SelectTrigger</td>
-                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">disabled</code></td>
-                  <td className="p-4 text-muted-foreground text-[13px]">boolean</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Disable interaction with the select</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-[13px]">SelectItem</td>
-                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">value</code></td>
-                  <td className="p-4 text-muted-foreground text-[13px]">string</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">The value to be returned when this item is selected.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <PropsTable
+            props={[
+              {
+                name: "error",
+                type: "boolean",
+                default: "false",
+                description: "Apply error styling (red border) to the trigger."
+              },
+              {
+                name: "disabled",
+                type: "boolean",
+                default: "false",
+                description: "Disable interaction with the select trigger."
+              },
+              {
+                name: "value",
+                type: "string",
+                description: "The value to be returned when this item is selected."
+              }
+            ]}
+          />
         </DocSection>
 
         <DocSection title="Best Practices">

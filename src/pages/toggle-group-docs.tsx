@@ -1,5 +1,5 @@
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
-import { DocPage, DocSection, ComponentExample, Timestamp } from "@/components/docs"
+import { DocPage, DocSection, ComponentExample, Timestamp, PropsTable, StateTable } from "@/components/docs"
 import {
   TextAlignLeft,
   TextAlignCenter,
@@ -194,102 +194,63 @@ const [value, setValue] = useState("center")
         </ComponentExample>
       </DocSection>
 
-      <DocSection title="Props" description="Toggle Group component props.">
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse">
-            <thead>
-              <tr className="border-b border-border">
-                <th className="text-left py-2 px-4 text-sm font-semibold text-foreground">Component</th>
-                <th className="text-left py-2 px-4 text-sm font-semibold text-foreground">Prop</th>
-                <th className="text-left py-2 px-4 text-sm font-semibold text-foreground">Type</th>
-                <th className="text-left py-2 px-4 text-sm font-semibold text-foreground">Default</th>
-                <th className="text-left py-2 px-4 text-sm font-semibold text-foreground">Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="border-b border-border">
-                <td className="py-2 px-4 text-sm text-foreground font-medium" rowSpan={5}>ToggleGroup</td>
-                <td className="py-2 px-4 text-sm text-foreground font-medium">type</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">{"\"single\" | \"multiple\""}</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">-</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">Required. Selection behavior</td>
-              </tr>
-              <tr className="border-b border-border">
-                <td className="py-2 px-4 text-sm text-foreground font-medium">defaultValue</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">string | string[]</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">-</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">Initial value(s)</td>
-              </tr>
-              <tr className="border-b border-border">
-                <td className="py-2 px-4 text-sm text-foreground font-medium">value</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">string | string[]</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">-</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">Controlled value(s)</td>
-              </tr>
-              <tr className="border-b border-border">
-                <td className="py-2 px-4 text-sm text-foreground font-medium">onValueChange</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">{"(value: string | string[]) => void"}</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">-</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">Callback when value changes</td>
-              </tr>
-              <tr className="border-b border-border">
-                <td className="py-2 px-4 text-sm text-foreground font-medium">size</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">{"\"default\" | \"sm\" | \"icon\""}</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">"default"</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">Item size (inherited by items)</td>
-              </tr>
-              <tr className="border-b border-border">
-                <td className="py-2 px-4 text-sm text-foreground font-medium" rowSpan={2}>ToggleGroupItem</td>
-                <td className="py-2 px-4 text-sm text-foreground font-medium">value</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">string</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">-</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">Required. Item value</td>
-              </tr>
-              <tr>
-                <td className="py-2 px-4 text-sm text-foreground font-medium">disabled</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">boolean</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">false</td>
-                <td className="py-2 px-4 text-sm text-muted-foreground">Disable this item</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </DocSection>
+      <DocSection title="Reference" description="Technical details and compliance for the toggle group component." level={2}>
+        <DocSection title="Accessibility">
+          <div className="space-y-4 text-[14px] text-muted-foreground leading-relaxed">
+            <p>
+              Toggle groups represent a set of related options that can be toggled.
+            </p>
+            <ul className="list-disc list-inside space-y-2 ml-2">
+              <li>Item icons should be hidden from screen readers if they are purely decorative.</li>
+              <li>Always include an <code className="text-[13px] bg-muted/20 border border-border/30 px-1 rounded">aria-label</code> for icon-only items.</li>
+              <li>Keyboard: <kbd className="text-[11px] font-sans bg-muted/20 px-1 rounded border border-border/20">Tab</kbd> to enter the group, <kbd className="text-[11px] font-sans bg-muted/20 px-1 rounded border border-border/20">Arrow Keys</kbd> to move between items, <kbd className="text-[11px] font-sans bg-muted/20 px-1 rounded border border-border/20">Space</kbd> or <kbd className="text-[11px] font-sans bg-muted/20 px-1 rounded border border-border/20">Enter</kbd> to toggle.</li>
+            </ul>
+          </div>
+        </DocSection>
 
-      <DocSection title="State Reference">
-        <div className="rounded-lg border overflow-hidden">
-          <table className="w-full text-sm">
-            <thead className="bg-muted/50">
-              <tr>
-                <th className="text-left p-3 font-medium">State</th>
-                <th className="text-left p-3 font-medium">Style</th>
-                <th className="text-left p-3 font-medium">Token/Value</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y">
-              <tr>
-                <td className="p-3 font-medium">Unselected</td>
-                <td className="p-3 text-muted-foreground">Muted background</td>
-                <td className="p-3 font-mono text-xs text-muted-foreground">bg-transparent text-muted-foreground</td>
-              </tr>
-              <tr>
-                <td className="p-3 font-medium">Hover</td>
-                <td className="p-3 text-muted-foreground">Subtle background</td>
-                <td className="p-3 font-mono text-xs text-muted-foreground">hover:bg-muted hover:text-muted-foreground</td>
-              </tr>
-              <tr>
-                <td className="p-3 font-medium">Selected</td>
-                <td className="p-3 text-muted-foreground">Accent background</td>
-                <td className="p-3 font-mono text-xs text-muted-foreground">bg-accent text-accent-foreground</td>
-              </tr>
-              <tr>
-                <td className="p-3 font-medium">Disabled</td>
-                <td className="p-3 text-muted-foreground">50% opacity</td>
-                <td className="p-3 font-mono text-xs text-muted-foreground">opacity-50 pointer-events-none</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <DocSection title="State Reference">
+          <StateTable
+            states={[
+              { state: "Unselected", style: "Transparent background", token: "bg-transparent" },
+              { state: "Hover", style: "Subtle background", token: "hover:bg-muted" },
+              { state: "Selected", style: "Accent background", token: "bg-accent" },
+              { state: "Disabled", style: "50% opacity", token: "opacity-50" },
+            ]}
+          />
+        </DocSection>
+
+        <DocSection title="Props" description="Toggle Group component props configuration.">
+          <PropsTable
+            props={[
+              {
+                name: "type",
+                type: '"single" | "multiple"',
+                description: "Required. Selection behavior."
+              },
+              {
+                name: "defaultValue",
+                type: "string | string[]",
+                description: "Initial value(s)."
+              },
+              {
+                name: "value",
+                type: "string | string[]",
+                description: "Controlled value(s)."
+              },
+              {
+                name: "onValueChange",
+                type: "(value: any) => void",
+                description: "Callback when value changes."
+              },
+              {
+                name: "size",
+                type: '"default" | "sm" | "icon"',
+                default: '"default"',
+                description: "Item size (inherited by items)."
+              },
+            ]}
+          />
+        </DocSection>
       </DocSection>
 
       <DocSection title="Best Practices">

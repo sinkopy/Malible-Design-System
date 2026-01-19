@@ -1,6 +1,6 @@
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
-import { DocPage, DocSection, ComponentExample, Timestamp } from "@/components/docs"
+import { DocPage, DocSection, ComponentExample, Timestamp, PropsTable } from "@/components/docs"
 import * as React from "react"
 
 export default function ScrollAreaDocs() {
@@ -107,34 +107,37 @@ export default function ScrollAreaDocs() {
         </DocSection>
       </DocSection>
 
-      <DocSection title="Reference" description="Technical details and configuration for the scroll area component." level={2}>
-        <DocSection title="Props" description="Scroll Area component props configuration.">
-          <div className="rounded-lg border border-border/50 overflow-hidden">
-            <table className="w-full text-sm">
-              <thead className="bg-muted/30">
-                <tr>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Component</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Prop</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Type</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Description</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border/50">
-                <tr>
-                  <td className="p-4 font-medium text-[13px]">ScrollArea</td>
-                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">type</code></td>
-                  <td className="p-4 text-muted-foreground text-[13px]">string</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Scrollbar visibility (auto, always, scroll, hover)</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-[13px]">ScrollBar</td>
-                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">orientation</code></td>
-                  <td className="p-4 text-muted-foreground text-[13px]">string</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">"horizontal" or "vertical" (default)</td>
-                </tr>
-              </tbody>
-            </table>
+      <DocSection title="Reference" description="Technical details and compliance for the scroll area component." level={2}>
+        <DocSection title="Accessibility">
+          <div className="space-y-4 text-[14px] text-muted-foreground leading-relaxed">
+            <p>
+              Scroll areas are designed to be accessible by maintaining native scroll behavior for keyboard and screen reader users.
+            </p>
+            <ul className="list-disc list-inside space-y-2 ml-2">
+              <li>Supports standard keyboard scrolling (<kbd className="text-[11px] font-sans bg-muted/20 px-1 rounded border border-border/20">Arrow Keys</kbd>, <kbd className="text-[11px] font-sans bg-muted/20 px-1 rounded border border-border/20">Page Up/Down</kbd>).</li>
+              <li>Custom scrollbars are hidden from screen readers to avoid redundant navigation landmarks.</li>
+              <li>Ensure the viewport is large enough to be easily focused and scrolled.</li>
+            </ul>
           </div>
+        </DocSection>
+
+        <DocSection title="Props" description="Scroll Area component props configuration.">
+          <PropsTable
+            props={[
+              {
+                name: "type",
+                type: '"auto" | "always" | "scroll" | "hover"',
+                default: '"hover"',
+                description: "When the scrollbar should be visible."
+              },
+              {
+                name: "orientation",
+                type: '"horizontal" | "vertical"',
+                default: '"vertical"',
+                description: "The scroll orientation (ScrollBar prop)."
+              },
+            ]}
+          />
         </DocSection>
 
         <DocSection title="Best Practices">

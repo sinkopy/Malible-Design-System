@@ -1,13 +1,14 @@
 import { Input } from "@/components/ui/input";
+import { FormField } from "@/components/ui/form-field";
 import { FileInput } from "@/components/ui/file-input";
-import { DocPage, DocSection, ComponentExample, Timestamp } from "@/components/docs";
+import { DocPage, DocSection, ComponentExample, Timestamp, PropsTable, StateTable } from "@/components/docs";
 import { MagnifyingGlass, Envelope as Mail } from "@phosphor-icons/react";
 
 export default function InputDocs() {
   return (
     <DocPage
       title="Input"
-      description="Displays a form input field or a component that looks like an input field."
+      description="A clean primitive input component. Use with FormField for labels and validation."
       category="Components"
     >
       <DocSection title="Examples" description="Common use cases and variations of the input component." level={2}>
@@ -43,36 +44,16 @@ export default function InputDocs() {
           </ComponentExample>
         </DocSection>
 
-        <DocSection title="Error State" description="Show validation errors with message.">
+        <DocSection title="Wrapped in FormField" description="Combine Input with FormField for labels, help text, and errors.">
           <ComponentExample
-            code={`<Input
-  error
-  errorMessage="Email is required"
-  placeholder="Email"
-/>`}
+            code={`<FormField label="Email" helpText="Enter your work email.">
+  <Input id="email-field" type="email" placeholder="name@company.com" />
+</FormField>`}
           >
-            <div className="flex flex-col gap-4 w-full max-w-sm">
-              <Input
-                error
-                errorMessage="Email is required"
-                placeholder="Email"
-              />
-            </div>
-          </ComponentExample>
-        </DocSection>
-
-        <DocSection title="With Label" description="Always pair inputs with labels for accessibility.">
-          <ComponentExample
-            code={`<div className="grid w-full items-center gap-1.5">
-  <Label htmlFor="email-2">Email</Label>
-  <Input type="email" id="email-2" placeholder="Email" />
-  <p className="text-[13px] text-muted-foreground">Enter your university email address.</p>
-</div>`}
-          >
-            <div className="grid w-full max-w-sm items-center gap-2">
-              <label htmlFor="email-2" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Email</label>
-              <Input type="email" id="email-2" placeholder="Email" />
-              <p className="text-[13px] text-muted-foreground">Enter your university email address.</p>
+            <div className="w-full max-w-sm">
+              <FormField label="Email" helpText="Enter your work email.">
+                <Input id="email-field-demo" type="email" placeholder="name@company.com" />
+              </FormField>
             </div>
           </ComponentExample>
         </DocSection>
@@ -90,70 +71,38 @@ export default function InputDocs() {
 
       <DocSection title="Reference" description="Technical details and configuration for the input component." level={2}>
         <DocSection title="State Reference">
-          <div className="rounded-lg border border-border/50 overflow-hidden">
-            <table className="w-full text-sm">
-              <thead className="bg-muted/30">
-                <tr>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">State</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Style</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Token/Value</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border/50">
-                <tr>
-                  <td className="p-4 font-medium">Default</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Border only</td>
-                  <td className="p-4 font-mono text-xs text-info/80">border-input</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium">Focus</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Ring indicator</td>
-                  <td className="p-4 font-mono text-xs text-info/80">ring-2 ring-ring</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium">Error</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Destructive border</td>
-                  <td className="p-4 font-mono text-xs text-info/80">border-destructive</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium">Disabled</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">50% opacity</td>
-                  <td className="p-4 font-mono text-xs text-info/80">opacity-50</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <StateTable
+            states={[
+              { state: "Default", style: "Border only", token: "border-border" },
+              { state: "Hover", style: "Secondary background", token: "bg-secondary" },
+              { state: "Focus", style: "Ring border", token: "border-ring" },
+              { state: "Error", style: "Destructive border", token: "border-destructive" },
+              { state: "Disabled", style: "Muted background", token: "bg-muted" },
+            ]}
+          />
         </DocSection>
 
         <DocSection title="Props">
-          <div className="rounded-lg border border-border/50 overflow-hidden">
-            <table className="w-full text-sm">
-              <thead className="bg-muted/30">
-                <tr>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Prop</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Type</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Default</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border/50">
-                <tr>
-                  <td className="p-4 font-mono text-xs text-info/80 font-semibold">prefix</td>
-                  <td className="p-4 font-mono text-xs text-info/80">ReactNode | string</td>
-                  <td className="p-4 font-mono text-xs text-muted-foreground">—</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-mono text-xs text-info/80 font-semibold">suffix</td>
-                  <td className="p-4 font-mono text-xs text-info/80">ReactNode | string</td>
-                  <td className="p-4 font-mono text-xs text-muted-foreground">—</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-mono text-xs text-info/80 font-semibold">error</td>
-                  <td className="p-4 font-mono text-xs text-info/80">boolean</td>
-                  <td className="p-4 font-mono text-xs text-muted-foreground">false</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <PropsTable
+            props={[
+              {
+                name: "prefix",
+                type: "ReactNode",
+                description: "Optional icon or content to display before the input."
+              },
+              {
+                name: "suffix",
+                type: "ReactNode",
+                description: "Optional icon or content to display after the input."
+              },
+              {
+                name: "error",
+                type: "boolean",
+                default: "false",
+                description: "Applies error styling to the input container."
+              }
+            ]}
+          />
         </DocSection>
 
         <DocSection title="Best Practices">

@@ -16,10 +16,10 @@ export function DocPage({ title, description, category = "Components", children 
     <div className="mx-auto w-full min-w-0">
       {/* Header */}
       <div className="mb-12 space-y-2">
-        <p className="text-sm font-medium text-info tracking-tight">
+        <p className="text-sm font-medium text-info/80 tracking-tight">
           {category}
         </p>
-        <h1 className="scroll-m-20 text-4xl font-bold tracking-tight">
+        <h1 className="scroll-m-20 text-4xl font-semibold tracking-tight">
           {title}
         </h1>
         <p className="text-lg text-muted-foreground leading-relaxed">
@@ -56,12 +56,12 @@ export function DocSection({ title, description, children, level = 3 }: DocSecti
       <div className="space-y-2">
         <TitleTag className={cn(
           "scroll-m-20 tracking-tight",
-          level === 2 ? "text-3xl font-semibold border-b pb-2" : "text-xl font-semibold"
+          level === 2 ? "text-3xl font-medium border-b pb-2" : "text-xl font-medium"
         )}>
           {title}
         </TitleTag>
         {description && (
-          <p className="text-[15px] leading-relaxed text-muted-foreground">
+          <p className="text-[--font-size-lg] leading-relaxed text-muted-foreground">
             {description}
           </p>
         )}

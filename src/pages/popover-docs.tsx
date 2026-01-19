@@ -6,7 +6,7 @@ import {
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { DocPage, DocSection, ComponentExample, Timestamp } from "@/components/docs"
+import { DocPage, DocSection, ComponentExample, Timestamp, PropsTable, StateTable } from "@/components/docs"
 
 export default function PopoverDocs() {
   return (
@@ -131,39 +131,48 @@ export default function PopoverDocs() {
       </DocSection>
 
       <DocSection title="Reference" description="Technical details and configuration for the popover component." level={2}>
+        <DocSection title="State Reference">
+          <StateTable
+            states={[
+              { state: "Closed", style: "Hidden from DOM", token: "opacity-0 scale-95" },
+              { state: "Open", style: "Portal overlay", token: "opacity-100 scale-100" },
+            ]}
+          />
+        </DocSection>
+
         <DocSection title="Props" description="Popover component props configuration.">
-          <div className="rounded-lg border border-border/50 overflow-hidden">
-            <table className="w-full text-sm">
-              <thead className="bg-muted/30">
-                <tr>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Component</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Prop</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Type</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Description</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border/50">
-                <tr>
-                  <td className="p-4 font-medium text-[13px]">PopoverContent</td>
-                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">side</code></td>
-                  <td className="p-4 text-muted-foreground text-[13px]">string</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Side of trigger (top, right, bottom, left)</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-[13px]">PopoverContent</td>
-                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">align</code></td>
-                  <td className="p-4 text-muted-foreground text-[13px]">string</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Alignment relative to trigger (start, center, end)</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-[13px]">PopoverContent</td>
-                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">sideOffset</code></td>
-                  <td className="p-4 text-muted-foreground text-[13px]">number</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Distance from trigger in pixels (default: 4)</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <PropsTable
+            props={[
+              {
+                name: "side",
+                type: '"top" | "right" | "bottom" | "left"',
+                default: '"bottom"',
+                description: "The preferred side of the trigger element to render against."
+              },
+              {
+                name: "align",
+                type: '"start" | "center" | "end"',
+                default: '"center"',
+                description: "The preferred alignment against the trigger element."
+              },
+              {
+                name: "sideOffset",
+                type: "number",
+                default: "4",
+                description: "The distance in pixels from the trigger."
+              },
+              {
+                name: "open",
+                type: "boolean",
+                description: "The controlled open state of the popover."
+              },
+              {
+                name: "onOpenChange",
+                type: "(open: boolean) => void",
+                description: "Event handler called when the open state changes."
+              }
+            ]}
+          />
         </DocSection>
 
         <DocSection title="Best Practices">

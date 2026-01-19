@@ -1,8 +1,16 @@
 import { Button } from "@/components/ui/button";
-import { DocPage, DocSection, ComponentExample, Timestamp } from "@/components/docs";
+import { DocPage, DocSection, ComponentExample, Timestamp, StateTable } from "@/components/docs";
 import { Envelope, SpinnerGap } from "@phosphor-icons/react";
 
 export default function ButtonDocs() {
+  const states = [
+    { state: "Default", style: "Base colors", token: "variant colors" },
+    { state: "Hover", style: "90% opacity overlay", token: "hover:bg-*/90" },
+    { state: "Focus", style: "Ring", token: "ring-2 ring-ring" },
+    { state: "Active", style: "80% opacity overlay", token: "active:bg-*/80" },
+    { state: "Disabled", style: "50% opacity", token: "opacity-50 pointer-events-none" },
+  ];
+
   return (
     <DocPage
       title="Button"
@@ -86,44 +94,7 @@ export default function ButtonDocs() {
       </DocSection>
 
       <DocSection title="State Reference">
-        <div className="rounded-lg border overflow-hidden">
-          <table className="w-full text-sm">
-            <thead className="bg-muted/50">
-              <tr>
-                <th className="text-left p-3 font-medium">State</th>
-                <th className="text-left p-3 font-medium">Style</th>
-                <th className="text-left p-3 font-medium">Token/Value</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y">
-              <tr>
-                <td className="p-3 font-medium">Default</td>
-                <td className="p-3 text-muted-foreground">Base colors</td>
-                <td className="p-3 font-mono text-xs text-muted-foreground">variant colors</td>
-              </tr>
-              <tr>
-                <td className="p-3 font-medium">Hover</td>
-                <td className="p-3 text-muted-foreground">90% opacity overlay</td>
-                <td className="p-3 font-mono text-xs text-muted-foreground">hover:bg-*/90</td>
-              </tr>
-              <tr>
-                <td className="p-3 font-medium">Focus</td>
-                <td className="p-3 text-muted-foreground">Ring</td>
-                <td className="p-3 font-mono text-xs text-muted-foreground">ring-2 ring-ring</td>
-              </tr>
-              <tr>
-                <td className="p-3 font-medium">Active</td>
-                <td className="p-3 text-muted-foreground">80% opacity overlay</td>
-                <td className="p-3 font-mono text-xs text-muted-foreground">active:bg-*/80</td>
-              </tr>
-              <tr>
-                <td className="p-3 font-medium">Disabled</td>
-                <td className="p-3 text-muted-foreground">50% opacity</td>
-                <td className="p-3 font-mono text-xs text-muted-foreground">opacity-50 pointer-events-none</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <StateTable states={states} />
       </DocSection>
 
       <DocSection title="Best Practices">

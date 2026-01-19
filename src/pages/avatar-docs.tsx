@@ -1,5 +1,5 @@
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
-import { DocPage, DocSection, ComponentExample } from "@/components/docs"
+import { DocPage, DocSection, ComponentExample, PropsTable } from "@/components/docs"
 
 export default function AvatarDocs() {
   return (
@@ -76,30 +76,35 @@ export default function AvatarDocs() {
       </DocSection>
 
       <DocSection title="Reference" description="Technical details and configuration for the avatar component." level={2}>
-        <DocSection title="Props">
-          <div className="rounded-lg border border-border/50 overflow-hidden">
-            <table className="w-full text-sm">
-              <thead className="bg-muted/30">
-                <tr>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Prop</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Type</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Default</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border/50">
-                <tr>
-                  <td className="p-4 font-mono text-xs text-info/80 font-semibold">size</td>
-                  <td className="p-4 font-mono text-xs text-info/80">"sm" | "default" | "lg"</td>
-                  <td className="p-4 font-mono text-xs text-muted-foreground">"default"</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-mono text-xs text-info/80 font-semibold">shape</td>
-                  <td className="p-4 font-mono text-xs text-info/80">"circle" | "square"</td>
-                  <td className="p-4 font-mono text-xs text-muted-foreground">"circle"</td>
-                </tr>
-              </tbody>
-            </table>
+        <DocSection title="Accessibility">
+          <div className="space-y-4 text-[14px] text-muted-foreground leading-relaxed">
+            <p>
+              Avatars use semantic HTML and ARIA attributes to ensure they are accessible to assistive technologies.
+            </p>
+            <ul className="list-disc list-inside space-y-2 ml-2">
+              <li>Use the <code className="text-[13px] bg-muted/20 border border-border/30 px-1 rounded">alt</code> prop on <code className="text-[13px] bg-muted/20 border border-border/30 px-1 rounded">AvatarImage</code> to provide a text alternative for the image.</li>
+              <li>The <code className="text-[13px] bg-muted/20 border border-border/30 px-1 rounded">AvatarFallback</code> is automatically shown only when the image is not available, and is hidden from screen readers if the image has a null alt attribute.</li>
+            </ul>
           </div>
+        </DocSection>
+
+        <DocSection title="Props">
+          <PropsTable
+            props={[
+              {
+                name: "size",
+                type: '"sm" | "default" | "lg"',
+                default: '"default"',
+                description: "The size of the avatar."
+              },
+              {
+                name: "shape",
+                type: '"circle" | "square"',
+                default: '"circle"',
+                description: "The shape of the avatar."
+              },
+            ]}
+          />
         </DocSection>
 
         <DocSection title="Best Practices">

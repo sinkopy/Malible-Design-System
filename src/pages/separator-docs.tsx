@@ -1,5 +1,5 @@
 import { Separator } from "@/components/ui/separator"
-import { DocPage, DocSection, ComponentExample } from "@/components/docs"
+import { DocPage, DocSection, ComponentExample, PropsTable } from "@/components/docs"
 
 export default function SeparatorDocs() {
   return (
@@ -44,34 +44,37 @@ export default function SeparatorDocs() {
         </DocSection>
       </DocSection>
 
-      <DocSection title="Reference" description="Technical details and configuration for the separator component." level={2}>
-        <DocSection title="Props" description="Separator component props configuration.">
-          <div className="rounded-lg border border-border/50 overflow-hidden">
-            <table className="w-full text-sm">
-              <thead className="bg-muted/30">
-                <tr>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Prop</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Type</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Default</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Description</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border/50">
-                <tr>
-                  <td className="p-4 font-medium text-[13px]">orientation</td>
-                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">"horizontal" | "vertical"</code></td>
-                  <td className="p-4 text-muted-foreground text-[13px]">"horizontal"</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">The orientation of the separator.</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-[13px]">decorative</td>
-                  <td className="p-4"><code className="text-xs font-mono bg-muted/50 px-1.5 py-0.5 rounded text-info/80">boolean</code></td>
-                  <td className="p-4 text-muted-foreground text-[13px]">true</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Whether the component is purely decorative.</td>
-                </tr>
-              </tbody>
-            </table>
+      <DocSection title="Reference" description="Technical details and compliance for the separator component." level={2}>
+        <DocSection title="Accessibility">
+          <div className="space-y-4 text-[14px] text-muted-foreground leading-relaxed">
+            <p>
+              By default, separators are treated as decorative elements and hidden from screen readers.
+            </p>
+            <ul className="list-disc list-inside space-y-2 ml-2">
+              <li>When <code className="text-[13px] bg-muted/20 border border-border/30 px-1 rounded">decorative</code> is true (default), the element uses <code className="text-[13px] bg-muted/20 border border-border/30 px-1 rounded">role="none"</code>.</li>
+              <li>Set <code className="text-[13px] bg-muted/20 border border-border/30 px-1 rounded">decorative={false}</code> to use <code className="text-[13px] bg-muted/20 border border-border/30 px-1 rounded">role="separator"</code> for semantic dividers.</li>
+              <li>Ensure correct <code className="text-[13px] bg-muted/20 border border-border/30 px-1 rounded">orientation</code> is passed for non-decorative separators.</li>
+            </ul>
           </div>
+        </DocSection>
+
+        <DocSection title="Props" description="Separator component props configuration.">
+          <PropsTable
+            props={[
+              {
+                name: "orientation",
+                type: '"horizontal" | "vertical"',
+                default: '"horizontal"',
+                description: "The orientation of the separator."
+              },
+              {
+                name: "decorative",
+                type: "boolean",
+                default: "true",
+                description: "Whether the component is purely decorative."
+              },
+            ]}
+          />
         </DocSection>
 
         <DocSection title="Best Practices">

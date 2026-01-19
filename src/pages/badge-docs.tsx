@@ -1,5 +1,5 @@
 import { Badge } from "@/components/ui/badge";
-import { DocPage, DocSection, ComponentExample, Timestamp } from "@/components/docs";
+import { DocPage, DocSection, ComponentExample, Timestamp, PropsTable, StateTable } from "@/components/docs";
 import { Check, X, Info, Warning } from "@phosphor-icons/react";
 
 export default function BadgeDocs() {
@@ -107,65 +107,38 @@ export default function BadgeDocs() {
 
       <DocSection title="Reference" description="Technical details and configuration for the badge component." level={2}>
         <DocSection title="Props">
-          <div className="rounded-lg border overflow-hidden">
-            <table className="w-full text-sm">
-              <thead className="bg-muted/30">
-                <tr>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Prop</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Type</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Default</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y">
-                <tr>
-                  <td className="p-4 font-mono text-xs">variant</td>
-                  <td className="p-4 font-mono text-xs text-info/80">"default" | "info" | "info-solid" | "success" | "success-solid" | "warning" | "warning-solid" | "destructive" | "destructive-solid" | "outline"</td>
-                  <td className="p-4 font-mono text-xs text-muted-foreground">"default"</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-mono text-xs">size</td>
-                  <td className="p-4 font-mono text-xs text-info/80">"sm" | "default"</td>
-                  <td className="p-4 font-mono text-xs text-muted-foreground">"default"</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <PropsTable
+            props={[
+              {
+                name: "variant",
+                type: '"default" | "info" | "info-solid" | "success" | "success-solid" | "warning" | "warning-solid" | "destructive" | "destructive-solid" | "outline"',
+                default: '"default"',
+                description: "The visual style of the badge."
+              },
+              {
+                name: "size",
+                type: '"sm" | "default"',
+                default: '"default"',
+                description: "The vertical padding and font size of the badge."
+              },
+              {
+                name: "icon",
+                type: "ReactNode",
+                description: "Optional icon to display before the label."
+              }
+            ]}
+          />
         </DocSection>
 
         <DocSection title="Design Tokens">
-          <div className="rounded-lg border border-border/50 overflow-hidden">
-            <table className="w-full text-sm font-body">
-              <thead className="bg-muted/30">
-                <tr>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Token</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Value</th>
-                  <th className="text-left p-4 font-medium uppercase tracking-wider text-[11px] text-muted-foreground">Usage</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border/50">
-                <tr>
-                  <td className="p-4 font-mono text-xs">--info</td>
-                  <td className="p-4 font-mono text-xs text-muted-foreground">#008ed6</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Info badges</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-mono text-xs">--success</td>
-                  <td className="p-4 font-mono text-xs text-muted-foreground">#3ea377</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Success badges</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-mono text-xs">--warning</td>
-                  <td className="p-4 font-mono text-xs text-muted-foreground">#e09200</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Warning badges</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-mono text-xs">--destructive</td>
-                  <td className="p-4 font-mono text-xs text-muted-foreground">#bf1616</td>
-                  <td className="p-4 text-muted-foreground text-[13px]">Destructive badges</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <StateTable
+            states={[
+              { state: "--info", style: "Info badges", token: "#008ed6" },
+              { state: "--success", style: "Success badges", token: "#3ea377" },
+              { state: "--warning", style: "Warning badges", token: "#e09200" },
+              { state: "--destructive", style: "Destructive badges", token: "#bf1616" },
+            ]}
+          />
         </DocSection>
 
         <DocSection title="Best Practices">
